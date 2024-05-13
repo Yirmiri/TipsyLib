@@ -8,11 +8,13 @@ Version Release v1.0.0 (Fabric/Quilt: 1.20.1)
 Release Update
 
   Changelog
-•   Ported basically everything :P
-•   Removed energetic, exhaustion, repulsion, and blood clot (blood clot is now merged with bleeding, bleeding now has a chance to not heal based on effect level)
+•   Ported basically everything from Forge/NeoForge :P
 •   Attribute effects now scale by 1 point instead of 2 to allow more customizability
-•   Changed lesser_damage_boost to lesser_strength
 •   Lava walking now grants immunity to fire
+•   Changed most effect textures
+•   Changed lesser_damage_boost to lesser_strength
+•   Changed building_fatigue to creative_shock
+•   Removed energetic, exhaustion, repulsion, and blood clot (blood clot is now bleeding)
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 

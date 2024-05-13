@@ -5,7 +5,6 @@
   "effect.tipsylib.fast_falling": "Быстрое падение",
   "effect.tipsylib.drowsy": "Сонливость",
   "effect.tipsylib.bleeding": "Кровотечение"
-  "effect.tipsylib.building_fatigue": "Строительная слабость",
   "effect.tipsylib.true_invisibility": "Настоящая невидимость",
   "effect.tipsylib.fire_skin": "Огненная кожа",
   "effect.tipsylib.trail_blazing": "Пылающий след",
@@ -19,6 +18,7 @@
   "effect.tipsylib.lesser_weakness": "Малая слабость",
   "effect.tipsylib.perception": "Восприятие",
   "effect.tipsylib.gravity_resistance": "Gravity Resistance",
+  "effect.tipsylib.creative_shock": "Creative Shock",
 
   "effect.tipsylib.vulnerability.description": "Уменьшает очки брони у игрока.",
   "effect.tipsylib.health_reduction.description": "Уменьшает очки здоровья у игрока.",
@@ -26,7 +26,6 @@
   "effect.tipsylib.fast_falling.description": "Уменьшает высоту прыжка у игрока.",
   "effect.tipsylib.drowsy.description": "Останавливает время истечения у всех эффектов от зельев, которые есть у игрока.",
   "effect.tipsylib.bleeding.description": "Игрок больше не может восстанавливать очки здоровья.",
-  "effect.tipsylib.building_fatigue.description": "Игрок больше не может ставить или разрушать блоки.",
   "effect.tipsylib.true_invisibility.description": "Схоже с обычной невидимостью, однако частицы и броня тоже становятся невидимыми.",
   "effect.tipsylib.fire_skin.description": "Сущности, атакующие игрока с данным эффектом, получают урон от огня.",
   "effect.tipsylib.trail_blazing.description": "Игрок с данным эффектом создаёт позади себя огненный след и имеет огнестойкость.",
@@ -39,5 +38,6 @@
   "effect.tipsylib.lesser_strength.description": "Слегка увеличивает урон наносимый игроком.",
   "effect.tipsylib.lesser_weakness.description": "Слегка уменьшает урон наносимый игроком.",
   "effect.tipsylib.perception.description": "Подсвечиваются все сущности рядом с игроком, включая самого игрока."
-  "effect.tipsylib.gravity_resistance.description": "The effected entity will be immune to obtaining slow falling, fast falling, and levitation."
+  "effect.tipsylib.gravity_resistance.description": "The effected entity will be immune to obtaining slow falling, fast falling, and levitation.",
+  "effect.tipsylib.creative_shock.description": "The user can no longer interact with the world."
 }
