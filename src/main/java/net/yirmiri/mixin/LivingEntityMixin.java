@@ -13,6 +13,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.registry.tag.DamageTypeTags;
+import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -30,6 +31,8 @@ public abstract class LivingEntityMixin {
     @Shadow @Final private Map<StatusEffect, StatusEffectInstance> activeStatusEffects;
 
     @Shadow public abstract boolean hasStatusEffect(StatusEffect effect);
+
+    @Shadow @Nullable public abstract StatusEffectInstance getStatusEffect(StatusEffect effect);
 
     @Unique @Final
     LivingEntity living = (LivingEntity) (Object) this;
@@ -76,7 +79,7 @@ public abstract class LivingEntityMixin {
 
         if (living.hasStatusEffect(TLMobEffects.BURNING_THORNS)) {
             Entity entity = source.getAttacker();
-            if (entity != null) entity.setOnFireFor(5);
+            if (entity != null) entity.setOnFireFor(5 * (getStatusEffect(TLMobEffects.BURNING_THORNS).getAmplifier() + 1));
         }
 
         if (living.hasStatusEffect(TLMobEffects.TOUGH_SKIN) && source.isIn(DamageTypeTags.IS_EXPLOSION))

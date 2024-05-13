@@ -12,6 +12,7 @@ Release Update
 •   Attribute effects now scale by 1 point instead of 2 to allow more customizability
 •   Lava walking now grants immunity to fire
 •   Trail blazing now effects all entities
+•   Burning thorns now scales with effect level
 •   Changed most effect textures
 •   Changed drowsy to chronos
 •   Changed lesser_damage_boost to lesser_strength
