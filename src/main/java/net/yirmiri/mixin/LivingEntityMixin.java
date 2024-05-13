@@ -2,9 +2,12 @@ package net.yirmiri.mixin;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.entity.effect.StatusEffect;
+import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.util.math.BlockPos;
+import net.yirmiri.mixininteraces.IStatusEffectInstanceMixin;
 import net.yirmiri.register.TLMobEffects;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
@@ -12,24 +15,41 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.registry.tag.DamageTypeTags;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+import java.util.Map;
+
 @Mixin(LivingEntity.class)
-public class LivingEntityMixin {
+public abstract class LivingEntityMixin {
+
+    @Shadow @Final private Map<StatusEffect, StatusEffectInstance> activeStatusEffects;
+
+    @Shadow public abstract boolean hasStatusEffect(StatusEffect effect);
 
     @Unique @Final
     LivingEntity living = (LivingEntity) (Object) this;
-    private Entity entity;
+    @Unique
+    public Entity entity;
 
     public LivingEntityMixin(Entity entity) {
         this.entity = entity;
     }
 
     //TODO: Drowsy Effect & Hyper Elasticity
+
+    @Inject(at = @At("HEAD"), method = "tickStatusEffects", cancellable = true)
+    public void tickStatusEffects(CallbackInfo ci) {
+        for (StatusEffectInstance statusEffect : this.activeStatusEffects.values()) {
+            if (statusEffect instanceof IStatusEffectInstanceMixin effect) {
+                effect.setEntity((LivingEntity) (Object) this);
+            }
+        }
+    }
 
     @Inject(at = @At("HEAD"), method = "canWalkOnFluid", cancellable = true)
     public void canWalkOnFluid(FluidState state, CallbackInfoReturnable<Boolean> cir) {
@@ -54,7 +74,7 @@ public class LivingEntityMixin {
         if (living.hasStatusEffect(TLMobEffects.TRAIL_BLAZING) || living.hasStatusEffect(TLMobEffects.LAVA_WALKING) && source.isIn(DamageTypeTags.IS_FIRE))
             cir.setReturnValue(false);
 
-        if (living.hasStatusEffect(TLMobEffects.FIRE_SKIN)) {
+        if (living.hasStatusEffect(TLMobEffects.BURNING_THORNS)) {
             Entity entity = source.getAttacker();
             if (entity != null) entity.setOnFireFor(5);
         }

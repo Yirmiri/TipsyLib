@@ -13,8 +13,11 @@ Release Update
 •   Lava walking now grants immunity to fire
 •   Trail blazing now effects all entities
 •   Changed most effect textures
+•   Changed drowsy to chronos
 •   Changed lesser_damage_boost to lesser_strength
 •   Changed building_fatigue to creative_shock
+•   Changed fire_skin to burning_thorns
+•   Changed health_reduction to heartbreak
 •   Removed energetic, exhaustion, repulsion, and blood clot (blood clot is now bleeding)
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
