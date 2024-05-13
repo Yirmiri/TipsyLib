@@ -1,7 +1,7 @@
-package net.azurune.register;
+package net.yirmiri.register;
 
-import net.azurune.TipsyLib;
-import net.azurune.effect.NoSpecialEffect;
+import net.yirmiri.TipsyLib;
+import net.yirmiri.effect.NoSpecialEffect;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.effect.StatusEffect;

@@ -1,6 +1,6 @@
-package net.azurune;
+package net.yirmiri;
 
-import net.azurune.register.TLEffects;
+import net.yirmiri.register.TLEffects;
 import net.fabricmc.api.ModInitializer;
 
 public class TipsyLib implements ModInitializer {

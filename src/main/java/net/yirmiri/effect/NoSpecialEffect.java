@@ -1,4 +1,4 @@
-package net.azurune.effect;
+package net.yirmiri.effect;
 
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
