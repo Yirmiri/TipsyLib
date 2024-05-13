@@ -34,14 +34,14 @@ public class LivingEntityMixin {
     @Inject(at = @At("HEAD"), method = "canWalkOnFluid", cancellable = true)
     public void canWalkOnFluid(FluidState state, CallbackInfoReturnable<Boolean> cir) {
         if (state.getFluid() == Fluids.WATER || state.getFluid() == Fluids.FLOWING_WATER)
-            if (this.entity instanceof LivingEntity && (this.living.hasStatusEffect(TLMobEffects.WATER_WALKING))) cir.setReturnValue(true);
+            if (living instanceof LivingEntity && (this.living.hasStatusEffect(TLMobEffects.WATER_WALKING))) cir.setReturnValue(true);
 
         if (state.getFluid() == Fluids.LAVA || state.getFluid() == Fluids.FLOWING_LAVA)
-            if (this.entity instanceof LivingEntity && (this.living.hasStatusEffect(TLMobEffects.LAVA_WALKING))) cir.setReturnValue(true);
+            if (living instanceof LivingEntity && (this.living.hasStatusEffect(TLMobEffects.LAVA_WALKING))) cir.setReturnValue(true);
     }
 
     @Inject(at = @At("HEAD"), method = "damage", cancellable = true)
-    public void hurt(DamageSource source, float pAmount, CallbackInfoReturnable<Boolean> cir) {
+    public void damage(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
         if (source.isIn(DamageTypeTags.IS_FIRE) && living.hasStatusEffect(TLMobEffects.PYROMANIAC)) {
             if (living.age % 20 == 0) {
                 if (living.getHealth() < living.getMaxHealth()) {

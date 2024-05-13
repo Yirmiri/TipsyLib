@@ -19,7 +19,7 @@ public class PlayerEntityMixin {
     PlayerEntity player = (PlayerEntity) (Object) this;
 
     @Inject(at = @At("HEAD"), method = "interact")
-    public void fall(Entity entity, Hand hand, CallbackInfoReturnable<ActionResult> cir) {
-        if (player.hasStatusEffect(TLMobEffects.STEEL_FEET)) cir.cancel();
+    public void interact(Entity entity, Hand hand, CallbackInfoReturnable<ActionResult> cir) {
+        if (player.hasStatusEffect(TLMobEffects.CREATIVE_SHOCK)) cir.cancel();
     }
 }

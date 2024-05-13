@@ -11,6 +11,7 @@ Release Update
 •   Ported basically everything from Forge/NeoForge :P
 •   Attribute effects now scale by 1 point instead of 2 to allow more customizability
 •   Lava walking now grants immunity to fire
+•   Trail blazing now effects all entities
 •   Changed most effect textures
 •   Changed lesser_damage_boost to lesser_strength
 •   Changed building_fatigue to creative_shock
