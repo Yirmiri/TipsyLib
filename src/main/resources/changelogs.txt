@@ -8,6 +8,7 @@ Version Release v1.0.0 (Fabric/Quilt: 1.20.1)
 Release Update
 
 •   Ported basically everything :P
+•   Removed energetic, exhaustion, repulsion, and blood clot (blood clot is now merged with bleeding, bleeding now has a chance to not heal based on effect level)
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
