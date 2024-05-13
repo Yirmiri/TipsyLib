@@ -17,7 +17,7 @@ public class PlayerEntityMixin {
 
     @Unique @Final
     PlayerEntity player = (PlayerEntity) (Object) this;
-
+    //TODO: FIX?
     @Inject(at = @At("HEAD"), method = "interact")
     public void interact(Entity entity, Hand hand, CallbackInfoReturnable<ActionResult> cir) {
         if (player.hasStatusEffect(TLMobEffects.CREATIVE_SHOCK)) cir.cancel();
