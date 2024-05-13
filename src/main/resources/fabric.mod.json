@@ -8,7 +8,7 @@
 		"Yirmiri"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
+		"homepage": "https://www.curseforge.com/minecraft/mc-mods/tipsylib",
 		"sources": "https://github.com/Yirmiri/TipsyLib-Fabric"
 	},
 	"license": "All Rights Reserved",
@@ -16,7 +16,7 @@
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"net.azurune.TipsyLib"
+			"net.yirmiri.TipsyLib"
 		]
 	},
 	"mixins": [

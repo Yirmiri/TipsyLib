@@ -1,6 +1,6 @@
 package net.yirmiri;
 
-import net.yirmiri.register.TLEffects;
+import net.yirmiri.register.TLMobEffects;
 import net.fabricmc.api.ModInitializer;
 
 public class TipsyLib implements ModInitializer {
@@ -8,6 +8,6 @@ public class TipsyLib implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-		TLEffects.registerStatusEffect();
+		TLMobEffects.registerStatusEffect();
 	}
 }

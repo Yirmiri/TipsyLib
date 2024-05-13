@@ -12,6 +12,7 @@ Release Update
 •   Removed energetic, exhaustion, repulsion, and blood clot (blood clot is now merged with bleeding, bleeding now has a chance to not heal based on effect level)
 •   Attribute effects now scale by 1 point instead of 2 to allow more customizability
 •   Changed lesser_damage_boost to lesser_strength
+•   Lava walking now grants immunity to fire
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
