@@ -3,16 +3,16 @@
 	"id": "tipsylib",
 	"version": "${version}",
 	"name": "TipsyLib",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "A library mod that contains tons of new effects for modders to take use of.",
 	"authors": [
-		"Me!"
+		"Yirmiri"
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"sources": "https://github.com/Yirmiri/TipsyLib-Fabric"
 	},
-	"license": "CC0-1.0",
-	"icon": "assets/tipsylib/icon.png",
+	"license": "All Rights Reserved",
+	"icon": "tipsylib_icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [

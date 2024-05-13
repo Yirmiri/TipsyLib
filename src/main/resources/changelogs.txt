@@ -1,0 +1,77 @@
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Literally just a secret .txt file of every single update's changelog
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Version Release v1.0.0 (Fabric/Quilt: 1.20.1)
+Release Update
+
+•   Ported basically everything :P
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Version Release v1.0.2.1 (Forge/NeoForge: 1.20.1)
+Literally the smallest update ever || 4/??/24
+
+  Additions
+•   Added text when trying to sleep in a bed with energetic
+•   Added ru_ru translations (credit to @bricker_man)
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Version Release v1.0.2 (Forge/NeoForge: 1.20.1)
+Small Update || 4/14/24
+
+  Additions
+•   Added repulsion, the effected entity cannot be hit with projectiles
+•   Added gravity resistance, grants immunity to all gravity related effects
+•   Added exhaustion, grants immunity to energetic and removes the ability to sprint
+•   Added energetic, allows the ability to sprint no matter what and disables sleeping, higher levels grant immunity to fatigues
+
+  Bug Fixes
+•   Fixed an issue that prevented milk or /effect clear from clearing any effect
+•   Fixed an issue with true invisibility not functioning properly server side
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Version Release v1.0.1 (Forge/NeoForge: 1.20.1)
+Small Update || 4/11/24
+
+  Additions
+•   Added bleeding, has a chance to remove healing (unlike blood clot its not 100%)
+•   Added flourishing, has a chance to add additional health points upon healing
+•   Added a mod logo
+
+  Changes
+•   True invisibility is now blacklisted from drowsy
+•   Health reduction is now unclearable from milk
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Version Release v1.0.0 (Forge/NeoForge: 1.20.1)
+Release Update
+
+  Additions
+•   Added new effects:
+    •   Perception - All living entities in a small radius (including the wearer of the effect) begin to glow
+    •   Tough Skin - Removes knockback and grants explosion immunity
+    •   Fast Falling - Decreases jump height
+    •   Drowsy - Locks the current time of all other potion effects until drowsy ends
+    •   Blood Clot - Disables the ability to heal
+    •   Building Fatigue - Removes the ability to interact, destroy, or build
+    •   True Invisibility - Similar to invisibility but armor and particles do not show
+    •   Fire Skin - Entities that attack the wearer of the effect begin to burn
+    •   Trail Blazing - A trail of flames follow behind the wearer of the effect (comes with a built in fire resistance)
+    •   Water Walking - Grants the ability to walk on water... jesus
+    •   Lava Walking - Grants the ability to walk on lava... just make sure to bring fire resistance ;)
+    •   Pyromaniac - When the wearer of this effect stands in fire they regenerate health points (comes with a built in fire resistance)
+    •   Steel Feet - Grants fall damage immunity
+    •   Hyper Elasticity - When the wearer of this effect falls from a height they bounce back upwards and take decreased fall damage (does not stack with steel feet)
+    •   Enigma - Mobs cannot see the wearer of this effect
+    •   Lesser Strength - Increases attack damage by +1
+    •   Lesser Weakness - Decreases attack damage by -1
+    •   Vulnerability - Decreases 2 armor points per level
+    •   Heart Broken - Decreases 2 health points per level
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
