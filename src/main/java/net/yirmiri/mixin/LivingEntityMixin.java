@@ -63,7 +63,7 @@ public abstract class LivingEntityMixin {
         if (source.isIn(DamageTypeTags.IS_FIRE) && living.hasStatusEffect(TLMobEffects.PYROMANIAC)) {
             if (living.age % 20 == 0) {
                 if (living.getHealth() < living.getMaxHealth()) {
-                    living.heal(2.0F * (getStatusEffect(TLMobEffects.BURNING_THORNS).getAmplifier() + 1.0F));
+                    living.heal(2.0F * (getStatusEffect(TLMobEffects.PYROMANIAC).getAmplifier() + 1.0F));
                 }
             }
             cir.setReturnValue(false);
