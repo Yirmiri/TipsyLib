@@ -2,6 +2,7 @@ package net.yirmiri.mixin;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.entity.ai.TargetPredicate;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.fluid.FluidState;
@@ -29,21 +30,15 @@ import java.util.Map;
 public abstract class LivingEntityMixin {
 
     @Shadow @Final private Map<StatusEffect, StatusEffectInstance> activeStatusEffects;
-
-    @Shadow public abstract boolean hasStatusEffect(StatusEffect effect);
-
     @Shadow @Nullable public abstract StatusEffectInstance getStatusEffect(StatusEffect effect);
-
-    @Unique @Final
-    LivingEntity living = (LivingEntity) (Object) this;
-    @Unique
-    public Entity entity;
+    @Unique @Final LivingEntity living = (LivingEntity) (Object) this;
+    @Unique public Entity entity;
 
     public LivingEntityMixin(Entity entity) {
         this.entity = entity;
     }
 
-    //TODO: Drowsy Effect & Hyper Elasticity
+    //TODO: Hyper Elasticity, Fast Falling & True Invisibility
 
     @Inject(at = @At("HEAD"), method = "tickStatusEffects", cancellable = true)
     public void tickStatusEffects(CallbackInfo ci) {
@@ -68,7 +63,7 @@ public abstract class LivingEntityMixin {
         if (source.isIn(DamageTypeTags.IS_FIRE) && living.hasStatusEffect(TLMobEffects.PYROMANIAC)) {
             if (living.age % 20 == 0) {
                 if (living.getHealth() < living.getMaxHealth()) {
-                    living.heal(1.0F);
+                    living.heal(2.0F * (getStatusEffect(TLMobEffects.BURNING_THORNS).getAmplifier() + 1.0F));
                 }
             }
             cir.setReturnValue(false);
