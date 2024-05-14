@@ -19,6 +19,8 @@
   "effect.tipsylib.perception": "Perception",
   "effect.tipsylib.gravity_resistance": "Gravity Resistance",
   "effect.tipsylib.creative_shock": "Creative Shock",
+  "effect.tipsylib.retaliation": "Retaliation",
+  "effect.tipsylib.berserk": "Berserk",
 
   "effect.tipsylib.vulnerability.description": "Reduces the armor points of the user.",
   "effect.tipsylib.heartbreak.description": "Reduces the max health points of the user.",
@@ -39,5 +41,10 @@
   "effect.tipsylib.lesser_weakness.description": "Slightly decreases attack damage of the user.",
   "effect.tipsylib.perception.description": "All living entities in a small radius of the user are inflicted with glowing including the user.",
   "effect.tipsylib.gravity_resistance.description": "The effected entity will be immune to obtaining slow falling, fast falling, and levitation.",
-  "effect.tipsylib.creative_shock.description": "The user can no longer interact with the world."
+  "effect.tipsylib.creative_shock.description": "The user can no longer interact with the world.",
+  "effect.tipsylib.retaliation.description": "When the user is attacked the will damage the attacker back.",
+  "effect.tipsylib.berserk.description": "The lower the user's health points are the more damage they do.",
+
+  "death.attack.tipsylib.retaliation": "%1$s couldn't handle the backlash",
+  "death.attack.tipsylib.coffee_bush.player": "%1$s couldn't handle the backlash from attacking %2$s"
 }

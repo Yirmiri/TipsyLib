@@ -2,13 +2,14 @@ package net.yirmiri.mixin;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.entity.ai.TargetPredicate;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import net.yirmiri.mixininteraces.IStatusEffectInstanceMixin;
+import net.yirmiri.register.TLDamageTypes;
 import net.yirmiri.register.TLMobEffects;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
@@ -31,6 +32,11 @@ public abstract class LivingEntityMixin {
 
     @Shadow @Final private Map<StatusEffect, StatusEffectInstance> activeStatusEffects;
     @Shadow @Nullable public abstract StatusEffectInstance getStatusEffect(StatusEffect effect);
+
+    @Shadow @Nullable public abstract LivingEntity getAttacker();
+
+    @Shadow public abstract LivingEntity getLastAttacker();
+
     @Unique @Final LivingEntity living = (LivingEntity) (Object) this;
     @Unique public Entity entity;
 
@@ -75,6 +81,11 @@ public abstract class LivingEntityMixin {
         if (living.hasStatusEffect(TLMobEffects.BURNING_THORNS)) {
             Entity entity = source.getAttacker();
             if (entity != null) entity.setOnFireFor(5 * (getStatusEffect(TLMobEffects.BURNING_THORNS).getAmplifier() + 1));
+        }
+
+        if (living.hasStatusEffect(TLMobEffects.RETALIATION)) {
+            Entity entity = source.getAttacker();
+            if (entity != null) entity.damage(TLDamageTypes.of(entity.getWorld(), TLDamageTypes.RETALIATION), 1.0F + (getStatusEffect(TLMobEffects.RETALIATION).getAmplifier() + 1));
         }
 
         if (living.hasStatusEffect(TLMobEffects.TOUGH_SKIN) && source.isIn(DamageTypeTags.IS_EXPLOSION))

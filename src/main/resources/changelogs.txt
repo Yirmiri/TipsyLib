@@ -7,8 +7,12 @@ Literally just a secret .txt file of every single update's changelog
 Version Release v1.0.0 (Fabric/Quilt: 1.20.1)
 Release Update
 
-  Changelog
+  Additions
 •   Ported basically everything from Forge/NeoForge :P
+•   Added retaliation, damages entities that attack the user of the effect
+•   Added retaliation damage type
+
+  Changes
 •   Attribute effects now scale by 1 point instead of 2 to allow more customizability
 •   Lava walking now grants immunity to fire
 •   Trail blazing now effects all entities
@@ -19,6 +23,8 @@ Release Update
 •   Changed building_fatigue to creative_shock
 •   Changed fire_skin to burning_thorns
 •   Changed health_reduction to heartbreak
+
+  Removals
 •   Removed energetic, exhaustion, repulsion, and blood clot (blood clot is now bleeding)
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
