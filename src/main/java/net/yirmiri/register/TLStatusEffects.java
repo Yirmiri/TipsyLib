@@ -25,7 +25,7 @@ public class TLStatusEffects {
     public static final StatusEffect HYPER_ELASTICITY = new NoSpecialEffect(StatusEffectCategory.BENEFICIAL, 0x9ad8fa); //TODO: FINISH
     public static final StatusEffect BURNING_THORNS = new NoSpecialEffect(StatusEffectCategory.BENEFICIAL, 0xf57d4a);
     public static final StatusEffect RETALIATION = new NoSpecialEffect(StatusEffectCategory.BENEFICIAL, 0x938c7a);
-    public static final StatusEffect BERSERK = new BerserkEffect(StatusEffectCategory.BENEFICIAL, 0xff0000); //TODO: FINISH
+    public static final StatusEffect BERSERK = new BerserkEffect(StatusEffectCategory.BENEFICIAL, 0xff0000);
     public static final StatusEffect TRAVERSAL = new TraversalEffect(StatusEffectCategory.BENEFICIAL, 0xf44087);
     //NEUTRAL
     public static final StatusEffect CHRONOS = new NoSpecialEffect(StatusEffectCategory.NEUTRAL, 0x0eaf9b);

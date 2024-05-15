@@ -19,7 +19,7 @@ Release Update
 •   Lava walking now grants immunity to fire
 •   Trail blazing now effects all entities
 •   Burning thorns, pyromaniac, & perception now scale with effect level
-•   Changed most effect textures
+•   Changed most effect textures (THANK YOU CUP)
 •   Changed drowsy to chronos
 •   Changed lesser_damage_boost to lesser_strength
 •   Changed building_fatigue to creative_shock
@@ -31,8 +31,27 @@ Release Update
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+Version Release v1.1.0 (Forge/NeoForge: 1.20.1)
+Small Update
+
+  Changes
+•   Changed most effect textures
+•   Changed drowsy to chronos
+•   Changed lesser_damage_boost to lesser_strength
+•   Changed building_fatigue to creative_shock
+•   Changed fire_skin to burning_thorns
+•   Changed health_reduction to heartbreak
+
+  Removals
+•   Removed energetic, exhaustion, repulsion, and blood clot (blood clot is now bleeding)
+
+  Notes
+•   Unsure if Forge will be supported past this point however there will be a Fabric port coming very soon ;)
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 Version Release v1.0.2.1 (Forge/NeoForge: 1.20.1)
-Literally the smallest update ever || 4/??/24
+Literally the smallest update ever
 
   Additions
 •   Added text when trying to sleep in a bed with energetic
