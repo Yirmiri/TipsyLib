@@ -1,6 +1,7 @@
 package net.yirmiri.register;
 
 import net.yirmiri.TipsyLib;
+import net.yirmiri.effect.BerserkEffect;
 import net.yirmiri.effect.GravityResistanceEffect;
 import net.yirmiri.effect.NoSpecialEffect;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
@@ -27,7 +28,7 @@ public class TLMobEffects {
     public static final StatusEffect HYPER_ELASTICITY = new NoSpecialEffect(StatusEffectCategory.BENEFICIAL, 0x9ad8fa); //TODO: FINISH
     public static final StatusEffect BURNING_THORNS = new NoSpecialEffect(StatusEffectCategory.BENEFICIAL, 0xf57d4a);
     public static final StatusEffect RETALIATION = new NoSpecialEffect(StatusEffectCategory.BENEFICIAL, 0x938c7a);
-    public static final StatusEffect BERSERK = new NoSpecialEffect(StatusEffectCategory.BENEFICIAL, 0xff0000); //TODO: FINISH
+    public static final StatusEffect BERSERK = new BerserkEffect(StatusEffectCategory.BENEFICIAL, 0xff0000);
     //NEUTRAL
     public static final StatusEffect CHRONOS = new NoSpecialEffect(StatusEffectCategory.NEUTRAL, 0x0eaf9b);
     public static final StatusEffect GRAVITY_RESISTANCE = new GravityResistanceEffect(StatusEffectCategory.NEUTRAL, 0xc451a4);
@@ -44,6 +45,7 @@ public class TLMobEffects {
         Registry.register(Registries.STATUS_EFFECT, new Identifier(TipsyLib.MODID, "heartbreak"), HEARTBREAK).addAttributeModifier(EntityAttributes.GENERIC_MAX_HEALTH, "F804B084-8974-46E9-B30B-0AB057A9D83B", -1.0, EntityAttributeModifier.Operation.ADDITION);
         Registry.register(Registries.STATUS_EFFECT, new Identifier(TipsyLib.MODID, "lesser_strength"), LESSER_STRENGTH).addAttributeModifier(EntityAttributes.GENERIC_ATTACK_DAMAGE, "bddcfad8-0495-4074-b53b-7c8e2b197a14", 1.0, EntityAttributeModifier.Operation.ADDITION);
         Registry.register(Registries.STATUS_EFFECT, new Identifier(TipsyLib.MODID, "lesser_weakness"), LESSER_WEAKNESS).addAttributeModifier(EntityAttributes.GENERIC_ATTACK_DAMAGE, "2544cd96-7794-4184-a845-73c642132d6a", -1.0, EntityAttributeModifier.Operation.ADDITION);
+        Registry.register(Registries.STATUS_EFFECT, new Identifier(TipsyLib.MODID, "berserk"), BERSERK).addAttributeModifier(EntityAttributes.GENERIC_ATTACK_DAMAGE, "15ab2f03-5cf6-4962-a43d-a5964727faa5", 0.0, EntityAttributeModifier.Operation.MULTIPLY_TOTAL);
         Registry.register(Registries.STATUS_EFFECT, new Identifier(TipsyLib.MODID, "bleeding"), BLEEDING);
         Registry.register(Registries.STATUS_EFFECT, new Identifier(TipsyLib.MODID, "fast_falling"), FAST_FALLING);
         Registry.register(Registries.STATUS_EFFECT, new Identifier(TipsyLib.MODID, "creative_shock"), CREATIVE_SHOCK);
@@ -61,6 +63,5 @@ public class TLMobEffects {
         Registry.register(Registries.STATUS_EFFECT, new Identifier(TipsyLib.MODID, "steel_feet"), STEEL_FEET);
         Registry.register(Registries.STATUS_EFFECT, new Identifier(TipsyLib.MODID, "hyper_elasticity"), HYPER_ELASTICITY);
         Registry.register(Registries.STATUS_EFFECT, new Identifier(TipsyLib.MODID, "retaliation"), RETALIATION);
-        Registry.register(Registries.STATUS_EFFECT, new Identifier(TipsyLib.MODID, "berserk"), BERSERK);
     }
 }

@@ -41,7 +41,7 @@
   "effect.tipsylib.lesser_weakness.description": "Slightly decreases attack damage of the user.",
   "effect.tipsylib.perception.description": "All living entities in a small radius of the user are inflicted with glowing including the user.",
   "effect.tipsylib.gravity_resistance.description": "The effected entity will be immune to obtaining slow falling, fast falling, and levitation.",
-  "effect.tipsylib.creative_shock.description": "The user can no longer interact with the world.",
+  "effect.tipsylib.creative_shock.description": "You have lost the power of creation.",
   "effect.tipsylib.retaliation.description": "When the user is attacked the will damage the attacker back.",
   "effect.tipsylib.berserk.description": "The lower the user's health points are the more damage they do.",
 
