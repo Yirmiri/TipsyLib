@@ -1,9 +1,7 @@
 package net.yirmiri.register;
 
 import net.yirmiri.TipsyLib;
-import net.yirmiri.effect.BerserkEffect;
-import net.yirmiri.effect.GravityResistanceEffect;
-import net.yirmiri.effect.NoSpecialEffect;
+import net.yirmiri.effect.*;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.effect.StatusEffect;
@@ -11,9 +9,8 @@ import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
-import net.yirmiri.effect.PerceptionEffect;
 
-public class TLMobEffects {
+public class TLStatusEffects {
     //BENEFICIAL
     public static final StatusEffect TOUGH_SKIN = new NoSpecialEffect(StatusEffectCategory.BENEFICIAL, 0x1e2434);
     public static final StatusEffect WATER_WALKING = new NoSpecialEffect(StatusEffectCategory.BENEFICIAL, 0x5c89dc);
@@ -28,7 +25,8 @@ public class TLMobEffects {
     public static final StatusEffect HYPER_ELASTICITY = new NoSpecialEffect(StatusEffectCategory.BENEFICIAL, 0x9ad8fa); //TODO: FINISH
     public static final StatusEffect BURNING_THORNS = new NoSpecialEffect(StatusEffectCategory.BENEFICIAL, 0xf57d4a);
     public static final StatusEffect RETALIATION = new NoSpecialEffect(StatusEffectCategory.BENEFICIAL, 0x938c7a);
-    public static final StatusEffect BERSERK = new BerserkEffect(StatusEffectCategory.BENEFICIAL, 0xff0000);
+    public static final StatusEffect BERSERK = new BerserkEffect(StatusEffectCategory.BENEFICIAL, 0xff0000); //TODO: FINISH
+    public static final StatusEffect TRAVERSAL = new TraversalEffect(StatusEffectCategory.BENEFICIAL, 0xf44087);
     //NEUTRAL
     public static final StatusEffect CHRONOS = new NoSpecialEffect(StatusEffectCategory.NEUTRAL, 0x0eaf9b);
     public static final StatusEffect GRAVITY_RESISTANCE = new GravityResistanceEffect(StatusEffectCategory.NEUTRAL, 0xc451a4);
@@ -63,5 +61,6 @@ public class TLMobEffects {
         Registry.register(Registries.STATUS_EFFECT, new Identifier(TipsyLib.MODID, "steel_feet"), STEEL_FEET);
         Registry.register(Registries.STATUS_EFFECT, new Identifier(TipsyLib.MODID, "hyper_elasticity"), HYPER_ELASTICITY);
         Registry.register(Registries.STATUS_EFFECT, new Identifier(TipsyLib.MODID, "retaliation"), RETALIATION);
+        Registry.register(Registries.STATUS_EFFECT, new Identifier(TipsyLib.MODID, "traversal"), TRAVERSAL);
     }
 }

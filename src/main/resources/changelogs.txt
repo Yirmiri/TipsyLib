@@ -9,6 +9,8 @@ Release Update
 
   Additions
 •   Ported basically everything from Forge/NeoForge :P
+•   Added traversal, teleports the player to their bed spawnpoint
+•   Added purity, disallows the entity to have status effects
 •   Added retaliation, damages entities that attack the user of the effect
 •   Added retaliation damage type
 

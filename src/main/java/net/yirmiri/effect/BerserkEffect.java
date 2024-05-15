@@ -14,21 +14,22 @@ public class BerserkEffect extends StatusEffect {
     }
 
     @Override
-    public void applyUpdateEffect(LivingEntity entity, int amplifier) {
-        float damageModifier = 1.0F - entity.getHealth() / entity.getMaxHealth();
+    public void applyUpdateEffect(LivingEntity living, int amplifier) {
+        float damageModifier = living.getHealth() / living.getMaxHealth();
+        //float damageModifier = 1.0F - entity.getHealth() / entity.getMaxHealth();
 
-        if (entity.getAttributeInstance(EntityAttributes.GENERIC_ATTACK_DAMAGE) == null) return;
-        var originalModifier = entity.getAttributeInstance(EntityAttributes.GENERIC_ATTACK_DAMAGE).getModifier(UUID.fromString("15ab2f03-5cf6-4962-a43d-a5964727faa5"));
+        if (living.getAttributeInstance(EntityAttributes.GENERIC_ATTACK_DAMAGE) == null) return;
+        var originalModifier = living.getAttributeInstance(EntityAttributes.GENERIC_ATTACK_DAMAGE).getModifier(UUID.fromString("15ab2f03-5cf6-4962-a43d-a5964727faa5"));
 
         if (originalModifier == null) return;
         var newAttributeModifier = new EntityAttributeModifier(
                 originalModifier.getId(),
                 originalModifier.getName(),
-                damageModifier * amplifier + 1.0F,
+                damageModifier, //* (amplifier + 1.0F),
                 originalModifier.getOperation());
 
-        entity.getAttributeInstance(EntityAttributes.GENERIC_ATTACK_DAMAGE).removeModifier(originalModifier.getId());
-        entity.getAttributeInstance(EntityAttributes.GENERIC_ATTACK_DAMAGE).addTemporaryModifier(newAttributeModifier);
+        living.getAttributeInstance(EntityAttributes.GENERIC_ATTACK_DAMAGE).removeModifier(originalModifier.getId());
+        living.getAttributeInstance(EntityAttributes.GENERIC_ATTACK_DAMAGE).addTemporaryModifier(newAttributeModifier);
     }
 
     @Override

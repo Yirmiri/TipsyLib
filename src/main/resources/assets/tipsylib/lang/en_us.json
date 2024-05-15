@@ -21,6 +21,8 @@
   "effect.tipsylib.creative_shock": "Creative Shock",
   "effect.tipsylib.retaliation": "Retaliation",
   "effect.tipsylib.berserk": "Berserk",
+  "effect.tipsylib.traversal": "Traversal",
+  "effect.tipsylib.purity": "Purity",
 
   "effect.tipsylib.vulnerability.description": "Reduces the armor points of the user.",
   "effect.tipsylib.heartbreak.description": "Reduces the max health points of the user.",
@@ -44,6 +46,8 @@
   "effect.tipsylib.creative_shock.description": "You have lost the power of creation.",
   "effect.tipsylib.retaliation.description": "When the user is attacked the will damage the attacker back.",
   "effect.tipsylib.berserk.description": "The lower the user's health points are the more damage they do.",
+  "effect.tipsylib.traversal.description": "Teleports the player to their bed spawnpoint.",
+  "effect.tipsylib.purity.description": "Disallows the user to have any status effects other than purity.",
 
   "death.attack.tipsylib.retaliation": "%1$s couldn't handle the backlash",
   "death.attack.tipsylib.coffee_bush.player": "%1$s couldn't handle the backlash from attacking %2$s"
