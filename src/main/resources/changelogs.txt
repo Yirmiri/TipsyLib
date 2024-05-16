@@ -27,7 +27,7 @@ Release Update
 •   Changed health_reduction to heartbreak
 
   Removals
-•   Removed energetic, exhaustion, repulsion, and blood clot (blood clot is now bleeding)
+•   Removed energetic, exhaustion, repulsion, enigma, and blood clot (blood clot is now bleeding)
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
