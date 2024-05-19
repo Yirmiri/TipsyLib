@@ -27,6 +27,7 @@
   "effect.tipsylib.precision": "Precision",
   "effect.tipsylib.astray": "Astray",
   "effect.tipsylib.backlash": "Backlash",
+  "effect.tipsylib.impure": "Impure",
 
   "effect.tipsylib.vulnerability.description": "Reduces the armor points of the user.",
   "effect.tipsylib.heartbreak.description": "Reduces the max health points of the user.",
@@ -56,6 +57,7 @@
   "effect.tipsylib.precision.description": "Increases the damage of the user's thrown/shot projectile.",
   "effect.tipsylib.astray.description": "Decreases the damage of the user's thrown/shot projectile.",
   "effect.tipsylib.backlash.description": "When the user is attacked the attacker will receive a percentage of the damage back.",
+  "effect.tipsylib.impure.description": "Prevents the user from clearing potion effects with milk.",
 
   "death.attack.tipsylib.backlash": "%1$s couldn't handle the backlash",
   "death.attack.tipsylib.backlash.player": "%1$s couldn't handle the backlash from attacking %2$s",

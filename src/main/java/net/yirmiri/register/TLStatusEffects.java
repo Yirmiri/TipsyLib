@@ -39,6 +39,7 @@ public class TLStatusEffects {
     public static final StatusEffect LESSER_WEAKNESS = new NoSpecialEffect(StatusEffectCategory.HARMFUL, 0x8c4c4c);
     public static final StatusEffect SHATTERSPLEEN = new NoSpecialEffect(StatusEffectCategory.HARMFUL, 0xb01410);
     public static final StatusEffect ASTRAY = new NoSpecialEffect(StatusEffectCategory.HARMFUL, 0x3a8997);
+    public static final StatusEffect IMPURE = new NoSpecialEffect(StatusEffectCategory.HARMFUL, 0x000001);
     //public static final StatusEffect FAST_FALLING = new NoSpecialEffect(StatusEffectCategory.HARMFUL, 0x9babb2); //TODO: FINISH
     //public static final StatusEffect CREATIVE_SHOCK = new NoSpecialEffect(StatusEffectCategory.HARMFUL, 0x905ea9); //TODO: FINISH
 

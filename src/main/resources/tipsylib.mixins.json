@@ -4,6 +4,7 @@
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "LivingEntityMixin",
+    "MilkBucketItemMixin",
     "PersistentProjectileEntityMixin",
     "StatusEffectInstanceMixin"
   ],
