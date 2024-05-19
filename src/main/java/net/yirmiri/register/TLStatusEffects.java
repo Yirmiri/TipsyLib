@@ -67,6 +67,7 @@ public class TLStatusEffects {
         Registry.register(Registries.STATUS_EFFECT, new Identifier(TipsyLib.MODID, "precision"), PRECISION);
         Registry.register(Registries.STATUS_EFFECT, new Identifier(TipsyLib.MODID, "astray"), ASTRAY);
         Registry.register(Registries.STATUS_EFFECT, new Identifier(TipsyLib.MODID, "backlash"), BACKLASH);
+        Registry.register(Registries.STATUS_EFFECT, new Identifier(TipsyLib.MODID, "impure"), IMPURE);
         //Registry.register(Registries.STATUS_EFFECT, new Identifier(TipsyLib.MODID, "fast_falling"), FAST_FALLING);
         //Registry.register(Registries.STATUS_EFFECT, new Identifier(TipsyLib.MODID, "creative_shock"), CREATIVE_SHOCK);
         //Registry.register(Registries.STATUS_EFFECT, new Identifier(TipsyLib.MODID, "hyper_elasticity"), HYPER_ELASTICITY);
