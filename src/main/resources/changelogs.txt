@@ -4,13 +4,33 @@ Literally just a secret .txt file of every single update's changelog
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+Version Release v1.0.1 (Fabric/Quilt: 1.20.1)
+Small Update
+
+  Additions
+•   Added shatterspleen, increases the amount of damage taken
+•   Added diversion, has a chance to dodge an attack (higher chance to dodge with luck)
+•   Added precision, increases the damage of any shot/thrown projectile
+•   Added astray, decreases the damage of any shot/thrown projectile
+•   Added backlash, when attacked the attacker will receive a percentage of the damage back
+
+  Changes
+•   Updated the texture of bleeding, berserk, and traversal
+•   Changed most effect colors
+•   Changed death message for retaliation (old one is given to backlash)
+
+  Bug Fixes
+•   Pyromaniac is no longer an insta health pack ;w; (regenerates health points instead of damage in fire)
+•   Added translation for dying to retaliation from another player
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 Version Release v1.0.0 (Fabric/Quilt: 1.20.1)
 Release Update
 
   Additions
 •   Ported basically everything from Forge/NeoForge :P
 •   Added traversal, teleports the player to their bed spawnpoint
-•   Added purity, disallows the entity to have status effects
 •   Added retaliation, damages entities that attack the user of the effect
 •   Added retaliation damage type
 

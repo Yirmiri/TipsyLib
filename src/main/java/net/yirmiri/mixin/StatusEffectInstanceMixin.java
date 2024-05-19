@@ -18,22 +18,24 @@ public class StatusEffectInstanceMixin implements IStatusEffectInstanceMixin {
 
     @Shadow
     int duration;
+
     @Unique @Final
     public StatusEffect effect;
+
     @Unique
-    public LivingEntity entity;
+    public LivingEntity living;
 
     @Inject(at = @At("HEAD"), method = "updateDuration", cancellable = true)
     public void tickDownDuration(CallbackInfoReturnable<Integer> cir) {
-        if (entity != null) {
-            if (this.effect != TLStatusEffects.CHRONOS && entity.hasStatusEffect(TLStatusEffects.CHRONOS)) {
+        if (living != null) {
+            if (this.effect != TLStatusEffects.CHRONOS && living.hasStatusEffect(TLStatusEffects.CHRONOS)) {
                 cir.setReturnValue(this.duration);
             }
         }
     }
 
     @Override
-    public void setEntity(LivingEntity entity) {
-        this.entity = entity;
+    public void setEntity(LivingEntity living) {
+        this.living = living;
     }
 }
