@@ -6,12 +6,15 @@
     "LivingEntityMixin",
     "MilkBucketItemMixin",
     "PersistentProjectileEntityMixin",
+    "PlayerEntityMixin",
     "StatusEffectInstanceMixin"
   ],
   "injectors": {
     "defaultRequire": 1
   },
   "client": [
-    "AbstractClientPlayerMixin"
+    "AbstractClientPlayerMixin",
+    "HeartTypeMixin",
+    "InGameHudMixin"
   ]
 }

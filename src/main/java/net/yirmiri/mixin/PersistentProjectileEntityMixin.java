@@ -24,8 +24,8 @@ public abstract class PersistentProjectileEntityMixin {
                 projectile.setDamage(projectile.getDamage() + living.getStatusEffect(TLStatusEffects.PRECISION).getAmplifier() + 1);
             }
 
-            if (living.hasStatusEffect(TLStatusEffects.ASTRAY)) {
-                projectile.setDamage(projectile.getDamage() - living.getStatusEffect(TLStatusEffects.ASTRAY).getAmplifier() - 1);
+            if (living.hasStatusEffect(TLStatusEffects.INACCURATE)) {
+                projectile.setDamage(projectile.getDamage() - living.getStatusEffect(TLStatusEffects.INACCURATE).getAmplifier() - 1);
             }
         }
     }

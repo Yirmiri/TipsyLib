@@ -108,6 +108,14 @@ public abstract class LivingEntityMixin {
         return amount;
     }
 
+    @ModifyVariable(at = @At("HEAD"), method = "damage", argsOnly = true)
+    public float frailty(float amount, DamageSource source) {
+        if (living.hasStatusEffect(TLStatusEffects.FRAILTY) && source.isIn(DamageTypeTags.IS_FALL)) {
+            return amount + amount * (0.5F * living.getStatusEffect(TLStatusEffects.FRAILTY).getAmplifier() + 0.5F);
+        }
+        return amount;
+    }
+
     @Inject(at = @At("TAIL"), method = "modifyAppliedDamage")
     public void modifyAppliedDamage(DamageSource source, float amount, CallbackInfoReturnable<Float> cir) {
         Entity entity = source.getAttacker();

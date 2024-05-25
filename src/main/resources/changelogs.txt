@@ -4,6 +4,23 @@ Literally just a secret .txt file of every single update's changelog
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+Version Release v1.1.2 (Fabric/Quilt: 1.20.1)
+Small Update
+
+  Additions
+•   Added venom, deals lethal damage to the effected entity over time
+•   Added confusion, disables the ability to view some HUD elements
+•   Added frailty, increases the amount of fall damage taken and prevents the entity from having steel feet
+•   Some effects such as bleeding or shatterspleen now change the heart texture
+•   Added ru_ru translations (@unroman)
+
+  Changes
+•   Changed a bunch of effect icons to look nicer (THANKS TO @CupBackup!)
+•   Changed astray to inaccurate
+•   Changed shatterspleen effect color (so cool, crazy, wow, no way!!!)
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 Version Release v1.1.1 (Fabric/Quilt: 1.20.1)
 Literally Baby Sized... idk man
 

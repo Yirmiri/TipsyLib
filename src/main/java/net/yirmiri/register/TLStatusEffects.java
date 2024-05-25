@@ -37,9 +37,12 @@ public class TLStatusEffects {
     public static final StatusEffect HEARTBREAK = new NoSpecialEffect(StatusEffectCategory.HARMFUL, 0xb01410);
     public static final StatusEffect BLEEDING = new NoSpecialEffect(StatusEffectCategory.HARMFUL, 0x410909);
     public static final StatusEffect LESSER_WEAKNESS = new NoSpecialEffect(StatusEffectCategory.HARMFUL, 0x8c4c4c);
-    public static final StatusEffect SHATTERSPLEEN = new NoSpecialEffect(StatusEffectCategory.HARMFUL, 0xb01410);
-    public static final StatusEffect ASTRAY = new NoSpecialEffect(StatusEffectCategory.HARMFUL, 0x3a8997);
+    public static final StatusEffect SHATTERSPLEEN = new NoSpecialEffect(StatusEffectCategory.HARMFUL, 0x9a192c);
+    public static final StatusEffect INACCURATE = new NoSpecialEffect(StatusEffectCategory.HARMFUL, 0x3a8997);
     public static final StatusEffect IMPURE = new NoSpecialEffect(StatusEffectCategory.HARMFUL, 0x000001);
+    public static final StatusEffect FRAILTY = new FrailtyEffect(StatusEffectCategory.HARMFUL, 0x7b7e6b);
+    public static final StatusEffect VENOM = new VenomEffect(StatusEffectCategory.HARMFUL, 0x6d548d);
+    public static final StatusEffect CONFUSION = new NoSpecialEffect(StatusEffectCategory.HARMFUL, 0xffffff);
     //public static final StatusEffect FAST_FALLING = new NoSpecialEffect(StatusEffectCategory.HARMFUL, 0x9babb2); //TODO: FINISH
     //public static final StatusEffect CREATIVE_SHOCK = new NoSpecialEffect(StatusEffectCategory.HARMFUL, 0x905ea9); //TODO: FINISH
 
@@ -65,9 +68,12 @@ public class TLStatusEffects {
         Registry.register(Registries.STATUS_EFFECT, new Identifier(TipsyLib.MODID, "shatterspleen"), SHATTERSPLEEN);
         Registry.register(Registries.STATUS_EFFECT, new Identifier(TipsyLib.MODID, "diversion"), DIVERSION);
         Registry.register(Registries.STATUS_EFFECT, new Identifier(TipsyLib.MODID, "precision"), PRECISION);
-        Registry.register(Registries.STATUS_EFFECT, new Identifier(TipsyLib.MODID, "astray"), ASTRAY);
+        Registry.register(Registries.STATUS_EFFECT, new Identifier(TipsyLib.MODID, "inaccurate"), INACCURATE);
         Registry.register(Registries.STATUS_EFFECT, new Identifier(TipsyLib.MODID, "backlash"), BACKLASH);
         Registry.register(Registries.STATUS_EFFECT, new Identifier(TipsyLib.MODID, "impure"), IMPURE);
+        Registry.register(Registries.STATUS_EFFECT, new Identifier(TipsyLib.MODID, "frailty"), FRAILTY);
+        Registry.register(Registries.STATUS_EFFECT, new Identifier(TipsyLib.MODID, "venom"), VENOM);
+        Registry.register(Registries.STATUS_EFFECT, new Identifier(TipsyLib.MODID, "confusion"), CONFUSION);
         //Registry.register(Registries.STATUS_EFFECT, new Identifier(TipsyLib.MODID, "fast_falling"), FAST_FALLING);
         //Registry.register(Registries.STATUS_EFFECT, new Identifier(TipsyLib.MODID, "creative_shock"), CREATIVE_SHOCK);
         //Registry.register(Registries.STATUS_EFFECT, new Identifier(TipsyLib.MODID, "hyper_elasticity"), HYPER_ELASTICITY);
