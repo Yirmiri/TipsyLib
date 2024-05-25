@@ -12,7 +12,7 @@ Small Update
 •   Added confusion, disables the ability to view some HUD elements
 •   Added frailty, increases the amount of fall damage taken and prevents the entity from having steel feet
 •   Some effects such as bleeding or shatterspleen now change the heart texture
-•   Added ru_ru translations (@unroman)
+•   Added uk_ua translations (@unroman)
 
   Changes
 •   Changed a bunch of effect icons to look nicer (THANKS TO @CupBackup!)
