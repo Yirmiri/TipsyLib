@@ -12,6 +12,7 @@ public class TLDamageTypes {
     public static final RegistryKey<DamageType> RETALIATION = RegistryKey.of(RegistryKeys.DAMAGE_TYPE, new Identifier(TipsyLib.MODID, "retaliation"));
     public static final RegistryKey<DamageType> BACKLASH = RegistryKey.of(RegistryKeys.DAMAGE_TYPE, new Identifier(TipsyLib.MODID, "backlash"));
     public static final RegistryKey<DamageType> VENOM = RegistryKey.of(RegistryKeys.DAMAGE_TYPE, new Identifier(TipsyLib.MODID, "venom"));
+    public static final RegistryKey<DamageType> HEMOLACRIA = RegistryKey.of(RegistryKeys.DAMAGE_TYPE, new Identifier(TipsyLib.MODID, "hemolacria"));
 
     public static DamageSource of(World world, RegistryKey<DamageType> key) {
         return new DamageSource(world.getRegistryManager().get(RegistryKeys.DAMAGE_TYPE).entryOf(key));

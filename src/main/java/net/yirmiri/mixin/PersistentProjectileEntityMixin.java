@@ -13,8 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(PersistentProjectileEntity.class)
 public abstract class PersistentProjectileEntityMixin {
 
-    @Unique
-    PersistentProjectileEntity projectile = (PersistentProjectileEntity) (Object) this;
+    @Unique PersistentProjectileEntity projectile = (PersistentProjectileEntity) (Object) this;
 
     @Inject(at = @At("HEAD"), method = "onEntityHit")
     public void onEntityHit(EntityHitResult entityHitResult, CallbackInfo ci){

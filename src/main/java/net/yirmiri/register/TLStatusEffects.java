@@ -27,6 +27,7 @@ public class TLStatusEffects {
     public static final StatusEffect DIVERSION = new NoSpecialEffect(StatusEffectCategory.BENEFICIAL, 0x66d0e9);
     public static final StatusEffect PRECISION = new NoSpecialEffect(StatusEffectCategory.BENEFICIAL, 0xfff774);
     public static final StatusEffect BACKLASH = new NoSpecialEffect(StatusEffectCategory.BENEFICIAL, 0xe87f8b);
+    //public static final StatusEffect SHATTERING_JUSTICE = new HemolacriaEffect(StatusEffectCategory.BENEFICIAL, 0xb5a5ca);
     //public static final StatusEffect TRUE_INVISIBILITY = new NoSpecialEffect(StatusEffectCategory.BENEFICIAL, 0xffffff); //TODO: FINISH
     //public static final StatusEffect HYPER_ELASTICITY = new NoSpecialEffect(StatusEffectCategory.BENEFICIAL, 0x9ad8fa); //TODO: FINISH
     //NEUTRAL
@@ -43,6 +44,7 @@ public class TLStatusEffects {
     public static final StatusEffect FRAILTY = new FrailtyEffect(StatusEffectCategory.HARMFUL, 0x7b7e6b);
     public static final StatusEffect VENOM = new VenomEffect(StatusEffectCategory.HARMFUL, 0x6d548d);
     public static final StatusEffect CONFUSION = new NoSpecialEffect(StatusEffectCategory.HARMFUL, 0xffffff);
+    public static final StatusEffect HEMOLACRIA = new HemolacriaEffect(StatusEffectCategory.HARMFUL, 0xb21e36);
     //public static final StatusEffect FAST_FALLING = new NoSpecialEffect(StatusEffectCategory.HARMFUL, 0x9babb2); //TODO: FINISH
     //public static final StatusEffect CREATIVE_SHOCK = new NoSpecialEffect(StatusEffectCategory.HARMFUL, 0x905ea9); //TODO: FINISH
 
@@ -74,6 +76,8 @@ public class TLStatusEffects {
         Registry.register(Registries.STATUS_EFFECT, new Identifier(TipsyLib.MODID, "frailty"), FRAILTY);
         Registry.register(Registries.STATUS_EFFECT, new Identifier(TipsyLib.MODID, "venom"), VENOM);
         Registry.register(Registries.STATUS_EFFECT, new Identifier(TipsyLib.MODID, "confusion"), CONFUSION);
+        Registry.register(Registries.STATUS_EFFECT, new Identifier(TipsyLib.MODID, "hemolacria"), HEMOLACRIA);
+        //Registry.register(Registries.STATUS_EFFECT, new Identifier(TipsyLib.MODID, "shattering_justice"), SHATTERING_JUSTICE);
         //Registry.register(Registries.STATUS_EFFECT, new Identifier(TipsyLib.MODID, "fast_falling"), FAST_FALLING);
         //Registry.register(Registries.STATUS_EFFECT, new Identifier(TipsyLib.MODID, "creative_shock"), CREATIVE_SHOCK);
         //Registry.register(Registries.STATUS_EFFECT, new Identifier(TipsyLib.MODID, "hyper_elasticity"), HYPER_ELASTICITY);

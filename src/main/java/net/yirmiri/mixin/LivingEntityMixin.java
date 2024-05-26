@@ -2,16 +2,12 @@ package net.yirmiri.mixin;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.entity.damage.DamageSources;
-import net.minecraft.entity.damage.DamageType;
-import net.minecraft.entity.damage.DamageTypes;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.registry.tag.BlockTags;
-import net.minecraft.registry.tag.TagKey;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
@@ -39,17 +35,10 @@ import java.util.Map;
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin {
 
-    @Shadow @Final
-    private Map<StatusEffect, StatusEffectInstance> activeStatusEffects;
-
-    @Shadow @Nullable
-    public abstract StatusEffectInstance getStatusEffect(StatusEffect effect);
-
-    @Unique @Final
-    LivingEntity living = (LivingEntity) (Object) this;
-
-    @Unique
-    public World world;
+    @Shadow @Final private Map<StatusEffect, StatusEffectInstance> activeStatusEffects;
+    @Shadow @Nullable public abstract StatusEffectInstance getStatusEffect(StatusEffect effect);
+    @Unique @Final LivingEntity living = (LivingEntity) (Object) this;
+    @Unique public World world;
 
     @Inject(at = @At("HEAD"), method = "tickStatusEffects", cancellable = true)
     public void tickStatusEffects(CallbackInfo ci) {
@@ -123,6 +112,13 @@ public abstract class LivingEntityMixin {
             if (living.hasStatusEffect(TLStatusEffects.BACKLASH)) {
                 attacker.damage(TLDamageTypes.of(attacker.getWorld(), TLDamageTypes.BACKLASH), (amount * 0.25F) + living.getStatusEffect(TLStatusEffects.BACKLASH).getAmplifier() + 1.0F);
             }
+        }
+    }
+
+    @Inject(at = @At("HEAD"), method = "onStatusEffectApplied")
+    public void onStatusEffectApplied(StatusEffectInstance effect, Entity source, CallbackInfo ci) {
+        if (effect == living.getStatusEffect(TLStatusEffects.HEARTBREAK)) {
+            source.damage(TLDamageTypes.of(source.getWorld(), TLDamageTypes.BACKLASH), 1);
         }
     }
 

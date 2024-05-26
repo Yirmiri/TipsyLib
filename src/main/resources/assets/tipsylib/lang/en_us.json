@@ -25,12 +25,13 @@
   "effect.tipsylib.diversion": "Diversion",
   "effect.tipsylib.shatterspleen": "Shatterspleen",
   "effect.tipsylib.precision": "Precision",
-  "effect.tipsylib.astray": "Astray",
+  "effect.tipsylib.inaccurate": "Inaccurate",
   "effect.tipsylib.backlash": "Backlash",
   "effect.tipsylib.impure": "Impure",
   "effect.tipsylib.frailty": "Frailty",
   "effect.tipsylib.venom": "Venom",
   "effect.tipsylib.confusion": "Confusion",
+  "effect.tipsylib.hemolacria": "Hemolacria",
 
   "effect.tipsylib.vulnerability.description": "Reduces the armor points of the user.",
   "effect.tipsylib.heartbreak.description": "Reduces the max health points of the user.",
@@ -58,17 +59,20 @@
   "effect.tipsylib.diversion.description": "Has a chance to dodge an attack, increases the chance with luck.",
   "effect.tipsylib.shatterspleen.description": "Increases the amount of damage the user takes from any damage source.",
   "effect.tipsylib.precision.description": "Increases the damage of the user's thrown/shot projectile.",
-  "effect.tipsylib.astray.description": "Decreases the damage of the user's thrown/shot projectile.",
+  "effect.tipsylib.inaccurate.description": "Decreases the damage of the user's thrown/shot projectile.",
   "effect.tipsylib.backlash.description": "When the user is attacked the attacker will receive a percentage of the damage back.",
   "effect.tipsylib.impure.description": "Prevents the user from clearing potion effects with milk.",
   "effect.tipsylib.frailty.description": "Increases the amount of damage the user takes from fall damage and having prevents steel feet.",
   "effect.tipsylib.venom.description": "Deals lethal damage to the effected entity over time.",
   "effect.tipsylib.confusion.description": "Disables the ability to view specific HUD elements.",
+  "effect.tipsylib.hemolacria.description": "Deals enchantment & armor piercing damage to the effected entity over time.",
 
   "death.attack.tipsylib.backlash": "%1$s couldn't handle the backlash",
   "death.attack.tipsylib.backlash.player": "%1$s couldn't handle the backlash from attacking %2$s",
   "death.attack.tipsylib.retaliation": "%1$s was prickled to death",
   "death.attack.tipsylib.retaliation.player": "%1$s was playing with %2$s thorns",
   "death.attack.tipsylib.venom": "%1$s had their body broken down by venom",
-  "death.attack.tipsylib.venom.player": "%2$s watched as %1$s had their body broken down by venom"
+  "death.attack.tipsylib.venom.player": "%2$s watched as %1$s had their body broken down by venom",
+  "death.attack.tipsylib.hemolacria": "%1$s had their body drained out",
+  "death.attack.tipsylib.hemolacria.player": "%2$s watched %1$s have their body drained out"
 }

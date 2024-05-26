@@ -12,8 +12,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(PlayerEntity.class)
 public abstract class PlayerEntityMixin {
 
-    @Unique @Final
-    PlayerEntity player = (PlayerEntity) (Object) this;
+    @Unique @Final PlayerEntity player = (PlayerEntity) (Object) this;
 
     @Inject(at = @At("HEAD"), method = "hasReducedDebugInfo", cancellable = true)
     public void hasReducedDebugInfo(CallbackInfoReturnable<Boolean> cir) {

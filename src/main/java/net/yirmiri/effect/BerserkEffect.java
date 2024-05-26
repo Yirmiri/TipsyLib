@@ -30,8 +30,6 @@ public class BerserkEffect extends StatusEffect {
 
         living.getAttributeInstance(EntityAttributes.GENERIC_ATTACK_DAMAGE).removeModifier(originalModifier.getId());
         living.getAttributeInstance(EntityAttributes.GENERIC_ATTACK_DAMAGE).addTemporaryModifier(newAttributeModifier);
-
-        System.out.println(damageModifier + "|" + living.getHealth() + "|" + living.getMaxHealth());
     }
 
     @Override
