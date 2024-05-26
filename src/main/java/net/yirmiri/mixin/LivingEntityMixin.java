@@ -115,13 +115,6 @@ public abstract class LivingEntityMixin {
         }
     }
 
-    @Inject(at = @At("HEAD"), method = "onStatusEffectApplied")
-    public void onStatusEffectApplied(StatusEffectInstance effect, Entity source, CallbackInfo ci) {
-        if (effect == living.getStatusEffect(TLStatusEffects.HEARTBREAK)) {
-            source.damage(TLDamageTypes.of(source.getWorld(), TLDamageTypes.BACKLASH), 1);
-        }
-    }
-
     @Inject(at = @At("HEAD"), method = "heal", cancellable = true)
     public void heal(float amount, CallbackInfo ci) {
         if (living.hasStatusEffect(TLStatusEffects.BLEEDING)) ci.cancel();
