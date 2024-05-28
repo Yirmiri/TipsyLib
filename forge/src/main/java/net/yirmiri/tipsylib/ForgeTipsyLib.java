@@ -7,9 +7,9 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.yirmiri.tipsylib.platform.ForgeTipsyLibRegistryHelper;
 
 @Mod(TipsyLibConstants.MOD_ID)
-public class ExampleMod {
+public class ForgeTipsyLib {
     
-    public ExampleMod() {
+    public ForgeTipsyLib() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         TipsyLib.init();

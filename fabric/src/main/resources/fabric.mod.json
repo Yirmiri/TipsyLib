@@ -16,7 +16,7 @@
     "environment": "*",
     "entrypoints": {
         "main": [
-          "net.yirmiri.tipsylib.ExampleMod"
+          "net.yirmiri.tipsylib.FabricTipsyLib"
         ]
     },
     "mixins": [
