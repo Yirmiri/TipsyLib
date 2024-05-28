@@ -14,6 +14,11 @@ public class TLStatusEffects {
     //BENEFICIAL
     public static final MobEffect BERSERK = new BerserkEffect(MobEffectCategory.BENEFICIAL, 0xff0000);
     public static final MobEffect STEEL_FEET = new NoSpecialEffect(MobEffectCategory.BENEFICIAL, 0x5c6478);
+    public static final MobEffect TOUGH_SKIN = new NoSpecialEffect(MobEffectCategory.BENEFICIAL, 0x1e2434);
+    public static final MobEffect WATER_WALKING = new NoSpecialEffect(MobEffectCategory.BENEFICIAL, 0x5c89dc);
+    public static final MobEffect LAVA_WALKING = new NoSpecialEffect(MobEffectCategory.BENEFICIAL, 0xc34c02);
+    public static final MobEffect TRAIL_BLAZING = new NoSpecialEffect(MobEffectCategory.BENEFICIAL, 0xefb417);
+    public static final MobEffect LESSER_STRENGTH = new NoSpecialEffect(MobEffectCategory.BENEFICIAL, 0xd06464);
     public static final MobEffect PERCEPTION = new PerceptionEffect(MobEffectCategory.BENEFICIAL, 0x336d37);
 
     //NEUTRAL
@@ -27,6 +32,11 @@ public class TLStatusEffects {
         //BENEFICIAL
         registerEffect("berserk", () -> BERSERK.addAttributeModifier(Attributes.ATTACK_DAMAGE, "15ab2f03-5cf6-4962-a43d-a5964727faa5", 0.0, AttributeModifier.Operation.MULTIPLY_TOTAL));
         registerEffect("steel_feet", () -> STEEL_FEET);
+        registerEffect("tough_skin", () -> TOUGH_SKIN);
+        registerEffect("water_walking", () -> WATER_WALKING);
+        registerEffect("lava_walking", () -> LAVA_WALKING);
+        registerEffect("trail_blazing", () -> TRAIL_BLAZING);
+        registerEffect("lesser_strength", () -> LESSER_STRENGTH.addAttributeModifier(Attributes.ATTACK_DAMAGE, "bddcfad8-0495-4074-b53b-7c8e2b197a14", 1.0, AttributeModifier.Operation.ADDITION));
         registerEffect("perception", () -> PERCEPTION);
         //NEUTRAL
         registerEffect("gravity_resistance", () -> GRAVITY_RESISTANCE);
