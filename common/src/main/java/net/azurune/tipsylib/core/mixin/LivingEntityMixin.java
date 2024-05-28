@@ -40,7 +40,7 @@ public abstract class LivingEntityMixin {
     @Final
     private Map<MobEffect, MobEffectInstance> activeEffects;
     @Shadow @Nullable
-    public abstract MobEffectInstance getActiveEffect(MobEffect effect);
+    public abstract MobEffectInstance getEffect(MobEffect effect);
     @Unique
     @Final LivingEntity living = (LivingEntity) (Object) this;
     @Unique public Level level;
@@ -72,14 +72,14 @@ public abstract class LivingEntityMixin {
 
         if (living.hasEffect(TLStatusEffects.BURNING_THORNS)) {
             Entity entity = source.getEntity();
-            if (entity != null) entity.setSecondsOnFire(5 * (getActiveEffect(TLStatusEffects.BURNING_THORNS).getAmplifier() + 1));
+            if (entity != null) entity.setSecondsOnFire(5 * (getEffect(TLStatusEffects.BURNING_THORNS).getAmplifier() + 1));
         }
 
         if (living.hasEffect(TLStatusEffects.RETALIATION)) {
             Entity entity = source.getEntity();
             if (entity != null) {
                 DamageSource damagesource = new DamageSource(level.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(TLDamageTypes.RETALIATION));
-                entity.hurt(damagesource, 1.0F + (getActiveEffect(TLStatusEffects.RETALIATION).getAmplifier() + 1));
+                entity.hurt(damagesource, 1.0F + (getEffect(TLStatusEffects.RETALIATION).getAmplifier() + 1));
             }
         }
 
@@ -139,7 +139,7 @@ public abstract class LivingEntityMixin {
         if (living.getBlockStateOn().is(BlockTags.FIRE) && living.hasEffect(TLStatusEffects.PYROMANIAC)) {
             if (living.tickCount % 20 == 0) {
                 if (living.getHealth() < living.getMaxHealth()) {
-                    living.heal((getActiveEffect(TLStatusEffects.PYROMANIAC).getAmplifier() + 1.0F));
+                    living.heal((getEffect(TLStatusEffects.PYROMANIAC).getAmplifier() + 1.0F));
                 }
             }
         }
