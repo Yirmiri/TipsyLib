@@ -14,6 +14,7 @@ public class TLStatusEffects {
     //BENEFICIAL
     public static final MobEffect BERSERK = new BerserkEffect(MobEffectCategory.BENEFICIAL, 0xff0000);
     public static final MobEffect STEEL_FEET = new NoSpecialEffect(MobEffectCategory.BENEFICIAL, 0x5c6478);
+    public static final MobEffect PERCEPTION = new PerceptionEffect(MobEffectCategory.BENEFICIAL, 0x336d37);
 
     //NEUTRAL
     public static final MobEffect GRAVITY_RESISTANCE = new GravityResistanceEffect(MobEffectCategory.NEUTRAL, 0xa77289);
@@ -26,6 +27,7 @@ public class TLStatusEffects {
         //BENEFICIAL
         registerEffect("berserk", () -> BERSERK.addAttributeModifier(Attributes.ATTACK_DAMAGE, "15ab2f03-5cf6-4962-a43d-a5964727faa5", 0.0, AttributeModifier.Operation.MULTIPLY_TOTAL));
         registerEffect("steel_feet", () -> STEEL_FEET);
+        registerEffect("perception", () -> PERCEPTION);
         //NEUTRAL
         registerEffect("gravity_resistance", () -> GRAVITY_RESISTANCE);
         //HARMFUL
