@@ -16,7 +16,7 @@
     "environment": "*",
     "entrypoints": {
         "main": [
-          "net.yirmiri.tipsylib.FabricTipsyLib"
+          "net.azurune.tipsylib.FabricTipsyLib"
         ]
     },
     "mixins": [
