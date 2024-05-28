@@ -8,6 +8,8 @@
   ],
   "client": [
     "AbstractClientPlayerMixin",
+    "GuiMixin",
+    "HeartTypeMixin",
     "MixinMinecraft"
   ],
   "server": [
