@@ -1,7 +1,8 @@
-package net.yirmiri.tipsylib.platform;
+package net.yirmiri.tipsylib.core.platform;
 
-import net.yirmiri.tipsylib.Constants;
-import net.yirmiri.tipsylib.platform.services.IPlatformHelper;
+import net.yirmiri.tipsylib.TipsyLibConstants;
+import net.yirmiri.tipsylib.core.platform.services.IPlatformHelper;
+import net.yirmiri.tipsylib.core.platform.services.TipsyLibRegistryHelper;
 
 import java.util.ServiceLoader;
 
@@ -13,6 +14,7 @@ public class Services {
     // In this example we provide a platform helper which provides information about what platform the mod is running on.
     // For example this can be used to check if the code is running on Forge vs Fabric, or to ask the modloader if another
     // mod is loaded.
+    public static final TipsyLibRegistryHelper REGISTRY = load(TipsyLibRegistryHelper.class);
     public static final IPlatformHelper PLATFORM = load(IPlatformHelper.class);
 
     // This code is used to load a service for the current environment. Your implementation of the service must be defined
@@ -24,7 +26,7 @@ public class Services {
         final T loadedService = ServiceLoader.load(clazz)
                 .findFirst()
                 .orElseThrow(() -> new NullPointerException("Failed to load service for " + clazz.getName()));
-        Constants.LOG.debug("Loaded {} for service {}", loadedService, clazz);
+        TipsyLibConstants.LOG.debug("Loaded {} for service {}", loadedService, clazz);
         return loadedService;
     }
 }

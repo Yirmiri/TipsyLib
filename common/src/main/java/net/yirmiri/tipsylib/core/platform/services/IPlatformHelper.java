@@ -1,4 +1,4 @@
-package net.yirmiri.tipsylib.platform.services;
+package net.yirmiri.tipsylib.core.platform.services;
 
 public interface IPlatformHelper {
 

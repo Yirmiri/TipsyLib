@@ -1,6 +1,6 @@
 package net.yirmiri.tipsylib.platform;
 
-import net.yirmiri.tipsylib.platform.services.IPlatformHelper;
+import net.yirmiri.tipsylib.core.platform.services.IPlatformHelper;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.loading.FMLLoader;
 

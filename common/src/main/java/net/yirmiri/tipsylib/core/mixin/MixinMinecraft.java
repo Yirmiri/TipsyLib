@@ -1,6 +1,6 @@
-package net.yirmiri.tipsylib.mixin;
+package net.yirmiri.tipsylib.core.mixin;
 
-import net.yirmiri.tipsylib.Constants;
+import net.yirmiri.tipsylib.TipsyLibConstants;
 import net.minecraft.client.Minecraft;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -13,7 +13,7 @@ public class MixinMinecraft {
     @Inject(at = @At("TAIL"), method = "<init>")
     private void init(CallbackInfo info) {
         
-        Constants.LOG.info("This line is printed by an example mod common mixin!");
-        Constants.LOG.info("MC Version: {}", Minecraft.getInstance().getVersionType());
+        TipsyLibConstants.LOG.info("This line is printed by an example mod common mixin!");
+        TipsyLibConstants.LOG.info("MC Version: {}", Minecraft.getInstance().getVersionType());
     }
 }

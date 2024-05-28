@@ -3,7 +3,7 @@ package net.yirmiri.tipsylib;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class Constants {
+public class TipsyLibConstants {
 
 	public static final String MOD_ID = "tipsylib";
 	public static final String MOD_NAME = "Tipsy Lib";

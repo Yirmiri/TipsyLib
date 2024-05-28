@@ -1,6 +1,6 @@
 package net.yirmiri.tipsylib.platform;
 
-import net.yirmiri.tipsylib.platform.services.IPlatformHelper;
+import net.yirmiri.tipsylib.core.platform.services.IPlatformHelper;
 import net.fabricmc.loader.api.FabricLoader;
 
 public class FabricPlatformHelper implements IPlatformHelper {
