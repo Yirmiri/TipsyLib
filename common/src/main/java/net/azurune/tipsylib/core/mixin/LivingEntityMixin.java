@@ -78,7 +78,7 @@ public abstract class LivingEntityMixin {
         if (living.hasEffect(TLStatusEffects.RETALIATION)) {
             Entity entity = source.getEntity();
             if (entity != null) {
-                DamageSource damagesource = new DamageSource(level.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(TLDamageTypes.RETALIATION));
+                DamageSource damagesource = new DamageSource(entity.level().registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(TLDamageTypes.RETALIATION));
                 entity.hurt(damagesource, 1.0F + (getEffect(TLStatusEffects.RETALIATION).getAmplifier() + 1));
             }
         }
@@ -118,7 +118,7 @@ public abstract class LivingEntityMixin {
         Entity entity = source.getEntity();
         if (entity instanceof LivingEntity attacker) {
             if (living.hasEffect(TLStatusEffects.BACKLASH)) {
-                DamageSource damagesource = new DamageSource(level.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(TLDamageTypes.RETALIATION));
+                DamageSource damagesource = new DamageSource(entity.level().registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(TLDamageTypes.BACKLASH));
                 attacker.hurt(damagesource, (amount * 0.25F) + living.getEffect(TLStatusEffects.BACKLASH).getAmplifier() + 1.0F);
             }
         }
