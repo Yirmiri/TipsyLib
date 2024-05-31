@@ -26,6 +26,7 @@ public abstract class AbstractClientPlayerMixin extends Player {
     private static final List<String> HEX = List.of("452ec9e4-a4f8-4edf-bd3c-ab3d7b751359"); //j++
     private static final List<String> AXOLOTL = List.of("bc56b2c8-9ef8-4532-b045-00f44804bca4"); //MADE AWESOME MAPLE LEAVES FOR EXCESSIVE BUILDING
     private static final List<String> LIGHTNING = List.of("27a729ac-0a2a-42fc-8e65-a37fcba6a6c7"); //Intergalactic tea kettle torture
+    private static final List<String> REBELLIOUS = List.of("4bc0a7a9-497a-4aa1-a5af-cee312f94b01"); //Owner of the best dog ever
     private static final List<String> FUDGE_SUNDAE = List.of("7a6a8c68-8b73-47f6-b08f-0dde5f1848dd"); //This guy should not have a cape
 
     public AbstractClientPlayerMixin(Level world, BlockPos pos, float v, GameProfile profile) {
@@ -43,6 +44,7 @@ public abstract class AbstractClientPlayerMixin extends Player {
         if (HEX.contains(stringUUID)) cir.setReturnValue(new ResourceLocation(TipsyLibConstants.MOD_ID, "textures/capes/hex.png"));
         if (AXOLOTL.contains(stringUUID)) cir.setReturnValue(new ResourceLocation(TipsyLibConstants.MOD_ID, "textures/capes/axolotl.png"));
         if (LIGHTNING.contains(stringUUID)) cir.setReturnValue(new ResourceLocation(TipsyLibConstants.MOD_ID, "textures/capes/lightning.png"));
+        if (REBELLIOUS.contains(stringUUID)) cir.setReturnValue(new ResourceLocation(TipsyLibConstants.MOD_ID, "textures/capes/rebellious.png"));
         if (FUDGE_SUNDAE.contains(stringUUID)) cir.setReturnValue(new ResourceLocation(TipsyLibConstants.MOD_ID, "textures/capes/fudge_sundae.png"));
     }
 }
