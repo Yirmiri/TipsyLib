@@ -5,8 +5,8 @@ import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
 
 public class HeartBreakEffect extends MobEffect {
-    public HeartBreakEffect(MobEffectCategory $$0, int $$1) {
-        super($$0, $$1);
+    public HeartBreakEffect(MobEffectCategory category, int color) {
+        super(category, color);
     }
 
     @Override
@@ -14,7 +14,7 @@ public class HeartBreakEffect extends MobEffect {
         entity.setHealth(entity.getHealth());
     }
 
-    public boolean isDurationEffectTick(int duration, int $$1) {
+    public boolean isDurationEffectTick(int duration, int amplifier) {
         return true;
     }
 }

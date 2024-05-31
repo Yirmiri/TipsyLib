@@ -14,7 +14,7 @@ public abstract class HeartTypeMixin {
     @Inject(method = "forPlayer", at = @At("HEAD"), cancellable = true)
     private static void tipsylib_forPlayer(Player player, CallbackInfoReturnable<Gui.HeartType> info) {
         if (player.hasEffect(TLStatusEffects.CONFUSION)) {
-            info.setReturnValue(Gui.HeartType.CONTAINER);
+            info.setReturnValue(Gui.HeartType.ABSORBING);
         }
     }
 }

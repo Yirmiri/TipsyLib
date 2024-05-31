@@ -1,6 +1,7 @@
 modLoader = "javafml"
 loaderVersion = "${forge_loader_version_range}"
 license = "${license}"
+
 [[mods]]
 modId = "${mod_id}"
 version = "${version}"
@@ -10,12 +11,14 @@ issueTrackerURL="https://github.com/Yirmiri/TipsyLib/issues"
 logoFile = "tipsylib_icon.png"
 authors = "${mod_author}"
 description = '''${description}'''
+
 [[dependencies.${mod_id}]]
 modId = "forge"
 mandatory = true
 versionRange = "${forge_version_range}"
 ordering = "NONE"
 side = "BOTH"
+
 [[dependencies.${mod_id}]]
 modId = "minecraft"
 mandatory = true

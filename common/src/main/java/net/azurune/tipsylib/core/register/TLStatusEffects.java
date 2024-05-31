@@ -27,7 +27,7 @@ public class TLStatusEffects {
     public static final MobEffect DIVERSION = new NoSpecialEffect(MobEffectCategory.BENEFICIAL, 0x66d0e9);
     public static final MobEffect PRECISION = new NoSpecialEffect(MobEffectCategory.BENEFICIAL, 0xfff774);
     public static final MobEffect BACKLASH = new NoSpecialEffect(MobEffectCategory.BENEFICIAL, 0xe87f8b);
-    //public static final StatusEffect SHATTERING_JUSTICE = new HemolacriaEffect(StatusEffectCategory.BENEFICIAL, 0xb5a5ca);
+    //public static final StatusEffect SHATTERING_JUSTICE = new HemolacriaEffect(StatusEffectCategory.BENEFICIAL, 0xb5a5ca); //TODO: FINISH
     //public static final StatusEffect TRUE_INVISIBILITY = new NoSpecialEffect(StatusEffectCategory.BENEFICIAL, 0xffffff); //TODO: FINISH
     //public static final StatusEffect HYPER_ELASTICITY = new NoSpecialEffect(StatusEffectCategory.BENEFICIAL, 0x9ad8fa); //TODO: FINISH
     //NEUTRAL

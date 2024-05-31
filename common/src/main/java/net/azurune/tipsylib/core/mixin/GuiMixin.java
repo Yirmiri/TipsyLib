@@ -16,8 +16,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(Gui.class)
 public abstract class GuiMixin {
 
-    @Unique
-    private static final ResourceLocation CONFUSED = new ResourceLocation(TipsyLibConstants.MOD_ID, "textures/gui/confused.png");
+    @Unique private static final ResourceLocation CONFUSED = new ResourceLocation(TipsyLibConstants.MOD_ID, "textures/gui/confused.png");
     @Unique private static final ResourceLocation VENOM = new ResourceLocation(TipsyLibConstants.MOD_ID, "textures/gui/venom_hearts.png");
     @Unique private static final ResourceLocation BLEEDING = new ResourceLocation(TipsyLibConstants.MOD_ID, "textures/gui/bleeding_hearts.png");
     @Unique private static final ResourceLocation SHATTERSPLEEN = new ResourceLocation(TipsyLibConstants.MOD_ID, "textures/gui/shatterspleen_hearts.png");

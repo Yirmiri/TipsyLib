@@ -24,7 +24,7 @@ public abstract class AbstractClientPlayerMixin extends Player {
     private static final List<String> ACCURSED = List.of("416fc916-69cc-4b3c-8c5e-a39a5acb6981"); //Swagified knitted purple wool (& knitted green wool)
     private static final List<String> DICE = List.of("3fd1d511-62d6-4e18-a28d-3e3d4fd93620"); //Helped out with dyed blocks & datagen shenanigans (now a dev on TipsyLib :) )
     private static final List<String> HEX = List.of("452ec9e4-a4f8-4edf-bd3c-ab3d7b751359"); //j++
-    //private static final List<String> FUDGE_SUNDAE = List.of("7a6a8c68-8b73-47f6-b08f-0dde5f1848dd"); //This guy should not have a cape
+    private static final List<String> FUDGE_SUNDAE = List.of("7a6a8c68-8b73-47f6-b08f-0dde5f1848dd"); //This guy should not have a cape
     private static final List<String> RU_RU_TRANSLATORS = List.of("27da47ed-a98a-45de-8d2f-eaa103dfbef6"); //Russian Translators
     private static final List<String> UK_UA_TRANSLATORS = List.of("f7ab161c-7370-4ec2-9bf5-8f5d37eb91f6"); //Ukrainian Translators
     private static final List<String> CONTRIBUTORS = List.of(); //Contributors
@@ -43,7 +43,7 @@ public abstract class AbstractClientPlayerMixin extends Player {
         if (ACCURSED.contains(stringUUID)) cir.setReturnValue(new ResourceLocation(TipsyLibConstants.MOD_ID, "textures/capes/accursed.png"));
         if (DICE.contains(stringUUID)) cir.setReturnValue(new ResourceLocation(TipsyLibConstants.MOD_ID, "textures/capes/dice.png"));
         if (HEX.contains(stringUUID)) cir.setReturnValue(new ResourceLocation(TipsyLibConstants.MOD_ID, "textures/capes/hex.png"));
-        //if (FUDGE_SUNDAE.contains(uuidString)) cir.setReturnValue(new Identifier(TipsyLibConstants.MODID, "textures/capes/fudge_sundae.png"));
+        if (FUDGE_SUNDAE.contains(stringUUID)) cir.setReturnValue(new ResourceLocation(TipsyLibConstants.MOD_ID, "textures/capes/fudge_sundae.png"));
         if (RU_RU_TRANSLATORS.contains(stringUUID)) cir.setReturnValue(new ResourceLocation(TipsyLibConstants.MOD_ID, "textures/capes/eb_contributors_ru_ru.png"));
         if (UK_UA_TRANSLATORS.contains(stringUUID)) cir.setReturnValue(new ResourceLocation(TipsyLibConstants.MOD_ID, "textures/capes/eb_contributors_uk_ua.png"));
         if (CONTRIBUTORS.contains(stringUUID)) cir.setReturnValue(new ResourceLocation(TipsyLibConstants.MOD_ID, "textures/capes/eb_contributors.png"));

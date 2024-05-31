@@ -16,13 +16,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(MobEffectInstance.class)
 public class StatusEffectInstanceMixin implements IStatusEffectInstance {
 
-    @Shadow
-    int duration;
-    @Unique
-    @Final
-    public MobEffect effect;
-    @Unique
-    public LivingEntity living;
+    @Shadow int duration;
+    @Unique @Final public MobEffect effect;
+    @Unique public LivingEntity living;
 
     @Inject(at = @At("HEAD"), method = "tickDownDuration", cancellable = true)
     public void tickDownDuration(CallbackInfoReturnable<Integer> cir) {

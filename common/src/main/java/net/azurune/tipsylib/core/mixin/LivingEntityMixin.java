@@ -36,13 +36,9 @@ import java.util.Map;
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin {
 
-    @Shadow
-    @Final
-    private Map<MobEffect, MobEffectInstance> activeEffects;
-    @Shadow @Nullable
-    public abstract MobEffectInstance getEffect(MobEffect effect);
-    @Unique
-    @Final LivingEntity living = (LivingEntity) (Object) this;
+    @Shadow @Final private Map<MobEffect, MobEffectInstance> activeEffects;
+    @Shadow @Nullable public abstract MobEffectInstance getEffect(MobEffect effect);
+    @Unique @Final LivingEntity living = (LivingEntity) (Object) this;
     @Unique public Level level;
 
     @Inject(at = @At("HEAD"), method = "tickEffects")
