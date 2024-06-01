@@ -68,7 +68,7 @@ public abstract class LivingEntityMixin {
 
         if (living.hasEffect(TLStatusEffects.BURNING_THORNS)) {
             Entity entity = source.getEntity();
-            if (entity != null) entity.setSecondsOnFire(5 * (getEffect(TLStatusEffects.BURNING_THORNS).getAmplifier() + 1));
+            if (entity != null) entity.setSecondsOnFire(5 + (getEffect(TLStatusEffects.BURNING_THORNS).getAmplifier()));
         }
 
         if (living.hasEffect(TLStatusEffects.RETALIATION)) {
