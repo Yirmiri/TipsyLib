@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(MobEffectInstance.class)
 public class StatusEffectInstanceMixin implements IStatusEffectInstance {
 
-    @Shadow int duration;
+    @Shadow private int duration;
     @Unique @Final public MobEffect effect;
     @Unique public LivingEntity living;
 
