@@ -24,6 +24,10 @@ public abstract class AbstractClientPlayerMixin extends Player {
     private static final List<String> ACCURSED = List.of("416fc916-69cc-4b3c-8c5e-a39a5acb6981"); //Swagified knitted purple wool (& knitted green wool)
     private static final List<String> DICE = List.of("3fd1d511-62d6-4e18-a28d-3e3d4fd93620"); //Helped out with dyed blocks & datagen shenanigans (now a dev on TipsyLib :) )
     private static final List<String> HEX = List.of("452ec9e4-a4f8-4edf-bd3c-ab3d7b751359"); //j++
+    private static final List<String> PUMPKIN_QUEEN = List.of("c1e0e811-8b55-4ff2-be32-443596a12ade"); //Aurynium beta tester
+    private static final List<String> SAD_CLOUD = List.of("2ab2e589-b328-441d-bebb-1f129e330ec2"); //Aurynium beta tester
+    private static final List<String> WRATHFUL = List.of("f73f8d0e-5c82-48d2-bad0-b7f1796aa2fc"); //Aurynium beta tester
+    private static final List<String> BUG = List.of("eff789b6-ed9d-4787-8640-ab37e7daf81f"); //Aurynium beta tester
     private static final List<String> AXOLOTL = List.of("bc56b2c8-9ef8-4532-b045-00f44804bca4"); //MADE AWESOME MAPLE LEAVES FOR EXCESSIVE BUILDING
     private static final List<String> LIGHTNING = List.of("27a729ac-0a2a-42fc-8e65-a37fcba6a6c7"); //Intergalactic tea kettle torture
     private static final List<String> REBELLIOUS = List.of("4bc0a7a9-497a-4aa1-a5af-cee312f94b01"); //Owner of the best dog ever
@@ -42,6 +46,10 @@ public abstract class AbstractClientPlayerMixin extends Player {
         if (ACCURSED.contains(stringUUID)) cir.setReturnValue(new ResourceLocation(TipsyLibConstants.MOD_ID, "textures/capes/accursed.png"));
         if (DICE.contains(stringUUID)) cir.setReturnValue(new ResourceLocation(TipsyLibConstants.MOD_ID, "textures/capes/dice.png"));
         if (HEX.contains(stringUUID)) cir.setReturnValue(new ResourceLocation(TipsyLibConstants.MOD_ID, "textures/capes/hex.png"));
+        if (PUMPKIN_QUEEN.contains(stringUUID)) cir.setReturnValue(new ResourceLocation(TipsyLibConstants.MOD_ID, "textures/capes/pumpkin_queen.png"));
+        if (SAD_CLOUD.contains(stringUUID)) cir.setReturnValue(new ResourceLocation(TipsyLibConstants.MOD_ID, "textures/capes/sad_cloud.png"));
+        if (WRATHFUL.contains(stringUUID)) cir.setReturnValue(new ResourceLocation(TipsyLibConstants.MOD_ID, "textures/capes/wrathful.png"));
+        if (BUG.contains(stringUUID)) cir.setReturnValue(new ResourceLocation(TipsyLibConstants.MOD_ID, "textures/capes/bug.png"));
         if (AXOLOTL.contains(stringUUID)) cir.setReturnValue(new ResourceLocation(TipsyLibConstants.MOD_ID, "textures/capes/axolotl.png"));
         if (LIGHTNING.contains(stringUUID)) cir.setReturnValue(new ResourceLocation(TipsyLibConstants.MOD_ID, "textures/capes/lightning.png"));
         if (REBELLIOUS.contains(stringUUID)) cir.setReturnValue(new ResourceLocation(TipsyLibConstants.MOD_ID, "textures/capes/rebellious.png"));
