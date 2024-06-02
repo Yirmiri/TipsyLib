@@ -32,6 +32,7 @@
   "effect.tipsylib.venom": "Venom",
   "effect.tipsylib.confusion": "Confusion",
   "effect.tipsylib.hemolacria": "Hemolacria",
+  "effect.tipsylib.purity": "Purity",
 
   "effect.tipsylib.vulnerability.description": "Reduces the armor points of the user.",
   "effect.tipsylib.heartbreak.description": "Reduces the max health points of the user.",
@@ -66,6 +67,7 @@
   "effect.tipsylib.venom.description": "Deals lethal damage to the effected entity over time.",
   "effect.tipsylib.confusion.description": "Disables the ability to view specific HUD elements.",
   "effect.tipsylib.hemolacria.description": "Deals enchantment & armor piercing damage to the effected entity over time.",
+  "effect.tipsylib.purity.description": "Disallows the effected entity to obtain any effects other than purity.",
 
   "death.attack.tipsylib.backlash": "%1$s couldn't handle the backlash",
   "death.attack.tipsylib.backlash.player": "%1$s couldn't handle the backlash from attacking %2$s",

@@ -27,9 +27,9 @@ public class TLStatusEffects {
     public static final MobEffect DIVERSION = new NoSpecialEffect(MobEffectCategory.BENEFICIAL, 0x66d0e9);
     public static final MobEffect PRECISION = new NoSpecialEffect(MobEffectCategory.BENEFICIAL, 0xfff774);
     public static final MobEffect BACKLASH = new NoSpecialEffect(MobEffectCategory.BENEFICIAL, 0xe87f8b);
-    //public static final StatusEffect SHATTERING_JUSTICE = new HemolacriaEffect(StatusEffectCategory.BENEFICIAL, 0xb5a5ca); //TODO: FINISH
-    //public static final StatusEffect TRUE_INVISIBILITY = new NoSpecialEffect(StatusEffectCategory.BENEFICIAL, 0xffffff); //TODO: FINISH
-    //public static final StatusEffect HYPER_ELASTICITY = new NoSpecialEffect(StatusEffectCategory.BENEFICIAL, 0x9ad8fa); //TODO: FINISH
+    //public static final MobEffect SHATTERING_JUSTICE = new HemolacriaEffect(MobEffectCategory.BENEFICIAL, 0xb5a5ca); //TODO: FINISH
+    //public static final MobEffect TRUE_INVISIBILITY = new NoSpecialEffect(MobEffectCategory.BENEFICIAL, 0xffffff); //TODO: FINISH
+    //public static final MobEffect HYPER_ELASTICITY = new NoSpecialEffect(MobEffectCategory.BENEFICIAL, 0x9ad8fa); //TODO: FINISH
     //NEUTRAL
     public static final MobEffect CHRONOS = new NoSpecialEffect(MobEffectCategory.NEUTRAL, 0x0eaf9b);
     public static final MobEffect GRAVITY_RESISTANCE = new GravityResistanceEffect(MobEffectCategory.NEUTRAL, 0xa77289);
@@ -45,8 +45,8 @@ public class TLStatusEffects {
     public static final MobEffect VENOM = new VenomEffect(MobEffectCategory.HARMFUL, 0x6d548d);
     public static final MobEffect CONFUSION = new NoSpecialEffect(MobEffectCategory.HARMFUL, 0xffffff);
     public static final MobEffect HEMOLACRIA = new HemolacriaEffect(MobEffectCategory.HARMFUL, 0xb21e36);
-    //public static final StatusEffect FAST_FALLING = new NoSpecialEffect(StatusEffectCategory.HARMFUL, 0x9babb2); //TODO: FINISH
-    //public static final StatusEffect CREATIVE_SHOCK = new NoSpecialEffect(StatusEffectCategory.HARMFUL, 0x905ea9); //TODO: FINISH
+    public static final MobEffect FAST_FALLING = new NoSpecialEffect(MobEffectCategory.HARMFUL, 0x9babb2);
+    //public static final MobEffect CREATIVE_SHOCK = new NoSpecialEffect(MobEffectCategory.HARMFUL, 0x905ea9); //TODO: FINISH
 
     public static void loadEffects() {
         //BENEFICIAL
@@ -65,6 +65,9 @@ public class TLStatusEffects {
         registerEffect("lava_walking", () -> LAVA_WALKING);
         registerEffect("trail_blazing", () -> TRAIL_BLAZING);
         registerEffect("perception", () -> PERCEPTION);
+        //registerEffect("shattering_justice", () -> SHATTERING_JUSTICE);
+        //registerEffect("true_invisibility", () -> TRUE_INVISIBILITY);
+        //registerEffect("hyper_elasticity", () -> HYPER_ELASTICITY);
         //NEUTRAL
         registerEffect("gravity_resistance", () -> GRAVITY_RESISTANCE);
         registerEffect("chronos", () -> CHRONOS);
@@ -80,6 +83,8 @@ public class TLStatusEffects {
         registerEffect("confusion", () -> CONFUSION);
         registerEffect("frailty", () -> FRAILTY);
         registerEffect("hemolacria", () -> HEMOLACRIA);
+        registerEffect("fast_falling", () -> FAST_FALLING);
+        //registerEffect("creative_shock", () -> CREATIVE_SHOCK);
     }
 
     private static <T extends MobEffect> Supplier<T> registerEffect(String name, Supplier<T> supplier) {

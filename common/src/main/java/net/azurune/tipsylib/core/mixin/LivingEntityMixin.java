@@ -44,8 +44,10 @@ public abstract class LivingEntityMixin {
     @Inject(at = @At("HEAD"), method = "tickEffects")
     public void tipsylib_tickEffects(CallbackInfo ci) {
         for (MobEffectInstance statusEffect : this.activeEffects.values()) {
-            if (statusEffect instanceof IStatusEffectInstance effect) {
-                effect.setEntity((LivingEntity) (Object) this);
+            if (statusEffect.getEffect() != TLStatusEffects.CHRONOS) {
+                if (statusEffect instanceof IStatusEffectInstance effect) {
+                    effect.setEntity((LivingEntity) (Object) this);
+                }
             }
         }
     }
@@ -57,6 +59,13 @@ public abstract class LivingEntityMixin {
 
         if (state.getType() == Fluids.LAVA || state.getType() == Fluids.FLOWING_LAVA)
             if (living != null && (this.living.hasEffect(TLStatusEffects.LAVA_WALKING))) cir.setReturnValue(true);
+    }
+
+    @Inject(at = @At("HEAD"), method = "getJumpBoostPower", cancellable = true)
+    public void tipsylib_getJumpBoostPower(CallbackInfoReturnable<Float> cir) {
+        if (living.hasEffect(TLStatusEffects.FAST_FALLING)) {
+            cir.setReturnValue(-0.1F * this.getEffect(TLStatusEffects.FAST_FALLING).getAmplifier() -0.1F);
+        }
     }
 
     @Inject(at = @At("HEAD"), method = "hurt", cancellable = true)

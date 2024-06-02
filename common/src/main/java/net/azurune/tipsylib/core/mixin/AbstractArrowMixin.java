@@ -17,7 +17,7 @@ public abstract class AbstractArrowMixin {
     AbstractArrow projectile = (AbstractArrow) (Object) this;
 
     @Inject(at = @At("HEAD"), method = "onHitEntity")
-    public void onEntityHit(EntityHitResult entityHitResult, CallbackInfo ci){
+    public void tipsylib_onEntityHit(EntityHitResult entityHitResult, CallbackInfo ci){
         if (projectile.getOwner() instanceof LivingEntity living) {
 
             if (living.hasEffect(TLStatusEffects.PRECISION)) {
