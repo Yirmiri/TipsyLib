@@ -12,6 +12,7 @@ Version Release v2.0.1 MC-1.20.1
 
   Changes
 •   Burning thorns now increases burning length by 1 second every level (5 as a base level)
+•   Traversal now works with respawn anchors
 •   No more Tipsy Lib ;), we are TipsyLib again
 
   Bug Fixes
