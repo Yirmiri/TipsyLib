@@ -27,6 +27,7 @@ public class TLStatusEffects {
     public static final MobEffect DIVERSION = new NoSpecialEffect(MobEffectCategory.BENEFICIAL, 0x66d0e9);
     public static final MobEffect PRECISION = new NoSpecialEffect(MobEffectCategory.BENEFICIAL, 0xfff774);
     public static final MobEffect BACKLASH = new NoSpecialEffect(MobEffectCategory.BENEFICIAL, 0xe87f8b);
+    public static final MobEffect ADRENALINE = new NoSpecialEffect(MobEffectCategory.BENEFICIAL, 0x55e75a);
     //public static final MobEffect SHATTERING_JUSTICE = new HemolacriaEffect(MobEffectCategory.BENEFICIAL, 0xb5a5ca); //TODO: FINISH
     //public static final MobEffect TRUE_INVISIBILITY = new NoSpecialEffect(MobEffectCategory.BENEFICIAL, 0xffffff); //TODO: FINISH
     //public static final MobEffect HYPER_ELASTICITY = new NoSpecialEffect(MobEffectCategory.BENEFICIAL, 0x9ad8fa); //TODO: FINISH
@@ -46,7 +47,7 @@ public class TLStatusEffects {
     public static final MobEffect CONFUSION = new NoSpecialEffect(MobEffectCategory.HARMFUL, 0xffffff);
     public static final MobEffect HEMOLACRIA = new HemolacriaEffect(MobEffectCategory.HARMFUL, 0xb21e36);
     public static final MobEffect FAST_FALLING = new NoSpecialEffect(MobEffectCategory.HARMFUL, 0x9babb2);
-    //public static final MobEffect CREATIVE_SHOCK = new NoSpecialEffect(MobEffectCategory.HARMFUL, 0x905ea9); //TODO: FINISH
+    public static final MobEffect CREATIVE_SHOCK = new NoSpecialEffect(MobEffectCategory.HARMFUL, 0x905ea9);
 
     public static void loadEffects() {
         //BENEFICIAL
@@ -65,6 +66,7 @@ public class TLStatusEffects {
         registerEffect("lava_walking", () -> LAVA_WALKING);
         registerEffect("trail_blazing", () -> TRAIL_BLAZING);
         registerEffect("perception", () -> PERCEPTION);
+        registerEffect("adrenaline", () -> ADRENALINE.addAttributeModifier(Attributes.MOVEMENT_SPEED, "a3ceafaf-e3d8-484f-bd53-bdfe1ca4b588", 0.0, AttributeModifier.Operation.MULTIPLY_TOTAL));
         //registerEffect("shattering_justice", () -> SHATTERING_JUSTICE);
         //registerEffect("true_invisibility", () -> TRUE_INVISIBILITY);
         //registerEffect("hyper_elasticity", () -> HYPER_ELASTICITY);
@@ -84,7 +86,7 @@ public class TLStatusEffects {
         registerEffect("frailty", () -> FRAILTY);
         registerEffect("hemolacria", () -> HEMOLACRIA);
         registerEffect("fast_falling", () -> FAST_FALLING);
-        //registerEffect("creative_shock", () -> CREATIVE_SHOCK);
+        registerEffect("creative_shock", () -> CREATIVE_SHOCK);
     }
 
     private static <T extends MobEffect> Supplier<T> registerEffect(String name, Supplier<T> supplier) {
