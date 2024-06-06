@@ -37,6 +37,7 @@
   "effect.tipsylib.adrenaline": "Adrenaline",
   "effect.tipsylib.internal_bleeding": "Internal Bleeding",
   "effect.tipsylib.restoration": "Restoration",
+  "effect.tipsylib.freezing_resistance": "Freezing Resistance",
 
   "effect.tipsylib.vulnerability.description": "Reduces the armor points of the user.",
   "effect.tipsylib.heartbreak.description": "Reduces the max health points of the user.",
@@ -76,6 +77,7 @@
   "effect.tipsylib.adrenaline.description": "Increases the user's movement speed the lower their health points are.",
   "effect.tipsylib.internal_bleeding.description": "The user no longer has any means of healing health points.",
   "effect.tipsylib.restoration.description": "Natural regeneration heals extra health points.",
+  "effect.tipsylib.freezing_resistance.description": "Grants immunity to freezing.",
 
   "death.attack.tipsylib.backlash": "%1$s couldn't handle the backlash",
   "death.attack.tipsylib.backlash.player": "%1$s couldn't handle the backlash from attacking %2$s",
