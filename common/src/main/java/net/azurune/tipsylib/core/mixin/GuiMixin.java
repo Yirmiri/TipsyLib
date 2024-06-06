@@ -24,7 +24,7 @@ public abstract class GuiMixin {
     @Inject(method = "renderHeart", at = @At("HEAD"), cancellable = true)
     private void tipsylib_renderHeart(GuiGraphics ctx, Gui.HeartType type, int x, int y, int v, boolean blinking, boolean halfHeart, CallbackInfo ci) {
         if (!blinking && type == Gui.HeartType.NORMAL && Minecraft.getInstance().cameraEntity instanceof Player player
-                && (player.hasEffect(TLStatusEffects.CONFUSION) || player.hasEffect(TLStatusEffects.VENOM) || player.hasEffect(TLStatusEffects.BLEEDING) || player.hasEffect(TLStatusEffects.SHATTERSPLEEN))) {
+                && (player.hasEffect(TLStatusEffects.CONFUSION) || player.hasEffect(TLStatusEffects.VENOM) || player.hasEffect(TLStatusEffects.INTERNAL_BLEEDING) || player.hasEffect(TLStatusEffects.SHATTERSPLEEN))) {
             ResourceLocation identifier;
             if (player.hasEffect(TLStatusEffects.CONFUSION)) {
                 identifier = CONFUSED;
@@ -32,7 +32,7 @@ public abstract class GuiMixin {
                 identifier = SHATTERSPLEEN;
             } else if (player.hasEffect(TLStatusEffects.VENOM)) {
                 identifier = VENOM;
-            } else if (player.hasEffect(TLStatusEffects.BLEEDING)) {
+            } else if (player.hasEffect(TLStatusEffects.INTERNAL_BLEEDING)) {
                 identifier = BLEEDING;
             } else {
                 return;

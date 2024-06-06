@@ -18,8 +18,7 @@ public class BerserkEffect extends MobEffect {
         float damageModifier = 1.0F - living.getHealth() / living.getMaxHealth();
 
         if (living.getAttribute(Attributes.ATTACK_DAMAGE) == null) return;
-        var originalModifier = living.getAttribute(Attributes.ATTACK_DAMAGE)
-                .getModifier(UUID.fromString("15ab2f03-5cf6-4962-a43d-a5964727faa5"));
+        var originalModifier = living.getAttribute(Attributes.ATTACK_DAMAGE).getModifier(UUID.fromString("15ab2f03-5cf6-4962-a43d-a5964727faa5"));
 
         if (originalModifier == null) return;
         var newAttributeModifier = new AttributeModifier(

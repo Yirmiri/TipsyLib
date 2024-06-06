@@ -6,6 +6,17 @@ Literally just a secret .txt file of every single update's changelog
 
 Version Release v2.0.2 MC-1.20.1
 
+  Additions
+•   Added devour, has a chance to heal the player (1hp/level) when attacking an entity (increased chance with luck)
+•   Added adrenaline, increases speed the lower hp the user has
+•   Readded creative shock, now damages the player when placing blocks
+•   Readded enigma, works like before which causes entities to not see the user of the effect but now vanishes upon attacking
+
+  Changes
+•   Changed bleeding id to internal_bleeding
+•   Improved steel feet, now grants immunity to any damage under the "is_fall" damage type tag
+•   Changed berserk, creative shock, and enigma descriptions [JEED]
+
   Bug Fixes
 •   Fixed confusion showing absorption hearts
 

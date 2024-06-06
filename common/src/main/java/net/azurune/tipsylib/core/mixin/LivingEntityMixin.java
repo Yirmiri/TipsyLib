@@ -70,18 +70,17 @@ public abstract class LivingEntityMixin {
 
     @Inject(at = @At("HEAD"), method = "hurt", cancellable = true)
     public void tipsylib_hurt(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
+        Entity entity = source.getEntity();
         if (source.is(DamageTypeTags.IS_FIRE)) {
             if (living.hasEffect(TLStatusEffects.TRAIL_BLAZING) || living.hasEffect(TLStatusEffects.PYROMANIAC) || living.hasEffect(TLStatusEffects.LAVA_WALKING) && source.is(DamageTypeTags.IS_FIRE))
                 cir.setReturnValue(false);
         }
 
         if (living.hasEffect(TLStatusEffects.BURNING_THORNS)) {
-            Entity entity = source.getEntity();
             if (entity != null) entity.setSecondsOnFire(5 + (getEffect(TLStatusEffects.BURNING_THORNS).getAmplifier()));
         }
 
         if (living.hasEffect(TLStatusEffects.RETALIATION)) {
-            Entity entity = source.getEntity();
             if (entity != null) {
                 DamageSource damagesource = new DamageSource(entity.level().registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(TLDamageTypes.RETALIATION));
                 entity.hurt(damagesource, 1.0F + (getEffect(TLStatusEffects.RETALIATION).getAmplifier() + 1));
@@ -100,6 +99,11 @@ public abstract class LivingEntityMixin {
             } else if (Math.random() < 0.15) {
                 cir.cancel();
             }
+
+        if (source.is(DamageTypeTags.IS_FALL)) {
+            if (living.hasEffect(TLStatusEffects.STEEL_FEET) && source.is(DamageTypeTags.IS_FALL))
+                cir.setReturnValue(false);
+        }
     }
 
     @ModifyVariable(at = @At("HEAD"), method = "hurt", argsOnly = true)
@@ -131,7 +135,14 @@ public abstract class LivingEntityMixin {
 
     @Inject(at = @At("HEAD"), method = "heal", cancellable = true)
     public void heal(float amount, CallbackInfo ci) {
-        if (living.hasEffect(TLStatusEffects.BLEEDING)) ci.cancel();
+        if (living.hasEffect(TLStatusEffects.INTERNAL_BLEEDING)) {
+            ci.cancel();
+        }
+    }
+
+    @Inject(at = @At("HEAD"), method = "canBeSeenByAnyone", cancellable = true)
+    public void canBeSeenByAnyone(CallbackInfoReturnable<Boolean> cir) {
+        if (living.hasEffect(TLStatusEffects.ENIGMA)) cir.cancel();
     }
 
     @Inject(at = @At("HEAD"), method = "tick")
@@ -148,10 +159,5 @@ public abstract class LivingEntityMixin {
                 }
             }
         }
-    }
-
-    @Inject(at = @At("HEAD"), method = "checkFallDamage", cancellable = true)
-    public void fall(double heightDifference, boolean onGround, BlockState state, BlockPos landedPosition, CallbackInfo ci) {
-        if (living.hasEffect(TLStatusEffects.STEEL_FEET)) ci.cancel();
     }
 }

@@ -11,6 +11,7 @@ public class TLDamageTypes {
     public static final ResourceKey<DamageType> BACKLASH = register(new DamageType("backlash", 0));
     public static final ResourceKey<DamageType> VENOM = register(new DamageType("venom", 0));
     public static final ResourceKey<DamageType> HEMOLACRIA = register(new DamageType("hemolacria", 0));
+    public static final ResourceKey<DamageType> CREATIVE_SHOCK = register(new DamageType("creative_shock", 0));
 
     public static  ResourceKey<DamageType> register(DamageType damageType) {
         return ResourceKey.create(Registries.DAMAGE_TYPE, TipsyLib.id(damageType.msgId()));

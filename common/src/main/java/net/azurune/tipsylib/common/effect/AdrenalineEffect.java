@@ -18,8 +18,7 @@ public class AdrenalineEffect extends MobEffect {
         float speedModifier = 1.0F - living.getHealth() / living.getMaxHealth();
 
         if (living.getAttribute(Attributes.MOVEMENT_SPEED) == null) return;
-        var originalModifier = living.getAttribute(Attributes.MOVEMENT_SPEED)
-                .getModifier(UUID.fromString("a3ceafaf-e3d8-484f-bd53-bdfe1ca4b588"));
+        var originalModifier = living.getAttribute(Attributes.MOVEMENT_SPEED).getModifier(UUID.fromString("a3ceafaf-e3d8-484f-bd53-bdfe1ca4b588"));
 
         if (originalModifier == null) return;
         var newAttributeModifier = new AttributeModifier(

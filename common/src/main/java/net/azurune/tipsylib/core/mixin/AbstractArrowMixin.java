@@ -13,19 +13,18 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(AbstractArrow.class)
 public abstract class AbstractArrowMixin {
 
-    @Unique
-    AbstractArrow projectile = (AbstractArrow) (Object) this;
+    @Unique AbstractArrow projectile = (AbstractArrow) (Object) this;
 
     @Inject(at = @At("HEAD"), method = "onHitEntity")
-    public void tipsylib_onEntityHit(EntityHitResult entityHitResult, CallbackInfo ci){
+    public void tipsylib_onEntityHit(EntityHitResult entityHitResult, CallbackInfo ci) {
         if (projectile.getOwner() instanceof LivingEntity living) {
 
             if (living.hasEffect(TLStatusEffects.PRECISION)) {
-                projectile.setBaseDamage(projectile.getBaseDamage() + living.getEffect(TLStatusEffects.PRECISION).getAmplifier() + 1);
+                projectile.setBaseDamage(projectile.getBaseDamage() + living.getEffect(TLStatusEffects.PRECISION).getAmplifier());
             }
 
             if (living.hasEffect(TLStatusEffects.INACCURATE)) {
-                projectile.setBaseDamage(projectile.getBaseDamage() - living.getEffect(TLStatusEffects.INACCURATE).getAmplifier() - 1);
+                projectile.setBaseDamage(projectile.getBaseDamage() - living.getEffect(TLStatusEffects.INACCURATE).getAmplifier());
             }
         }
     }
