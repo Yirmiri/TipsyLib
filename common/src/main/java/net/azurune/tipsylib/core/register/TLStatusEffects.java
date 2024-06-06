@@ -30,16 +30,16 @@ public class TLStatusEffects {
     public static final MobEffect ADRENALINE = new AdrenalineEffect(MobEffectCategory.BENEFICIAL, 0x55e75a);
     public static final MobEffect ENIGMA = new NoSpecialEffect(MobEffectCategory.BENEFICIAL, 0xffffff);
     public static final MobEffect DEVOUR = new NoSpecialEffect(MobEffectCategory.BENEFICIAL, 0xb21e36);
-    //public static final MobEffect RESTORATION = new NoSpecialEffect(MobEffectCategory.BENEFICIAL, 0xe87f8b);
-    //public static final MobEffect TRUE_INVISIBILITY = new NoSpecialEffect(MobEffectCategory.BENEFICIAL, 0xffffff); //TODO: FINISH
-    //public static final MobEffect HYPER_ELASTICITY = new NoSpecialEffect(MobEffectCategory.BENEFICIAL, 0x9ad8fa); //TODO: FINISH
+    //public static final MobEffect RESTORATION = new NoSpecialEffect(MobEffectCategory.BENEFICIAL, 0xe87f8b); //TODO: Heals additional health upon healing
+    //public static final MobEffect TRUE_INVISIBILITY = new NoSpecialEffect(MobEffectCategory.BENEFICIAL, 0xffffff); //TODO: Invis but hides particles & armor
+    //public static final MobEffect HYPER_ELASTICITY = new NoSpecialEffect(MobEffectCategory.BENEFICIAL, 0x9ad8fa); //TODO: Works like falling on slime
     //NEUTRAL
     public static final MobEffect CHRONOS = new NoSpecialEffect(MobEffectCategory.NEUTRAL, 0x0eaf9b);
     public static final MobEffect GRAVITY_RESISTANCE = new GravityResistanceEffect(MobEffectCategory.NEUTRAL, 0xa77289);
     //HARMFUL
     public static final MobEffect VULNERABILITY = new NoSpecialEffect(MobEffectCategory.HARMFUL, 0x74534f);
     public static final MobEffect HEARTBREAK = new HeartBreakEffect(MobEffectCategory.HARMFUL, 0xb01410);
-    //public static final MobEffect BLEEDING = new NoSpecialEffect(MobEffectCategory.HARMFUL, 0x410909);
+    //public static final MobEffect BLEEDING = new NoSpecialEffect(MobEffectCategory.HARMFUL, 0x410909); //TODO: Stops only natural regeneration
     public static final MobEffect LESSER_WEAKNESS = new NoSpecialEffect(MobEffectCategory.HARMFUL, 0x8c4c4c);
     public static final MobEffect SHATTERSPLEEN = new NoSpecialEffect(MobEffectCategory.HARMFUL, 0x9a192c);
     public static final MobEffect INACCURATE = new NoSpecialEffect(MobEffectCategory.HARMFUL, 0x3a8997);
@@ -72,7 +72,7 @@ public class TLStatusEffects {
         registerEffect("adrenaline", () -> ADRENALINE.addAttributeModifier(Attributes.MOVEMENT_SPEED, "a3ceafaf-e3d8-484f-bd53-bdfe1ca4b588", 0.0, AttributeModifier.Operation.MULTIPLY_TOTAL));
         registerEffect("enigma", () -> ENIGMA);
         registerEffect("devour", () -> DEVOUR);
-        //registerEffect("restoration", () -> RESTORATION);
+        //registerEffect("restoration", () -> RESTORATION); //TODO: FINISH
         //registerEffect("true_invisibility", () -> TRUE_INVISIBILITY); //TODO: FINISH
         //registerEffect("hyper_elasticity", () -> HYPER_ELASTICITY); //TODO: FINISH
         //NEUTRAL
@@ -82,7 +82,7 @@ public class TLStatusEffects {
         registerEffect("vulnerability", () -> VULNERABILITY.addAttributeModifier(Attributes.ARMOR, "25A87ACE-6185-486B-842B-D3D6A05f071C", -1.0, AttributeModifier.Operation.ADDITION));
         registerEffect("heartbreak", () -> HEARTBREAK.addAttributeModifier(Attributes.MAX_HEALTH, "F804B084-8974-46E9-B30B-0AB057A9D83B", -1.0, AttributeModifier.Operation.ADDITION));
         registerEffect("lesser_weakness", () -> LESSER_WEAKNESS.addAttributeModifier(Attributes.ATTACK_DAMAGE, "2544cd96-7794-4184-a845-73c642132d6a", -1.0, AttributeModifier.Operation.ADDITION));
-        //registerEffect("bleeding", () -> BLEEDING);
+        //registerEffect("bleeding", () -> BLEEDING); //TODO: FINISH
         registerEffect("shatterspleen", () -> SHATTERSPLEEN);
         registerEffect("inaccurate", () -> INACCURATE);
         registerEffect("impure", () -> IMPURE);

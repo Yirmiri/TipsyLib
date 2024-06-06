@@ -15,10 +15,13 @@ Version Release v2.0.2 MC-1.20.1
   Changes
 •   Changed bleeding id to internal_bleeding
 •   Improved steel feet, now grants immunity to any damage under the "is_fall" damage type tag
+•   Gravity resistance now removes fast falling
 •   Changed berserk, creative shock, and enigma descriptions [JEED]
 
   Bug Fixes
 •   Fixed confusion showing absorption hearts
+•   Fixed missing sound for dodging an attack without having luck applied
+•   Fixed a crash when dodging an attack
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 

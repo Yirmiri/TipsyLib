@@ -15,6 +15,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
@@ -93,17 +94,21 @@ public abstract class LivingEntityMixin {
         if (living.hasEffect(TLStatusEffects.DIVERSION) && !source.is(DamageTypeTags.BYPASSES_INVULNERABILITY))
             if (living.hasEffect(MobEffects.LUCK)) {
                 if (Math.random() < 0.2) {
-                    level.playSound(null, living.blockPosition(), SoundEvents.ARMOR_EQUIP_GENERIC, SoundSource.PLAYERS);
-                    cir.cancel();
+                    dodgeAttack(living, level, cir);
                 }
             } else if (Math.random() < 0.15) {
-                cir.cancel();
+                dodgeAttack(living, level, cir);
             }
 
         if (source.is(DamageTypeTags.IS_FALL)) {
             if (living.hasEffect(TLStatusEffects.STEEL_FEET) && source.is(DamageTypeTags.IS_FALL))
                 cir.setReturnValue(false);
         }
+    }
+
+    private static void dodgeAttack(LivingEntity living, Level level, CallbackInfoReturnable<Boolean> cir) {
+        living.level().playSound(null, living.getX(), living.getY(), living.getZ(), SoundEvents.ARMOR_EQUIP_GENERIC, SoundSource.PLAYERS, 1.0F, 1.0F);
+        cir.cancel();
     }
 
     @ModifyVariable(at = @At("HEAD"), method = "hurt", argsOnly = true)
