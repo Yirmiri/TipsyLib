@@ -91,6 +91,9 @@ public abstract class LivingEntityMixin {
         if (living.hasEffect(TLStatusEffects.TOUGH_SKIN) && source.is(DamageTypeTags.IS_EXPLOSION))
             cir.setReturnValue(false);
 
+        if (living.hasEffect(TLStatusEffects.FREEZE_RESISTANCE) && source.is(DamageTypeTags.IS_FREEZING))
+            cir.setReturnValue(false);
+
         if (living.hasEffect(TLStatusEffects.DIVERSION) && !source.is(DamageTypeTags.BYPASSES_INVULNERABILITY))
             if (living.hasEffect(MobEffects.LUCK)) {
                 if (Math.random() < 0.2) {

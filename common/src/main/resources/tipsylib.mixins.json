@@ -11,6 +11,7 @@
     "LivingEntityMixin",
     "MilkBucketItemMixin",
     "PlayerMixin",
+    "PowderSnowBlockMixin",
     "StatusEffectInstanceMixin"
   ],
   "client": [

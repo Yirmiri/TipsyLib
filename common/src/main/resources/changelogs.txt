@@ -9,7 +9,7 @@ Version Release v2.0.2 MC-1.20.1
   Additions
 •   Added devour, has a chance to heal the player (1hp/level) when attacking an entity (increased chance with luck)
 •   Added adrenaline, increases speed the lower hp the user has
-•   Added freeze resistance, grants immunity to freezing
+•   Added freeze resistance, grants immunity to freezing and damage in the is_freezing damage type tag
 •   Readded creative shock, now damages the player when placing blocks
 •   Readded enigma, works like before which causes entities to not see the user of the effect but now vanishes upon attacking
 
