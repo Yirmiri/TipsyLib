@@ -31,7 +31,7 @@ public class TLStatusEffects {
     public static final MobEffect ENIGMA = new NoSpecialEffect(MobEffectCategory.BENEFICIAL, 0xffffff);
     public static final MobEffect DEVOUR = new NoSpecialEffect(MobEffectCategory.BENEFICIAL, 0xb21e36);
     public static final MobEffect FREEZE_RESISTANCE = new NoSpecialEffect(MobEffectCategory.BENEFICIAL, 0x61d6de);
-    public static final MobEffect RESTORATION = new NoSpecialEffect(MobEffectCategory.BENEFICIAL, 0xe87f8b);
+    public static final MobEffect RESTORATION = new RestorationEffect(MobEffectCategory.BENEFICIAL, 0xe87f8b);
     //public static final MobEffect TRUE_INVISIBILITY = new NoSpecialEffect(MobEffectCategory.BENEFICIAL, 0xffffff); //TODO: Invis but hides particles & armor
     //public static final MobEffect HYPER_ELASTICITY = new NoSpecialEffect(MobEffectCategory.BENEFICIAL, 0x9ad8fa); //TODO: Works like falling on slime
     //NEUTRAL
