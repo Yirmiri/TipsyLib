@@ -8,6 +8,7 @@ public class TipsyLib {
 
     public static void init() {
         TLStatusEffects.loadEffects();
+
     }
 
     public static ResourceLocation id(String name) {
