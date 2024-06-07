@@ -69,6 +69,13 @@ public abstract class LivingEntityMixin {
         }
     }
 
+    @Inject(at = @At("HEAD"), method = "canFreeze", cancellable = true)
+    public void tipsylib_canFreeze(CallbackInfoReturnable<Boolean> cir) {
+        if (living.hasEffect(TLStatusEffects.FREEZE_RESISTANCE)) {
+            cir.setReturnValue(false);
+        }
+    }
+
     @Inject(at = @At("HEAD"), method = "hurt", cancellable = true)
     public void tipsylib_hurt(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
         Entity entity = source.getEntity();
@@ -109,6 +116,7 @@ public abstract class LivingEntityMixin {
         }
     }
 
+    @Unique
     private static void dodgeAttack(LivingEntity living, Level level, CallbackInfoReturnable<Boolean> cir) {
         living.level().playSound(null, living.getX(), living.getY(), living.getZ(), SoundEvents.ARMOR_EQUIP_GENERIC, SoundSource.PLAYERS, 1.0F, 1.0F);
         cir.cancel();
