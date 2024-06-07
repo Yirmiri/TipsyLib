@@ -31,7 +31,7 @@ public abstract class AbstractClientPlayerMixin extends Player {
     private static final List<String> AXOLOTL = List.of("bc56b2c8-9ef8-4532-b045-00f44804bca4"); //MADE AWESOME MAPLE LEAVES FOR EXCESSIVE BUILDING
     private static final List<String> LIGHTNING = List.of("27a729ac-0a2a-42fc-8e65-a37fcba6a6c7"); //Intergalactic tea kettle torture
     private static final List<String> REBELLIOUS = List.of("4bc0a7a9-497a-4aa1-a5af-cee312f94b01"); //Owner of the best dog ever
-    private static final List<String> FUDGE_SUNDAE = List.of("7a6a8c68-8b73-47f6-b08f-0dde5f1848dd"); //This guy should not have a cape
+    private static final List<String> FUDGE_SUNDAE = List.of("7a6a8c68-8b73-47f6-b08f-0dde5f1848dd"); //This guy should not have a cape... well till now ig
 
     public AbstractClientPlayerMixin(Level world, BlockPos pos, float v, GameProfile profile) {
         super(world, pos, v, profile);

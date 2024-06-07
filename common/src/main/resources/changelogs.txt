@@ -4,6 +4,13 @@ Literally just a secret .txt file of every single update's changelog
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+Version Release v2.0.4 MC-1.20.1
+
+  Fixes
+•   Fixed a crash due to a missing mixin
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 Version Release v2.0.3 MC-1.20.1
 
   Additions
@@ -12,7 +19,7 @@ Version Release v2.0.3 MC-1.20.1
   Changes
 •   Changed restoration description [JEED]
 
-  Bug Fixes
+  Fixes
 •   Added a texture icon for enigma
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -32,7 +39,7 @@ Version Release v2.0.2 MC-1.20.1
 •   Gravity resistance now removes fast falling
 •   Changed berserk, creative shock, and enigma descriptions [JEED]
 
-  Bug Fixes
+  Fixes
 •   Fixed confusion showing absorption hearts
 •   Fixed missing sound for dodging an attack without having luck applied
 •   Fixed a crash when dodging an attack
@@ -50,7 +57,7 @@ Version Release v2.0.1 MC-1.20.1
 •   Traversal now works with respawn anchors
 •   No more Tipsy Lib ;), we are TipsyLib again
 
-  Bug Fixes
+  Fixes
 •   Fixed chronos not ticking itself
 •   Fast falling no longer drags the player down when flying or gliding
 •   Fixed missing textures on special capes
