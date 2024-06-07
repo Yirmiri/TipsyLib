@@ -23,7 +23,7 @@ public abstract class PlayerMixin {
     @Unique @Final Player player = (Player) (Object) this;
 
     @Inject(at = @At("TAIL"), method = "attack", cancellable = true)
-    public void attack(Entity entity, CallbackInfo ci) {
+    public void tipsylib_attack(Entity entity, CallbackInfo ci) {
         if (player.hasEffect(TLStatusEffects.DEVOUR)) {
             if (player.hasEffect(MobEffects.LUCK)) {
                 if (Math.random() < 0.69) {
@@ -49,7 +49,7 @@ public abstract class PlayerMixin {
     }
 
     @Inject(at = @At("HEAD"), method = "isReducedDebugInfo", cancellable = true)
-    public void hasReducedDebugInfo(CallbackInfoReturnable<Boolean> cir) {
+    public void tipsylib_hasReducedDebugInfo(CallbackInfoReturnable<Boolean> cir) {
         if (player.hasEffect(TLStatusEffects.CONFUSION)) {
             cir.setReturnValue(true);
         }

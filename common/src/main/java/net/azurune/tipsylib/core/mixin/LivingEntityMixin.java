@@ -131,7 +131,7 @@ public abstract class LivingEntityMixin {
     }
 
     @Inject(at = @At("TAIL"), method = "getDamageAfterMagicAbsorb")
-    public void modifyAppliedDamage(DamageSource source, float amount, CallbackInfoReturnable<Float> cir) {
+    public void tipsylib_modifyAppliedDamage(DamageSource source, float amount, CallbackInfoReturnable<Float> cir) {
         Entity entity = source.getEntity();
         if (entity instanceof LivingEntity attacker) {
             if (living.hasEffect(TLStatusEffects.BACKLASH)) {
@@ -142,19 +142,19 @@ public abstract class LivingEntityMixin {
     }
 
     @Inject(at = @At("HEAD"), method = "heal", cancellable = true)
-    public void heal(float amount, CallbackInfo ci) {
+    public void tipsylib_heal(float amount, CallbackInfo ci) {
         if (living.hasEffect(TLStatusEffects.INTERNAL_BLEEDING)) {
             ci.cancel();
         }
     }
 
     @Inject(at = @At("HEAD"), method = "canBeSeenByAnyone", cancellable = true)
-    public void canBeSeenByAnyone(CallbackInfoReturnable<Boolean> cir) {
+    public void tipsylib_canBeSeenByAnyone(CallbackInfoReturnable<Boolean> cir) {
         if (living.hasEffect(TLStatusEffects.ENIGMA)) cir.cancel();
     }
 
     @Inject(at = @At("HEAD"), method = "tick")
-    public void tick(CallbackInfo ci) {
+    public void tipsylib_tick(CallbackInfo ci) {
         BlockPos pos = living.blockPosition();
         if (living.hasEffect(TLStatusEffects.TRAIL_BLAZING) && living.level().getBlockState(pos).isAir()) {
             living.level().setBlockAndUpdate(pos, Blocks.FIRE.defaultBlockState());

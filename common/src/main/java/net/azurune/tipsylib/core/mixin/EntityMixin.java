@@ -16,7 +16,7 @@ public class EntityMixin {
     @Unique @Final LivingEntity living = (LivingEntity) (Object) this;
 
     @Inject(at = @At("HEAD"), method = "canFreeze", cancellable = true)
-    public void canFreeze(CallbackInfoReturnable<Boolean> cir) {
+    public void tipsylib_canFreeze(CallbackInfoReturnable<Boolean> cir) {
         if (living.hasEffect(TLStatusEffects.FREEZE_RESISTANCE)) {
             cir.setReturnValue(false);
         }
