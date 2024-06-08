@@ -11,6 +11,7 @@ Version Release v2.0.6 MC-1.20.1
 
   Fixes
 •   Fixed restoration not working properly
+•   Fixed traversal crashing when no bed is found
 
 ...this should be the last version for now :')
 
