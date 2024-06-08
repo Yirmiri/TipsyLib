@@ -40,7 +40,6 @@ public abstract class PlayerMixin {
     }
 
     private static void devourEntity(Player player) {
-        Level level = player.level();
         player.heal(1 + player.getEffect(TLStatusEffects.DEVOUR).getAmplifier());
         player.level().playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.SOUL_ESCAPE, SoundSource.PLAYERS, 1.0F, 1.0F);
 //        if (player.level() instanceof ServerLevel) {

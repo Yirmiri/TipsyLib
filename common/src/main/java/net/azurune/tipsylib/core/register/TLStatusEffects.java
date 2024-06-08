@@ -32,6 +32,7 @@ public class TLStatusEffects {
     public static final MobEffect DEVOUR = new NoSpecialEffect(MobEffectCategory.BENEFICIAL, 0xb21e36);
     public static final MobEffect FREEZE_RESISTANCE = new NoSpecialEffect(MobEffectCategory.BENEFICIAL, 0x61d6de);
     public static final MobEffect RESTORATION = new RestorationEffect(MobEffectCategory.BENEFICIAL, 0xe87f8b);
+    public static final MobEffect CAFFEINATED = new NoSpecialEffect(MobEffectCategory.BENEFICIAL, 0x492f25);
     //public static final MobEffect TRUE_INVISIBILITY = new NoSpecialEffect(MobEffectCategory.BENEFICIAL, 0xffffff); //TODO: Invis but hides particles & armor
     //public static final MobEffect HYPER_ELASTICITY = new NoSpecialEffect(MobEffectCategory.BENEFICIAL, 0x9ad8fa); //TODO: Works like falling on slime
     //NEUTRAL
@@ -52,6 +53,7 @@ public class TLStatusEffects {
     public static final MobEffect FAST_FALLING = new NoSpecialEffect(MobEffectCategory.HARMFUL, 0x9babb2);
     public static final MobEffect CREATIVE_SHOCK = new NoSpecialEffect(MobEffectCategory.HARMFUL, 0x905ea9);
     public static final MobEffect INTERNAL_BLEEDING = new NoSpecialEffect(MobEffectCategory.HARMFUL, 0x410909);
+    public static final MobEffect CAFFEINE_CRASH = new NoSpecialEffect(MobEffectCategory.HARMFUL, 0x313d99);
 
     public static void loadEffects() {
         //BENEFICIAL
@@ -75,6 +77,7 @@ public class TLStatusEffects {
         registerEffect("devour", () -> DEVOUR);
         registerEffect("freeze_resistance", () -> FREEZE_RESISTANCE);
         registerEffect("restoration", () -> RESTORATION);
+        registerEffect("caffeinated", () -> CAFFEINATED.addAttributeModifier(Attributes.ATTACK_DAMAGE, "0a921b76-10d3-4038-8a2d-7e53ad32ef3d", 1.0, AttributeModifier.Operation.ADDITION).addAttributeModifier(Attributes.MOVEMENT_SPEED, "3ecec3d4-8bad-4f10-b870-83228e444672", 0.03, AttributeModifier.Operation.ADDITION).addAttributeModifier(Attributes.ARMOR, "bb33d1c3-68b1-4413-958e-3a6b32e991be", 2.0, AttributeModifier.Operation.ADDITION).addAttributeModifier(Attributes.MAX_HEALTH, "659863ac-6cc0-4f4e-92c4-96fc04df37bf", 2.0, AttributeModifier.Operation.ADDITION).addAttributeModifier(Attributes.JUMP_STRENGTH, "c428b22a-8db3-4778-9dba-27fae9f9b6a4", 1.0, AttributeModifier.Operation.ADDITION).addAttributeModifier(Attributes.LUCK, "5213feef-1d5f-407a-a708-629b79d12bf3", 1.0, AttributeModifier.Operation.ADDITION));
         //registerEffect("true_invisibility", () -> TRUE_INVISIBILITY); //TODO: FINISH
         //registerEffect("hyper_elasticity", () -> HYPER_ELASTICITY); //TODO: FINISH
         //NEUTRAL
@@ -95,7 +98,11 @@ public class TLStatusEffects {
         registerEffect("fast_falling", () -> FAST_FALLING);
         registerEffect("creative_shock", () -> CREATIVE_SHOCK);
         registerEffect("internal_bleeding", () -> INTERNAL_BLEEDING);
+        registerEffect("caffeine_crash", () -> CAFFEINE_CRASH.addAttributeModifier(Attributes.ATTACK_DAMAGE, "0a921b76-10d3-4038-8a2d-7e53ad32ef3d", -1.0, AttributeModifier.Operation.ADDITION).addAttributeModifier(Attributes.MOVEMENT_SPEED, "3ecec3d4-8bad-4f10-b870-83228e444672", -0.03, AttributeModifier.Operation.ADDITION).addAttributeModifier(Attributes.ARMOR, "bb33d1c3-68b1-4413-958e-3a6b32e991be", -2.0, AttributeModifier.Operation.ADDITION).addAttributeModifier(Attributes.MAX_HEALTH, "659863ac-6cc0-4f4e-92c4-96fc04df37bf", -2.0, AttributeModifier.Operation.ADDITION).addAttributeModifier(Attributes.JUMP_STRENGTH, "c428b22a-8db3-4778-9dba-27fae9f9b6a4", -1.0, AttributeModifier.Operation.ADDITION).addAttributeModifier(Attributes.LUCK, "5213feef-1d5f-407a-a708-629b79d12bf3", -1.0, AttributeModifier.Operation.ADDITION));
     }
+
+    //TODO: Caffeinated should grant caffeine crash when ending
+    //TODO: [1.21] Add size, water movement, digging speed, and block reach
 
     private static <T extends MobEffect> Supplier<T> registerEffect(String name, Supplier<T> supplier) {
         return Services.REGISTRY.registerEffect(name, supplier);

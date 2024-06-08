@@ -33,6 +33,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.Map;
+import java.util.Objects;
 
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin {
@@ -156,7 +157,7 @@ public abstract class LivingEntityMixin {
         }
     }
 
-    @Inject(at = @At("HEAD"), method = "canBeSeenByAnyone", cancellable = true)
+    @Inject(at = @At("HEAD"), method = "canBeSeenByAnyone")
     public void tipsylib_canBeSeenByAnyone(CallbackInfoReturnable<Boolean> cir) {
         if (living.hasEffect(TLStatusEffects.ENIGMA)) cir.cancel();
     }
