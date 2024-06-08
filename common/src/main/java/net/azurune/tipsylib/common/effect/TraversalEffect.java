@@ -15,11 +15,11 @@ public class TraversalEffect extends InstantenousMobEffect {
 
     @Override
     public void applyEffectTick(LivingEntity living, int amplifier) {
+        Vec3 pos;
         if (!living.level().isClientSide()) {
             if (living instanceof ServerPlayer player && !living.isSpectator()) {
-                Vec3 pos;
-                if (player.getRespawnPosition() != null && (player.level().getBlockState(player.getRespawnPosition()).getBlock() instanceof BedBlock)
-                        || (player.level().getBlockState(player.getRespawnPosition()).getBlock() instanceof RespawnAnchorBlock)) {
+                if (player.getRespawnPosition() != null)
+                        if (player.level().getBlockState(player.getRespawnPosition()).getBlock() instanceof BedBlock || (player.level().getBlockState(player.getRespawnPosition()).getBlock() instanceof RespawnAnchorBlock)) {
                     pos = Vec3.atBottomCenterOf(player.getRespawnPosition());
                     player.teleportTo(pos.x, pos.y, pos.z);
                 }
