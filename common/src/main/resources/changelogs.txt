@@ -9,7 +9,9 @@ Version Release v2.0.7 MC-1.20.1
   Additions
 •   Added caffeinated and caffeine crash, caffeinated increases most stats while caffeine crash does the opposite.
 Caffeine crash will be applied when caffeinated ends but caffeinated can override caffeine crash if applied once more.
-
+•   Traversal effect now displays a message if the player doesn't have a spawn point
+•   Some build.gradle changes that allow modders to use the dependency easier in a Multiloader environment
+•   Fixed a mixin crash
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Version Release v2.0.6 MC-1.20.1
