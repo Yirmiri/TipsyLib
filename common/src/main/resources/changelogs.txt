@@ -12,6 +12,8 @@ Caffeine crash will be applied when caffeinated ends but caffeinated can overrid
 •   Traversal effect now displays a message if the player doesn't have a spawn point
 •   Some build.gradle changes that allow modders to use the dependency easier in a Multiloader environment
 •   Fixed a mixin crash
+•   Fixed a mod Id on fabric
+
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Version Release v2.0.6 MC-1.20.1
