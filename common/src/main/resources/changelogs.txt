@@ -4,6 +4,20 @@ Literally just a secret .txt file of every single update's changelog
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+Version Release v2.0.8 MC-1.20.1
+
+  Additions
+•   Added hardcore hearts to special heart types
+•   Added heart textures for berserk, hemolacria, and devour effects
+
+  Changes
+•   Changed the texture of shatterspleen hearts
+
+  Bug Fixes
+•   The player can no longer see how much health they have when taking damage with confusion
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 Version Release v2.0.7 MC-1.20.1
 
   Additions
