@@ -157,7 +157,7 @@ public abstract class LivingEntityMixin {
         }
     }
 
-    @Inject(at = @At("HEAD"), method = "canBeSeenByAnyone")
+    @Inject(at = @At("HEAD"), method = "canBeSeenByAnyone", cancellable = true)
     public void tipsylib_canBeSeenByAnyone(CallbackInfoReturnable<Boolean> cir) {
         if (living.hasEffect(TLStatusEffects.ENIGMA)) cir.cancel();
     }

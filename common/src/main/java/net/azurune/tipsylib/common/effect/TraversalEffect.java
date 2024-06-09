@@ -1,5 +1,6 @@
 package net.azurune.tipsylib.common.effect;
 
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.InstantenousMobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
@@ -18,10 +19,15 @@ public class TraversalEffect extends InstantenousMobEffect {
         Vec3 pos;
         if (!living.level().isClientSide()) {
             if (living instanceof ServerPlayer player && !living.isSpectator()) {
-                if (player.getRespawnPosition() != null)
-                        if (player.level().getBlockState(player.getRespawnPosition()).getBlock() instanceof BedBlock || (player.level().getBlockState(player.getRespawnPosition()).getBlock() instanceof RespawnAnchorBlock)) {
-                    pos = Vec3.atBottomCenterOf(player.getRespawnPosition());
-                    player.teleportTo(pos.x, pos.y, pos.z);
+                if (player.getRespawnPosition() != null) {
+                    if (player.level().getBlockState(player.getRespawnPosition()).getBlock() instanceof BedBlock || (player.level().getBlockState(player.getRespawnPosition()).getBlock() instanceof RespawnAnchorBlock)) {
+                        pos = Vec3.atBottomCenterOf(player.getRespawnPosition());
+                        player.teleportTo(pos.x, pos.y, pos.z);
+                    } else {
+                        player.displayClientMessage(Component.translatable("effect.tipsylib.traversal.no_spawn_point"), true);
+                    }
+                } else {
+                    player.displayClientMessage(Component.translatable("effect.tipsylib.traversal.no_spawn_point"), true);
                 }
             }
         }

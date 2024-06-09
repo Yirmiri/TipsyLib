@@ -83,6 +83,8 @@
   "effect.tipsylib.caffeinated.description": "Small increase to most major stats",
   "effect.tipsylib.caffeine_crash.description": "Small decrease to most major stats",
 
+  "effect.tipsylib.traversal.no_spawn_point": "Traversal requires a spawn point",
+
   "death.attack.tipsylib.backlash": "%1$s couldn't handle the backlash",
   "death.attack.tipsylib.backlash.player": "%1$s couldn't handle the backlash from attacking %2$s",
   "death.attack.tipsylib.retaliation": "%1$s was prickled to death",
