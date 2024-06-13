@@ -7,10 +7,13 @@ Literally just a secret .txt file of every single update's changelog
 Version Release v2.0.8 MC-1.20.1
 
   Additions
+•   Added smouldering, causes the entity to constantly burn
+•   Added frostbite, causes the entity to constantly freeze
 •   Added hardcore hearts to special heart types
 •   Added heart textures for berserk, hemolacria, and devour effects
 
   Changes
+•   Water & lava walking can now be temporarily disabled by sneaking
 •   Changed the texture of shatterspleen hearts
 
   Bug Fixes

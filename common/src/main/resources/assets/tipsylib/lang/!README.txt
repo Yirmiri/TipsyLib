@@ -5,3 +5,4 @@ If you decide to help out with translating the mod you can either send the lang 
 Translator Credits:
 - en_us translated by "@yirmiris"
 - ru_ru translated by "@bricker_man"
+- uk_ua translated by "@unroman"

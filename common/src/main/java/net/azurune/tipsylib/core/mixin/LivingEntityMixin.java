@@ -15,10 +15,8 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import org.jetbrains.annotations.Nullable;
@@ -33,7 +31,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.Map;
-import java.util.Objects;
 
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin {
@@ -56,11 +53,13 @@ public abstract class LivingEntityMixin {
 
     @Inject(at = @At("HEAD"), method = "canStandOnFluid", cancellable = true)
     public void tipsylib_canStandOnFluid(FluidState state, CallbackInfoReturnable<Boolean> cir) {
-        if (state.getType() == Fluids.WATER || state.getType() == Fluids.FLOWING_WATER)
-            if (living != null && (this.living.hasEffect(TLStatusEffects.WATER_WALKING))) cir.setReturnValue(true);
+        if (!living.isCrouching()) {
+            if (state.getType() == Fluids.WATER || state.getType() == Fluids.FLOWING_WATER)
+                if (living != null && (this.living.hasEffect(TLStatusEffects.WATER_WALKING))) cir.setReturnValue(true);
 
-        if (state.getType() == Fluids.LAVA || state.getType() == Fluids.FLOWING_LAVA)
-            if (living != null && (this.living.hasEffect(TLStatusEffects.LAVA_WALKING))) cir.setReturnValue(true);
+            if (state.getType() == Fluids.LAVA || state.getType() == Fluids.FLOWING_LAVA)
+                if (living != null && (this.living.hasEffect(TLStatusEffects.LAVA_WALKING))) cir.setReturnValue(true);
+        }
     }
 
     @Inject(at = @At("HEAD"), method = "getJumpBoostPower", cancellable = true)

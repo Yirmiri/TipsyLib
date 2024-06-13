@@ -40,6 +40,8 @@
   "effect.tipsylib.freeze_resistance": "Freeze Resistance",
   "effect.tipsylib.caffeinated": "Caffeinated",
   "effect.tipsylib.caffeine_crash": "Caffeine Crash",
+  "effect.tipsylib.smouldering": "Smouldering",
+  "effect.tipsylib.frostbite": "Frostbite",
 
   "effect.tipsylib.vulnerability.description": "Reduces the armor points of the user.",
   "effect.tipsylib.heartbreak.description": "Reduces the max health points of the user.",
@@ -82,6 +84,8 @@
   "effect.tipsylib.freeze_resistance.description": "Grants immunity to freezing.",
   "effect.tipsylib.caffeinated.description": "Small increase to most major stats",
   "effect.tipsylib.caffeine_crash.description": "Small decrease to most major stats",
+  "effect.tipsylib.smouldering.description": "Causes the entity to constantly burn",
+  "effect.tipsylib.frostbite.description": "Causes the entity to constantly freeze",
 
   "effect.tipsylib.traversal.no_spawn_point": "Traversal requires a spawn point",
 

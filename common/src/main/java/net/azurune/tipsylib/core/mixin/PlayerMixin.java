@@ -42,9 +42,6 @@ public abstract class PlayerMixin {
     private static void devourEntity(Player player) {
         player.heal(1 + player.getEffect(TLStatusEffects.DEVOUR).getAmplifier());
         player.level().playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.SOUL_ESCAPE, SoundSource.PLAYERS, 1.0F, 1.0F);
-//        if (player.level() instanceof ServerLevel) {
-//            ((ServerLevel)player.level()).sendParticles(ParticleTypes.SOUL, player.getX() + level.random.nextDouble(), player.getY() + 1, player.getZ() + level.random.nextDouble(), 1, 0.0, 0.0, 0.0, 1.0);
-//        }
     }
 
     @Inject(at = @At("HEAD"), method = "isReducedDebugInfo", cancellable = true)
