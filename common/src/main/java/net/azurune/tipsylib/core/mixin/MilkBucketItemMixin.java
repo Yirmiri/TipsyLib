@@ -31,7 +31,7 @@ public abstract class MilkBucketItemMixin {
             stack.shrink(1);
         }
 
-        if (!level.isClientSide() && !user.hasEffect(TLStatusEffects.IMPURE)) {
+        if (!level.isClientSide() && !user.hasEffect(TLStatusEffects.IMPURE.get())) {
             user.removeAllEffects();
         }
 

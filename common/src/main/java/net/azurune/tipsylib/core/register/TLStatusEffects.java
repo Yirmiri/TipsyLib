@@ -36,6 +36,7 @@ public class TLStatusEffects {
     public static final Supplier<Holder<MobEffect>> FREEZE_RESISTANCE;
     public static final Supplier<Holder<MobEffect>> RESTORATION;
     public static final Supplier<Holder<MobEffect>> CAFFEINATED;
+    public static final Supplier<Holder<MobEffect>> BRIMSTONE_VISION;
     //public static final Supplier<Holder<MobEffect>> TRUE_INVISIBILITY; //TODO: Invis but hides particles & armor
     //public static final Supplier<Holder<MobEffect>> HYPER_ELASTICITY; //TODO: Works like falling on slime
     //NEUTRAL
@@ -82,6 +83,7 @@ public class TLStatusEffects {
         LESSER_STRENGTH = registerEffect("lesser_strength", () -> new NoSpecialEffect(MobEffectCategory.BENEFICIAL, 0xd06464).addAttributeModifier(Attributes.ATTACK_DAMAGE, ResourceLocation.fromNamespaceAndPath(TipsyLibConstants.MOD_ID, "effect.lesser_strength"), 1.0, AttributeModifier.Operation.ADD_VALUE));
         ADRENALINE = registerEffect("adrenaline", () -> new AdrenalineEffect(MobEffectCategory.BENEFICIAL, 0x55e75a).addAttributeModifier(Attributes.MOVEMENT_SPEED, ResourceLocation.fromNamespaceAndPath(TipsyLibConstants.MOD_ID, "effect.adrenaline"), 0.0, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
         CAFFEINATED = registerEffect("caffeinated", () -> new NoSpecialEffect(MobEffectCategory.BENEFICIAL, 0x492f25).addAttributeModifier(Attributes.ATTACK_DAMAGE, ResourceLocation.fromNamespaceAndPath(TipsyLibConstants.MOD_ID, "effect.caffeinated_damage"), 1.0, AttributeModifier.Operation.ADD_VALUE).addAttributeModifier(Attributes.MOVEMENT_SPEED, ResourceLocation.parse("effect.caffeinated_speed"), 0.03, AttributeModifier.Operation.ADD_VALUE).addAttributeModifier(Attributes.ARMOR, ResourceLocation.parse("effect.caffeinated_armor"), 2.0, AttributeModifier.Operation.ADD_VALUE).addAttributeModifier(Attributes.MAX_HEALTH, ResourceLocation.parse("effect.caffeinated_health"), 2.0, AttributeModifier.Operation.ADD_VALUE).addAttributeModifier(Attributes.JUMP_STRENGTH, ResourceLocation.parse("effect.caffeinated_jump"), 1.0, AttributeModifier.Operation.ADD_VALUE).addAttributeModifier(Attributes.LUCK, ResourceLocation.parse("effect.caffeinated_luck"), 1.0, AttributeModifier.Operation.ADD_VALUE));
+        BRIMSTONE_VISION = registerEffect("brimstone_vision", () -> new NoSpecialEffect(MobEffectCategory.BENEFICIAL, 0xec3920));
         //TRUE_INVISIBILITY = registerEffect("true_invisibility", () -> new NoSpecialEffect(MobEffectCategory.BENEFICIAL, 0xffffff)); //TODO: FINISH
         //HYPER_ELASTICITY = registerEffect("hyper_elasticity", () -> new NoSpecialEffect(MobEffectCategory.BENEFICIAL, 0x9ad8fa)); //TODO: FINISH
 

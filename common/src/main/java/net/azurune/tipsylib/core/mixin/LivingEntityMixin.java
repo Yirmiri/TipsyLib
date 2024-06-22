@@ -55,23 +55,23 @@ public abstract class LivingEntityMixin {
     public void tipsylib_canStandOnFluid(FluidState state, CallbackInfoReturnable<Boolean> cir) {
         if (!living.isCrouching()) {
             if (state.getType() == Fluids.WATER || state.getType() == Fluids.FLOWING_WATER)
-                if (living != null && (this.living.hasEffect(TLStatusEffects.WATER_WALKING))) cir.setReturnValue(true);
+                if (living != null && (this.living.hasEffect(TLStatusEffects.WATER_WALKING.get()))) cir.setReturnValue(true);
 
             if (state.getType() == Fluids.LAVA || state.getType() == Fluids.FLOWING_LAVA)
-                if (living != null && (this.living.hasEffect(TLStatusEffects.LAVA_WALKING))) cir.setReturnValue(true);
+                if (living != null && (this.living.hasEffect(TLStatusEffects.LAVA_WALKING.get()))) cir.setReturnValue(true);
         }
     }
 
     @Inject(at = @At("HEAD"), method = "getJumpBoostPower", cancellable = true)
     public void tipsylib_getJumpBoostPower(CallbackInfoReturnable<Float> cir) {
-        if (living.hasEffect(TLStatusEffects.FAST_FALLING)) {
-            cir.setReturnValue(-0.1F * this.getEffect(TLStatusEffects.FAST_FALLING).getAmplifier() -0.1F);
+        if (living.hasEffect(TLStatusEffects.FAST_FALLING.get())) {
+            cir.setReturnValue(-0.1F * this.getEffect(TLStatusEffects.FAST_FALLING.get()).getAmplifier() -0.1F);
         }
     }
 
     @Inject(at = @At("HEAD"), method = "canFreeze", cancellable = true)
     public void tipsylib_canFreeze(CallbackInfoReturnable<Boolean> cir) {
-        if (living.hasEffect(TLStatusEffects.FREEZE_RESISTANCE)) {
+        if (living.hasEffect(TLStatusEffects.FREEZE_RESISTANCE.get())) {
             cir.setReturnValue(false);
         }
     }
@@ -80,28 +80,28 @@ public abstract class LivingEntityMixin {
     public void tipsylib_hurt(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
         Entity entity = source.getEntity();
         if (source.is(DamageTypeTags.IS_FIRE)) {
-            if (living.hasEffect(TLStatusEffects.TRAIL_BLAZING) || living.hasEffect(TLStatusEffects.PYROMANIAC) || living.hasEffect(TLStatusEffects.LAVA_WALKING) && source.is(DamageTypeTags.IS_FIRE))
+            if (living.hasEffect(TLStatusEffects.TRAIL_BLAZING.get()) || living.hasEffect(TLStatusEffects.PYROMANIAC.get()) || living.hasEffect(TLStatusEffects.LAVA_WALKING.get()) && source.is(DamageTypeTags.IS_FIRE))
                 cir.setReturnValue(false);
         }
 
-        if (living.hasEffect(TLStatusEffects.BURNING_THORNS)) {
-            if (entity != null) entity.setSecondsOnFire(5 + (getEffect(TLStatusEffects.BURNING_THORNS).getAmplifier()));
+        if (living.hasEffect(TLStatusEffects.BURNING_THORNS.get())) {
+            if (entity != null) entity.igniteForTicks(100 * (getEffect(TLStatusEffects.BURNING_THORNS.get()).getAmplifier()));
         }
 
-        if (living.hasEffect(TLStatusEffects.RETALIATION)) {
+        if (living.hasEffect(TLStatusEffects.RETALIATION.get())) {
             if (entity != null) {
                 DamageSource damagesource = new DamageSource(entity.level().registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(TLDamageTypes.RETALIATION));
-                entity.hurt(damagesource, 1.0F + (getEffect(TLStatusEffects.RETALIATION).getAmplifier() + 1));
+                entity.hurt(damagesource, 1.0F + (getEffect(TLStatusEffects.RETALIATION.get()).getAmplifier() + 1));
             }
         }
 
-        if (living.hasEffect(TLStatusEffects.TOUGH_SKIN) && source.is(DamageTypeTags.IS_EXPLOSION))
+        if (living.hasEffect(TLStatusEffects.TOUGH_SKIN.get()) && source.is(DamageTypeTags.IS_EXPLOSION))
             cir.setReturnValue(false);
 
-        if (living.hasEffect(TLStatusEffects.FREEZE_RESISTANCE) && source.is(DamageTypeTags.IS_FREEZING))
+        if (living.hasEffect(TLStatusEffects.FREEZE_RESISTANCE.get()) && source.is(DamageTypeTags.IS_FREEZING))
             cir.setReturnValue(false);
 
-        if (living.hasEffect(TLStatusEffects.DIVERSION) && !source.is(DamageTypeTags.BYPASSES_INVULNERABILITY))
+        if (living.hasEffect(TLStatusEffects.DIVERSION.get()) && !source.is(DamageTypeTags.BYPASSES_INVULNERABILITY))
             if (living.hasEffect(MobEffects.LUCK)) {
                 if (Math.random() < 0.2) {
                     dodgeAttack(living, level, cir);
@@ -111,7 +111,7 @@ public abstract class LivingEntityMixin {
             }
 
         if (source.is(DamageTypeTags.IS_FALL)) {
-            if (living.hasEffect(TLStatusEffects.STEEL_FEET) && source.is(DamageTypeTags.IS_FALL))
+            if (living.hasEffect(TLStatusEffects.STEEL_FEET.get()) && source.is(DamageTypeTags.IS_FALL))
                 cir.setReturnValue(false);
         }
     }
@@ -124,16 +124,16 @@ public abstract class LivingEntityMixin {
 
     @ModifyVariable(at = @At("HEAD"), method = "hurt", argsOnly = true)
     public float shatterSpleen(float amount) {
-        if (living.hasEffect(TLStatusEffects.SHATTERSPLEEN)) {
-            return amount + amount * (0.5F * living.getEffect(TLStatusEffects.SHATTERSPLEEN).getAmplifier() + 0.5F);
+        if (living.hasEffect(TLStatusEffects.SHATTERSPLEEN.get())) {
+            return amount + amount * (0.5F * living.getEffect(TLStatusEffects.SHATTERSPLEEN.get()).getAmplifier() + 0.5F);
         }
         return amount;
     }
 
     @ModifyVariable(at = @At("HEAD"), method = "hurt", argsOnly = true)
     public float frailty(float amount, DamageSource source) {
-        if (living.hasEffect(TLStatusEffects.FRAILTY) && source.is(DamageTypeTags.IS_FALL)) {
-            return amount + amount * (0.5F * living.getEffect(TLStatusEffects.FRAILTY).getAmplifier() + 0.5F);
+        if (living.hasEffect(TLStatusEffects.FRAILTY.get()) && source.is(DamageTypeTags.IS_FALL)) {
+            return amount + amount * (0.5F * living.getEffect(TLStatusEffects.FRAILTY.get()).getAmplifier() + 0.5F);
         }
         return amount;
     }
@@ -142,36 +142,36 @@ public abstract class LivingEntityMixin {
     public void tipsylib_modifyAppliedDamage(DamageSource source, float amount, CallbackInfoReturnable<Float> cir) {
         Entity entity = source.getEntity();
         if (entity instanceof LivingEntity attacker) {
-            if (living.hasEffect(TLStatusEffects.BACKLASH)) {
+            if (living.hasEffect(TLStatusEffects.BACKLASH.get())) {
                 DamageSource damagesource = new DamageSource(entity.level().registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(TLDamageTypes.BACKLASH));
-                attacker.hurt(damagesource, (amount * 0.25F) + living.getEffect(TLStatusEffects.BACKLASH).getAmplifier() + 1.0F);
+                attacker.hurt(damagesource, (amount * 0.25F) + living.getEffect(TLStatusEffects.BACKLASH.get()).getAmplifier() + 1.0F);
             }
         }
     }
 
     @Inject(at = @At("HEAD"), method = "heal", cancellable = true)
     public void tipsylib_heal(float amount, CallbackInfo ci) {
-        if (living.hasEffect(TLStatusEffects.INTERNAL_BLEEDING)) {
+        if (living.hasEffect(TLStatusEffects.INTERNAL_BLEEDING.get())) {
             ci.cancel();
         }
     }
 
     @Inject(at = @At("HEAD"), method = "canBeSeenByAnyone", cancellable = true)
     public void tipsylib_canBeSeenByAnyone(CallbackInfoReturnable<Boolean> cir) {
-        if (living.hasEffect(TLStatusEffects.ENIGMA)) cir.cancel();
+        if (living.hasEffect(TLStatusEffects.ENIGMA.get())) cir.cancel();
     }
 
     @Inject(at = @At("HEAD"), method = "tick")
     public void tipsylib_tick(CallbackInfo ci) {
         BlockPos pos = living.blockPosition();
-        if (living.hasEffect(TLStatusEffects.TRAIL_BLAZING) && living.level().getBlockState(pos).isAir()) {
+        if (living.hasEffect(TLStatusEffects.TRAIL_BLAZING.get()) && living.level().getBlockState(pos).isAir()) {
             living.level().setBlockAndUpdate(pos, Blocks.FIRE.defaultBlockState());
         }
 
-        if (living.getBlockStateOn().is(BlockTags.FIRE) && living.hasEffect(TLStatusEffects.PYROMANIAC)) {
+        if (living.getBlockStateOn().is(BlockTags.FIRE) && living.hasEffect(TLStatusEffects.PYROMANIAC.get())) {
             if (living.tickCount % 20 == 0) {
                 if (living.getHealth() < living.getMaxHealth()) {
-                    living.heal((getEffect(TLStatusEffects.PYROMANIAC).getAmplifier() + 1.0F));
+                    living.heal((getEffect(TLStatusEffects.PYROMANIAC.get()).getAmplifier() + 1.0F));
                 }
             }
         }

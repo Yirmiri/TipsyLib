@@ -23,7 +23,7 @@ public class StatusEffectInstanceMixin implements IStatusEffectInstance {
     @Inject(at = @At("HEAD"), method = "tickDownDuration", cancellable = true)
     public void tipsylib_tickDownDuration(CallbackInfoReturnable<Integer> cir) {
         if (living != null) {
-            if (this.effect != TLStatusEffects.CHRONOS && living.hasEffect(TLStatusEffects.CHRONOS)) {
+            if (this.effect != TLStatusEffects.CHRONOS && living.hasEffect(TLStatusEffects.CHRONOS.get())) {
                 cir.setReturnValue(this.duration);
             }
         }
