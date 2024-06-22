@@ -22,17 +22,17 @@ public class BerserkEffect extends MobEffect {
 
         if (originalModifier == null) return;
         var newAttributeModifier = new AttributeModifier(
-                originalModifier.getId(),
-                originalModifier.getName(),
+                originalModifier.id(),
+                //originalModifier.getName(),
                 damageModifier * (amplifier + 1.0F),
-                originalModifier.getOperation());
+                originalModifier.operation());
 
-        living.getAttribute(Attributes.ATTACK_DAMAGE).removeModifier(originalModifier.getId());
+        living.getAttribute(Attributes.ATTACK_DAMAGE).removeModifier(originalModifier.id());
         living.getAttribute(Attributes.ATTACK_DAMAGE).addTransientModifier(newAttributeModifier);
     }
 
     @Override
-    public boolean isDurationEffectTick(int duration, int amplifier) {
+    public boolean shouldApplyEffectTickThisTick(int duration, int amplifier) {
         return true;
     }
 }

@@ -11,14 +11,15 @@ public class FrailtyEffect extends MobEffect {
     }
 
     @Override
-    public void applyEffectTick(LivingEntity livingEntity, int amplifier) {
+    public boolean applyEffectTick(LivingEntity livingEntity, int amplifier) {
         if (livingEntity.hasEffect(TLStatusEffects.STEEL_FEET)) {
             livingEntity.removeEffect(TLStatusEffects.STEEL_FEET);
         }
+        return true;
     }
 
     @Override
-    public boolean isDurationEffectTick(int duration, int amplifier) {
+    public boolean shouldApplyEffectTickThisTick(int duration, int amplifier) {
         return true;
     }
 }

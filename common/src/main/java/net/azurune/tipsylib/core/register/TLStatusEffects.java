@@ -1,5 +1,7 @@
 package net.azurune.tipsylib.core.register;
 
+import net.minecraft.core.Holder;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -12,7 +14,7 @@ import java.util.function.Supplier;
 public class TLStatusEffects {
 
     //BENEFICIAL
-    public static final MobEffect TOUGH_SKIN = new NoSpecialEffect(MobEffectCategory.BENEFICIAL, 0x1e2434);
+    public static final Supplier<Holder<MobEffect>> TOUGH_SKIN;
     public static final MobEffect WATER_WALKING = new NoSpecialEffect(MobEffectCategory.BENEFICIAL, 0x5c89dc);
     public static final MobEffect LAVA_WALKING = new NoSpecialEffect(MobEffectCategory.BENEFICIAL, 0xc34c02);
     public static final MobEffect TRAIL_BLAZING = new NoSpecialEffect(MobEffectCategory.BENEFICIAL, 0xefb417);
@@ -56,6 +58,10 @@ public class TLStatusEffects {
     public static final MobEffect CAFFEINE_CRASH = new NoSpecialEffect(MobEffectCategory.HARMFUL, 0x313d99);
     public static final MobEffect SMOULDERING = new SmoulderingEffect(MobEffectCategory.HARMFUL, 0xdf9d34);
 
+    static {
+        TOUGH_SKIN = registerEffect("tough_skin", () -> (new NoSpecialEffect(MobEffectCategory.BENEFICIAL, 0x1e2434)));
+    }
+
     public static void loadEffects() {
         //BENEFICIAL
         registerEffect("backlash", () -> BACKLASH);
@@ -65,29 +71,28 @@ public class TLStatusEffects {
         registerEffect("retaliation", () -> RETALIATION);
         registerEffect("burning_thorns", () -> BURNING_THORNS);
         registerEffect("pyromaniac", () -> PYROMANIAC);
-        registerEffect("berserk", () -> BERSERK.addAttributeModifier(Attributes.ATTACK_DAMAGE, "15ab2f03-5cf6-4962-a43d-a5964727faa5", 0.0, AttributeModifier.Operation.MULTIPLY_TOTAL));
-        registerEffect("lesser_strength", () -> LESSER_STRENGTH.addAttributeModifier(Attributes.ATTACK_DAMAGE, "bddcfad8-0495-4074-b53b-7c8e2b197a14", 1.0, AttributeModifier.Operation.ADDITION));
+        registerEffect("berserk", () -> BERSERK.addAttributeModifier(Attributes.ATTACK_DAMAGE, ResourceLocation.parse("15ab2f03-5cf6-4962-a43d-a5964727faa5"), 0.0, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
+        registerEffect("lesser_strength", () -> LESSER_STRENGTH.addAttributeModifier(Attributes.ATTACK_DAMAGE, ResourceLocation.parse("bddcfad8-0495-4074-b53b-7c8e2b197a14"), 1.0, AttributeModifier.Operation.ADD_VALUE));
         registerEffect("steel_feet", () -> STEEL_FEET);
-        registerEffect("tough_skin", () -> TOUGH_SKIN);
         registerEffect("water_walking", () -> WATER_WALKING);
         registerEffect("lava_walking", () -> LAVA_WALKING);
         registerEffect("trail_blazing", () -> TRAIL_BLAZING);
         registerEffect("perception", () -> PERCEPTION);
-        registerEffect("adrenaline", () -> ADRENALINE.addAttributeModifier(Attributes.MOVEMENT_SPEED, "a3ceafaf-e3d8-484f-bd53-bdfe1ca4b588", 0.0, AttributeModifier.Operation.MULTIPLY_TOTAL));
+        registerEffect("adrenaline", () -> ADRENALINE.addAttributeModifier(Attributes.MOVEMENT_SPEED, ResourceLocation.parse("a3ceafaf-e3d8-484f-bd53-bdfe1ca4b588"), 0.0, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
         registerEffect("enigma", () -> ENIGMA);
         registerEffect("devour", () -> DEVOUR);
         registerEffect("freeze_resistance", () -> FREEZE_RESISTANCE);
         registerEffect("restoration", () -> RESTORATION);
-        registerEffect("caffeinated", () -> CAFFEINATED.addAttributeModifier(Attributes.ATTACK_DAMAGE, "0a921b76-10d3-4038-8a2d-7e53ad32ef3d", 1.0, AttributeModifier.Operation.ADDITION).addAttributeModifier(Attributes.MOVEMENT_SPEED, "3ecec3d4-8bad-4f10-b870-83228e444672", 0.03, AttributeModifier.Operation.ADDITION).addAttributeModifier(Attributes.ARMOR, "bb33d1c3-68b1-4413-958e-3a6b32e991be", 2.0, AttributeModifier.Operation.ADDITION).addAttributeModifier(Attributes.MAX_HEALTH, "659863ac-6cc0-4f4e-92c4-96fc04df37bf", 2.0, AttributeModifier.Operation.ADDITION).addAttributeModifier(Attributes.JUMP_STRENGTH, "c428b22a-8db3-4778-9dba-27fae9f9b6a4", 1.0, AttributeModifier.Operation.ADDITION).addAttributeModifier(Attributes.LUCK, "5213feef-1d5f-407a-a708-629b79d12bf3", 1.0, AttributeModifier.Operation.ADDITION));
+        registerEffect("caffeinated", () -> CAFFEINATED.addAttributeModifier(Attributes.ATTACK_DAMAGE, ResourceLocation.parse("0a921b76-10d3-4038-8a2d-7e53ad32ef3d"), 1.0, AttributeModifier.Operation.ADD_VALUE).addAttributeModifier(Attributes.MOVEMENT_SPEED, ResourceLocation.parse("3ecec3d4-8bad-4f10-b870-83228e444672"), 0.03, AttributeModifier.Operation.ADD_VALUE).addAttributeModifier(Attributes.ARMOR, ResourceLocation.parse("bb33d1c3-68b1-4413-958e-3a6b32e991be"), 2.0, AttributeModifier.Operation.ADD_VALUE).addAttributeModifier(Attributes.MAX_HEALTH, ResourceLocation.parse("659863ac-6cc0-4f4e-92c4-96fc04df37bf"), 2.0, AttributeModifier.Operation.ADD_VALUE).addAttributeModifier(Attributes.JUMP_STRENGTH, ResourceLocation.parse("c428b22a-8db3-4778-9dba-27fae9f9b6a4"), 1.0, AttributeModifier.Operation.ADD_VALUE).addAttributeModifier(Attributes.LUCK, ResourceLocation.parse("5213feef-1d5f-407a-a708-629b79d12bf3"), 1.0, AttributeModifier.Operation.ADD_VALUE));
         //registerEffect("true_invisibility", () -> TRUE_INVISIBILITY); //TODO: FINISH
         //registerEffect("hyper_elasticity", () -> HYPER_ELASTICITY); //TODO: FINISH
         //NEUTRAL
         registerEffect("gravity_resistance", () -> GRAVITY_RESISTANCE);
         registerEffect("chronos", () -> CHRONOS);
         //HARMFUL
-        registerEffect("vulnerability", () -> VULNERABILITY.addAttributeModifier(Attributes.ARMOR, "25A87ACE-6185-486B-842B-D3D6A05f071C", -1.0, AttributeModifier.Operation.ADDITION));
-        registerEffect("heartbreak", () -> HEARTBREAK.addAttributeModifier(Attributes.MAX_HEALTH, "F804B084-8974-46E9-B30B-0AB057A9D83B", -1.0, AttributeModifier.Operation.ADDITION));
-        registerEffect("lesser_weakness", () -> LESSER_WEAKNESS.addAttributeModifier(Attributes.ATTACK_DAMAGE, "2544cd96-7794-4184-a845-73c642132d6a", -1.0, AttributeModifier.Operation.ADDITION));
+        registerEffect("vulnerability", () -> VULNERABILITY.addAttributeModifier(Attributes.ARMOR, ResourceLocation.parse("25A87ACE-6185-486B-842B-D3D6A05f071C"), -1.0, AttributeModifier.Operation.ADD_VALUE));
+        registerEffect("heartbreak", () -> HEARTBREAK.addAttributeModifier(Attributes.MAX_HEALTH, ResourceLocation.parse("F804B084-8974-46E9-B30B-0AB057A9D83B"), -1.0, AttributeModifier.Operation.ADD_VALUE));
+        registerEffect("lesser_weakness", () -> LESSER_WEAKNESS.addAttributeModifier(Attributes.ATTACK_DAMAGE, ResourceLocation.parse("2544cd96-7794-4184-a845-73c642132d6a"), -1.0, AttributeModifier.Operation.ADD_VALUE));
         //registerEffect("bleeding", () -> BLEEDING); //TODO: FINISH
         registerEffect("shatterspleen", () -> SHATTERSPLEEN);
         registerEffect("inaccurate", () -> INACCURATE);
@@ -99,14 +104,14 @@ public class TLStatusEffects {
         registerEffect("fast_falling", () -> FAST_FALLING);
         registerEffect("creative_shock", () -> CREATIVE_SHOCK);
         registerEffect("internal_bleeding", () -> INTERNAL_BLEEDING);
-        registerEffect("caffeine_crash", () -> CAFFEINE_CRASH.addAttributeModifier(Attributes.ATTACK_DAMAGE, "0a921b76-10d3-4038-8a2d-7e53ad32ef3d", -1.0, AttributeModifier.Operation.ADDITION).addAttributeModifier(Attributes.MOVEMENT_SPEED, "3ecec3d4-8bad-4f10-b870-83228e444672", -0.03, AttributeModifier.Operation.ADDITION).addAttributeModifier(Attributes.ARMOR, "bb33d1c3-68b1-4413-958e-3a6b32e991be", -2.0, AttributeModifier.Operation.ADDITION).addAttributeModifier(Attributes.MAX_HEALTH, "659863ac-6cc0-4f4e-92c4-96fc04df37bf", -2.0, AttributeModifier.Operation.ADDITION).addAttributeModifier(Attributes.JUMP_STRENGTH, "c428b22a-8db3-4778-9dba-27fae9f9b6a4", -1.0, AttributeModifier.Operation.ADDITION).addAttributeModifier(Attributes.LUCK, "5213feef-1d5f-407a-a708-629b79d12bf3", -1.0, AttributeModifier.Operation.ADDITION));
+        registerEffect("caffeine_crash", () -> CAFFEINE_CRASH.addAttributeModifier(Attributes.ATTACK_DAMAGE, ResourceLocation.parse("0a921b76-10d3-4038-8a2d-7e53ad32ef3d"), -1.0, AttributeModifier.Operation.ADD_VALUE).addAttributeModifier(Attributes.MOVEMENT_SPEED, ResourceLocation.parse("3ecec3d4-8bad-4f10-b870-83228e444672"), -0.03, AttributeModifier.Operation.ADD_VALUE).addAttributeModifier(Attributes.ARMOR, ResourceLocation.parse("bb33d1c3-68b1-4413-958e-3a6b32e991be"), -2.0, AttributeModifier.Operation.ADD_VALUE).addAttributeModifier(Attributes.MAX_HEALTH, ResourceLocation.parse("659863ac-6cc0-4f4e-92c4-96fc04df37bf"), -2.0, AttributeModifier.Operation.ADD_VALUE).addAttributeModifier(Attributes.JUMP_STRENGTH, ResourceLocation.parse("c428b22a-8db3-4778-9dba-27fae9f9b6a4"), -1.0, AttributeModifier.Operation.ADD_VALUE).addAttributeModifier(Attributes.LUCK, ResourceLocation.parse("5213feef-1d5f-407a-a708-629b79d12bf3"), -1.0, AttributeModifier.Operation.ADD_VALUE));
         registerEffect("smouldering", () -> SMOULDERING);
     }
 
     //TODO: Caffeinated should grant caffeine crash when ending
     //TODO: [1.21] Add size, water movement, digging speed, and block reach
 
-    private static <T extends MobEffect> Supplier<T> registerEffect(String name, Supplier<T> supplier) {
+    private static <T extends MobEffect> Supplier<Holder<T>> registerEffect(String name, Supplier<T> supplier) {
         return Services.REGISTRY.registerEffect(name, supplier);
     }
 }

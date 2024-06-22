@@ -1,5 +1,6 @@
 package net.azurune.tipsylib.core.mixin;
 
+import net.azurune.tipsylib.TipsyLib;
 import net.azurune.tipsylib.TipsyLibConstants;
 import net.azurune.tipsylib.core.register.TLStatusEffects;
 import net.minecraft.client.Minecraft;
@@ -23,32 +24,32 @@ public abstract class GuiMixin {
 //TODO: Add berserk heart icons
     @Unique
     private static final Map<MobEffect, ResourceLocation> OVERIDE_HEART_ICONS_MAP = Map.ofEntries(
-            entry(TLStatusEffects.CONFUSION, new ResourceLocation(TipsyLibConstants.MOD_ID, "textures/gui/confused_hearts.png"))
+            entry(TLStatusEffects.CONFUSION, TipsyLib.id("textures/gui/confused_hearts.png"))
     );
 
     @Unique
     private static final Map<MobEffect, ResourceLocation> HEART_ICONS_MAP = Map.ofEntries(
-            entry(TLStatusEffects.CONFUSION, new ResourceLocation(TipsyLibConstants.MOD_ID, "textures/gui/confused_hearts.png")),
-            //entry(TLStatusEffects.BERSERK, new ResourceLocation(TipsyLibConstants.MOD_ID, "textures/gui/berserk_hearts.png")),
-            entry(TLStatusEffects.HEMOLACRIA, new ResourceLocation(TipsyLibConstants.MOD_ID, "textures/gui/hemolacria_hearts.png")),
-            entry(TLStatusEffects.VENOM, new ResourceLocation(TipsyLibConstants.MOD_ID, "textures/gui/venom_hearts.png")),
-            entry(TLStatusEffects.INTERNAL_BLEEDING, new ResourceLocation(TipsyLibConstants.MOD_ID, "textures/gui/bleeding_hearts.png")),
-            entry(TLStatusEffects.SHATTERSPLEEN, new ResourceLocation(TipsyLibConstants.MOD_ID, "textures/gui/shatterspleen_hearts.png")),
-            entry(TLStatusEffects.DEVOUR, new ResourceLocation(TipsyLibConstants.MOD_ID, "textures/gui/devour_hearts.png"))
+            entry(TLStatusEffects.CONFUSION, TipsyLib.id("textures/gui/confused_hearts.png")),
+            //entry(TLStatusEffects.BERSERK, TipsyLib.id("textures/gui/berserk_hearts.png")),
+            entry(TLStatusEffects.HEMOLACRIA, TipsyLib.id("textures/gui/hemolacria_hearts.png")),
+            entry(TLStatusEffects.VENOM, TipsyLib.id("textures/gui/venom_hearts.png")),
+            entry(TLStatusEffects.INTERNAL_BLEEDING, TipsyLib.id("textures/gui/bleeding_hearts.png")),
+            entry(TLStatusEffects.SHATTERSPLEEN, TipsyLib.id("textures/gui/shatterspleen_hearts.png")),
+            entry(TLStatusEffects.DEVOUR, TipsyLib.id("textures/gui/devour_hearts.png"))
     );
 
     @Unique
     private static final Map<MobEffect, ResourceLocation> CONTAINER_ICONS_MAP = Map.ofEntries(
-            entry(TLStatusEffects.CONFUSION, new ResourceLocation(TipsyLibConstants.MOD_ID, "textures/gui/heart_container/confusion_container.png")),
-            //entry(TLStatusEffects.BERSERK, new ResourceLocation(TipsyLibConstants.MOD_ID, "textures/gui/heart_container/berserk_container.png")),
-            entry(TLStatusEffects.SHATTERSPLEEN, new ResourceLocation(TipsyLibConstants.MOD_ID, "textures/gui/heart_container/transparent_container.png"))
+            entry(TLStatusEffects.CONFUSION, TipsyLib.id("textures/gui/heart_container/confusion_container.png")),
+            //entry(TLStatusEffects.BERSERK, TipsyLib.id("textures/gui/heart_container/berserk_container.png")),
+            entry(TLStatusEffects.SHATTERSPLEEN, TipsyLib.id("textures/gui/heart_container/transparent_container.png"))
     );
 
     @Unique
     private static final Map<MobEffect, ResourceLocation> BLINKING_CONTAINER_ICONS_MAP = Map.ofEntries(
-            entry(TLStatusEffects.CONFUSION, new ResourceLocation(TipsyLibConstants.MOD_ID, "textures/gui/heart_blink/confusion_blink.png")),
-            //entry(TLStatusEffects.BERSERK, new ResourceLocation(TipsyLibConstants.MOD_ID, "textures/gui/heart_blink/berserk_blink.png")),
-            entry(TLStatusEffects.SHATTERSPLEEN, new ResourceLocation(TipsyLibConstants.MOD_ID, "textures/gui/heart_blink/transparent_blink.png"))
+            entry(TLStatusEffects.CONFUSION, TipsyLib.id("textures/gui/heart_blink/confusion_blink.png")),
+            //entry(TLStatusEffects.BERSERK, TipsyLib.id("textures/gui/heart_blink/berserk_blink.png")),
+            entry(TLStatusEffects.SHATTERSPLEEN, TipsyLib.id("textures/gui/heart_blink/transparent_blink.png"))
     );
 
     @Inject(method = "renderHeart", at = @At("HEAD"), cancellable = true)

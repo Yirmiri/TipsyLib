@@ -12,6 +12,6 @@ public class TipsyLib {
     }
 
     public static ResourceLocation id(String name) {
-        return new ResourceLocation(TipsyLibConstants.MOD_ID, name);
+        return ResourceLocation.fromNamespaceAndPath(TipsyLibConstants.MOD_ID, name);
     }
 }
