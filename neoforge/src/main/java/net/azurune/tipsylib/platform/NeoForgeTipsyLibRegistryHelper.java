@@ -1,14 +1,13 @@
 package net.azurune.tipsylib.platform;
 
 import net.minecraft.world.effect.MobEffect;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
 import net.azurune.tipsylib.TipsyLibConstants;
 import net.azurune.tipsylib.core.platform.services.TipsyLibRegistryHelper;
+import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.function.Supplier;
 
-public class ForgeTipsyLibRegistryHelper implements TipsyLibRegistryHelper {
+public class NeoForgeTipsyLibRegistryHelper implements TipsyLibRegistryHelper {
 
     public static final DeferredRegister<MobEffect> MOB_EFFECTS = DeferredRegister.create(ForgeRegistries.MOB_EFFECTS, TipsyLibConstants.MOD_ID);
 
