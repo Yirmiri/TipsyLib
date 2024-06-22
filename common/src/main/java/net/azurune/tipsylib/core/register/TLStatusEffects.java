@@ -1,5 +1,6 @@
 package net.azurune.tipsylib.core.register;
 
+import net.azurune.tipsylib.TipsyLibConstants;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffect;
@@ -71,28 +72,28 @@ public class TLStatusEffects {
         registerEffect("retaliation", () -> RETALIATION);
         registerEffect("burning_thorns", () -> BURNING_THORNS);
         registerEffect("pyromaniac", () -> PYROMANIAC);
-        registerEffect("berserk", () -> BERSERK.addAttributeModifier(Attributes.ATTACK_DAMAGE, ResourceLocation.parse("15ab2f03-5cf6-4962-a43d-a5964727faa5"), 0.0, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
-        registerEffect("lesser_strength", () -> LESSER_STRENGTH.addAttributeModifier(Attributes.ATTACK_DAMAGE, ResourceLocation.parse("bddcfad8-0495-4074-b53b-7c8e2b197a14"), 1.0, AttributeModifier.Operation.ADD_VALUE));
+        registerEffect("berserk", () -> BERSERK.addAttributeModifier(Attributes.ATTACK_DAMAGE, ResourceLocation.fromNamespaceAndPath(TipsyLibConstants.MOD_ID, "effect.berserk"), 0.0, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
+        registerEffect("lesser_strength", () -> LESSER_STRENGTH.addAttributeModifier(Attributes.ATTACK_DAMAGE, ResourceLocation.fromNamespaceAndPath(TipsyLibConstants.MOD_ID, "effect.lesser_strength"), 1.0, AttributeModifier.Operation.ADD_VALUE));
         registerEffect("steel_feet", () -> STEEL_FEET);
         registerEffect("water_walking", () -> WATER_WALKING);
         registerEffect("lava_walking", () -> LAVA_WALKING);
         registerEffect("trail_blazing", () -> TRAIL_BLAZING);
         registerEffect("perception", () -> PERCEPTION);
-        registerEffect("adrenaline", () -> ADRENALINE.addAttributeModifier(Attributes.MOVEMENT_SPEED, ResourceLocation.parse("a3ceafaf-e3d8-484f-bd53-bdfe1ca4b588"), 0.0, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
+        registerEffect("adrenaline", () -> ADRENALINE.addAttributeModifier(Attributes.MOVEMENT_SPEED, ResourceLocation.fromNamespaceAndPath(TipsyLibConstants.MOD_ID, "effect.adrenaline"), 0.0, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
         registerEffect("enigma", () -> ENIGMA);
         registerEffect("devour", () -> DEVOUR);
         registerEffect("freeze_resistance", () -> FREEZE_RESISTANCE);
         registerEffect("restoration", () -> RESTORATION);
-        registerEffect("caffeinated", () -> CAFFEINATED.addAttributeModifier(Attributes.ATTACK_DAMAGE, ResourceLocation.parse("0a921b76-10d3-4038-8a2d-7e53ad32ef3d"), 1.0, AttributeModifier.Operation.ADD_VALUE).addAttributeModifier(Attributes.MOVEMENT_SPEED, ResourceLocation.parse("3ecec3d4-8bad-4f10-b870-83228e444672"), 0.03, AttributeModifier.Operation.ADD_VALUE).addAttributeModifier(Attributes.ARMOR, ResourceLocation.parse("bb33d1c3-68b1-4413-958e-3a6b32e991be"), 2.0, AttributeModifier.Operation.ADD_VALUE).addAttributeModifier(Attributes.MAX_HEALTH, ResourceLocation.parse("659863ac-6cc0-4f4e-92c4-96fc04df37bf"), 2.0, AttributeModifier.Operation.ADD_VALUE).addAttributeModifier(Attributes.JUMP_STRENGTH, ResourceLocation.parse("c428b22a-8db3-4778-9dba-27fae9f9b6a4"), 1.0, AttributeModifier.Operation.ADD_VALUE).addAttributeModifier(Attributes.LUCK, ResourceLocation.parse("5213feef-1d5f-407a-a708-629b79d12bf3"), 1.0, AttributeModifier.Operation.ADD_VALUE));
+        registerEffect("caffeinated", () -> CAFFEINATED.addAttributeModifier(Attributes.ATTACK_DAMAGE, ResourceLocation.fromNamespaceAndPath(TipsyLibConstants.MOD_ID, "effect.caffeinated"), 1.0, AttributeModifier.Operation.ADD_VALUE).addAttributeModifier(Attributes.MOVEMENT_SPEED, ResourceLocation.parse("3ecec3d4-8bad-4f10-b870-83228e444672"), 0.03, AttributeModifier.Operation.ADD_VALUE).addAttributeModifier(Attributes.ARMOR, ResourceLocation.parse("bb33d1c3-68b1-4413-958e-3a6b32e991be"), 2.0, AttributeModifier.Operation.ADD_VALUE).addAttributeModifier(Attributes.MAX_HEALTH, ResourceLocation.parse("659863ac-6cc0-4f4e-92c4-96fc04df37bf"), 2.0, AttributeModifier.Operation.ADD_VALUE).addAttributeModifier(Attributes.JUMP_STRENGTH, ResourceLocation.parse("c428b22a-8db3-4778-9dba-27fae9f9b6a4"), 1.0, AttributeModifier.Operation.ADD_VALUE).addAttributeModifier(Attributes.LUCK, ResourceLocation.parse("5213feef-1d5f-407a-a708-629b79d12bf3"), 1.0, AttributeModifier.Operation.ADD_VALUE));
         //registerEffect("true_invisibility", () -> TRUE_INVISIBILITY); //TODO: FINISH
         //registerEffect("hyper_elasticity", () -> HYPER_ELASTICITY); //TODO: FINISH
         //NEUTRAL
         registerEffect("gravity_resistance", () -> GRAVITY_RESISTANCE);
         registerEffect("chronos", () -> CHRONOS);
         //HARMFUL
-        registerEffect("vulnerability", () -> VULNERABILITY.addAttributeModifier(Attributes.ARMOR, ResourceLocation.parse("25A87ACE-6185-486B-842B-D3D6A05f071C"), -1.0, AttributeModifier.Operation.ADD_VALUE));
-        registerEffect("heartbreak", () -> HEARTBREAK.addAttributeModifier(Attributes.MAX_HEALTH, ResourceLocation.parse("F804B084-8974-46E9-B30B-0AB057A9D83B"), -1.0, AttributeModifier.Operation.ADD_VALUE));
-        registerEffect("lesser_weakness", () -> LESSER_WEAKNESS.addAttributeModifier(Attributes.ATTACK_DAMAGE, ResourceLocation.parse("2544cd96-7794-4184-a845-73c642132d6a"), -1.0, AttributeModifier.Operation.ADD_VALUE));
+        registerEffect("vulnerability", () -> VULNERABILITY.addAttributeModifier(Attributes.ARMOR, ResourceLocation.fromNamespaceAndPath(TipsyLibConstants.MOD_ID, "effect.vulnerability"), -1.0, AttributeModifier.Operation.ADD_VALUE));
+        registerEffect("heartbreak", () -> HEARTBREAK.addAttributeModifier(Attributes.MAX_HEALTH, ResourceLocation.fromNamespaceAndPath(TipsyLibConstants.MOD_ID, "effect.heartbreak"), -1.0, AttributeModifier.Operation.ADD_VALUE));
+        registerEffect("lesser_weakness", () -> LESSER_WEAKNESS.addAttributeModifier(Attributes.ATTACK_DAMAGE, ResourceLocation.fromNamespaceAndPath(TipsyLibConstants.MOD_ID, "effect.lesser_weakness"), -1.0, AttributeModifier.Operation.ADD_VALUE));
         //registerEffect("bleeding", () -> BLEEDING); //TODO: FINISH
         registerEffect("shatterspleen", () -> SHATTERSPLEEN);
         registerEffect("inaccurate", () -> INACCURATE);
@@ -104,7 +105,7 @@ public class TLStatusEffects {
         registerEffect("fast_falling", () -> FAST_FALLING);
         registerEffect("creative_shock", () -> CREATIVE_SHOCK);
         registerEffect("internal_bleeding", () -> INTERNAL_BLEEDING);
-        registerEffect("caffeine_crash", () -> CAFFEINE_CRASH.addAttributeModifier(Attributes.ATTACK_DAMAGE, ResourceLocation.parse("0a921b76-10d3-4038-8a2d-7e53ad32ef3d"), -1.0, AttributeModifier.Operation.ADD_VALUE).addAttributeModifier(Attributes.MOVEMENT_SPEED, ResourceLocation.parse("3ecec3d4-8bad-4f10-b870-83228e444672"), -0.03, AttributeModifier.Operation.ADD_VALUE).addAttributeModifier(Attributes.ARMOR, ResourceLocation.parse("bb33d1c3-68b1-4413-958e-3a6b32e991be"), -2.0, AttributeModifier.Operation.ADD_VALUE).addAttributeModifier(Attributes.MAX_HEALTH, ResourceLocation.parse("659863ac-6cc0-4f4e-92c4-96fc04df37bf"), -2.0, AttributeModifier.Operation.ADD_VALUE).addAttributeModifier(Attributes.JUMP_STRENGTH, ResourceLocation.parse("c428b22a-8db3-4778-9dba-27fae9f9b6a4"), -1.0, AttributeModifier.Operation.ADD_VALUE).addAttributeModifier(Attributes.LUCK, ResourceLocation.parse("5213feef-1d5f-407a-a708-629b79d12bf3"), -1.0, AttributeModifier.Operation.ADD_VALUE));
+        registerEffect("caffeine_crash", () -> CAFFEINE_CRASH.addAttributeModifier(Attributes.ATTACK_DAMAGE, ResourceLocation.fromNamespaceAndPath(TipsyLibConstants.MOD_ID, "effect.caffeine_crash"), -1.0, AttributeModifier.Operation.ADD_VALUE).addAttributeModifier(Attributes.MOVEMENT_SPEED, ResourceLocation.parse("3ecec3d4-8bad-4f10-b870-83228e444672"), -0.03, AttributeModifier.Operation.ADD_VALUE).addAttributeModifier(Attributes.ARMOR, ResourceLocation.parse("bb33d1c3-68b1-4413-958e-3a6b32e991be"), -2.0, AttributeModifier.Operation.ADD_VALUE).addAttributeModifier(Attributes.MAX_HEALTH, ResourceLocation.parse("659863ac-6cc0-4f4e-92c4-96fc04df37bf"), -2.0, AttributeModifier.Operation.ADD_VALUE).addAttributeModifier(Attributes.JUMP_STRENGTH, ResourceLocation.parse("c428b22a-8db3-4778-9dba-27fae9f9b6a4"), -1.0, AttributeModifier.Operation.ADD_VALUE).addAttributeModifier(Attributes.LUCK, ResourceLocation.parse("5213feef-1d5f-407a-a708-629b79d12bf3"), -1.0, AttributeModifier.Operation.ADD_VALUE));
         registerEffect("smouldering", () -> SMOULDERING);
     }
 

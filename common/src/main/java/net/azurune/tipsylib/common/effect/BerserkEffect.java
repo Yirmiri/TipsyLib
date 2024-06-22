@@ -1,12 +1,12 @@
 package net.azurune.tipsylib.common.effect;
 
+import net.azurune.tipsylib.TipsyLibConstants;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-
-import java.util.UUID;
 
 public class BerserkEffect extends MobEffect {
     public BerserkEffect(MobEffectCategory category, int color) {
@@ -14,13 +14,14 @@ public class BerserkEffect extends MobEffect {
     }
 
     @Override
-    public void applyEffectTick(LivingEntity living, int amplifier) {
+    public boolean applyEffectTick(LivingEntity living, int amplifier) {
         float damageModifier = 1.0F - living.getHealth() / living.getMaxHealth();
 
-        if (living.getAttribute(Attributes.ATTACK_DAMAGE) == null) return;
-        var originalModifier = living.getAttribute(Attributes.ATTACK_DAMAGE).getModifier(UUID.fromString("15ab2f03-5cf6-4962-a43d-a5964727faa5"));
+        if (living.getAttribute(Attributes.ATTACK_DAMAGE) == null) return false;
+        var originalModifier = living.getAttribute(Attributes.ATTACK_DAMAGE)
+                .getModifier(ResourceLocation.fromNamespaceAndPath(TipsyLibConstants.MOD_ID, "effect.berserk"));
 
-        if (originalModifier == null) return;
+        if (originalModifier == null) return false;
         var newAttributeModifier = new AttributeModifier(
                 originalModifier.id(),
                 //originalModifier.getName(),
@@ -29,6 +30,7 @@ public class BerserkEffect extends MobEffect {
 
         living.getAttribute(Attributes.ATTACK_DAMAGE).removeModifier(originalModifier.id());
         living.getAttribute(Attributes.ATTACK_DAMAGE).addTransientModifier(newAttributeModifier);
+        return true;
     }
 
     @Override

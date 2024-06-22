@@ -1,5 +1,6 @@
 package net.azurune.tipsylib.common.effect;
 
+import net.azurune.tipsylib.TipsyLibConstants;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
@@ -19,7 +20,8 @@ public class AdrenalineEffect extends MobEffect {
         float speedModifier = 1.0F - living.getHealth() / living.getMaxHealth();
 
         if (living.getAttribute(Attributes.MOVEMENT_SPEED) == null) return false;
-        var originalModifier = living.getAttribute(Attributes.MOVEMENT_SPEED).getModifier(ResourceLocation.withDefaultNamespace("effect.speed"));
+        var originalModifier = living.getAttribute(Attributes.MOVEMENT_SPEED)
+                .getModifier(ResourceLocation.fromNamespaceAndPath(TipsyLibConstants.MOD_ID, "effect.adrenaline"));
 
         if (originalModifier == null) return false;
         var newAttributeModifier = new AttributeModifier(
