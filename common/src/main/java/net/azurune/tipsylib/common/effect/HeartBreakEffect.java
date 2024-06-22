@@ -10,11 +10,12 @@ public class HeartBreakEffect extends MobEffect {
     }
 
     @Override
-    public void applyEffectTick(LivingEntity entity, int amplifier) {
+    public boolean applyEffectTick(LivingEntity entity, int amplifier) {
         entity.setHealth(entity.getHealth());
+        return true;
     }
 
-    public boolean isDurationEffectTick(int duration, int amplifier) {
+    public boolean shouldApplyEffectTickThisTick(int duration, int amplifier) {
         return true;
     }
 }

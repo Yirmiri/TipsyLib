@@ -10,12 +10,13 @@ public class SmoulderingEffect extends MobEffect {
     }
 
     @Override
-    public void applyEffectTick(LivingEntity living, int amplifier) {
-        living.setSecondsOnFire(1 + amplifier);
+    public boolean applyEffectTick(LivingEntity living, int amplifier) {
+        living.igniteForTicks(20 * amplifier);
+        return true;
     }
 
     @Override
-    public boolean isDurationEffectTick(int duration, int amplifier) {
+    public boolean shouldApplyEffectTickThisTick(int duration, int amplifier) {
         return true;
     }
 }

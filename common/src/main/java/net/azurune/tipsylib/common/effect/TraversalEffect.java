@@ -15,7 +15,7 @@ public class TraversalEffect extends InstantenousMobEffect {
     }
 
     @Override
-    public void applyEffectTick(LivingEntity living, int amplifier) {
+    public boolean applyEffectTick(LivingEntity living, int amplifier) {
         Vec3 pos;
         if (!living.level().isClientSide()) {
             if (living instanceof ServerPlayer player && !living.isSpectator()) {
@@ -31,10 +31,11 @@ public class TraversalEffect extends InstantenousMobEffect {
                 }
             }
         }
+        return true;
     }
 
     @Override
-    public boolean isDurationEffectTick(int duration, int amplifier) {
+    public boolean shouldApplyEffectTickThisTick(int duration, int amplifier) {
         return true;
     }
 

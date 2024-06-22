@@ -13,13 +13,14 @@ public class HemolacriaEffect extends MobEffect {
     }
 
     @Override
-    public void applyEffectTick(LivingEntity entity, int amplifier) {
+    public boolean applyEffectTick(LivingEntity entity, int amplifier) {
         DamageSource damagesource = new DamageSource(entity.level().registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(TLDamageTypes.HEMOLACRIA));
         entity.hurt(damagesource, amplifier + 1);
+        return true;
     }
 
     @Override
-    public boolean isDurationEffectTick(int duration, int amplifier) {
+    public boolean shouldApplyEffectTickThisTick(int duration, int amplifier) {
         return duration % 60 == 0;
     }
 }

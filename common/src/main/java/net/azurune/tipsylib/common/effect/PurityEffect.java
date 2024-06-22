@@ -14,7 +14,7 @@ public class PurityEffect extends MobEffect {
     }
 
     @Override
-    public void applyEffectTick(LivingEntity entity, int amplifier) {
+    public boolean applyEffectTick(LivingEntity entity, int amplifier) {
         List<MobEffectInstance> effectsToClear = new ArrayList<>();
 
         for (MobEffectInstance effect : entity.getActiveEffects()) {
@@ -27,10 +27,11 @@ public class PurityEffect extends MobEffect {
             entity.removeEffect(effect.getEffect());
         }
         super.applyEffectTick(entity, amplifier);
+        return true;
     }
 
     @Override
-    public boolean isDurationEffectTick(int duration, int amplifier) {
+    public boolean shouldApplyEffectTickThisTick(int duration, int amplifier) {
         return true;
     }
 }

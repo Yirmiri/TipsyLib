@@ -12,16 +12,17 @@ public class GravityResistanceEffect extends MobEffect {
     }
 
     @Override
-    public void applyEffectTick(LivingEntity livingEntity, int amplifier) {
-        if (livingEntity.hasEffect(MobEffects.LEVITATION) || livingEntity.hasEffect(MobEffects.SLOW_FALLING) || livingEntity.hasEffect(TLStatusEffects.FAST_FALLING)) {
+    public boolean applyEffectTick(LivingEntity livingEntity, int amplifier) {
+        if (livingEntity.hasEffect(MobEffects.LEVITATION) || livingEntity.hasEffect(MobEffects.SLOW_FALLING) || livingEntity.hasEffect(TLStatusEffects.FAST_FALLING.get())) {
             livingEntity.removeEffect(MobEffects.LEVITATION);
             livingEntity.removeEffect(MobEffects.SLOW_FALLING);
-            livingEntity.removeEffect(TLStatusEffects.FAST_FALLING);
+            livingEntity.removeEffect(TLStatusEffects.FAST_FALLING.get());
         }
+        return true;
     }
 
     @Override
-    public boolean isDurationEffectTick(int duration, int amplifier) {
+    public boolean shouldApplyEffectTickThisTick(int duration, int amplifier) {
         return true;
     }
 }
