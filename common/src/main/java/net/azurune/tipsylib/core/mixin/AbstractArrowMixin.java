@@ -19,12 +19,12 @@ public abstract class AbstractArrowMixin {
     public void tipsylib_onEntityHit(EntityHitResult entityHitResult, CallbackInfo ci) {
         if (projectile.getOwner() instanceof LivingEntity living) {
 
-            if (living.hasEffect(TLStatusEffects.PRECISION.get())) {
-                projectile.setBaseDamage(projectile.getBaseDamage() + living.getEffect(TLStatusEffects.PRECISION.get()).getAmplifier());
+            if (living.hasEffect(TLStatusEffects.PRECISION)) {
+                projectile.setBaseDamage(projectile.getBaseDamage() + living.getEffect(TLStatusEffects.PRECISION).getAmplifier());
             }
 
-            if (living.hasEffect(TLStatusEffects.INACCURATE.get())) {
-                projectile.setBaseDamage(projectile.getBaseDamage() - living.getEffect(TLStatusEffects.INACCURATE.get()).getAmplifier());
+            if (living.hasEffect(TLStatusEffects.INACCURATE)) {
+                projectile.setBaseDamage(projectile.getBaseDamage() - living.getEffect(TLStatusEffects.INACCURATE).getAmplifier());
             }
         }
     }

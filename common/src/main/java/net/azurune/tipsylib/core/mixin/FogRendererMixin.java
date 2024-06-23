@@ -14,7 +14,7 @@ public class FogRendererMixin {
     private static boolean tipsylib_setupFog(Entity entity) {
         if (entity instanceof Player) {
             Player player = (Player) entity;
-            if (player.hasEffect(TLStatusEffects.BRIMSTONE_VISION.get())) {
+            if (player.hasEffect(TLStatusEffects.BRIMSTONE_VISION)) {
                 return true;
             }
         }

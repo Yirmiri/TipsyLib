@@ -19,23 +19,25 @@ import java.util.Map;
 
 import static java.util.Map.entry;
 
+/*
+
 @Mixin(Gui.class)
 public abstract class GuiMixin {
 //TODO: Add berserk heart icons
     @Unique
     private static final Map<MobEffect, ResourceLocation> OVERIDE_HEART_ICONS_MAP = Map.ofEntries(
-            entry(TLStatusEffects.CONFUSION, TipsyLib.id("textures/gui/confused_hearts.png"))
+            entry(TLStatusEffects.CONFUSION.value(), TipsyLib.id("textures/gui/confused_hearts.png"))
     );
 
     @Unique
     private static final Map<MobEffect, ResourceLocation> HEART_ICONS_MAP = Map.ofEntries(
-            entry(TLStatusEffects.CONFUSION, TipsyLib.id("textures/gui/confused_hearts.png")),
-            //entry(TLStatusEffects.BERSERK, TipsyLib.id("textures/gui/berserk_hearts.png")),
-            entry(TLStatusEffects.HEMOLACRIA, TipsyLib.id("textures/gui/hemolacria_hearts.png")),
-            entry(TLStatusEffects.VENOM, TipsyLib.id("textures/gui/venom_hearts.png")),
-            entry(TLStatusEffects.INTERNAL_BLEEDING, TipsyLib.id("textures/gui/bleeding_hearts.png")),
-            entry(TLStatusEffects.SHATTERSPLEEN, TipsyLib.id("textures/gui/shatterspleen_hearts.png")),
-            entry(TLStatusEffects.DEVOUR, TipsyLib.id("textures/gui/devour_hearts.png"))
+            entry(TLStatusEffects.CONFUSION.value(), TipsyLib.id("textures/gui/confused_hearts.png")),
+            //entry(TLStatusEffects.BERSERK.value(), TipsyLib.id("textures/gui/berserk_hearts.png")),
+            entry(TLStatusEffects.HEMOLACRIA.value(), TipsyLib.id("textures/gui/hemolacria_hearts.png")),
+            entry(TLStatusEffects.VENOM.value(), TipsyLib.id("textures/gui/venom_hearts.png")),
+            entry(TLStatusEffects.INTERNAL_BLEEDING.value(), TipsyLib.id("textures/gui/bleeding_hearts.png")),
+            entry(TLStatusEffects.SHATTERSPLEEN.value(), TipsyLib.id("textures/gui/shatterspleen_hearts.png")),
+            entry(TLStatusEffects.DEVOUR.value(), TipsyLib.id("textures/gui/devour_hearts.png"))
     );
 
     @Unique
@@ -141,3 +143,5 @@ public abstract class GuiMixin {
         }
     }
 }
+
+ */

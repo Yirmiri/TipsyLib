@@ -67,8 +67,8 @@ public class TLStatusEffects {
         PRECISION = registerEffect("precision",  new NoSpecialEffect(MobEffectCategory.BENEFICIAL, 0xfff774));
         DIVERSION = registerEffect("diversion",  new NoSpecialEffect(MobEffectCategory.BENEFICIAL, 0x66d0e9));
         TRAVERSAL = registerEffect("traversal",  new TraversalEffect(MobEffectCategory.BENEFICIAL, 0x924ecd));
-        RETALIATION = registerEffect("retaliation",  new NoSpecialEffect(MobEffectCategory.BENEFICIAL, 0x938c7a));
-        BURNING_THORNS = registerEffect("burning_thorns",  new NoSpecialEffect(MobEffectCategory.BENEFICIAL, 0xf57d4a));
+        RETALIATION = registerEffect("retaliation",  new RetaliationEffect(MobEffectCategory.BENEFICIAL, 0x938c7a));
+        BURNING_THORNS = registerEffect("burning_thorns",  new BurningThornsEffect(MobEffectCategory.BENEFICIAL, 0xf57d4a));
         PYROMANIAC = registerEffect("pyromaniac",  new NoSpecialEffect(MobEffectCategory.BENEFICIAL, 0xec3920));
         STEEL_FEET = registerEffect("steel_feet",  new NoSpecialEffect(MobEffectCategory.BENEFICIAL, 0x5c6478));
         WATER_WALKING = registerEffect("water_walking",  new NoSpecialEffect(MobEffectCategory.BENEFICIAL, 0x5c89dc));
