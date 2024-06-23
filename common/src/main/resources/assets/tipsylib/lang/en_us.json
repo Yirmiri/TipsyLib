@@ -42,6 +42,7 @@
   "effect.tipsylib.caffeine_crash": "Caffeine Crash",
   "effect.tipsylib.smouldering": "Smouldering",
   "effect.tipsylib.frostbite": "Frostbite",
+  "effect.tipsylib.brimstone_vision": "Brimstone Vision",
 
   "effect.tipsylib.vulnerability.description": "Reduces the armor points of the user.",
   "effect.tipsylib.heartbreak.description": "Reduces the max health points of the user.",
@@ -86,6 +87,7 @@
   "effect.tipsylib.caffeine_crash.description": "Small decrease to most major stats",
   "effect.tipsylib.smouldering.description": "Causes the entity to constantly burn",
   "effect.tipsylib.frostbite.description": "Causes the entity to constantly freeze",
+  "effect.tipsylib.brimstone_vision.description": "Increases visibility under lava",
 
   "effect.tipsylib.traversal.no_spawn_point": "Traversal requires a spawn point",
 
