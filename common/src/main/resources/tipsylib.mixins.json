@@ -13,7 +13,7 @@
     "StatusEffectInstanceMixin"
   ],
   "client": [
-    "PlayerSkinMixin",
+    "CapeLayerMixin",
     "FogRendererMixin"
   ],
   "server": [
