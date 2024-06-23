@@ -24,6 +24,7 @@ import static java.util.Map.entry;
 @Mixin(Gui.class)
 public abstract class GuiMixin {
 //TODO: Add berserk heart icons
+
     @Unique
     private static final Map<MobEffect, ResourceLocation> OVERIDE_HEART_ICONS_MAP = Map.ofEntries(
             entry(TLStatusEffects.CONFUSION.value(), TipsyLib.id("textures/gui/confused_hearts.png"))
