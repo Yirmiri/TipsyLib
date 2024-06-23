@@ -11,7 +11,7 @@ public class SmoulderingEffect extends MobEffect {
 
     @Override
     public boolean applyEffectTick(LivingEntity living, int amplifier) {
-        living.igniteForTicks(20 * amplifier);
+        living.igniteForSeconds(5 + amplifier);
         return true;
     }
 

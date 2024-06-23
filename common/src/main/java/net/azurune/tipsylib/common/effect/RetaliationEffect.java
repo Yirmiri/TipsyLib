@@ -14,13 +14,12 @@ public class RetaliationEffect extends MobEffect {
     }
 
     @Override
-    public void onMobHurt(LivingEntity livingEntity, int i, DamageSource damageSource, float f) {
+    public void onMobHurt(LivingEntity livingEntity, int amplifier, DamageSource damageSource, float f) {
         Entity attacker = damageSource.getEntity();
         if (attacker != null) {
             DamageSource damagesource = new DamageSource(attacker.level().registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(TLDamageTypes.RETALIATION));
-            attacker.hurt(damagesource, 1.0F + (i + 1));
-            System.out.println(1.0F + (i + 1));
+            attacker.hurt(damagesource, 1.0F + (amplifier));
         }
-        super.onMobHurt(livingEntity, i, damageSource, f);
+        super.onMobHurt(livingEntity, amplifier, damageSource, f);
     }
 }

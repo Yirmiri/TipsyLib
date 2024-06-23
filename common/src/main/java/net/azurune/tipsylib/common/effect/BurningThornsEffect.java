@@ -13,11 +13,11 @@ public class BurningThornsEffect extends MobEffect {
     }
 
     @Override
-    public void onMobHurt(LivingEntity livingEntity, int i, DamageSource damageSource, float f) {
+    public void onMobHurt(LivingEntity livingEntity, int amplifier, DamageSource damageSource, float f) {
         Entity attacker = damageSource.getEntity();
         if (attacker != null) {
-            attacker.igniteForSeconds(5 * (i + 1));
+            attacker.igniteForSeconds(5 + amplifier + 1);
         }
-        super.onMobHurt(livingEntity, i, damageSource, f);
+        super.onMobHurt(livingEntity, amplifier, damageSource, f);
     }
 }
