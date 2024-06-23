@@ -7,14 +7,12 @@ import net.minecraft.world.effect.MobEffect;
 import net.azurune.tipsylib.TipsyLib;
 import net.azurune.tipsylib.core.platform.services.TipsyLibRegistryHelper;
 
-import java.util.function.Supplier;
-
 public class FabricTipsyLibRegistryHelper implements TipsyLibRegistryHelper {
 
 
     @Override
-    public <T extends MobEffect> Supplier<Holder<T>> registerEffect(String id, Supplier<Holder<T>> supplier) {
-        var mobEffect = Registry.registerForHolder(BuiltInRegistries.MOB_EFFECT, TipsyLib.id(id), supplier.get().value());
-        return () -> mobEffect;
+    public Holder<MobEffect> registerEffect(String id, MobEffect mobEffect) {
+        var mobEffectReference = Registry.registerForHolder(BuiltInRegistries.MOB_EFFECT, TipsyLib.id(id), mobEffect);
+        return mobEffectReference;
     }
 }
