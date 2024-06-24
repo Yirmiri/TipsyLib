@@ -42,6 +42,11 @@
   "effect.tipsylib.caffeine_crash": "Caffeine Crash",
   "effect.tipsylib.smouldering": "Smouldering",
   "effect.tipsylib.brimstone_vision": "Brimstone Vision",
+  "effect.tipsylib.aqua_treader": "Aqua Treader",
+  "effect.tipsylib.expanding": "Expanding",
+  "effect.tipsylib.shrinking": "Shrinking",
+  "effect.tipsylib.reaching": "Reaching",
+  "effect.tipsylib.swiping": "Swiping",
 
   "effect.tipsylib.vulnerability.description": "Reduces the armor points of the user.",
   "effect.tipsylib.heartbreak.description": "Reduces the max health points of the user.",
@@ -86,6 +91,11 @@
   "effect.tipsylib.caffeine_crash.description": "Small decrease to most major stats",
   "effect.tipsylib.smouldering.description": "Causes the entity to constantly burn",
   "effect.tipsylib.brimstone_vision.description": "Increases visibility under lava",
+  "effect.tipsylib.aqua_treader.description": "Increases water movement speed for the entity",
+  "effect.tipsylib.expanding.description": "Increases the size of the entity",
+  "effect.tipsylib.shrinking.description": "Decreases the size of the entity",
+  "effect.tipsylib.reaching.description": "Increases the interaction reach of the entity",
+  "effect.tipsylib.swiping.description": "Increases the entity reach of the entity",
 
   "effect.tipsylib.traversal.no_spawn_point": "Traversal requires a spawn point",
 

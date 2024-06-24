@@ -49,10 +49,10 @@ public abstract class PlayerEntityMixin {
         }
     }
 
-    @Inject(at = @At("HEAD"), method = "canFoodHeal", cancellable = true)
-    public void tipsylib_canFoodHeal(CallbackInfoReturnable<Boolean> cir) {
-        if (player.hasStatusEffect(TLStatusEffects.BLEEDING)) {
-            cir.setReturnValue(true);
-        }
-    }
+//    @Inject(at = @At("HEAD"), method = "canFoodHeal", cancellable = true)
+//    public void tipsylib_canFoodHeal(CallbackInfoReturnable<Boolean> cir) {
+//        if (player.hasStatusEffect(TLStatusEffects.BLEEDING)) {
+//            cir.setReturnValue(true);
+//        }
+//    }
 }

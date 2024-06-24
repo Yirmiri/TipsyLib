@@ -52,16 +52,12 @@ public abstract class LivingEntityMixin {
     }
 
     @Inject(at = @At("HEAD"), method = "canWalkOnFluid", cancellable = true)
-    public void canWalkOnFluid(FluidState state, CallbackInfoReturnable<Boolean> cir) {
-        if (living instanceof LivingEntity && !living.isSneaking()) {
-            if (state.getFluid() == Fluids.WATER || state.getFluid() == Fluids.FLOWING_WATER)
-                this.living.hasStatusEffect(TLStatusEffects.WATER_WALKING);
-            cir.setReturnValue(true);
+    public void tipsylib_canStandOnFluid(FluidState state, CallbackInfoReturnable<Boolean> cir) {
+        if (state.getFluid() == Fluids.WATER || state.getFluid() == Fluids.FLOWING_WATER)
+            if (living != null && (this.living.hasStatusEffect(TLStatusEffects.WATER_WALKING))) cir.setReturnValue(true);
 
-            if (state.getFluid() == Fluids.LAVA || state.getFluid() == Fluids.FLOWING_LAVA)
-                this.living.hasStatusEffect(TLStatusEffects.LAVA_WALKING);
-            cir.setReturnValue(true);
-        }
+        if (state.getFluid() == Fluids.LAVA || state.getFluid() == Fluids.FLOWING_LAVA)
+            if (living != null && (this.living.hasStatusEffect(TLStatusEffects.LAVA_WALKING))) cir.setReturnValue(true);
     }
 
     @Inject(at = @At("HEAD"), method = "getJumpBoostVelocityModifier", cancellable = true)

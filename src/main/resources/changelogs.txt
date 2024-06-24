@@ -7,15 +7,15 @@ Literally just a secret .txt file of every single update's changelog
 Version Release v2.1.0 MC-1.21
 
   Additions
+•   Added/improved caffeinated, caffeinated grants a minor boost to most stats & upon ending grants a status effect doing the opposite
 •   Added purity, disallows the user to get any effects good or bad (the opposite of impurity)
-•   Added bleeding, disallows healing from natural regeneration (internal bleeding stops all healing)
+•   Added a bunch of attribute effects
 
   Changes
 •   Improved traversal, now teleports the player to their set spawnpoint upon receiving the effect and teleports them up 1 block up to prevent getting stuck
 (prior if it was applied for a longer time or mixed with chronos the player would often get stuck on their set spawnpoint)
 •   Improved heartbreak, now updates health instantly
 •   Improved precision and inaccurate to apply to all projectiles instead of arrows
-•   Improved water/lava walking, now disables while sneaking
 •   AOE effects now increase by +4 blocks instead of +6 per level
 •   Smouldering now burns the entity for +3 seconds per level
 •   Changed the name of Impure to Impurity
