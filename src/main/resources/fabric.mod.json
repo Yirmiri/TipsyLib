@@ -1,34 +1,35 @@
 {
-	"schemaVersion": 1,
-	"id": "tipsylib",
-	"version": "${version}",
-	"name": "TipsyLib",
-	"description": "This is an example description! Tell everyone what your mod is about!",
-	"authors": [
-		"Me!"
-	],
-	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
-	},
-	"license": "CC0-1.0",
-	"icon": "assets/tipsylib/icon.png",
-	"environment": "*",
-	"entrypoints": {
-		"main": [
-			"net.azurune.tipsylib.TipsyLib"
-		]
-	},
-	"mixins": [
-		"tipsylib.mixins.json"
-	],
-	"depends": {
-		"fabricloader": ">=0.15.11",
-		"minecraft": "~1.21",
-		"java": ">=21",
-		"fabric-api": "*"
-	},
-	"suggests": {
-		"another-mod": "*"
-	}
+    "schemaVersion": 1,
+    "id": "tipsylib",
+    "version": "2.0.9",
+    "name": "TipsyLib",
+    "description": "A library mod that contains tons of new effects for modders to take use of.",
+    "authors": [
+        "Yirmiri"
+    ],
+    "contact": {
+        "homepage": "https://www.curseforge.com/minecraft/mc-mods/tipsylib",
+        "sources": "https://github.com/Yirmiri/TipsyLib"
+    },
+    "license": "All Rights Reserved",
+    "icon": "tipsylib_icon.png",
+    "environment": "*",
+    "entrypoints": {
+        "main": [
+          "net.azurune.tipsylib.TipsyLib"
+        ]
+    },
+    "mixins": [
+        "tipsylib.mixins.json"
+    ],
+    "depends": {
+        "fabricloader": ">=0.14",
+        "fabric": "*",
+        "minecraft": "1.21",
+        "java": ">=21"
+    },
+    "suggests": {
+        "another-mod": "*"
+    }
 }
+  

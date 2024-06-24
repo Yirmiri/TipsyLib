@@ -1,5 +1,6 @@
 package net.azurune.tipsylib;
 
+import net.azurune.tipsylib.registry.TLStatusEffects;
 import net.fabricmc.api.ModInitializer;
 
 import org.slf4j.Logger;
@@ -12,6 +13,6 @@ public class TipsyLib implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-
+		TLStatusEffects.registerTLEffects();
 	}
 }
