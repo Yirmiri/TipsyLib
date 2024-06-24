@@ -9,7 +9,11 @@ Version Release v2.1.0 MC-1.21
   Additions
 •   Added/improved caffeinated, caffeinated grants a minor boost to most stats & upon ending grants a status effect doing the opposite
 •   Added purity, disallows the user to get any effects good or bad (the opposite of impurity)
-•   Added a bunch of attribute effects
+•   Added an effect that decreases the gravity of the user
+•   Added an effect that increases block interaction range
+•   Added an effect that increases entity interaction range
+•   Added an effect that increases entity size
+•   Added an effect that decreases entity size
 
   Changes
 •   Improved traversal, now teleports the player to their set spawnpoint upon receiving the effect and teleports them up 1 block up to prevent getting stuck
