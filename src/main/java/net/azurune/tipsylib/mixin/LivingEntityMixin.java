@@ -18,7 +18,6 @@ import net.minecraft.registry.tag.DamageTypeTags;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Final;
@@ -67,14 +66,6 @@ public abstract class LivingEntityMixin {
             cir.setReturnValue(-0.1F * living.getStatusEffect(TLStatusEffects.FAST_FALLING).getAmplifier() - 0.1F);
         }
     }
-
-//    @Inject(at = @At("HEAD"), method = "travel", cancellable = true)
-//    public void tipsylib_travel(Vec3d movementInput, CallbackInfo ci) {
-//        float f = living.isSprinting() ? 0.9F : living.getBaseMovementSpeedMultiplier();
-//        if (living.hasStatusEffect(TLStatusEffects.AQUA_TREADER)) {
-//            f = 0.5F;
-//        }
-//    }
 
     @Inject(at = @At("HEAD"), method = "damage", cancellable = true)
     public void tipsylib_hurt(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {

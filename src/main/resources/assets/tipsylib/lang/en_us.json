@@ -48,6 +48,7 @@
   "effect.tipsylib.reaching": "Reaching",
   "effect.tipsylib.swiping": "Swiping",
   "effect.tipsylib.gravitation": "Gravitation",
+  "effect.tipsylib.path_of_demise": "Path of Demise",
 
   "effect.tipsylib.vulnerability.description": "Reduces the armor points of the user.",
   "effect.tipsylib.heartbreak.description": "Reduces the max health points of the user.",
@@ -98,8 +99,10 @@
   "effect.tipsylib.reaching.description": "Increases the interaction reach of the entity",
   "effect.tipsylib.swiping.description": "Increases the entity reach of the entity",
   "effect.tipsylib.gravitation.description": "Decreases the gravity of the entity",
+  "effect.tipsylib.path_of_demise.description": "Teleports the user to their latest death location",
 
   "effect.tipsylib.traversal.no_spawn_point": "Traversal requires a spawn point",
+  "effect.tipsylib.demise.no_death_point": "Path of Demise requires a death point",
 
   "death.attack.tipsylib.backlash": "%1$s couldn't handle the backlash",
   "death.attack.tipsylib.backlash.player": "%1$s couldn't handle the backlash from attacking %2$s",

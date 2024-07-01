@@ -18,10 +18,6 @@ public class TraversalEffect extends InstantStatusEffect {
         if (!entity.getWorld().isClient) {
             if (entity instanceof ServerPlayerEntity player && !entity.isSpectator()) {
                 if (player.getSpawnPointPosition() != null) {
-
-                //} if (player.getWorld().getBlockState(player.getSpawnPointPosition()).getBlock() instanceof BedBlock
-                        //|| player.getWorld().getBlockState(player.getSpawnPointPosition()).getBlock() instanceof RespawnAnchorBlock) {
-
                     pos = Vec3d.ofBottomCenter(player.getSpawnPointPosition());
                     player.teleport(pos.x, pos.y + 1, pos.z, true);
                 } else {

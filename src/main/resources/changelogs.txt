@@ -4,6 +4,20 @@ Literally just a secret .txt file of every single update's changelog
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+Version Release v2.1.1 MC-1.21
+
+  Additions
+•   Added particle effects when teleporting via teleportation effects
+•   Added Path of Demise, teleports the user to their latest death location
+•   Added a texture for swiping
+
+  Changes
+•   Improved traversal by now teleporting the player to their spawnpoint rather than their bed spawnpoint (added but was undocumented last update)
+•   Bumped version number to v2.1.1 (because I forgor in v2.1.0)
+•   Changed the texture of purity
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 Version Release v2.1.0 MC-1.21
 
   Additions
