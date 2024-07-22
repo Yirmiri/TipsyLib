@@ -60,6 +60,7 @@ public class TLStatusEffects {
     public static final Holder<MobEffect> CAFFEINE_CRASH;
     public static final Holder<MobEffect> SMOULDERING;
     public static final Holder<MobEffect> REACHING;
+    public static final Holder<MobEffect> SWIPING;
 
     static {
         //BENEFICIAL
@@ -86,6 +87,7 @@ public class TLStatusEffects {
         CAFFEINATED = registerEffect("caffeinated", new NoSpecialEffect(MobEffectCategory.BENEFICIAL, 0x492f25).addAttributeModifier(Attributes.ATTACK_DAMAGE, ResourceLocation.fromNamespaceAndPath(TipsyLibConstants.MOD_ID, "effect.caffeinated_damage"), 1.0, AttributeModifier.Operation.ADD_VALUE).addAttributeModifier(Attributes.MOVEMENT_SPEED, ResourceLocation.parse("effect.caffeinated_speed"), 0.03, AttributeModifier.Operation.ADD_VALUE).addAttributeModifier(Attributes.ARMOR, ResourceLocation.parse("effect.caffeinated_armor"), 2.0, AttributeModifier.Operation.ADD_VALUE).addAttributeModifier(Attributes.MAX_HEALTH, ResourceLocation.parse("effect.caffeinated_health"), 2.0, AttributeModifier.Operation.ADD_VALUE).addAttributeModifier(Attributes.JUMP_STRENGTH, ResourceLocation.parse("effect.caffeinated_jump"), 1.0, AttributeModifier.Operation.ADD_VALUE).addAttributeModifier(Attributes.LUCK, ResourceLocation.parse("effect.caffeinated_luck"), 1.0, AttributeModifier.Operation.ADD_VALUE));
         BRIMSTONE_VISION = registerEffect("brimstone_vision", new NoSpecialEffect(MobEffectCategory.BENEFICIAL, 0xec3920));
         REACHING = registerEffect("reaching", new NoSpecialEffect(MobEffectCategory.BENEFICIAL, -4377188).addAttributeModifier(Attributes.BLOCK_INTERACTION_RANGE, ResourceLocation.fromNamespaceAndPath(TipsyLibConstants.MOD_ID, "effect.reaching"), 1.0, AttributeModifier.Operation.ADD_VALUE));
+        SWIPING = registerEffect("swiping", new NoSpecialEffect(MobEffectCategory.BENEFICIAL, -4377188).addAttributeModifier(Attributes.ENTITY_INTERACTION_RANGE, ResourceLocation.fromNamespaceAndPath(TipsyLibConstants.MOD_ID, "effect.swiping"), 1.0, AttributeModifier.Operation.ADD_VALUE));
         //TRUE_INVISIBILITY = registerEffect("true_invisibility", new NoSpecialEffect(MobEffectCategory.BENEFICIAL, 0xffffff)); //TODO: FINISH
         //HYPER_ELASTICITY = registerEffect("hyper_elasticity", new NoSpecialEffect(MobEffectCategory.BENEFICIAL, 0x9ad8fa)); //TODO: FINISH
 
