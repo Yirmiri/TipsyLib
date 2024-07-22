@@ -10,8 +10,6 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.azurune.tipsylib.common.effect.*;
 import net.azurune.tipsylib.core.platform.Services;
 
-import java.util.function.Supplier;
-
 public class TLStatusEffects {
 
     //BENEFICIAL
@@ -61,7 +59,7 @@ public class TLStatusEffects {
     public static final Holder<MobEffect> SMOULDERING;
     public static final Holder<MobEffect> REACHING;
     public static final Holder<MobEffect> SWIPING;
-    public static final Holder<MobEffect> PATH_OF_DEMISE;
+    public static final Holder<MobEffect> FERRYMANS_BLESSING;
 
     static {
         //BENEFICIAL
@@ -89,7 +87,7 @@ public class TLStatusEffects {
         BRIMSTONE_VISION = registerEffect("brimstone_vision", new NoSpecialEffect(MobEffectCategory.BENEFICIAL, 0xec3920));
         REACHING = registerEffect("reaching", new NoSpecialEffect(MobEffectCategory.BENEFICIAL, -4377188).addAttributeModifier(Attributes.BLOCK_INTERACTION_RANGE, ResourceLocation.fromNamespaceAndPath(TipsyLibConstants.MOD_ID, "effect.reaching"), 1.0, AttributeModifier.Operation.ADD_VALUE));
         SWIPING = registerEffect("swiping", new NoSpecialEffect(MobEffectCategory.BENEFICIAL, -4377188).addAttributeModifier(Attributes.ENTITY_INTERACTION_RANGE, ResourceLocation.fromNamespaceAndPath(TipsyLibConstants.MOD_ID, "effect.swiping"), 1.0, AttributeModifier.Operation.ADD_VALUE));
-        PATH_OF_DEMISE = registerEffect("path_of_demise", new PathOfDemiseEffect(MobEffectCategory.BENEFICIAL, 0xffffff));
+        FERRYMANS_BLESSING = registerEffect("ferrymans_blessing", new FerrymansBlessingEffect(MobEffectCategory.BENEFICIAL, 0xffffff));
         //TRUE_INVISIBILITY = registerEffect("true_invisibility", new NoSpecialEffect(MobEffectCategory.BENEFICIAL, 0xffffff)); //TODO: FINISH
         //HYPER_ELASTICITY = registerEffect("hyper_elasticity", new NoSpecialEffect(MobEffectCategory.BENEFICIAL, 0x9ad8fa)); //TODO: FINISH
 

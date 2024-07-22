@@ -9,8 +9,8 @@ import net.minecraft.world.entity.LivingEntity;
 
 import java.util.Optional;
 
-public class PathOfDemiseEffect extends InstantenousMobEffect {
-    public PathOfDemiseEffect(MobEffectCategory category, int color) {
+public class FerrymansBlessingEffect extends InstantenousMobEffect {
+    public FerrymansBlessingEffect(MobEffectCategory category, int color) {
         super(category, color);
     }
 
