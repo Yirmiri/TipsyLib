@@ -9,7 +9,7 @@ public class NeoForgePlatformHelper implements IPlatformHelper {
     @Override
     public String getPlatformName() {
 
-        return "Forge";
+        return "neoforge";
     }
 
     @Override

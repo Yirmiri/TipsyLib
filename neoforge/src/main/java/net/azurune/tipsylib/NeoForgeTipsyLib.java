@@ -7,13 +7,11 @@ import net.neoforged.fml.common.Mod;
 @Mod(TipsyLibConstants.MOD_ID)
 public class NeoForgeTipsyLib {
     
-    public NeoForgeTipsyLib() {
-        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+    public NeoForgeTipsyLib(IEventBus eventBus) {
 
         TipsyLib.init();
 
-        NeoForgeTipsyLibRegistryHelper.MOB_EFFECTS.register(modEventBus);
+        NeoForgeTipsyLibRegistryHelper.MOB_EFFECTS.register(eventBus);
 
-        MinecraftForge.EVENT_BUS.register(this);
     }
 }
