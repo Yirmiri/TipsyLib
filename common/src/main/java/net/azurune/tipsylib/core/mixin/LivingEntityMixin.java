@@ -1,6 +1,7 @@
 package net.azurune.tipsylib.core.mixin;
 
 import net.azurune.tipsylib.common.util.IStatusEffectInstance;
+import net.azurune.tipsylib.core.register.TLAttributes;
 import net.azurune.tipsylib.core.register.TLDamageTypes;
 import net.azurune.tipsylib.core.register.TLStatusEffects;
 import net.minecraft.core.BlockPos;
@@ -16,6 +17,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.material.FluidState;
@@ -41,6 +43,13 @@ public abstract class LivingEntityMixin {
     @Shadow @Nullable public abstract MobEffectInstance getEffect(Holder<MobEffect> effect);
     @Unique @Final LivingEntity living = (LivingEntity) (Object) this;
     @Unique public Level level;
+
+    @Inject(at = @At("TAIL"), method = "createLivingAttributes", cancellable = true)
+    private static void createLivingAttributes(CallbackInfoReturnable<AttributeSupplier.Builder> cir) {
+        cir.getReturnValue()
+                .add(TLAttributes.PLACEHOLDER)
+                ;
+    }
 
     @Inject(at = @At("HEAD"), method = "tickEffects")
     public void tipsylib_tickEffects(CallbackInfo ci) {
