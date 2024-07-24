@@ -1,14 +1,12 @@
 package net.azurune.tipsylib.common.effect;
 
-import net.azurune.tipsylib.TipsyLibConstants;
+import net.azurune.tipsylib.TipsyLib;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-
-import java.util.UUID;
 
 public class AdrenalineEffect extends MobEffect {
     public AdrenalineEffect(MobEffectCategory category, int color) {
@@ -21,7 +19,7 @@ public class AdrenalineEffect extends MobEffect {
 
         if (living.getAttribute(Attributes.MOVEMENT_SPEED) == null) return false;
         var originalModifier = living.getAttribute(Attributes.MOVEMENT_SPEED)
-                .getModifier(ResourceLocation.fromNamespaceAndPath(TipsyLibConstants.MOD_ID, "effect.adrenaline"));
+                .getModifier(TipsyLib.id("effect.adrenaline"));
 
         if (originalModifier == null) return false;
         var newAttributeModifier = new AttributeModifier(

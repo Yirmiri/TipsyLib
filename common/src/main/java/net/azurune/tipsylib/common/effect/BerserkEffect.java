@@ -1,6 +1,6 @@
 package net.azurune.tipsylib.common.effect;
 
-import net.azurune.tipsylib.TipsyLibConstants;
+import net.azurune.tipsylib.TipsyLib;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
@@ -19,12 +19,11 @@ public class BerserkEffect extends MobEffect {
 
         if (living.getAttribute(Attributes.ATTACK_DAMAGE) == null) return false;
         var originalModifier = living.getAttribute(Attributes.ATTACK_DAMAGE)
-                .getModifier(ResourceLocation.fromNamespaceAndPath(TipsyLibConstants.MOD_ID, "effect.berserk"));
+                .getModifier(TipsyLib.id("effect.berserk"));
 
         if (originalModifier == null) return false;
         var newAttributeModifier = new AttributeModifier(
                 originalModifier.id(),
-                //originalModifier.getName(),
                 damageModifier * (amplifier + 1.0F),
                 originalModifier.operation());
 
