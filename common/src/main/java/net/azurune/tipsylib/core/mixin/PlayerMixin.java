@@ -1,7 +1,7 @@
 package net.azurune.tipsylib.core.mixin;
 
 import net.azurune.tipsylib.core.register.TLAttributes;
-import net.azurune.tipsylib.core.register.TLStatusEffects;
+import net.azurune.tipsylib.core.register.TLMobEffects;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
@@ -31,21 +31,21 @@ public abstract class PlayerMixin {
             player.level().playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.SOUL_ESCAPE, SoundSource.PLAYERS, 1.0F, 1.0F);
         }
 
-        if (player.hasEffect(TLStatusEffects.ENIGMA)) {
-            player.removeEffect(TLStatusEffects.ENIGMA);
+        if (player.hasEffect(TLMobEffects.ENIGMA)) {
+            player.removeEffect(TLMobEffects.ENIGMA);
         }
     }
 
     @Inject(at = @At("HEAD"), method = "isHurt", cancellable = true)
     public void tipsylib_getJumpBoostPower(CallbackInfoReturnable<Float> cir) {
-        if (player.hasEffect(TLStatusEffects.INTERNAL_BLEEDING)) {
+        if (player.hasEffect(TLMobEffects.INTERNAL_BLEEDING)) {
             cir.cancel();
         }
     }
 
     @Inject(at = @At("HEAD"), method = "isReducedDebugInfo", cancellable = true)
     public void tipsylib_hasReducedDebugInfo(CallbackInfoReturnable<Boolean> cir) {
-        if (player.hasEffect(TLStatusEffects.CONFUSION)) {
+        if (player.hasEffect(TLMobEffects.CONFUSION)) {
             cir.setReturnValue(true);
         }
     }

@@ -3,8 +3,7 @@ package net.azurune.tipsylib.core.mixin;
 import net.azurune.tipsylib.common.util.IStatusEffectInstance;
 import net.azurune.tipsylib.core.register.TLAttributes;
 import net.azurune.tipsylib.core.register.TLDamageTypes;
-import net.azurune.tipsylib.core.register.TLStatusEffects;
-import net.minecraft.client.renderer.EffectInstance;
+import net.azurune.tipsylib.core.register.TLMobEffects;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
@@ -75,7 +74,7 @@ public abstract class LivingEntityMixin {
     @Inject(at = @At("HEAD"), method = "tickEffects")
     public void tipsylib_tickEffects(CallbackInfo ci) {
         for (MobEffectInstance statusEffect : this.activeEffects.values()) {
-            if (statusEffect.getEffect() != TLStatusEffects.CHRONOS) {
+            if (statusEffect.getEffect() != TLMobEffects.CHRONOS) {
                 if (statusEffect instanceof IStatusEffectInstance effect) {
                     effect.setEntity((LivingEntity) (Object) this);
                 }
@@ -87,33 +86,33 @@ public abstract class LivingEntityMixin {
     public void tipsylib_canStandOnFluid(FluidState state, CallbackInfoReturnable<Boolean> cir) {
         if (!living.isCrouching()) {
             if (state.getType() == Fluids.WATER || state.getType() == Fluids.FLOWING_WATER)
-                if (living != null && (this.living.hasEffect(TLStatusEffects.WATER_WALKING))) cir.setReturnValue(true);
+                if (living != null && (this.living.hasEffect(TLMobEffects.WATER_WALKING))) cir.setReturnValue(true);
 
             if (state.getType() == Fluids.LAVA || state.getType() == Fluids.FLOWING_LAVA)
-                if (living != null && (this.living.hasEffect(TLStatusEffects.LAVA_WALKING))) cir.setReturnValue(true);
+                if (living != null && (this.living.hasEffect(TLMobEffects.LAVA_WALKING))) cir.setReturnValue(true);
         }
     }
 
     @Inject(at = @At("HEAD"), method = "getJumpBoostPower", cancellable = true)
     public void tipsylib_getJumpBoostPower(CallbackInfoReturnable<Float> cir) {
-        if (living.hasEffect(TLStatusEffects.FAST_FALLING)) {
-            cir.setReturnValue(-0.1F * this.getEffect(TLStatusEffects.FAST_FALLING).getAmplifier() -0.1F);
+        if (living.hasEffect(TLMobEffects.FAST_FALLING)) {
+            cir.setReturnValue(-0.1F * this.getEffect(TLMobEffects.FAST_FALLING).getAmplifier() -0.1F);
         }
     }
 
     @Inject(at = @At("HEAD"), method = "canFreeze", cancellable = true)
     public void tipsylib_canFreeze(CallbackInfoReturnable<Boolean> cir) {
-        if (living.hasEffect(TLStatusEffects.FREEZE_RESISTANCE)) {
+        if (living.hasEffect(TLMobEffects.FREEZE_RESISTANCE)) {
             cir.setReturnValue(false);
         }
     }
 
     @Inject(at = @At("HEAD"), method = "hurt", cancellable = true)
     public void tipsylib_hurt(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
-        if (living.hasEffect(TLStatusEffects.TOUGH_SKIN) && source.is(DamageTypeTags.IS_EXPLOSION))
+        if (living.hasEffect(TLMobEffects.TOUGH_SKIN) && source.is(DamageTypeTags.IS_EXPLOSION))
             cir.setReturnValue(false);
 
-        if (living.hasEffect(TLStatusEffects.FREEZE_RESISTANCE) && source.is(DamageTypeTags.IS_FREEZING))
+        if (living.hasEffect(TLMobEffects.FREEZE_RESISTANCE) && source.is(DamageTypeTags.IS_FREEZING))
             cir.setReturnValue(false);
 
         double dodgeChance = living.getAttributeValue(TLAttributes.DODGE_CHANCE);
@@ -123,7 +122,7 @@ public abstract class LivingEntityMixin {
         }
 
         if (source.is(DamageTypeTags.IS_FALL)) {
-            if (living.hasEffect(TLStatusEffects.STEEL_FEET) && source.is(DamageTypeTags.IS_FALL))
+            if (living.hasEffect(TLMobEffects.STEEL_FEET) && source.is(DamageTypeTags.IS_FALL))
                 cir.setReturnValue(false);
         }
 
@@ -189,27 +188,27 @@ public abstract class LivingEntityMixin {
 
     @Inject(at = @At("HEAD"), method = "heal", cancellable = true)
     public void tipsylib_heal(float amount, CallbackInfo ci) {
-        if (living.hasEffect(TLStatusEffects.INTERNAL_BLEEDING) || living.hasEffect(TLStatusEffects.BLEEDING)) {
+        if (living.hasEffect(TLMobEffects.INTERNAL_BLEEDING) || living.hasEffect(TLMobEffects.BLEEDING)) {
             ci.cancel();
         }
     }
 
     @Inject(at = @At("HEAD"), method = "canBeSeenByAnyone", cancellable = true)
     public void tipsylib_canBeSeenByAnyone(CallbackInfoReturnable<Boolean> cir) {
-        if (living.hasEffect(TLStatusEffects.ENIGMA)) cir.cancel();
+        if (living.hasEffect(TLMobEffects.ENIGMA)) cir.cancel();
     }
 
     @Inject(at = @At("HEAD"), method = "tick")
     public void tipsylib_tick(CallbackInfo ci) {
         BlockPos pos = living.blockPosition();
-        if (living.hasEffect(TLStatusEffects.TRAIL_BLAZING) && living.level().getBlockState(pos).isAir()) {
+        if (living.hasEffect(TLMobEffects.TRAIL_BLAZING) && living.level().getBlockState(pos).isAir()) {
             living.level().setBlockAndUpdate(pos, Blocks.FIRE.defaultBlockState());
         }
 
-        if (living.getBlockStateOn().is(BlockTags.FIRE) && living.hasEffect(TLStatusEffects.PYROMANIAC)) {
+        if (living.getBlockStateOn().is(BlockTags.FIRE) && living.hasEffect(TLMobEffects.PYROMANIAC)) {
             if (living.tickCount % 20 == 0) {
                 if (living.getHealth() < living.getMaxHealth()) {
-                    living.heal((getEffect(TLStatusEffects.PYROMANIAC).getAmplifier() + 1.0F));
+                    living.heal((getEffect(TLMobEffects.PYROMANIAC).getAmplifier() + 1.0F));
                 }
             }
         }

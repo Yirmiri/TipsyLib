@@ -1,6 +1,6 @@
 package net.azurune.tipsylib.core.mixin;
 
-import net.azurune.tipsylib.core.register.TLStatusEffects;
+import net.azurune.tipsylib.core.register.TLMobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.client.renderer.FogRenderer;
@@ -14,7 +14,7 @@ public class FogRendererMixin {
     private static boolean tipsylib_setupFog(Entity entity) {
         if (entity instanceof Player) {
             Player player = (Player) entity;
-            if (player.hasEffect(TLStatusEffects.BRIMSTONE_VISION)) {
+            if (player.hasEffect(TLMobEffects.BRIMSTONE_VISION)) {
                 return true;
             }
         }

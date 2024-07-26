@@ -9,7 +9,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.azurune.tipsylib.common.effect.*;
 import net.azurune.tipsylib.core.platform.Services;
 
-public class TLStatusEffects {
+public class TLMobEffects {
 
     //BENEFICIAL
     public static final Holder<MobEffect> WATER_WALKING;
@@ -83,6 +83,6 @@ public class TLStatusEffects {
         return Services.REGISTRY.registerEffect(name, mobEffect);
     }
 
-    public static void loadEffects() {
+    public static void registerEffects() {
     }
 }

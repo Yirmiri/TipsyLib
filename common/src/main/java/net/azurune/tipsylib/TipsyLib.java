@@ -3,7 +3,7 @@ package net.azurune.tipsylib;
 
 import net.azurune.tipsylib.core.register.TLAttributes;
 import net.minecraft.resources.ResourceLocation;
-import net.azurune.tipsylib.core.register.TLStatusEffects;
+import net.azurune.tipsylib.core.register.TLMobEffects;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,8 +13,8 @@ public class TipsyLib {
     public static final Logger LOG = LoggerFactory.getLogger(MOD_NAME);
 
     public static void init() {
-        TLStatusEffects.loadEffects();
-        TLAttributes.loadAttributes();
+        TLMobEffects.registerEffects();
+        TLAttributes.registerAttributes();
     }
 
     public static ResourceLocation id(String name) {

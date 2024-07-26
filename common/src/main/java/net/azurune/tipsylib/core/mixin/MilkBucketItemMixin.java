@@ -1,13 +1,11 @@
 package net.azurune.tipsylib.core.mixin;
 
-import net.azurune.tipsylib.core.register.TLStatusEffects;
+import net.azurune.tipsylib.core.register.TLMobEffects;
 import net.minecraft.advancements.CriteriaTriggers;
-import net.minecraft.server.dedicated.Settings;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.MilkBucketItem;
@@ -31,7 +29,7 @@ public abstract class MilkBucketItemMixin {
             stack.shrink(1);
         }
 
-        if (!level.isClientSide() && !user.hasEffect(TLStatusEffects.IMPURE)) {
+        if (!level.isClientSide() && !user.hasEffect(TLMobEffects.IMPURE)) {
             user.removeAllEffects();
         }
 

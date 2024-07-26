@@ -1,7 +1,7 @@
 package net.azurune.tipsylib.core.mixin;
 
 import net.azurune.tipsylib.common.util.IStatusEffectInstance;
-import net.azurune.tipsylib.core.register.TLStatusEffects;
+import net.azurune.tipsylib.core.register.TLMobEffects;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
@@ -23,7 +23,7 @@ public class StatusEffectInstanceMixin implements IStatusEffectInstance {
     @Inject(at = @At("HEAD"), method = "tickDownDuration", cancellable = true)
     public void tipsylib_tickDownDuration(CallbackInfoReturnable<Integer> cir) {
         if (living != null) {
-            if (this.effect != TLStatusEffects.CHRONOS && living.hasEffect(TLStatusEffects.CHRONOS)) {
+            if (this.effect != TLMobEffects.CHRONOS && living.hasEffect(TLMobEffects.CHRONOS)) {
                 cir.setReturnValue(this.duration);
             }
         }

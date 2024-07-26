@@ -27,6 +27,6 @@ public class TLAttributes {
         return Services.REGISTRY.registerAttribute(id, base, min, max);
     }
 
-    public static void loadAttributes() {
+    public static void registerAttributes() {
     }
 }
