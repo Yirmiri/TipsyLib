@@ -17,6 +17,11 @@ public class TLAttributes {
     public static final Holder<Attribute> RETALIATION_DAMAGE_AMOUNT = register("retaliation_damage_amount", 0.0, 0, 1024.0);
     public static final Holder<Attribute> BURNING_RETALIATION_CHANCE = register("burning_retaliation_chance", 0.0, 0, 100.0);
     public static final Holder<Attribute> BURNING_RETALIATION_LENGTH = register("burning_retaliation_length", 0.0, 0, 1024.0);
+    public static final Holder<Attribute> CRITICAL_STRIKE_CHANCE = register("critical_strike_chance", 0.0, 0, 100.0);
+    public static final Holder<Attribute> CRITICAL_STRIKE_DAMAGE_MULTIPLIER = register("critical_strike_damage_multiplier", 0.0, 0, 100.0);
+    public static final Holder<Attribute> OVERHEAL_CHANCE = register("overheal_chance", 0.0, 0, 100.0);
+    public static final Holder<Attribute> OVERHEAL_AMOUNT = register("overheal_amount", 0.0, 0, 255.0);
+    public static final Holder<Attribute> OVERHEAL_TICK_LENGTH = register("overheal_tick_length", 0.0, 0, 1024.0);
 
     private static Holder<Attribute> register(String id, double base, double min, double max) {
         return Services.REGISTRY.registerAttribute(id, base, min, max);

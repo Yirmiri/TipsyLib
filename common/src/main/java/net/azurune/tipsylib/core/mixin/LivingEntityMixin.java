@@ -4,6 +4,7 @@ import net.azurune.tipsylib.common.util.IStatusEffectInstance;
 import net.azurune.tipsylib.core.register.TLAttributes;
 import net.azurune.tipsylib.core.register.TLDamageTypes;
 import net.azurune.tipsylib.core.register.TLStatusEffects;
+import net.minecraft.client.renderer.EffectInstance;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
@@ -41,6 +42,9 @@ public abstract class LivingEntityMixin {
 
     @Shadow @Final private Map<MobEffect, MobEffectInstance> activeEffects;
     @Shadow @Nullable public abstract MobEffectInstance getEffect(Holder<MobEffect> effect);
+
+    @Shadow public abstract boolean hurt(DamageSource $$0, float $$1);
+
     @Unique @Final LivingEntity living = (LivingEntity) (Object) this;
     @Unique public Level level;
     private static Random random = new Random();
@@ -60,6 +64,11 @@ public abstract class LivingEntityMixin {
                 .add(TLAttributes.RETALIATION_DAMAGE_AMOUNT)
                 .add(TLAttributes.BURNING_RETALIATION_LENGTH)
                 .add(TLAttributes.BURNING_RETALIATION_CHANCE)
+                .add(TLAttributes.CRITICAL_STRIKE_CHANCE)
+                .add(TLAttributes.CRITICAL_STRIKE_DAMAGE_MULTIPLIER)
+                .add(TLAttributes.OVERHEAL_AMOUNT)
+                .add(TLAttributes.OVERHEAL_CHANCE)
+                .add(TLAttributes.OVERHEAL_TICK_LENGTH)
                 ;
     }
 
@@ -117,14 +126,36 @@ public abstract class LivingEntityMixin {
             if (living.hasEffect(TLStatusEffects.STEEL_FEET) && source.is(DamageTypeTags.IS_FALL))
                 cir.setReturnValue(false);
         }
+
+        LivingEntity attacker = (LivingEntity) source.getDirectEntity();
+        if (attacker != null) {
+            double criticalStrikeChance = attacker.getAttributeValue(TLAttributes.CRITICAL_STRIKE_CHANCE);
+            float criticalStrikeMultiplier = (float) living.getAttributeValue(TLAttributes.CRITICAL_STRIKE_DAMAGE_MULTIPLIER);
+            if (random.nextDouble(100.0) < criticalStrikeChance) {
+                level.playSound(attacker, attacker.getOnPos(), SoundEvents.ARROW_HIT, SoundSource.PLAYERS, 1.0F, 1.0F);
+                hurt(source, (amount * criticalStrikeMultiplier));
+            }
+        }
+    }
+
+    @Inject(at = @At("HEAD"), method = "createWitherRose", cancellable = true)
+    public void onKilledBy(LivingEntity adversary, CallbackInfo ci) {
+        if (adversary != null) {
+            double overhealChance = adversary.getAttributeValue(TLAttributes.OVERHEAL_CHANCE);
+            int overhealAmount = (int) adversary.getAttributeValue(TLAttributes.OVERHEAL_AMOUNT);
+            int overhealLength = (int) adversary.getAttributeValue(TLAttributes.OVERHEAL_TICK_LENGTH);
+            if (random.nextDouble(100.0) < overhealChance) {
+                adversary.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, overhealLength, overhealAmount));
+            }
+        }
     }
 
     @ModifyVariable(at = @At("HEAD"), method = "hurt", argsOnly = true)
     public float shatterSpleen(float amount) {
         double vulnerabilityChance = living.getAttributeValue(TLAttributes.VULNERABILITY_CHANCE);
-        double vulnerabilityModifier = living.getAttributeValue(TLAttributes.VULNERABILITY_MODIFIER);
+        float vulnerabilityModifier = (float) living.getAttributeValue(TLAttributes.VULNERABILITY_MODIFIER);
         if (random.nextDouble(100.0) < vulnerabilityChance) {
-            return amount + amount * (float) vulnerabilityModifier;
+            return amount + amount * vulnerabilityModifier;
         }
         return amount;
     }
