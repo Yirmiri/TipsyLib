@@ -34,7 +34,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.Map;
-import java.util.Objects;
+import java.util.Random;
 
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin {
@@ -43,11 +43,23 @@ public abstract class LivingEntityMixin {
     @Shadow @Nullable public abstract MobEffectInstance getEffect(Holder<MobEffect> effect);
     @Unique @Final LivingEntity living = (LivingEntity) (Object) this;
     @Unique public Level level;
+    private static Random random = new Random();
 
     @Inject(at = @At("TAIL"), method = "createLivingAttributes", cancellable = true)
     private static void createLivingAttributes(CallbackInfoReturnable<AttributeSupplier.Builder> cir) {
         cir.getReturnValue()
-                .add(TLAttributes.PLACEHOLDER)
+                .add(TLAttributes.BACKLASH_CHANCE)
+                .add(TLAttributes.BACKLASH_DAMAGE_PERCENT)
+                .add(TLAttributes.ARROW_DAMAGE_MODIFIER)
+                .add(TLAttributes.DODGE_CHANCE)
+                .add(TLAttributes.LIFESTEAL_CHANCE)
+                .add(TLAttributes.LIFESTEAL_HEAL_AMOUNT)
+                .add(TLAttributes.VULNERABILITY_CHANCE)
+                .add(TLAttributes.VULNERABILITY_MODIFIER)
+                .add(TLAttributes.RETALIATION_CHANCE)
+                .add(TLAttributes.RETALIATION_DAMAGE_AMOUNT)
+                .add(TLAttributes.BURNING_RETALIATION_LENGTH)
+                .add(TLAttributes.BURNING_RETALIATION_CHANCE)
                 ;
     }
 
@@ -89,24 +101,17 @@ public abstract class LivingEntityMixin {
 
     @Inject(at = @At("HEAD"), method = "hurt", cancellable = true)
     public void tipsylib_hurt(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
-        if (source.is(DamageTypeTags.IS_FIRE)) {
-            if (living.hasEffect(TLStatusEffects.TRAIL_BLAZING) || living.hasEffect(TLStatusEffects.PYROMANIAC) || living.hasEffect(TLStatusEffects.LAVA_WALKING) && source.is(DamageTypeTags.IS_FIRE))
-                cir.setReturnValue(false);
-        }
         if (living.hasEffect(TLStatusEffects.TOUGH_SKIN) && source.is(DamageTypeTags.IS_EXPLOSION))
             cir.setReturnValue(false);
 
         if (living.hasEffect(TLStatusEffects.FREEZE_RESISTANCE) && source.is(DamageTypeTags.IS_FREEZING))
             cir.setReturnValue(false);
 
-        if (living.hasEffect(TLStatusEffects.DIVERSION) && !source.is(DamageTypeTags.BYPASSES_INVULNERABILITY))
-            if (living.hasEffect(MobEffects.LUCK)) {
-                if (Math.random() < 0.2) {
-                    dodgeAttack(living, level, cir);
-                }
-            } else if (Math.random() < 0.15) {
-                dodgeAttack(living, level, cir);
-            }
+        double dodgeChance = living.getAttributeValue(TLAttributes.DODGE_CHANCE);
+        if (random.nextDouble(100.0) < dodgeChance) {
+            living.level().playSound(null, living.getX(), living.getY(), living.getZ(), SoundEvents.ARMOR_EQUIP_GENERIC, SoundSource.PLAYERS, 1.0F, 1.0F);
+            cir.cancel();
+        }
 
         if (source.is(DamageTypeTags.IS_FALL)) {
             if (living.hasEffect(TLStatusEffects.STEEL_FEET) && source.is(DamageTypeTags.IS_FALL))
@@ -114,24 +119,12 @@ public abstract class LivingEntityMixin {
         }
     }
 
-    @Unique
-    private static void dodgeAttack(LivingEntity living, Level level, CallbackInfoReturnable<Boolean> cir) {
-        living.level().playSound(null, living.getX(), living.getY(), living.getZ(), SoundEvents.ARMOR_EQUIP_GENERIC, SoundSource.PLAYERS, 1.0F, 1.0F);
-        cir.cancel();
-    }
-
     @ModifyVariable(at = @At("HEAD"), method = "hurt", argsOnly = true)
     public float shatterSpleen(float amount) {
-        if (living.hasEffect(TLStatusEffects.SHATTERSPLEEN)) {
-            return amount + amount * (0.5F * living.getEffect(TLStatusEffects.SHATTERSPLEEN).getAmplifier() + 0.5F);
-        }
-        return amount;
-    }
-
-    @ModifyVariable(at = @At("HEAD"), method = "hurt", argsOnly = true)
-    public float frailty(float amount, DamageSource source) {
-        if (living.hasEffect(TLStatusEffects.FRAILTY) && source.is(DamageTypeTags.IS_FALL)) {
-            return amount + amount * (0.5F * living.getEffect(TLStatusEffects.FRAILTY).getAmplifier() + 0.5F);
+        double vulnerabilityChance = living.getAttributeValue(TLAttributes.VULNERABILITY_CHANCE);
+        double vulnerabilityModifier = living.getAttributeValue(TLAttributes.VULNERABILITY_MODIFIER);
+        if (random.nextDouble(100.0) < vulnerabilityChance) {
+            return amount + amount * (float) vulnerabilityModifier;
         }
         return amount;
     }
@@ -140,16 +133,32 @@ public abstract class LivingEntityMixin {
     public void tipsylib_modifyAppliedDamage(DamageSource source, float amount, CallbackInfoReturnable<Float> cir) {
         Entity entity = source.getEntity();
         if (entity instanceof LivingEntity attacker) {
-            if (living.hasEffect(TLStatusEffects.BACKLASH)) {
+
+            double backlashChance = living.getAttributeValue(TLAttributes.BACKLASH_CHANCE);
+            double backlashDamagePercent = living.getAttributeValue(TLAttributes.BACKLASH_DAMAGE_PERCENT);
+            if (random.nextDouble(100.0) < backlashChance) {
                 DamageSource damagesource = new DamageSource(entity.level().registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(TLDamageTypes.BACKLASH));
-                attacker.hurt(damagesource, (amount * 0.25F) + living.getEffect(TLStatusEffects.BACKLASH).getAmplifier() + 1.0F);
+                attacker.hurt(damagesource, (amount * (float) backlashDamagePercent));
+            }
+
+            double retaliationChance = living.getAttributeValue(TLAttributes.RETALIATION_CHANCE);
+            double retaliationDamageAmount = living.getAttributeValue(TLAttributes.RETALIATION_DAMAGE_AMOUNT);
+            if (random.nextDouble(100.0) < retaliationChance) {
+                DamageSource damagesource = new DamageSource(entity.level().registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(TLDamageTypes.RETALIATION));
+                attacker.hurt(damagesource, (float) retaliationDamageAmount);
+            }
+
+            double burningRetaliationChance = living.getAttributeValue(TLAttributes.BURNING_RETALIATION_CHANCE);
+            double burningRetaliationLength = living.getAttributeValue(TLAttributes.BURNING_RETALIATION_LENGTH);
+            if (random.nextDouble(100.0) < burningRetaliationChance) {
+                attacker.igniteForSeconds((float) burningRetaliationLength);
             }
         }
     }
 
     @Inject(at = @At("HEAD"), method = "heal", cancellable = true)
     public void tipsylib_heal(float amount, CallbackInfo ci) {
-        if (living.hasEffect(TLStatusEffects.INTERNAL_BLEEDING)) {
+        if (living.hasEffect(TLStatusEffects.INTERNAL_BLEEDING) || living.hasEffect(TLStatusEffects.BLEEDING)) {
             ci.cancel();
         }
     }

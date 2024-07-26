@@ -1,5 +1,6 @@
 package net.azurune.tipsylib.core.mixin;
 
+import net.azurune.tipsylib.core.register.TLAttributes;
 import net.azurune.tipsylib.core.register.TLStatusEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.AbstractArrow;
@@ -18,14 +19,9 @@ public abstract class AbstractArrowMixin {
     @Inject(at = @At("HEAD"), method = "onHitEntity")
     public void tipsylib_onEntityHit(EntityHitResult entityHitResult, CallbackInfo ci) {
         if (projectile.getOwner() instanceof LivingEntity living) {
+            double arrowDamageModifier = living.getAttributeValue(TLAttributes.ARROW_DAMAGE_MODIFIER);
 
-            if (living.hasEffect(TLStatusEffects.PRECISION)) {
-                projectile.setBaseDamage(projectile.getBaseDamage() + living.getEffect(TLStatusEffects.PRECISION).getAmplifier());
-            }
-
-            if (living.hasEffect(TLStatusEffects.INACCURATE)) {
-                projectile.setBaseDamage(projectile.getBaseDamage() - living.getEffect(TLStatusEffects.INACCURATE).getAmplifier());
-            }
+            projectile.setBaseDamage(projectile.getBaseDamage() + arrowDamageModifier);
         }
     }
 }
