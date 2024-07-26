@@ -12,6 +12,9 @@ logoFile = "tipsylib_icon.png"
 authors = "${mod_author}"
 description = '''${description}'''
 
+[[mixins]]
+config = "tipsylib.mixins.json"
+
 [[dependencies.${mod_id}]]
 modId = "neoforge"
 mandatory = true
