@@ -48,7 +48,7 @@ public abstract class LivingEntityMixin {
     @Unique public Level level;
     private static Random random = new Random();
 
-    @Inject(at = @At("TAIL"), method = "createLivingAttributes", cancellable = true)
+    @Inject(at = @At("TAIL"), method = "createLivingAttributes")
     private static void createLivingAttributes(CallbackInfoReturnable<AttributeSupplier.Builder> cir) {
         cir.getReturnValue()
                 .add(TLAttributes.BACKLASH_CHANCE)
