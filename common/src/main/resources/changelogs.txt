@@ -4,6 +4,72 @@ Literally just a secret .txt file of every single update's changelog
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+Version Release v3.1.0 MC-1.21
+
+  Fixes
+•   Fixed contributor capes not displaying
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Version Release v3.0.0 MC-1.21
+
+  Note: The entire mod has been rewritten for MultiLoader among many other large changes which means it will be incompatible with older versions
+With that being said, the changelog will be written as if this were the first version of the mod (aka explaining what everything does).
+
+  Beneficial Effects
+•   Water Walking - allows walking on water unless shifting
+•   Lava Walking - allows walking on lava unless shifting (no longer grants fire resistance)
+•   Trail Blazing - spawns a fire trail behind the user (no longer grants fire resistance)
+•   Perception - grants glowing to nearby entities to the effected entity
+•   Pyromaniac - slowly heals the entity while inside fire (no longer grants fire resistance)
+•   Steel Feet - grants immunity to fall damage
+•   Berserk - increases the entity's damage the lower their health points are
+•   Traversal - teleports the player to their respawn location
+•   Adrenaline - increases the entity's speed the lower their health points are
+•   Enigma - other entities cannot see this entity (disappears after attacking)
+•   Freeze Resistance - grants immunity to freezing
+•   Restoration - grants regeneration to nearby entities to the effected entity
+•   Brimstone Vision - removes the fog of lava
+•   Tough Skin - grants explosion immunity
+
+  Neutral Effects
+•   Chronos - stops all other effects from ticking
+•   Gravity Resistance - grants immunity to levitation, jump boost, fast falling, and slow falling
+
+  Negative Effects
+•   Heartbreak - reduces max health points of the entity (updates health points automatically)
+•   Bleeding - stops all forms of healing to the entity
+•   Impure - milk bucket does not clear effects to the player
+•   Venom - lethal poison. thats it.
+•   Confusion - removes the ability to view hearts or coords
+•   Hemolacria - deals overtime damage that penetrates all forms of protection
+•   Fast Falling - backwards jump boost
+•   Creative Shock - deals damage when placing blocks
+•   Internal Bleeding - stops only natural regeneration
+•   Smouldering - constantly burns the entity
+•   Ferryman's Blessing - teleports the player to their death location
+
+  Attributes
+•   Backlash Chance - chance to deal a % of the damage back to an attacker entity
+•   Backlash Damage Percent - percentage of damage dealt back
+•   Arrow Damage Modifier - increased damage for arrows
+•   Dodge Chance - chance to not take damage (does not work on damage types in bypasses_immunity_frames)
+•   Lifesteal Chance - chance to heal from attacking
+•   Lifesteal Amount - amount healed from attacking
+•   Vulnerability Chance - chance to take increased damage
+•   Vulnerability Modifier - percentage of increased damage taken
+•   Retaliation Chance - chance to deal flat damage to an attacker
+•   Retaliation Amount - amount of flat damage dealt back
+•   Burning Retaliation Chance - chance to burn an attacker
+•   Burning Retaliation Length - time in seconds to burn an attacker
+•   Critical Strike Chance - chance to deal increased damage
+•   Critical Strike Damage Multiplier - multiplier of increased damage
+•   Overheal Chance - chance to gain absorption hearts on kill
+•   Overheal Length - length in ticks overheal lasts
+•   Overheal Amount - amplifier of absorption given on overheal
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 Version Release v2.0.9 MC-1.21
 
   Additions
