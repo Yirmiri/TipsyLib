@@ -42,8 +42,6 @@ public abstract class LivingEntityMixin {
     @Shadow @Final private Map<MobEffect, MobEffectInstance> activeEffects;
     @Shadow @Nullable public abstract MobEffectInstance getEffect(Holder<MobEffect> effect);
 
-    @Shadow public abstract boolean hurt(DamageSource $$0, float $$1);
-
     @Unique @Final LivingEntity living = (LivingEntity) (Object) this;
     @Unique public Level level;
     private static Random random = new Random();
@@ -109,37 +107,28 @@ public abstract class LivingEntityMixin {
 
     @Inject(at = @At("HEAD"), method = "hurt", cancellable = true)
     public void tipsylib_hurt(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
-        if (living.hasEffect(TLMobEffects.TOUGH_SKIN) && source.is(DamageTypeTags.IS_EXPLOSION))
+        if (living.hasEffect(TLMobEffects.TOUGH_SKIN) && source.is(DamageTypeTags.IS_EXPLOSION)) {
             cir.setReturnValue(false);
+        }
 
-        if (living.hasEffect(TLMobEffects.FREEZE_RESISTANCE) && source.is(DamageTypeTags.IS_FREEZING))
+        if (living.hasEffect(TLMobEffects.FREEZE_RESISTANCE) && source.is(DamageTypeTags.IS_FREEZING)) {
             cir.setReturnValue(false);
+        }
+
+        if (living.hasEffect(TLMobEffects.STEEL_FEET) && source.is(DamageTypeTags.IS_FALL)) {
+            cir.setReturnValue(false);
+        }
 
         double dodgeChance = living.getAttributeValue(TLAttributes.DODGE_CHANCE);
-        if (random.nextDouble(100.0) < dodgeChance) {
+        if (random.nextDouble(100.0) < dodgeChance && living.isAlive()) {
             living.level().playSound(null, living.getX(), living.getY(), living.getZ(), SoundEvents.ARMOR_EQUIP_GENERIC, SoundSource.PLAYERS, 1.0F, 1.0F);
             cir.cancel();
-        }
-
-        if (source.is(DamageTypeTags.IS_FALL)) {
-            if (living.hasEffect(TLMobEffects.STEEL_FEET) && source.is(DamageTypeTags.IS_FALL))
-                cir.setReturnValue(false);
-        }
-
-        LivingEntity attacker = (LivingEntity) source.getDirectEntity();
-        if (attacker != null) {
-            double criticalStrikeChance = attacker.getAttributeValue(TLAttributes.CRITICAL_STRIKE_CHANCE);
-            float criticalStrikeMultiplier = (float) living.getAttributeValue(TLAttributes.CRITICAL_STRIKE_DAMAGE_MULTIPLIER);
-            if (random.nextDouble(100.0) < criticalStrikeChance) {
-                level.playSound(attacker, attacker.getOnPos(), SoundEvents.ARROW_HIT, SoundSource.PLAYERS, 1.0F, 1.0F);
-                hurt(source, (amount * criticalStrikeMultiplier));
-            }
         }
     }
 
     @Inject(at = @At("HEAD"), method = "createWitherRose", cancellable = true)
     public void onKilledBy(LivingEntity adversary, CallbackInfo ci) {
-        if (adversary != null) {
+        if (adversary != null && adversary.isAlive()) {
             double overhealChance = adversary.getAttributeValue(TLAttributes.OVERHEAL_CHANCE);
             int overhealAmount = (int) adversary.getAttributeValue(TLAttributes.OVERHEAL_AMOUNT);
             int overhealLength = (int) adversary.getAttributeValue(TLAttributes.OVERHEAL_TICK_LENGTH);
@@ -153,7 +142,7 @@ public abstract class LivingEntityMixin {
     public float shatterSpleen(float amount) {
         double vulnerabilityChance = living.getAttributeValue(TLAttributes.VULNERABILITY_CHANCE);
         float vulnerabilityModifier = (float) living.getAttributeValue(TLAttributes.VULNERABILITY_MODIFIER);
-        if (random.nextDouble(100.0) < vulnerabilityChance) {
+        if (random.nextDouble(100.0) < vulnerabilityChance && living.isAlive()) {
             return amount + amount * vulnerabilityModifier;
         }
         return amount;
@@ -162,7 +151,7 @@ public abstract class LivingEntityMixin {
     @Inject(at = @At("TAIL"), method = "getDamageAfterMagicAbsorb")
     public void tipsylib_modifyAppliedDamage(DamageSource source, float amount, CallbackInfoReturnable<Float> cir) {
         Entity entity = source.getEntity();
-        if (entity instanceof LivingEntity attacker) {
+        if (entity instanceof LivingEntity attacker && attacker.isAlive()) {
 
             double backlashChance = living.getAttributeValue(TLAttributes.BACKLASH_CHANCE);
             double backlashDamagePercent = living.getAttributeValue(TLAttributes.BACKLASH_DAMAGE_PERCENT);

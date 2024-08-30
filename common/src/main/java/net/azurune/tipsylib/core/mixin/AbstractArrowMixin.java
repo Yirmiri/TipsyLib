@@ -13,14 +13,14 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(AbstractArrow.class)
 public abstract class AbstractArrowMixin {
 
-    @Unique AbstractArrow projectile = (AbstractArrow) (Object) this;
+    @Unique AbstractArrow arrow = (AbstractArrow) (Object) this;
 
     @Inject(at = @At("HEAD"), method = "onHitEntity")
     public void tipsylib_onEntityHit(EntityHitResult entityHitResult, CallbackInfo ci) {
-        if (projectile.getOwner() instanceof LivingEntity living) {
+        if (arrow.getOwner() instanceof LivingEntity living) {
             double arrowDamageModifier = living.getAttributeValue(TLAttributes.ARROW_DAMAGE_MODIFIER);
 
-            projectile.setBaseDamage(projectile.getBaseDamage() + arrowDamageModifier);
+            arrow.setBaseDamage(arrow.getBaseDamage() + arrowDamageModifier);
         }
     }
 }

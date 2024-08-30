@@ -4,6 +4,21 @@ Literally just a secret .txt file of every single update's changelog
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+Version Release v3.1.1 MC-1.21(.1)
+
+  Changes
+•   The critical strike chance attribute now only affects player entities
+
+  Fixes
+•   Fixed a major crash that was caused when any non-living entity was hurt
+•   Fixed some damage types applying knockback when they shouldn't
+•   Fixed critical strike chance using an incorrect sound upon hitting a critical hit
+
+  Notes
+•   Mod now supports 1.21.1 but should still work on 1.21
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 Version Release v3.1.0 MC-1.21
 
   Fixes
