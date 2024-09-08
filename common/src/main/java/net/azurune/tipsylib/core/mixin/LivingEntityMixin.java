@@ -38,7 +38,6 @@ public abstract class LivingEntityMixin {
     @Shadow @Final private Map<MobEffect, MobEffectInstance> activeEffects;
     @Shadow @Nullable public abstract MobEffectInstance getEffect(MobEffect effect);
     @Unique @Final LivingEntity living = (LivingEntity) (Object) this;
-    @Unique public Level level;
 
     @Inject(at = @At("HEAD"), method = "tickEffects")
     public void tipsylib_tickEffects(CallbackInfo ci) {
@@ -104,10 +103,10 @@ public abstract class LivingEntityMixin {
         if (living.hasEffect(TLStatusEffects.DIVERSION) && !source.is(DamageTypeTags.BYPASSES_INVULNERABILITY))
             if (living.hasEffect(MobEffects.LUCK)) {
                 if (Math.random() < 0.2) {
-                    dodgeAttack(living, level, cir);
+                    dodgeAttack(living, cir);
                 }
             } else if (Math.random() < 0.15) {
-                dodgeAttack(living, level, cir);
+                dodgeAttack(living, cir);
             }
 
         if (source.is(DamageTypeTags.IS_FALL)) {
@@ -117,7 +116,7 @@ public abstract class LivingEntityMixin {
     }
 
     @Unique
-    private static void dodgeAttack(LivingEntity living, Level level, CallbackInfoReturnable<Boolean> cir) {
+    private static void dodgeAttack(LivingEntity living, CallbackInfoReturnable<Boolean> cir) {
         living.level().playSound(null, living.getX(), living.getY(), living.getZ(), SoundEvents.ARMOR_EQUIP_GENERIC, SoundSource.PLAYERS, 1.0F, 1.0F);
         cir.cancel();
     }
@@ -156,10 +155,13 @@ public abstract class LivingEntityMixin {
         }
     }
 
+    /*
     @Inject(at = @At("HEAD"), method = "canBeSeenByAnyone", cancellable = true)
     public void tipsylib_canBeSeenByAnyone(CallbackInfoReturnable<Boolean> cir) {
         if (living.hasEffect(TLStatusEffects.ENIGMA)) cir.cancel();
     }
+
+     */
 
     @Inject(at = @At("HEAD"), method = "tick")
     public void tipsylib_tick(CallbackInfo ci) {
