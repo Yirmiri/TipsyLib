@@ -77,6 +77,11 @@ public abstract class LivingEntityMixin {
                     effect.setEntity((LivingEntity) (Object) this);
                 }
             }
+            if (statusEffect.getEffect() == TLMobEffects.CHRONOS) {
+                if (this.activeEffects.values().size() > 2) {
+                    living.forceAddEffect(new MobEffectInstance(TLMobEffects.CHRONOS, statusEffect.getDuration() - (this.activeEffects.values().size() - 2), 0), living);
+                }
+            }
         }
     }
 
