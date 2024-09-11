@@ -72,7 +72,7 @@ public abstract class LivingEntityMixin {
     @Inject(at = @At("HEAD"), method = "tickEffects")
     public void tipsylib_tickEffects(CallbackInfo ci) {
         for (MobEffectInstance statusEffect : this.activeEffects.values()) {
-            if (statusEffect.getEffect() != TLMobEffects.CHRONOS) {
+            if (statusEffect.getEffect() != TLMobEffects.CHRONOS && statusEffect.getEffect() != TLMobEffects.TEMPUS) {
                 if (statusEffect instanceof IStatusEffectInstance effect) {
                     effect.setEntity((LivingEntity) (Object) this);
                 }
@@ -80,6 +80,18 @@ public abstract class LivingEntityMixin {
             if (statusEffect.getEffect() == TLMobEffects.CHRONOS) {
                 if (this.activeEffects.values().size() > 2) {
                     living.forceAddEffect(new MobEffectInstance(TLMobEffects.CHRONOS, statusEffect.getDuration() - (this.activeEffects.values().size() - 2), 0), living);
+                }
+            }
+            if (living.hasEffect(TLMobEffects.TEMPUS)) {
+                if (!living.hasEffect(TLMobEffects.CHRONOS)) {
+                    if (statusEffect.getEffect() != TLMobEffects.TEMPUS) {
+                        living.forceAddEffect(new MobEffectInstance(statusEffect.getEffect(), statusEffect.getDuration() - (statusEffect.getAmplifier() + 1), 0), living);
+                    }
+                }
+                else if (living.hasEffect(TLMobEffects.CHRONOS)) {
+                    if (statusEffect.getEffect() == TLMobEffects.CHRONOS) {
+                        living.forceAddEffect(new MobEffectInstance(statusEffect.getEffect(), statusEffect.getDuration() - (statusEffect.getAmplifier() + 1), 0), living);
+                    }
                 }
             }
         }

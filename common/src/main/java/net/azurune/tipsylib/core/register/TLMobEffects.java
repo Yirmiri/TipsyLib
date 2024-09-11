@@ -29,6 +29,7 @@ public class TLMobEffects {
 
     //NEUTRAL
     public static final Holder<MobEffect> CHRONOS;
+    public static final Holder<MobEffect> TEMPUS;
     public static final Holder<MobEffect> GRAVITY_RESISTANCE;
 
     //HARMFUL
@@ -65,6 +66,7 @@ public class TLMobEffects {
         //NEUTRAL
         GRAVITY_RESISTANCE = registerEffect("gravity_resistance", new GravityResistanceEffect(MobEffectCategory.NEUTRAL, 0xa77289));
         CHRONOS = registerEffect("chronos", new NoSpecialEffect(MobEffectCategory.NEUTRAL, 0x9ad8fa));
+        TEMPUS = registerEffect("tempus", new NoSpecialEffect(MobEffectCategory.NEUTRAL, 0x9ad8fa));
 
         //HARMFUL
         HEARTBREAK = registerEffect("heartbreak", new HeartBreakEffect(MobEffectCategory.HARMFUL, 0x410909));
