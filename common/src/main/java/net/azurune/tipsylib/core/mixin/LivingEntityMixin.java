@@ -33,6 +33,7 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+import java.util.Collection;
 import java.util.Map;
 import java.util.Random;
 
@@ -41,6 +42,8 @@ public abstract class LivingEntityMixin {
 
     @Shadow @Final private Map<MobEffect, MobEffectInstance> activeEffects;
     @Shadow @Nullable public abstract MobEffectInstance getEffect(Holder<MobEffect> effect);
+
+    @Shadow public abstract Collection<MobEffectInstance> getActiveEffects();
 
     @Unique @Final LivingEntity living = (LivingEntity) (Object) this;
     @Unique public Level level;
@@ -83,14 +86,15 @@ public abstract class LivingEntityMixin {
                 }
             }
             if (living.hasEffect(TLMobEffects.TEMPUS)) {
+                int tempusAmplifier = this.activeEffects.get(TLMobEffects.TEMPUS).getAmplifier();
                 if (!living.hasEffect(TLMobEffects.CHRONOS)) {
                     if (statusEffect.getEffect() != TLMobEffects.TEMPUS) {
-                        living.forceAddEffect(new MobEffectInstance(statusEffect.getEffect(), statusEffect.getDuration() - (statusEffect.getAmplifier() + 1), 0), living);
+                        living.forceAddEffect(new MobEffectInstance(statusEffect.getEffect(), statusEffect.getDuration() - (tempusAmplifier + 1), 0), living);
                     }
                 }
                 else if (living.hasEffect(TLMobEffects.CHRONOS)) {
                     if (statusEffect.getEffect() == TLMobEffects.CHRONOS) {
-                        living.forceAddEffect(new MobEffectInstance(statusEffect.getEffect(), statusEffect.getDuration() - (statusEffect.getAmplifier() + 1), 0), living);
+                        living.forceAddEffect(new MobEffectInstance(statusEffect.getEffect(), statusEffect.getDuration() - (tempusAmplifier + 1), 0), living);
                     }
                 }
             }
