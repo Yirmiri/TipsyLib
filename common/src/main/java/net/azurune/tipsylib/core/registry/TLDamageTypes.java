@@ -1,4 +1,4 @@
-package net.azurune.tipsylib.core.register;
+package net.azurune.tipsylib.core.registry;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;

@@ -1,6 +1,6 @@
 package net.azurune.tipsylib.core.mixin;
 
-import net.azurune.tipsylib.core.register.TLAttributes;
+import net.azurune.tipsylib.core.registry.TLAttributes;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.phys.EntityHitResult;

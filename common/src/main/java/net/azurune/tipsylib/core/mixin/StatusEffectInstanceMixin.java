@@ -1,7 +1,7 @@
 package net.azurune.tipsylib.core.mixin;
 
-import net.azurune.tipsylib.common.util.IStatusEffectInstance;
-import net.azurune.tipsylib.core.register.TLMobEffects;
+import net.azurune.tipsylib.common.util.StatusEffectInstance;
+import net.azurune.tipsylib.core.registry.TLEffects;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(MobEffectInstance.class)
-public class StatusEffectInstanceMixin implements IStatusEffectInstance {
+public class StatusEffectInstanceMixin implements StatusEffectInstance {
 
     @Shadow private int duration;
     @Unique @Final public MobEffect effect;
@@ -23,7 +23,7 @@ public class StatusEffectInstanceMixin implements IStatusEffectInstance {
     @Inject(at = @At("HEAD"), method = "tickDownDuration", cancellable = true)
     public void tipsylib_tickDownDuration(CallbackInfoReturnable<Integer> cir) {
         if (living != null) {
-            if (this.effect != TLMobEffects.CHRONOS && living.hasEffect(TLMobEffects.CHRONOS)) {
+            if (this.effect != TLEffects.CHRONOS && living.hasEffect(TLEffects.CHRONOS)) {
                 cir.setReturnValue(this.duration);
             }
         }

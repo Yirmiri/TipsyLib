@@ -5,7 +5,7 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
-import net.azurune.tipsylib.core.register.TLDamageTypes;
+import net.azurune.tipsylib.core.registry.TLDamageTypes;
 
 public class HemolacriaEffect extends MobEffect {
     public HemolacriaEffect(MobEffectCategory category, int color) {

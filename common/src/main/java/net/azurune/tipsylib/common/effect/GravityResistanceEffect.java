@@ -1,6 +1,6 @@
 package net.azurune.tipsylib.common.effect;
 
-import net.azurune.tipsylib.core.register.TLMobEffects;
+import net.azurune.tipsylib.core.registry.TLEffects;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffects;
@@ -13,10 +13,10 @@ public class GravityResistanceEffect extends MobEffect {
 
     @Override
     public boolean applyEffectTick(LivingEntity livingEntity, int amplifier) {
-        if (livingEntity.hasEffect(MobEffects.LEVITATION) || livingEntity.hasEffect(MobEffects.SLOW_FALLING) || livingEntity.hasEffect(TLMobEffects.FAST_FALLING)) {
+        if (livingEntity.hasEffect(MobEffects.LEVITATION) || livingEntity.hasEffect(MobEffects.SLOW_FALLING) || livingEntity.hasEffect(TLEffects.FAST_FALLING)) {
             livingEntity.removeEffect(MobEffects.LEVITATION);
             livingEntity.removeEffect(MobEffects.SLOW_FALLING);
-            livingEntity.removeEffect(TLMobEffects.FAST_FALLING);
+            livingEntity.removeEffect(TLEffects.FAST_FALLING);
         }
         return true;
     }

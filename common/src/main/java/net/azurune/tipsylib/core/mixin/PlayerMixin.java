@@ -1,7 +1,7 @@
 package net.azurune.tipsylib.core.mixin;
 
-import net.azurune.tipsylib.core.register.TLAttributes;
-import net.azurune.tipsylib.core.register.TLMobEffects;
+import net.azurune.tipsylib.core.registry.TLAttributes;
+import net.azurune.tipsylib.core.registry.TLEffects;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.damagesource.DamageSource;
@@ -26,38 +26,40 @@ public abstract class PlayerMixin {
 
     @Inject(at = @At("TAIL"), method = "attack", cancellable = true)
     public void tipsylib_attack(Entity entity, CallbackInfo ci) {
+        double luck = player.getAttributeValue(Attributes.LUCK);
+
         float amount = (float)player.getAttributeValue(Attributes.ATTACK_DAMAGE);
         DamageSource source = player.damageSources().playerAttack(player);
 
         double lifestealAmount = player.getAttributeValue(TLAttributes.LIFESTEAL_HEAL_AMOUNT);
         double lifestealChance = player.getAttributeValue(TLAttributes.LIFESTEAL_CHANCE);
-        if (random.nextDouble(100.0) < lifestealChance && player.isAlive()) {
+        if (lifestealChance != 0 && random.nextDouble(100.0) < lifestealChance + luck * 10 && player.isAlive()) {
             player.heal((float) lifestealAmount);
             player.level().playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.SOUL_ESCAPE, SoundSource.PLAYERS, 1.0F, 1.0F);
         }
 
         double criticalStrikeChance = player.getAttributeValue(TLAttributes.CRITICAL_STRIKE_CHANCE);
         float criticalStrikeMultiplier = (float) player.getAttributeValue(TLAttributes.CRITICAL_STRIKE_DAMAGE_MULTIPLIER);
-        if (random.nextDouble(100.0) < criticalStrikeChance && player.isAlive()) {
+        if (criticalStrikeChance != 0 && random.nextDouble(100.0) < criticalStrikeChance + luck * 10 && player.isAlive()) {
             entity.hurt(source, (amount * criticalStrikeMultiplier));
             player.playSound(SoundEvents.ARROW_HIT_PLAYER, 1.0F, 1.0F);
         }
 
-        if (player.hasEffect(TLMobEffects.ENIGMA)) {
-            player.removeEffect(TLMobEffects.ENIGMA);
+        if (player.hasEffect(TLEffects.ENIGMA)) {
+            player.removeEffect(TLEffects.ENIGMA);
         }
     }
 
     @Inject(at = @At("HEAD"), method = "isHurt", cancellable = true)
     public void tipsylib_getJumpBoostPower(CallbackInfoReturnable<Float> cir) {
-        if (player.hasEffect(TLMobEffects.INTERNAL_BLEEDING)) {
+        if (player.hasEffect(TLEffects.INTERNAL_BLEEDING)) {
             cir.cancel();
         }
     }
 
     @Inject(at = @At("HEAD"), method = "isReducedDebugInfo", cancellable = true)
     public void tipsylib_hasReducedDebugInfo(CallbackInfoReturnable<Boolean> cir) {
-        if (player.hasEffect(TLMobEffects.CONFUSION)) {
+        if (player.hasEffect(TLEffects.CONFUSION)) {
             cir.setReturnValue(true);
         }
     }
