@@ -9,7 +9,6 @@ import net.minecraft.world.effect.MobEffect;
 public class TLTags {
     public static class EffectTags {
         public static final TagKey<MobEffect> CHRONOS_BLACKLISTED = tag("chronos_blacklisted");
-        public static final TagKey<MobEffect> TEMPUS_BLACKLISTED = tag("tempus_blacklisted");
 
         private static TagKey<MobEffect> tag(String id) {
             return TagKey.create(Registries.MOB_EFFECT, TipsyLib.id(id));

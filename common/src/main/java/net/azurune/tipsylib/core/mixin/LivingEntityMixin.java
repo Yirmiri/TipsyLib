@@ -4,6 +4,7 @@ import net.azurune.tipsylib.common.util.StatusEffectInstance;
 import net.azurune.tipsylib.core.registry.TLAttributes;
 import net.azurune.tipsylib.core.registry.TLDamageTypes;
 import net.azurune.tipsylib.core.registry.TLEffects;
+import net.azurune.tipsylib.core.registry.TLTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
@@ -12,6 +13,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.InstantenousMobEffect;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -77,7 +79,7 @@ public abstract class LivingEntityMixin {
     @Inject(at = @At("HEAD"), method = "tickEffects")
     public void tipsylib_tickEffects(CallbackInfo ci) {
         for (MobEffectInstance statusEffect : this.activeEffects.values()) {
-            if (statusEffect.getEffect() != TLEffects.CHRONOS && statusEffect.getEffect() != TLEffects.TEMPUS) {
+            if (!statusEffect.getEffect().is(TLTags.EffectTags.CHRONOS_BLACKLISTED) && !(statusEffect.getEffect() instanceof InstantenousMobEffect)) {
                 if (statusEffect instanceof StatusEffectInstance effect) {
                     effect.setEntity((LivingEntity) (Object) this);
                 }
@@ -148,7 +150,7 @@ public abstract class LivingEntityMixin {
         }
 
         double dodgeChance = living.getAttributeValue(TLAttributes.DODGE_CHANCE);
-        if (dodgeChance != 0 && living.isAlive() && random.nextDouble(100.0) < dodgeChance + luck * 10) {
+        if (!source.is(TLTags.DamageTags.BYPASSES_DODGE) && dodgeChance != 0 && living.isAlive() && random.nextDouble(100.0) < dodgeChance + luck * 10) {
             living.level().playSound(null, living.getX(), living.getY(), living.getZ(), SoundEvents.ARMOR_EQUIP_GENERIC, SoundSource.PLAYERS, 1.0F, 1.0F);
             cir.cancel();
         }

@@ -23,9 +23,12 @@ Version Release v3.2.0 MC-1.21.1
 •   Texture by @Pearlision!
 
   Misc Additions
+•   Added a new mob effect tag called "chronos_blacklisted", which lists effects that should not freeze from chronos
+•   Added a new damage type tag called "bypasses_dodge", which lists damage types that should bypass the dodge attribute's invulnerability
 •   When possible attributes and effects are now affected by the luck attribute
 
   Changes
+•   Chronos no longer freezes any effect extending the InstantenousMobEffect class (aka instant effects such as instant health no longer freeze)
 •   Perception and restoration have changed their range of effect to only starting at 4 blocks at level I and adding 1 block per level
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
