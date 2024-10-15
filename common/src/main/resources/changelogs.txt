@@ -11,8 +11,12 @@ Version Release v3.2.0 MC-1.21.1
 •   Effect is unaffected by chronos but will increase the speed of chronos
 
   Magnetism (Neutral Effect)
-•   Slowly pulls items on the ground from 4 blocks away (+1 block of distance per level) towards the player with the effect
+•   Pulls in items on the ground that are within 4 blocks of distance (+1 block of distance per level) of the player with this effect
 •   Does not pull in items while the player is crouching
+
+  Repulsion (Neutral Effect)
+•   Pushes away items on the ground that are within 4 blocks of distance (+1 block of distance per level) of the player with this effect
+•   Does not push away items while the player is crouching
 
   Misc Additions
 •   When possible attributes and effects are now affected by the luck attribute
