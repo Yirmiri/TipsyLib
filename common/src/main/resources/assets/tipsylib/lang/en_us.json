@@ -31,6 +31,7 @@
   "effect.tipsylib.tempus": "Tempus",
   "effect.tipsylib.magnetism": "Magnetism",
   "effect.tipsylib.repulsion": "Repulsion",
+  "effect.tipsylib.air_jumper": "Air Jumper",
 
   "attribute.name.tipsylib.arrow_damage_modifier": "Arrow Damage Modifier",
   "attribute.name.tipsylib.dodge_chance": "Dodge Chance",

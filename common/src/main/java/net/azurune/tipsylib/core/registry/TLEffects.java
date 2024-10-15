@@ -27,6 +27,7 @@ public class TLEffects {
     public static final Holder<MobEffect> BRIMSTONE_VISION = registerEffect("brimstone_vision", new NoSpecialEffect(MobEffectCategory.BENEFICIAL, 0xec3920));
     public static final Holder<MobEffect> TOUGH_SKIN = registerEffect("tough_skin", new NoSpecialEffect(MobEffectCategory.BENEFICIAL, 0x1e2434));
     public static final Holder<MobEffect> FERRYMANS_BLESSING = registerEffect("ferrymans_blessing", new FerrymansBlessingEffect(MobEffectCategory.BENEFICIAL, 0xffffff));
+    public static final Holder<MobEffect> AIR_JUMPER = registerEffect("air_jumper", new NoSpecialEffect(MobEffectCategory.BENEFICIAL, 0xffffff));
 
     //NEUTRAL
     public static final Holder<MobEffect> CHRONOS = registerEffect("chronos", new NoSpecialEffect(MobEffectCategory.NEUTRAL, 0x9ad8fa));

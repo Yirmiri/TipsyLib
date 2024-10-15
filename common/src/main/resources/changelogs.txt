@@ -18,6 +18,10 @@ Version Release v3.2.0 MC-1.21.1
 •   Pushes away items on the ground that are within 4 blocks of distance (+1 block of distance per level) of the player with this effect
 •   Does not push away items while the player is crouching
 
+  Air Jumper (Beneficial Effect)
+•   Allows the player to jump while mid air
+•   Texture by @Pearlision!
+
   Misc Additions
 •   When possible attributes and effects are now affected by the luck attribute
 

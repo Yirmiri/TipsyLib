@@ -53,6 +53,7 @@ public abstract class LivingEntityMixin {
     @Inject(at = @At("TAIL"), method = "createLivingAttributes")
     private static void createLivingAttributes(CallbackInfoReturnable<AttributeSupplier.Builder> cir) {
         cir.getReturnValue()
+                .add(Attributes.LUCK)
                 .add(TLAttributes.BACKLASH_CHANCE)
                 .add(TLAttributes.BACKLASH_DAMAGE_PERCENT)
                 .add(TLAttributes.ARROW_DAMAGE_MODIFIER)
@@ -70,7 +71,6 @@ public abstract class LivingEntityMixin {
                 .add(TLAttributes.OVERHEAL_AMOUNT)
                 .add(TLAttributes.OVERHEAL_CHANCE)
                 .add(TLAttributes.OVERHEAL_TICK_LENGTH)
-                .add(Attributes.LUCK)
         ;
     }
 

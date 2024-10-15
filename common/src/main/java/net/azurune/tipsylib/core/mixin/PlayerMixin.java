@@ -2,6 +2,8 @@ package net.azurune.tipsylib.core.mixin;
 
 import net.azurune.tipsylib.core.registry.TLAttributes;
 import net.azurune.tipsylib.core.registry.TLEffects;
+import net.minecraft.client.Minecraft;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.damagesource.DamageSource;
@@ -23,6 +25,8 @@ public abstract class PlayerMixin {
 
     @Unique @Final Player player = (Player) (Object) this;
     private static Random random = new Random();
+
+    private boolean doubleJump = false;
 
     @Inject(at = @At("TAIL"), method = "attack", cancellable = true)
     public void tipsylib_attack(Entity entity, CallbackInfo ci) {
@@ -50,8 +54,26 @@ public abstract class PlayerMixin {
         }
     }
 
+    @Inject(at = @At("HEAD"), method = "tick", cancellable = true)
+    public void tipsylib_tickMovement(CallbackInfo ci) {
+        if (player.hasEffect(TLEffects.AIR_JUMPER)) {
+            if (player.onGround()) {
+                doubleJump = true;
+            }
+
+            if (player.getDeltaMovement().y < 0) {
+                if (Minecraft.getInstance().options.keyJump.isDown() && !player.getAbilities().flying && doubleJump && !player.onClimbable() && !player.onGround()) {
+                    player.jumpFromGround();
+                    doubleJump = false;
+                    player.level().playSound(player, player.blockPosition(), SoundEvents.POWDER_SNOW_BREAK, SoundSource.PLAYERS, 2.0F, 1.0F);
+                    player.level().addParticle(ParticleTypes.CLOUD, player.getRandomX(1), player.getRandomY(), player.getRandomZ(1), 0, 0, 0);
+                }
+            }
+        }
+    }
+
     @Inject(at = @At("HEAD"), method = "isHurt", cancellable = true)
-    public void tipsylib_getJumpBoostPower(CallbackInfoReturnable<Float> cir) {
+    public void tipsylib_isHurt(CallbackInfoReturnable<Float> cir) {
         if (player.hasEffect(TLEffects.INTERNAL_BLEEDING)) {
             cir.cancel();
         }
