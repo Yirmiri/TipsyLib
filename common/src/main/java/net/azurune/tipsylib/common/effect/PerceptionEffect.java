@@ -6,6 +6,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.level.Level;
 
 import java.util.List;
 
@@ -16,7 +17,8 @@ public class PerceptionEffect extends MobEffect {
 
     @Override
     public boolean applyEffectTick(LivingEntity living, int amplifier) {
-        List<LivingEntity> list = living.level().getEntitiesOfClass(LivingEntity.class, living.getBoundingBox().inflate(12.0D * amplifier + 6.0D), Entity::isAlive);
+        Level level = living.level();
+        List<LivingEntity> list = level.getEntitiesOfClass(LivingEntity.class, living.getBoundingBox().inflate(6.0D + amplifier), Entity::isAlive);
         for (LivingEntity livingEntity : list) {
             if (living.isAlive()) {
                 livingEntity.addEffect(new MobEffectInstance(MobEffects.GLOWING, 30, 0));

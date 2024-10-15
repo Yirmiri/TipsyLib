@@ -22,7 +22,7 @@ public class TLAttributes {
     public static final Holder<Attribute> OVERHEAL_CHANCE = register("overheal_chance", 0.0, 0, 100.0);
     public static final Holder<Attribute> OVERHEAL_AMOUNT = register("overheal_amount", 0.0, 0, 255.0);
     public static final Holder<Attribute> OVERHEAL_TICK_LENGTH = register("overheal_tick_length", 0.0, 0, 1024.0);
-//todo: dodge bypass damage tag
+
     private static Holder<Attribute> register(String id, double base, double min, double max) {
         return Services.REGISTRY.registerAttribute(id, base, min, max);
     }

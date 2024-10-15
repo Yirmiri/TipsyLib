@@ -32,6 +32,7 @@ public class TLEffects {
     public static final Holder<MobEffect> CHRONOS = registerEffect("chronos", new NoSpecialEffect(MobEffectCategory.NEUTRAL, 0x9ad8fa));
     public static final Holder<MobEffect> TEMPUS = registerEffect("tempus", new NoSpecialEffect(MobEffectCategory.NEUTRAL, 0x9ad8fa));
     public static final Holder<MobEffect> GRAVITY_RESISTANCE = registerEffect("gravity_resistance", new GravityResistanceEffect(MobEffectCategory.NEUTRAL, 0xa77289));
+    public static final Holder<MobEffect> MAGNETISM = registerEffect("magnetism", new MagnetismEffect(MobEffectCategory.NEUTRAL, 0xc6c6c6));
 
     //HARMFUL
     public static final Holder<MobEffect> HEARTBREAK = registerEffect("heartbreak", new HeartBreakEffect(MobEffectCategory.HARMFUL, 0x410909));
