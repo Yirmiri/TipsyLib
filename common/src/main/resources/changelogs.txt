@@ -22,6 +22,12 @@ Version Release v3.2.0 MC-1.21.1
 •   Allows the player to jump while mid air
 •   Texture by @Pearlision!
 
+  Fracturing (Negative Effect)
+•   When this effect ends it will deal damage based on the amount of time the entity had the effect for (more info below)
+•   Deals 1 damage per second of having this effect
+•   Still deals damage when milk is drank however it will deal less damage if drank before the end of the effect as the time passed will be less
+•   If the effect is NOT greater than level I it will not be able to inflict lethal damage
+
   Misc Additions
 •   Added a new mob effect tag called "chronos_blacklisted", which lists effects that should not freeze from chronos
 •   Added a new damage type tag called "bypasses_dodge", which lists damage types that should bypass the dodge attribute's invulnerability
@@ -30,6 +36,9 @@ Version Release v3.2.0 MC-1.21.1
   Changes
 •   Chronos no longer freezes any effect extending the InstantenousMobEffect class (aka instant effects such as instant health no longer freeze)
 •   Perception and restoration have changed their range of effect to only starting at 4 blocks at level I and adding 1 block per level
+
+  Fixes
+•   Fixed an issue with creative shock's death message when dying to another player where it would state the attacker's name where the target's name should be
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 

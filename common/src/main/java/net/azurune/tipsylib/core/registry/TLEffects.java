@@ -47,6 +47,7 @@ public class TLEffects {
     public static final Holder<MobEffect> FAST_FALLING = registerEffect("fast_falling", new NoSpecialEffect(MobEffectCategory.HARMFUL, 0x9babb2));
     public static final Holder<MobEffect> CREATIVE_SHOCK = registerEffect("creative_shock", new NoSpecialEffect(MobEffectCategory.HARMFUL, 0x905ea9));
     public static final Holder<MobEffect> SMOULDERING = registerEffect("smouldering", new SmoulderingEffect(MobEffectCategory.HARMFUL, 0xdf9d34));
+    public static final Holder<MobEffect> FRACTURING = registerEffect("fracturing", new FracturingEffect(MobEffectCategory.HARMFUL, 0xc93448));
 
     private static Holder<MobEffect> registerEffect(String name, MobEffect mobEffect) {
         return Services.REGISTRY.registerEffect(name, mobEffect);

@@ -32,6 +32,7 @@
   "effect.tipsylib.magnetism": "Magnetism",
   "effect.tipsylib.repulsion": "Repulsion",
   "effect.tipsylib.air_jumper": "Air Jumper",
+  "effect.tipsylib.fracturing": "Fracturing",
 
   "attribute.name.tipsylib.arrow_damage_modifier": "Arrow Damage Modifier",
   "attribute.name.tipsylib.dodge_chance": "Dodge Chance",
@@ -63,5 +64,7 @@
   "death.attack.tipsylib.hemolacria": "%1$s had their body drained out",
   "death.attack.tipsylib.hemolacria.player": "%2$s watched %1$s have their body drained out",
   "death.attack.tipsylib.creative_shock": "%1$s had their creativity zapped out of them",
-  "death.attack.tipsylib.creative_shock.player": "%2$s zapped out the creativity from %2$s"
+  "death.attack.tipsylib.creative_shock.player": "%2$s zapped out the creativity from %1$s",
+  "death.attack.tipsylib.fracturing": "%1$s shattered into innumerable pieces",
+  "death.attack.tipsylib.fracturing.player": "%2$s shattered %1$s into innumerable pieces"
 }

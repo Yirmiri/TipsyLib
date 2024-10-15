@@ -18,7 +18,7 @@ public class TraversalEffect extends InstantenousMobEffect {
     public boolean applyEffectTick(LivingEntity living, int amplifier) {
         Vec3 pos;
         if (!living.level().isClientSide()) {
-            if (living instanceof ServerPlayer player && !living.isSpectator()) {
+            if (living instanceof ServerPlayer player && !player.isSpectator()) {
                 if (player.getRespawnPosition() != null) {
                     if (player.level().getBlockState(player.getRespawnPosition()).getBlock() instanceof BedBlock || (player.level().getBlockState(player.getRespawnPosition()).getBlock() instanceof RespawnAnchorBlock)) {
                         pos = Vec3.atBottomCenterOf(player.getRespawnPosition());

@@ -1,5 +1,6 @@
 package net.azurune.tipsylib.core.mixin;
 
+import net.azurune.tipsylib.common.effect.FracturingEffect;
 import net.azurune.tipsylib.common.util.StatusEffectInstance;
 import net.azurune.tipsylib.core.registry.TLAttributes;
 import net.azurune.tipsylib.core.registry.TLDamageTypes;
@@ -38,6 +39,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.Collection;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Random;
 
 @Mixin(LivingEntity.class)
@@ -74,6 +76,19 @@ public abstract class LivingEntityMixin {
                 .add(TLAttributes.OVERHEAL_CHANCE)
                 .add(TLAttributes.OVERHEAL_TICK_LENGTH)
         ;
+    }
+
+    @Inject(at = @At("HEAD"), method = "onEffectRemoved", cancellable = true)
+    public void tipsylib_onEffectRemoved(MobEffectInstance instance, CallbackInfo ci) {
+        if (instance.is(TLEffects.FRACTURING)) {
+            DamageSource damagesource = new DamageSource(living.level().registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(TLDamageTypes.FRACTURING));
+            if (instance.getAmplifier() == 0 && FracturingEffect.getFracturingTicks() > living.getHealth()) {
+                living.hurt(damagesource, living.getHealth() - 1);
+            } else {
+                living.hurt(damagesource, FracturingEffect.getFracturingTicks());
+            }
+            living.level().playSound(living, living.blockPosition(), SoundEvents.OMINOUS_BOTTLE_DISPOSE, SoundSource.PLAYERS, 1.0F, 1.0F);
+        }
     }
 
     @Inject(at = @At("HEAD"), method = "tickEffects")
@@ -157,7 +172,7 @@ public abstract class LivingEntityMixin {
     }
 
     @Inject(at = @At("HEAD"), method = "createWitherRose", cancellable = true)
-    public void onKilledBy(LivingEntity adversary, CallbackInfo ci) {
+    public void tipsylib_onKilledBy(LivingEntity adversary, CallbackInfo ci) {
         double luck = living.getAttributeValue(Attributes.LUCK);
 
         if (adversary != null && adversary.isAlive()) {
@@ -171,7 +186,7 @@ public abstract class LivingEntityMixin {
     }
 
     @ModifyVariable(at = @At("HEAD"), method = "hurt", argsOnly = true)
-    public float shatterSpleen(float amount) {
+    public float tipsylib_shatterSpleen(float amount) {
         double luck = living.getAttributeValue(Attributes.LUCK);
 
         double vulnerabilityChance = living.getAttributeValue(TLAttributes.VULNERABILITY_CHANCE);
