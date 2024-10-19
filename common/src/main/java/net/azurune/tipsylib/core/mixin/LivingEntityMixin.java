@@ -26,6 +26,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -39,7 +40,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.Collection;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Random;
 
 @Mixin(LivingEntity.class)
@@ -131,6 +131,13 @@ public abstract class LivingEntityMixin {
 
             if (state.getType() == Fluids.LAVA || state.getType() == Fluids.FLOWING_LAVA)
                 if (living != null && (this.living.hasEffect(TLEffects.LAVA_WALKING))) cir.setReturnValue(true);
+        }
+    }
+
+    @Inject(at = @At("HEAD"), method = "getWaterSlowDown", cancellable = true)
+    public void tipsylib_getWaterSlowDown(CallbackInfoReturnable<Float> cir) {
+        if (!living.isCrouching() && living.hasEffect(TLEffects.WATER_WALKING)) {
+            cir.setReturnValue(1.0F + living.getEffect(TLEffects.WATER_WALKING).getAmplifier());
         }
     }
 
