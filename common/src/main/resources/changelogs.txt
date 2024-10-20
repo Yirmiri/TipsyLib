@@ -32,6 +32,7 @@ Version Release v3.2.0 MC-1.21.1
 •   Added a new mob effect tag called "chronos_blacklisted", which lists effects that should not freeze from chronos
 •   Added a new damage type tag called "bypasses_dodge", which lists damage types that should bypass the dodge attribute's invulnerability
 •   When possible attributes and effects are now affected by the luck attribute
+•   Re-added contributor capes
 
   Changes
 •   Chronos no longer freezes any effect extending the InstantenousMobEffect class (aka instant effects such as instant health no longer freeze)

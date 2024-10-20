@@ -13,8 +13,8 @@
     "StatusEffectInstanceMixin"
   ],
   "client": [
-    "AbstractClientPlayerMixin",
-    "FogRendererMixin"
+    "FogRendererMixin",
+    "PlayerListEntryMixin"
   ],
   "server": [
   ],
