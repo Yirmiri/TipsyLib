@@ -12,7 +12,6 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.InstantenousMobEffect;
 import net.minecraft.world.effect.MobEffect;
@@ -26,7 +25,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -159,20 +157,20 @@ public abstract class LivingEntityMixin {
     public void tipsylib_hurt(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
         double luck = living.getAttributeValue(Attributes.LUCK);
 
-        if (living.hasEffect(TLEffects.TOUGH_SKIN) && source.is(DamageTypeTags.IS_EXPLOSION)) {
+        if (living.hasEffect(TLEffects.TOUGH_SKIN) && source.is(net.minecraft.tags.DamageTypeTags.IS_EXPLOSION)) {
             cir.setReturnValue(false);
         }
 
-        if (living.hasEffect(TLEffects.FREEZE_RESISTANCE) && source.is(DamageTypeTags.IS_FREEZING)) {
+        if (living.hasEffect(TLEffects.FREEZE_RESISTANCE) && source.is(net.minecraft.tags.DamageTypeTags.IS_FREEZING)) {
             cir.setReturnValue(false);
         }
 
-        if (living.hasEffect(TLEffects.STEEL_FEET) && source.is(DamageTypeTags.IS_FALL)) {
+        if (living.hasEffect(TLEffects.STEEL_FEET) && source.is(net.minecraft.tags.DamageTypeTags.IS_FALL)) {
             cir.setReturnValue(false);
         }
 
         double dodgeChance = living.getAttributeValue(TLAttributes.DODGE_CHANCE);
-        if (!source.is(TLTags.DamageTags.BYPASSES_DODGE) && dodgeChance != 0 && living.isAlive() && random.nextDouble(100.0) < dodgeChance + luck * 10) {
+        if (!source.is(TLTags.DamageTypeTags.BYPASSES_DODGE) && dodgeChance != 0 && living.isAlive() && random.nextDouble(100.0) < dodgeChance + luck * 10) {
             living.level().playSound(null, living.getX(), living.getY(), living.getZ(), SoundEvents.ARMOR_EQUIP_GENERIC, SoundSource.PLAYERS, 1.0F, 1.0F);
             cir.cancel();
         }

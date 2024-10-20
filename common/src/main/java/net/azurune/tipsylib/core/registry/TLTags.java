@@ -15,7 +15,7 @@ public class TLTags {
         }
     }
 
-    public static class DamageTags {
+    public static class DamageTypeTags {
         public static final TagKey<DamageType> BYPASSES_DODGE = tag("bypasses_dodge");
         public static final TagKey<DamageType> PHYSICAL_DAMAGE = tag("physical_damage");
         public static final TagKey<DamageType> MAGIC_DAMAGE = tag("magic_damage");
