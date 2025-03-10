@@ -27,8 +27,10 @@ public class TLLangGen extends FabricLanguageProvider {
 
         //HARMFUL EFFECTS
         build.add(TLMobEffects.BLEEDING.get(), "Bleeding");
+        build.add(TLMobEffects.BLOOD_CLOT.get(), "Blood Clot");
         build.add(TLMobEffects.CONFUSION.get(), "Confusion");
         build.add(TLMobEffects.CREATIVE_SHOCK.get(), "Creative Shock");
+        build.add(TLMobEffects.VENOM.get(), "Venom");
         //build.add(TLMobEffects.FRACTURING.get(), "Fracturing");
 
         //ATTRIBUTES
@@ -44,6 +46,16 @@ public class TLLangGen extends FabricLanguageProvider {
         build.add("tipsylib.generic.critical_strike_chance", "Critical Strike Chance");
         build.add("tipsylib.generic.critical_strike_multiplier", "Critical Strike Multiplier");
         //build.add("tipsylib.generic.additional_jumps", "Additional Jumps");
+
+        //DEATH
+        build.add("death.attack.tipsylib.retaliation", "%1$s couldn't handle the backlash");
+        build.add("death.attack.tipsylib.retaliation.player", "%1$s couldn't handle the backlash from attacking %2$s");
+
+        build.add("death.attack.tipsylib.venom", "%1$s had their vital organs shut down by venom");
+        build.add("death.attack.tipsylib.venom.player", "%2$s watched %1$s have their body fail due to venom");
+
+        build.add("death.attack.tipsylib.creative_shock", "%1$s had their creativity zapped out of them");
+        build.add("death.attack.tipsylib.creative_shock.player", "%2$s zapped out the creativity from %2$s");
 
         //============================================================================
 
@@ -63,7 +75,9 @@ public class TLLangGen extends FabricLanguageProvider {
 
         //JEED/EMIFFECT COMPAT (HARMFUL EFFECTS)
         build.add("effect.tipsylib.bleeding.description", "Prevents the user to heal any health.");
+        build.add("effect.tipsylib.blood_clot.description", "Prevents the user to heal from natural regeneration.");
         build.add("effect.tipsylib.confusion.description", "Disables advanced F3 and hides the user's health bar.");
         build.add("effect.tipsylib.creative_shock.description", "Damages the user when attempting to build.");
+        build.add("effect.tipsylib.venom.description", "Deals lethal damage to the user over time.");
     }
 }

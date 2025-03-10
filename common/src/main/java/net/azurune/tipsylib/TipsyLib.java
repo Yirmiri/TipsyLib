@@ -15,7 +15,7 @@ public class TipsyLib {
         TLAttributes.loadAttributes();
     }
 
-    //TODO: Bountiful Brews Effects || Restore TipsyLib effects
+    //TODO: Bountiful Brews Effects
     //TODO (future update): TipsyLib Config System || Easier 3D Armor || Effect/Heart Textures
 
     public static ResourceLocation modid(String id) {
