@@ -1,9 +1,12 @@
 package net.azurune.tipsylib.platform.services;
 
 import net.azurune.tipsylib.mixin.server.FireBlockInvokerMixin;
+import net.minecraft.core.Holder;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.item.CreativeModeTab;
@@ -12,6 +15,7 @@ import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntityType;
+import org.w3c.dom.Attr;
 
 import java.util.function.Supplier;
 
@@ -33,32 +37,27 @@ public interface TLRegistryHelper {
      *
      * @param hasItem - Whether a corresponding BlockItem should be created
      */
-    Supplier<Block> registerBlock(String modid, String id, Supplier<Block> block, boolean hasItem);
+    <T extends Block> Supplier<T> registerBlock(String modid, String id, Supplier<T> supplier, boolean hasItem);
 
-    //Supplier<Block> registerConfigurableBlock(String modid, boolean configValue, Optional<Boolean> optionalConfigValue, String id, Supplier<Block> block, boolean hasItem);
+    //Supplier<Block> registerConfigurableBlock(String modid, boolean configValue, Optional<Boolean> optionalConfigValue, String id, Supplier<Block> supplier, boolean hasItem);
 
-    Supplier<Item> registerItem(String modid, String id, Supplier<Item> item);
+    <T extends Item> Supplier<T> registerItem(String modid, String id, Supplier<T> supplier);
 
-    Supplier<Potion> registerPotion(String modid, String id, Supplier<Potion> potion);
+    <T extends Potion> Supplier<T> registerPotion(String modid, String id, Supplier<T> supplier);
 
-    //Supplier<Item> registerConfigurableItem(String modid, boolean configValue, Optional<Boolean> optionalConfigValue, String id, Supplier<Item> item);
+    //Supplier<Item> registerConfigurableItem(String modid, boolean configValue, Optional<Boolean> optionalConfigValue, String id, Supplier<Item> supplier);
 
-    Supplier<EntityType<?>> registerEntityType(String modid, String id, Supplier<EntityType<?>> entityType);
+    Supplier<BlockEntityType<?>> registerBlockEntity(String modid, String id, Supplier<BlockEntityType<?>> supplier);
 
-    Supplier<SoundEvent> registerSoundEvent(String modid, String id, Supplier<SoundEvent> soundEvent);
+    Supplier<EntityType<?>> registerEntityType(String modid, String id, Supplier<EntityType<?>> supplier);
 
-    Supplier<MobEffect> registerEffect(String modid, String id, Supplier<MobEffect> mobEffect);
+    <T extends SoundEvent> Supplier<T> registerSoundEvent(String modid, String id, Supplier<T> supplier);
 
-    Supplier<CreativeModeTab> registerCreativeModeTab(String modid, String id, Supplier<CreativeModeTab> tab);
+    <T extends MobEffect> Supplier<T> registerEffect(String modid, String id, Supplier<T> supplier);
 
-    Supplier<ParticleType<?>> registerParticle(String modid, String id, Supplier<ParticleType<?>> particleType);
+    <T extends CreativeModeTab> Supplier<T> registerCreativeModeTab(String modid, String id, Supplier<T> supplier);
 
-    Supplier<BlockEntityType<?>> registerBlockEntity(String modid, String id, Supplier<BlockEntityType<?>> blockEntity);
+    Supplier<ParticleType<?>> registerParticle(String modid, String id, Supplier<ParticleType<?>> supplier);
 
-    /**
-     * @param base - This is the default/fallback value that the attribute should resort to
-     * @param min - The minimum value this attribute should have
-     * @param max - The maximum value this attribute should have
-     */
-    Supplier<Attribute> registerAttribute(String modid, String id, double base, double min, double max);
+    <T extends Attribute> Supplier<T> registerAttribute(String modid, String id, Supplier<T> supplier);
 }

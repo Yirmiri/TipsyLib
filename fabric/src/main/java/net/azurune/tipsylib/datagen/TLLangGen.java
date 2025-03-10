@@ -29,6 +29,21 @@ public class TLLangGen extends FabricLanguageProvider {
         build.add(TLMobEffects.BLEEDING.get(), "Bleeding");
         build.add(TLMobEffects.CONFUSION.get(), "Confusion");
         build.add(TLMobEffects.CREATIVE_SHOCK.get(), "Creative Shock");
+        //build.add(TLMobEffects.FRACTURING.get(), "Fracturing");
+
+        //ATTRIBUTES
+        build.add("tipsylib.generic.dodge_chance", "Dodge Chance");
+        build.add("tipsylib.generic.lifesteal_chance", "Lifesteal Chance");
+        build.add("tipsylib.generic.lifesteal_amount", "Lifesteal Amount");
+        build.add("tipsylib.generic.vulnerability_chance", "Vulnerability Chance");
+        build.add("tipsylib.generic.vulnerability_multiplier", "Vulnerability Multiplier");
+        build.add("tipsylib.generic.retaliation_chance", "Retaliation Chance");
+        build.add("tipsylib.generic.retaliation_amount", "Retaliation Amount");
+        build.add("tipsylib.generic.burning_retaliation_chance", "Burning Retaliation Chance");
+        build.add("tipsylib.generic.burning_retaliation_length", "Burning Retaliation Length");
+        build.add("tipsylib.generic.critical_strike_chance", "Critical Strike Chance");
+        build.add("tipsylib.generic.critical_strike_multiplier", "Critical Strike Multiplier");
+        //build.add("tipsylib.generic.additional_jumps", "Additional Jumps");
 
         //============================================================================
 

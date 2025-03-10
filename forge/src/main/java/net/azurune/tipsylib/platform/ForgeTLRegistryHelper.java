@@ -7,7 +7,6 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.Attribute;
-import net.minecraft.world.entity.ai.attributes.RangedAttribute;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
@@ -24,11 +23,11 @@ public class ForgeTLRegistryHelper implements TLRegistryHelper {
     IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
     @Override
-    public Supplier<Block> registerBlock(String modid, String id, Supplier<Block> block, boolean hasItem) {
+    public <T extends Block> Supplier<T> registerBlock(String modid, String id, Supplier<T> supplier, boolean hasItem) {
         DeferredRegister<Block> blockDeferredRegister = DeferredRegister.create(Registries.BLOCK, modid);
         DeferredRegister<Item> itemDeferredRegister = DeferredRegister.create(Registries.ITEM, modid);
 
-        var blockRegister = blockDeferredRegister.register(id, block);
+        var blockRegister = blockDeferredRegister.register(id, supplier);
         if (hasItem) {
             itemDeferredRegister.register(id, () -> new BlockItem(blockRegister.get(), new Item.Properties()));
         }
@@ -39,74 +38,74 @@ public class ForgeTLRegistryHelper implements TLRegistryHelper {
     }
 
     @Override
-    public Supplier<Item> registerItem(String modid, String id, Supplier<Item> item) {
+    public <T extends Item> Supplier<T> registerItem(String modid, String id, Supplier<T> supplier) {
         DeferredRegister<Item> itemDeferredRegister = DeferredRegister.create(Registries.ITEM, modid);
         itemDeferredRegister.register(modEventBus);
 
-        return itemDeferredRegister.register(id, item);
+        return itemDeferredRegister.register(id, supplier);
     }
 
     @Override
-    public Supplier<Potion> registerPotion(String modid, String id, Supplier<Potion> potion) {
+    public <T extends Potion> Supplier<T> registerPotion(String modid, String id, Supplier<T> supplier) {
         DeferredRegister<Potion> potionDeferredRegister = DeferredRegister.create(Registries.POTION, modid);
         potionDeferredRegister.register(modEventBus);
 
-        return potionDeferredRegister.register(id, potion);
+        return potionDeferredRegister.register(id, supplier);
     }
 
     @Override
-    public Supplier<BlockEntityType<?>> registerBlockEntity(String modid, String id, Supplier<BlockEntityType<?>> blockEntity) {
+    public Supplier<BlockEntityType<?>> registerBlockEntity(String modid, String id, Supplier<BlockEntityType<?>> supplier) {
         DeferredRegister<BlockEntityType<?>> blockEntityTypeDeferredRegister = DeferredRegister.create(Registries.BLOCK_ENTITY_TYPE, modid);
         blockEntityTypeDeferredRegister.register(modEventBus);
         
-        return blockEntityTypeDeferredRegister.register(id, blockEntity);
+        return blockEntityTypeDeferredRegister.register(id, supplier);
     }
 
     @Override
-    public Supplier<EntityType<?>> registerEntityType(String modid, String id, Supplier<EntityType<?>> entityType) {
+    public Supplier<EntityType<?>> registerEntityType(String modid, String id, Supplier<EntityType<?>> supplier) {
         DeferredRegister<EntityType<?>> entityTypeDeferredRegister = DeferredRegister.create(Registries.ENTITY_TYPE, modid);
         entityTypeDeferredRegister.register(modEventBus);
 
-        return entityTypeDeferredRegister.register(id, entityType);
+        return entityTypeDeferredRegister.register(id, supplier);
     }
 
     @Override
-    public Supplier<SoundEvent> registerSoundEvent(String modid, String id, Supplier<SoundEvent> soundEvent) {
+    public <T extends SoundEvent> Supplier<T> registerSoundEvent(String modid, String id, Supplier<T> supplier) {
         DeferredRegister<SoundEvent> soundEventDeferredRegister = DeferredRegister.create(Registries.SOUND_EVENT, modid);
         soundEventDeferredRegister.register(modEventBus);
 
-        return soundEventDeferredRegister.register(id, soundEvent);
+        return soundEventDeferredRegister.register(id, supplier);
     }
 
     @Override
-    public Supplier<MobEffect> registerEffect(String modid, String id, Supplier<MobEffect> mobEffect) {
+    public <T extends MobEffect> Supplier<T> registerEffect(String modid, String id, Supplier<T> supplier) {
         DeferredRegister<MobEffect> mobEffectDeferredRegister = DeferredRegister.create(Registries.MOB_EFFECT, modid);
         mobEffectDeferredRegister.register(modEventBus);
 
-        return mobEffectDeferredRegister.register(id, mobEffect);
+        return mobEffectDeferredRegister.register(id, supplier);
     }
 
     @Override
-    public Supplier<CreativeModeTab> registerCreativeModeTab(String modid, String id, Supplier<CreativeModeTab> tab) {
+    public <T extends CreativeModeTab> Supplier<T> registerCreativeModeTab(String modid, String id, Supplier<T> supplier) {
         DeferredRegister<CreativeModeTab> creativeModeTabDeferredRegister = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, modid);
         creativeModeTabDeferredRegister.register(modEventBus);
 
-        return creativeModeTabDeferredRegister.register(id, tab);
+        return creativeModeTabDeferredRegister.register(id, supplier);
     }
 
     @Override
-    public Supplier<ParticleType<?>> registerParticle(String modid, String id, Supplier<ParticleType<?>> particleType) {
+    public Supplier<ParticleType<?>> registerParticle(String modid, String id, Supplier<ParticleType<?>> supplier) {
         DeferredRegister<ParticleType<?>> particleTypeDeferredRegister = DeferredRegister.create(Registries.PARTICLE_TYPE, modid);
         particleTypeDeferredRegister.register(modEventBus);
 
-        return particleTypeDeferredRegister.register(id, particleType);
+        return particleTypeDeferredRegister.register(id, supplier);
     }
 
     @Override
-    public Supplier<Attribute> registerAttribute(String modid, String id, double base, double min, double max) {
+    public <T extends Attribute> Supplier<T> registerAttribute(String modid, String id, Supplier<T> supplier) {
         DeferredRegister<Attribute> attributeDeferredRegister = DeferredRegister.create(Registries.ATTRIBUTE, modid);
         attributeDeferredRegister.register(modEventBus);
 
-        return attributeDeferredRegister.register(id, () -> new RangedAttribute("attribute.name." + modid + "." + id, base, min, max).setSyncable(true));
+        return attributeDeferredRegister.register(id, supplier);
     }
 }

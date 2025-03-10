@@ -9,7 +9,6 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.Attribute;
-import net.minecraft.world.entity.ai.attributes.RangedAttribute;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
@@ -22,57 +21,62 @@ import java.util.function.Supplier;
 public class FabricTLRegistryHelper implements TLRegistryHelper {
 
     @Override
-    public Supplier<Block> registerBlock(String modid, String id, Supplier<Block> block, boolean hasItem) {
-        var blockRegister = Registry.register(BuiltInRegistries.BLOCK, TipsyLib.customid(modid, id), block.get());
+    public <T extends Block> Supplier<T> registerBlock(String modid, String id, Supplier<T> supplier, boolean hasItem) {
+        T register = Registry.register(BuiltInRegistries.BLOCK, TipsyLib.customid(modid, id), supplier.get());
         if (hasItem) {
-            Registry.register(BuiltInRegistries.ITEM, TipsyLib.customid(modid, id), new BlockItem(blockRegister, new Item.Properties()));
+            Registry.register(BuiltInRegistries.ITEM, TipsyLib.customid(modid, id), new BlockItem(register, new Item.Properties()));
         }
-        return () -> blockRegister;
+        return () -> register;
     }
 
     @Override
-    public Supplier<Item> registerItem(String modid, String id, Supplier<Item> item) {
-        return () -> Registry.register(BuiltInRegistries.ITEM, TipsyLib.customid(modid, id), item.get());
+    public <T extends Item> Supplier<T> registerItem(String modid, String id, Supplier<T> supplier) {
+        T register = Registry.register(BuiltInRegistries.ITEM, TipsyLib.customid(modid, id), supplier.get());
+        return () -> register;
     }
 
     @Override
-    public Supplier<Potion> registerPotion(String modid, String id, Supplier<Potion> potion) {
-        return () -> Registry.register(BuiltInRegistries.POTION, TipsyLib.customid(modid, id), potion.get());
+    public <T extends Potion> Supplier<T> registerPotion(String modid, String id, Supplier<T> supplier) {
+        T register = Registry.register(BuiltInRegistries.POTION, TipsyLib.customid(modid, id), supplier.get());
+        return () -> register;
     }
 
     @Override
-    public Supplier<BlockEntityType<?>> registerBlockEntity(String modid, String id, Supplier<BlockEntityType<?>> blockEntity) {
-        return () -> Registry.register(BuiltInRegistries.BLOCK_ENTITY_TYPE, TipsyLib.customid(modid, id), blockEntity.get());
+    public Supplier<BlockEntityType<?>> registerBlockEntity(String modid, String id, Supplier<BlockEntityType<?>> supplier) {
+        return () -> Registry.register(BuiltInRegistries.BLOCK_ENTITY_TYPE, TipsyLib.customid(modid, id), supplier.get());
     }
 
     @Override
-    public Supplier<EntityType<?>> registerEntityType(String modid, String id, Supplier<EntityType<?>> entityType) {
-        return () -> Registry.register(BuiltInRegistries.ENTITY_TYPE, TipsyLib.customid(modid, id), entityType.get());
+    public Supplier<EntityType<?>> registerEntityType(String modid, String id, Supplier<EntityType<?>> supplier) {
+        return () -> Registry.register(BuiltInRegistries.ENTITY_TYPE, TipsyLib.customid(modid, id), supplier.get());
     }
 
     @Override
-    public Supplier<SoundEvent> registerSoundEvent(String modid, String id, Supplier<SoundEvent> soundEvent) {
-        return () -> Registry.register(BuiltInRegistries.SOUND_EVENT, TipsyLib.customid(modid, id), soundEvent.get());
+    public <T extends SoundEvent> Supplier<T> registerSoundEvent(String modid, String id, Supplier<T> supplier) {
+        T register = Registry.register(BuiltInRegistries.SOUND_EVENT, TipsyLib.customid(modid, id), supplier.get());
+        return () -> register;
     }
 
     @Override
-    public Supplier<MobEffect> registerEffect(String modid, String id, Supplier<MobEffect> mobEffect) {
-        return () -> Registry.register(BuiltInRegistries.MOB_EFFECT, TipsyLib.customid(modid, id), mobEffect.get());
+    public <T extends MobEffect> Supplier<T> registerEffect(String modid, String id, Supplier<T> supplier) {
+        T register = Registry.register(BuiltInRegistries.MOB_EFFECT, TipsyLib.customid(modid, id), supplier.get());
+        return () -> register;
     }
 
     @Override
-    public Supplier<CreativeModeTab> registerCreativeModeTab(String modid, String id, Supplier<CreativeModeTab> tab) {
-        return () -> Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, TipsyLib.customid(modid, id), tab.get());
+    public <T extends CreativeModeTab> Supplier<T> registerCreativeModeTab(String modid, String id, Supplier<T> supplier) {
+        T register = Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, TipsyLib.customid(modid, id), supplier.get());
+        return () -> register;
     }
 
     @Override
-    public Supplier<ParticleType<?>> registerParticle(String modid, String id, Supplier<ParticleType<?>> particleType) {
-        return () -> Registry.register(BuiltInRegistries.PARTICLE_TYPE, TipsyLib.customid(modid, id), particleType.get());
+    public Supplier<ParticleType<?>> registerParticle(String modid, String id, Supplier<ParticleType<?>> supplier) {
+        return () -> Registry.register(BuiltInRegistries.PARTICLE_TYPE, TipsyLib.customid(modid, id), supplier.get());
     }
 
     @Override
-    public Supplier<Attribute> registerAttribute(String modid, String id, double base, double min, double max) {
-        Attribute attribute = new RangedAttribute("attribute.name." + modid + "." + id, base, min, max).setSyncable(true);
-        return () -> Registry.register(BuiltInRegistries.ATTRIBUTE, TipsyLib.customid(modid, id), attribute);
+    public <T extends Attribute> Supplier<T> registerAttribute(String modid, String id, Supplier<T> supplier) {
+        T register = Registry.register(BuiltInRegistries.ATTRIBUTE, TipsyLib.customid(modid, id), supplier.get());
+        return () -> register;
     }
 }
