@@ -2,7 +2,6 @@ package net.azurune.tipsylib.platform;
 
 import net.azurune.tipsylib.TipsyLib;
 import net.azurune.tipsylib.platform.services.TLRegistryHelper;
-import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.minecraft.core.Registry;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -20,9 +19,6 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import java.util.function.Supplier;
 
 public class FabricTLRegistryHelper implements TLRegistryHelper {
-    public static void createFlammableRegistry(Block fire, Supplier<Block> block, int encouragement, int flammability) {
-        FlammableBlockRegistry.getInstance(fire).add(block.get(), encouragement, flammability);
-    }
 
     @Override
     public Supplier<Block> registerBlock(String modid, String id, Supplier<Block> block, boolean hasItem) {

@@ -1,5 +1,6 @@
 package net.azurune.tipsylib.platform.services;
 
+import net.azurune.tipsylib.mixin.FireBlockInvokerMixin;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.effect.MobEffect;
@@ -8,6 +9,7 @@ import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 
 import java.util.function.Supplier;
@@ -19,8 +21,8 @@ public interface TLRegistryHelper {
      * @param encouragement - How likely it is for this block to ignite
      * @param flammability - How likely while ignited is it for this block to burn
      */
-    static void createFlammableRegistry(Block fire, Supplier<Block> block, int encouragement, int flammability) {
-
+    static void createFlammable(Block block, int encouragement, int flammability) {
+        ((FireBlockInvokerMixin) Blocks.FIRE).tipsylib$invokeSetFlammable(block, encouragement, flammability);
     }
 
     /**

@@ -1,6 +1,5 @@
 package net.azurune.tipsylib.platform;
 
-import net.azurune.tipsylib.mixin.FireBlockInvokerMixin;
 import net.azurune.tipsylib.platform.services.TLRegistryHelper;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.registries.Registries;
@@ -20,10 +19,6 @@ import net.minecraftforge.registries.DeferredRegister;
 import java.util.function.Supplier;
 
 public class ForgeTLRegistryHelper implements TLRegistryHelper {
-
-    public static void createFlammableRegistry(Block fire, Supplier<Block> block, int encouragement, int flammability) {
-        ((FireBlockInvokerMixin) fire).tipsylib$invokeSetFlammable(block.get(), encouragement, flammability);
-    }
 
     @Override
     public Supplier<Block> registerBlock(String modid, String id, Supplier<Block> block, boolean hasItem) {

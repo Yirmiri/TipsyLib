@@ -20,7 +20,7 @@ public abstract class LivingEntityMixin {
     LivingEntity living = (LivingEntity) (Object) this;
 
     @Inject(at = @At("HEAD"), method = "canStandOnFluid", cancellable = true)
-    public void tipsylib_canStandOnFluid(FluidState state, CallbackInfoReturnable<Boolean> cir) {
+    public void tipsylib$canStandOnFluid(FluidState state, CallbackInfoReturnable<Boolean> cir) {
         if (!living.isCrouching()) { //TODO: Allow the ability to swim under liquids
             if (state.getType() == Fluids.WATER || state.getType() == Fluids.FLOWING_WATER)
                 if (living != null && (this.living.hasEffect(TLMobEffects.WATER_WALKING.get()))) cir.setReturnValue(true);
