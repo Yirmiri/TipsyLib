@@ -13,6 +13,7 @@ import net.minecraft.world.entity.ai.attributes.RangedAttribute;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 
@@ -32,6 +33,11 @@ public class FabricTLRegistryHelper implements TLRegistryHelper {
     @Override
     public Supplier<Item> registerItem(String modid, String id, Supplier<Item> item) {
         return () -> Registry.register(BuiltInRegistries.ITEM, TipsyLib.customid(modid, id), item.get());
+    }
+
+    @Override
+    public Supplier<Potion> registerPotion(String modid, String id, Supplier<Potion> potion) {
+        return () -> Registry.register(BuiltInRegistries.POTION, TipsyLib.customid(modid, id), potion.get());
     }
 
     @Override

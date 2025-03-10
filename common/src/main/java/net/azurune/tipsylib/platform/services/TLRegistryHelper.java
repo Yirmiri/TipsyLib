@@ -8,6 +8,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -29,6 +30,7 @@ public interface TLRegistryHelper {
      * For all methods containing these parameters below this:
      * @param modid - The mod identifier that this block should be registered under
      * @param id - The string identifier for this block
+     *
      * @param hasItem - Whether a corresponding BlockItem should be created
      */
     Supplier<Block> registerBlock(String modid, String id, Supplier<Block> block, boolean hasItem);
@@ -36,6 +38,8 @@ public interface TLRegistryHelper {
     //Supplier<Block> registerConfigurableBlock(String modid, boolean configValue, Optional<Boolean> optionalConfigValue, String id, Supplier<Block> block, boolean hasItem);
 
     Supplier<Item> registerItem(String modid, String id, Supplier<Item> item);
+
+    Supplier<Potion> registerPotion(String modid, String id, Supplier<Potion> potion);
 
     //Supplier<Item> registerConfigurableItem(String modid, boolean configValue, Optional<Boolean> optionalConfigValue, String id, Supplier<Item> item);
 
