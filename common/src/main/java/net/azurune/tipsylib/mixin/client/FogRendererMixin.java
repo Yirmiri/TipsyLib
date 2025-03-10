@@ -1,4 +1,4 @@
-package net.azurune.tipsylib.mixin;
+package net.azurune.tipsylib.mixin.client;
 
 import net.azurune.tipsylib.register.TLMobEffects;
 import net.minecraft.client.Camera;
@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(FogRenderer.class)
 public class FogRendererMixin {
-    @Inject(method = "setupFog", at = @At(value = "HEAD"), cancellable = true)
+    @Inject(at = @At(value = "HEAD"), method = "setupFog", cancellable = true)
     private static void tipsylib$setupFog(Camera camera, FogRenderer.FogMode fogMode, float farPlaneDistance, boolean b, float v, CallbackInfo ci) {
         if (camera.getEntity() instanceof Player player) {
             if (camera.getFluidInCamera() == FogType.LAVA && player.hasEffect(TLMobEffects.BRIMSTONE_VISION.get())) {

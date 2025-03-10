@@ -1,6 +1,6 @@
 package net.azurune.tipsylib.platform.services;
 
-import net.azurune.tipsylib.mixin.FireBlockInvokerMixin;
+import net.azurune.tipsylib.mixin.server.FireBlockInvokerMixin;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.effect.MobEffect;

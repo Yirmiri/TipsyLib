@@ -1,4 +1,4 @@
-package net.azurune.tipsylib.mixin;
+package net.azurune.tipsylib.mixin.client;
 
 import com.mojang.authlib.GameProfile;
 import net.azurune.tipsylib.TipsyLib;
@@ -43,7 +43,7 @@ public abstract class AbstractClientPlayerMixin extends Player {
             Map.entry("8429992e-eba7-4dc9-a0b9-f941a55a5fb4", "shiny_pearl") //Pearlision3st
     );
 
-    @Inject(method = "getCloakTextureLocation", at = @At(value = "HEAD"), cancellable = true)
+    @Inject(at = @At(value = "HEAD"), method = "getCloakTextureLocation", cancellable = true)
     public void tipsylib$getCloakTextureLocation(CallbackInfoReturnable<ResourceLocation> cir) {
         String texture = CAPE_TEXTURES.get(stringUUID);
         if (texture != null) {

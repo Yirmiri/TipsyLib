@@ -1,4 +1,4 @@
-package net.azurune.tipsylib.mixin;
+package net.azurune.tipsylib.mixin.server;
 
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.FireBlock;

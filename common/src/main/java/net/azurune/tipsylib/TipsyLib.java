@@ -16,7 +16,7 @@ public class TipsyLib {
     }
 
     //TODO: 1.21 TipsyLib Attributes (+ new attributes) || Bountiful Brews Effects || Restore TipsyLib effects || Add tags to data folder || Effect Textures
-    //TODO (future update): TipsyLib Config System || Easier 3D Armor
+    //TODO (future update): TipsyLib Config System || Easier 3D Armor || Heart Icons
 
     public static ResourceLocation modid(String id) {
         return new ResourceLocation(MOD_ID, id);

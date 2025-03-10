@@ -1,7 +1,7 @@
-package net.azurune.tipsylib.mixin;
+package net.azurune.tipsylib.mixin.server;
 
 import net.azurune.tipsylib.register.TLMobEffects;
-import net.azurune.tipsylib.util.TLMobEffectInstance;
+import net.azurune.tipsylib.util.IMobEffectInstance;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(MobEffectInstance.class)
-public class TLMobEffectInstanceMixin implements TLMobEffectInstance {
+public class MobEffectInstanceMixin implements IMobEffectInstance {
 
     @Shadow private int duration;
     @Unique @Final public MobEffect effect;

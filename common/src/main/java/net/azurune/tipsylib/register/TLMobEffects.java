@@ -30,7 +30,7 @@ public class TLMobEffects {
     public static final Supplier<MobEffect> BLEEDING = register("bleeding", () -> new PublicMobEffect(MobEffectCategory.HARMFUL, 0x410909));
     public static final Supplier<MobEffect> CONFUSION = register("confusion", () -> new PublicMobEffect(MobEffectCategory.HARMFUL, 0xffffff)); //TODO
     public static final Supplier<MobEffect> CREATIVE_SHOCK = register("creative_shock", () -> new PublicMobEffect(MobEffectCategory.HARMFUL, 0x905ea9)); //TODO
-    //public static final Supplier<MobEffect> FRACTURING = register("fracturing", () -> new FracturingEffect(MobEffectCategory.HARMFUL, 0xc93448)); //TODO
+    //public static final Supplier<MobEffect> FRACTURING = register("fracturing", () -> new FracturingEffect(MobEffectCategory.HARMFUL, 0xc93448)); //TODO 1.21
 
     private static Supplier<MobEffect> register(String id, Supplier<MobEffect> effect) {
         return Services.REGISTRY.registerEffect(TipsyLib.MOD_ID, id, effect);
