@@ -1,10 +1,10 @@
 package net.azurune.tipsylib.platform;
 
 import net.azurune.tipsylib.TipsyLib;
-import net.azurune.tipsylib.platform.services.RegistryHelper;
+import net.azurune.tipsylib.platform.services.TLRegistryHelper;
+import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.minecraft.core.Registry;
 import net.minecraft.core.particles.ParticleType;
-import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.effect.MobEffect;
@@ -19,7 +19,11 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 
 import java.util.function.Supplier;
 
-public class FabricRegistryHelper implements RegistryHelper {
+public class FabricTLRegistryHelper implements TLRegistryHelper {
+    public static void createFlammableRegistry(Block fire, Supplier<Block> block, int encouragement, int flammability) {
+        FlammableBlockRegistry.getInstance(fire).add(block.get(), encouragement, flammability);
+    }
+
     @Override
     public Supplier<Block> registerBlock(String modid, String id, Supplier<Block> block, boolean hasItem) {
         var blockRegister = Registry.register(BuiltInRegistries.BLOCK, TipsyLib.customid(modid, id), block.get());
@@ -45,8 +49,8 @@ public class FabricRegistryHelper implements RegistryHelper {
     }
 
     @Override
-    public Supplier<SoundEvent> registerSoundEvent(String modid, String id) {
-        return () -> Registry.register(BuiltInRegistries.SOUND_EVENT, TipsyLib.customid(modid, id), SoundEvent.createVariableRangeEvent(TipsyLib.customid(modid, id)));
+    public Supplier<SoundEvent> registerSoundEvent(String modid, String id, Supplier<SoundEvent> soundEvent) {
+        return () -> Registry.register(BuiltInRegistries.SOUND_EVENT, TipsyLib.customid(modid, id), soundEvent.get());
     }
 
     @Override

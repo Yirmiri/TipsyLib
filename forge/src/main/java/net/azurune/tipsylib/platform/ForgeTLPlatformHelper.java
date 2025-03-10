@@ -1,10 +1,10 @@
 package net.azurune.tipsylib.platform;
 
-import net.azurune.tipsylib.platform.services.IPlatformHelper;
+import net.azurune.tipsylib.platform.services.TLIPlatformHelper;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.loading.FMLLoader;
 
-public class ForgePlatformHelper implements IPlatformHelper {
+public class ForgeTLPlatformHelper implements TLIPlatformHelper {
 
     @Override
     public String getPlatformName() {

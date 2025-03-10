@@ -1,14 +1,14 @@
 package net.azurune.tipsylib.platform;
 
 import net.azurune.tipsylib.TipsyLib;
-import net.azurune.tipsylib.platform.services.IPlatformHelper;
-import net.azurune.tipsylib.platform.services.RegistryHelper;
+import net.azurune.tipsylib.platform.services.TLIPlatformHelper;
+import net.azurune.tipsylib.platform.services.TLRegistryHelper;
 
 import java.util.ServiceLoader;
 
 public class Services {
-    public static final IPlatformHelper PLATFORM = load(IPlatformHelper.class);
-    public static final RegistryHelper REGISTRY = load(RegistryHelper.class);
+    public static final TLIPlatformHelper PLATFORM = load(TLIPlatformHelper.class);
+    public static final TLRegistryHelper REGISTRY = load(TLRegistryHelper.class);
 
     public static <T> T load(Class<T> clazz) {
         final T loadedService = ServiceLoader.load(clazz)

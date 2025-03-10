@@ -1,8 +1,8 @@
 package net.azurune.tipsylib.platform;
 
-import net.azurune.tipsylib.platform.services.RegistryHelper;
+import net.azurune.tipsylib.mixin.FireBlockInvokerMixin;
+import net.azurune.tipsylib.platform.services.TLRegistryHelper;
 import net.minecraft.core.particles.ParticleType;
-import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.effect.MobEffect;
@@ -19,7 +19,11 @@ import net.minecraftforge.registries.DeferredRegister;
 
 import java.util.function.Supplier;
 
-public class ForgeRegistryHelper implements RegistryHelper {
+public class ForgeTLRegistryHelper implements TLRegistryHelper {
+
+    public static void createFlammableRegistry(Block fire, Supplier<Block> block, int encouragement, int flammability) {
+        ((FireBlockInvokerMixin) fire).tipsylib$invokeSetFlammable(block.get(), encouragement, flammability);
+    }
 
     @Override
     public Supplier<Block> registerBlock(String modid, String id, Supplier<Block> block, boolean hasItem) {
@@ -58,12 +62,11 @@ public class ForgeRegistryHelper implements RegistryHelper {
     }
 
     @Override
-    public Supplier<SoundEvent> registerSoundEvent(String modid, String id) {
+    public Supplier<SoundEvent> registerSoundEvent(String modid, String id, Supplier<SoundEvent> soundEvent) {
         DeferredRegister<SoundEvent> soundEventDeferredRegister = DeferredRegister.create(Registries.SOUND_EVENT, modid);
         soundEventDeferredRegister.register(FMLJavaModLoadingContext.get().getModEventBus());
 
-        //return soundEventDeferredRegister.register(id, SoundEvent.createVariableRangeEvent(TipsyLib.customid(modid, id)));
-        return null; //TODO
+        return soundEventDeferredRegister.register(id, soundEvent);
     }
 
     @Override

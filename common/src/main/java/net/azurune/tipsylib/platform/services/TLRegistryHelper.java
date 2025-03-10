@@ -12,7 +12,23 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 
 import java.util.function.Supplier;
 
-public interface RegistryHelper {
+public interface TLRegistryHelper {
+    /**
+     * This allows creating flammable block registries within the common package
+     * @param block - The block you are adding flammability for
+     * @param encouragement - How likely it is for this block to ignite
+     * @param flammability - How likely while ignited is it for this block to burn
+     */
+    static void createFlammableRegistry(Block fire, Supplier<Block> block, int encouragement, int flammability) {
+
+    }
+
+    /**
+     * For all methods containing these parameters below this:
+     * @param modid - The mod identifier that this block should be registered under
+     * @param id - The string identifier for this block
+     * @param hasItem - Whether a corresponding BlockItem should be created
+     */
     Supplier<Block> registerBlock(String modid, String id, Supplier<Block> block, boolean hasItem);
 
     //Supplier<Block> registerConfigurableBlock(String modid, boolean configValue, Optional<Boolean> optionalConfigValue, String id, Supplier<Block> block, boolean hasItem);
@@ -23,7 +39,7 @@ public interface RegistryHelper {
 
     Supplier<EntityType<?>> registerEntityType(String modid, String id, Supplier<EntityType<?>> entityType);
 
-    Supplier<SoundEvent> registerSoundEvent(String modid, String id);
+    Supplier<SoundEvent> registerSoundEvent(String modid, String id, Supplier<SoundEvent> soundEvent);
 
     Supplier<MobEffect> registerEffect(String modid, String id, Supplier<MobEffect> mobEffect);
 
@@ -33,5 +49,10 @@ public interface RegistryHelper {
 
     Supplier<BlockEntityType<?>> registerBlockEntity(String modid, String id, Supplier<BlockEntityType<?>> blockEntity);
 
+    /**
+     * @param base - This is the default/fallback value that the attribute should resort to
+     * @param min - The minimum value this attribute should have
+     * @param max - The maximum value this attribute should have
+     */
     Supplier<Attribute> registerAttribute(String modid, String id, double base, double min, double max);
 }

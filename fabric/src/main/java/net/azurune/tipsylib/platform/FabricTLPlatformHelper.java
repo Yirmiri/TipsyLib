@@ -1,9 +1,9 @@
 package net.azurune.tipsylib.platform;
 
-import net.azurune.tipsylib.platform.services.IPlatformHelper;
+import net.azurune.tipsylib.platform.services.TLIPlatformHelper;
 import net.fabricmc.loader.api.FabricLoader;
 
-public class FabricPlatformHelper implements IPlatformHelper {
+public class FabricTLPlatformHelper implements TLIPlatformHelper {
 
     @Override
     public String getPlatformName() {
