@@ -19,6 +19,8 @@
   "effect.tipsylib.confusion.description": "Disables advanced F3 and hides the user's health bar.",
   "effect.tipsylib.creative_shock": "Creative Shock",
   "effect.tipsylib.creative_shock.description": "Damages the user when attempting to build.",
+  "effect.tipsylib.heartbreak": "Heartbreak",
+  "effect.tipsylib.heartbreak.description": "Reduces the user's max health, updates the health bar immediately.",
   "effect.tipsylib.lava_walking": "Water Walking",
   "effect.tipsylib.lava_walking.description": "Allows the user to walk on lava.",
   "effect.tipsylib.perception": "Perception",

@@ -2,7 +2,7 @@ package net.azurune.tipsylib.register;
 
 import net.azurune.tipsylib.TipsyLib;
 import net.azurune.tipsylib.effect.*;
-import net.azurune.tipsylib.effect.PublicMobEffect;
+import net.azurune.tipsylib.publicized.PublicMobEffect;
 import net.azurune.tipsylib.platform.Services;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;

@@ -1,5 +1,6 @@
 package net.azurune.tipsylib.effect;
 
+import net.azurune.tipsylib.publicized.PublicMobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;

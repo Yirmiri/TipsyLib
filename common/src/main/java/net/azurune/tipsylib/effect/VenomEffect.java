@@ -1,6 +1,7 @@
 package net.azurune.tipsylib.effect;
 
 import net.azurune.tipsylib.init.TLDamageTypes;
+import net.azurune.tipsylib.publicized.PublicMobEffect;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectCategory;

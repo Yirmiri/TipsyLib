@@ -1,4 +1,4 @@
-package net.azurune.tipsylib.effect;
+package net.azurune.tipsylib.publicized;
 
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;

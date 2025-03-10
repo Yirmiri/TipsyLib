@@ -1,5 +1,6 @@
 package net.azurune.tipsylib.effect;
 
+import net.azurune.tipsylib.publicized.PublicMobEffect;
 import net.azurune.tipsylib.register.TLMobEffects;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.effect.MobEffectCategory;
