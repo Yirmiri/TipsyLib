@@ -1,6 +1,6 @@
 {
     "schemaVersion": 1,
-    "id": "tipsylib",
+    "id": "mod_id",
     "version": "${version}",
     "name": "${mod_name}",
     "description": "${description}",
@@ -8,19 +8,20 @@
         "${mod_author}"
     ],
     "contact": {
-        "homepage": "https://www.curseforge.com/minecraft/mc-mods/tipsylib",
-        "sources": "https://github.com/Yirmiri/TipsyLib"
+        "homepage": "https://fabricmc.net/",
+        "sources": "https://github.com/FabricMC/fabric-example-mod"
     },
     "license": "${license}",
-    "icon": "tipsylib_icon.png",
+    "icon": "icon.png",
     "environment": "*",
     "entrypoints": {
         "main": [
-          "net.azurune.tipsylib.FabricTipsyLib"
+            "net.azurune.tipsylib.FabricTipsyLib"
         ]
     },
     "mixins": [
-        "tipsylib.mixins.json"
+        "tipsylib.mixins.json",
+        "tipsylib.fabric.mixins.json"
     ],
     "depends": {
         "fabricloader": ">=0.14",
