@@ -2,14 +2,11 @@ package net.azurune.tipsylib.mixin.server;
 
 import net.azurune.tipsylib.register.TLMobEffects;
 import net.azurune.tipsylib.util.IMobEffectInstance;
-import net.minecraft.core.BlockPos;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import org.spongepowered.asm.mixin.Final;
@@ -81,22 +78,6 @@ public abstract class LivingEntityEffectsMixin {
     public void tipsylib$hurt(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) { //TODO: open up to grants_fire_immunity effect tag?
         if (living.hasEffect(TLMobEffects.PYROMANIAC.get()) || living.hasEffect(TLMobEffects.TRAIL_BLAZING.get()) && source.is(DamageTypeTags.IS_FIRE)) {
             cir.setReturnValue(false);
-        }
-    }
-
-    @Inject(at = @At("HEAD"), method = "tick")
-    public void tipsylib$tick(CallbackInfo ci) {
-        BlockPos pos = living.blockPosition();
-        if (living.hasEffect(TLMobEffects.TRAIL_BLAZING.get()) && living.level().getBlockState(pos).isAir() && !living.isCrouching()) {
-            living.level().setBlockAndUpdate(pos, Blocks.FIRE.defaultBlockState()); //TODO: custom fire that dissipates after time
-        }
-
-        if (living.getFeetBlockState().is(BlockTags.FIRE) && living.hasEffect(TLMobEffects.PYROMANIAC.get())) {
-            if (living.tickCount % 30 + (living.getEffect(TLMobEffects.PYROMANIAC.get()).getAmplifier()) == 0) { //Decreases heal cooldown per level
-                if (living.getHealth() != living.getMaxHealth()) {
-                    living.heal(1.0F);
-                }
-            }
         }
     }
 }

@@ -19,6 +19,8 @@ public class TLAttributes {
     public static final Supplier<Attribute> BURNING_RETALIATION_LENGTH = register("burning_retaliation_length", 0.0, 0, 1024.0);
     public static final Supplier<Attribute> CRITICAL_STRIKE_CHANCE = register("critical_strike_chance", 0.0, 0, 100.0);
     public static final Supplier<Attribute> CRITICAL_STRIKE_MULTIPLIER = register("critical_strike_multiplier", 0.0, 0, 100.0);
+    public static final Supplier<Attribute> REJUVENATE_CHANCE = register("rejuvenate_chance", 0.0, 0, 100.0);
+    public static final Supplier<Attribute> REJUVENATE_AMOUNT = register("rejuvenate_amount", 0.0, 0, 1024.0);
     //public static final Supplier<Attribute> ADDITIONAL_JUMPS = register("additional_jumps", 0.0, 0, 100.0);
 
     private static Supplier<Attribute> register(String id, double base, double min, double max) {

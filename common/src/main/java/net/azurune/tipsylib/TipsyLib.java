@@ -15,8 +15,9 @@ public class TipsyLib {
         TLAttributes.loadAttributes();
     }
 
-    //TODO: Bountiful Brews Effects
-    //TODO (future update): TipsyLib Config System || Easier 3D Armor || Effect/Heart Textures
+    //TODO (future update): TipsyLib Config System || Easier 3D Armor || Heart Textures
+
+    //TODO (new textures): Blood Clot, Pyromaniac, Traversal, and Venom
 
     public static ResourceLocation modid(String id) {
         return new ResourceLocation(MOD_ID, id);

@@ -37,6 +37,8 @@ public class LivingEntityAttributesMixin {
                 .add(TLAttributes.BURNING_RETALIATION_CHANCE.get())
                 .add(TLAttributes.CRITICAL_STRIKE_CHANCE.get())
                 .add(TLAttributes.CRITICAL_STRIKE_MULTIPLIER.get())
+                .add(TLAttributes.REJUVENATE_CHANCE.get())
+                .add(TLAttributes.REJUVENATE_AMOUNT.get())
                 //.add(TLAttributes.ADDITIONAL_JUMPS.get())
         ;
     }
@@ -48,6 +50,13 @@ public class LivingEntityAttributesMixin {
         if (!source.is(TLTags.DamageTypeTags.BYPASSES_DODGE) && dodgeChance != 0 && living.isAlive() && random.nextDouble(100.0) < dodgeChance) {
             living.level().playSound(null, living.getX(), living.getY(), living.getZ(), SoundEvents.ARMOR_EQUIP_GENERIC, SoundSource.PLAYERS, 1.0F, 1.0F);
             cir.cancel();
+        }
+
+        double rejuvenateChance = living.getAttributeValue(TLAttributes.REJUVENATE_CHANCE.get());
+        float rejuvenateHealAmount = (float) living.getAttributeValue(TLAttributes.REJUVENATE_AMOUNT.get());
+
+        if (rejuvenateChance != 0 && living.isAlive() && random.nextDouble(100.0) < rejuvenateChance) {
+            living.heal(rejuvenateHealAmount);
         }
     }
 

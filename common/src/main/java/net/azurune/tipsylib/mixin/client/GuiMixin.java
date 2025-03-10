@@ -1,47 +1,33 @@
 package net.azurune.tipsylib.mixin.client;
 
-import net.azurune.tipsylib.TipsyLib;
-import net.azurune.tipsylib.register.TLMobEffects;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.effect.MobEffect;
-import net.minecraft.world.entity.player.Player;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Unique;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-
-import java.util.Map;
-
-import static java.util.Map.entry;
 
 @Mixin(Gui.class)
 public class GuiMixin {
-    @Unique
-    private static final Map<MobEffect, ResourceLocation> OVERIDE_HEART_ICONS_MAP = Map.ofEntries(
-            entry(TLMobEffects.CONFUSION.get(), new ResourceLocation(TipsyLib.MOD_ID, "textures/gui/confusion_hearts.png"))
-    );
 
-    @Unique
-    private static final Map<MobEffect, ResourceLocation> HEART_ICONS_MAP = Map.ofEntries(
-            entry(TLMobEffects.CONFUSION.get(), new ResourceLocation(TipsyLib.MOD_ID, "textures/gui/confusion_hearts.png")),
-            entry(TLMobEffects.BERSERK.get(), new ResourceLocation(TipsyLib.MOD_ID, "textures/gui/berserk_hearts.png"))
-    );
-
-    @Unique
-    private static final Map<MobEffect, ResourceLocation> CONTAINER_ICONS_MAP = Map.ofEntries(
-            entry(TLMobEffects.CONFUSION.get(), new ResourceLocation(TipsyLib.MOD_ID, "textures/gui/heart_container/confusion_container.png")),
-            entry(TLMobEffects.BERSERK.get(), new ResourceLocation(TipsyLib.MOD_ID, "textures/gui/heart_container/berserk_container.png"))
-    );
-
-    @Unique
-    private static final Map<MobEffect, ResourceLocation> BLINKING_CONTAINER_ICONS_MAP = Map.ofEntries(
-            entry(TLMobEffects.CONFUSION.get(), new ResourceLocation(TipsyLib.MOD_ID, "textures/gui/heart_blink/confusion_blink.png")),
-            entry(TLMobEffects.BERSERK.get(), new ResourceLocation(TipsyLib.MOD_ID, "textures/gui/heart_blink/berserk_blink.png"))
-    );
+//    @Unique
+//    private static final Map<MobEffect, ResourceLocation> OVERIDE_HEART_ICONS_MAP = Map.ofEntries(
+//            entry(TLMobEffects.CONFUSION.get(), new ResourceLocation(TipsyLib.MOD_ID, "textures/gui/confusion_hearts.png"))
+//    );
+//
+//    @Unique
+//    private static final Map<MobEffect, ResourceLocation> HEART_ICONS_MAP = Map.ofEntries(
+//            entry(TLMobEffects.CONFUSION.get(), new ResourceLocation(TipsyLib.MOD_ID, "textures/gui/confusion_hearts.png")),
+//            entry(TLMobEffects.BERSERK.get(), new ResourceLocation(TipsyLib.MOD_ID, "textures/gui/berserk_hearts.png"))
+//    );
+//
+//    @Unique
+//    private static final Map<MobEffect, ResourceLocation> CONTAINER_ICONS_MAP = Map.ofEntries(
+//            entry(TLMobEffects.CONFUSION.get(), new ResourceLocation(TipsyLib.MOD_ID, "textures/gui/heart_container/confusion_container.png")),
+//            entry(TLMobEffects.BERSERK.get(), new ResourceLocation(TipsyLib.MOD_ID, "textures/gui/heart_container/berserk_container.png"))
+//    );
+//
+//    @Unique
+//    private static final Map<MobEffect, ResourceLocation> BLINKING_CONTAINER_ICONS_MAP = Map.ofEntries(
+//            entry(TLMobEffects.CONFUSION.get(), new ResourceLocation(TipsyLib.MOD_ID, "textures/gui/heart_blink/confusion_blink.png")),
+//            entry(TLMobEffects.BERSERK.get(), new ResourceLocation(TipsyLib.MOD_ID, "textures/gui/heart_blink/berserk_blink.png"))
+//    );
 
 //    @Inject(at = @At("HEAD"), method = "renderHeart", cancellable = true)
 //    private void tipsylib$renderHeart(GuiGraphics ctx, Gui.HeartType type, int x, int y, int v, boolean blinking, boolean halfHeart, CallbackInfo ci) {

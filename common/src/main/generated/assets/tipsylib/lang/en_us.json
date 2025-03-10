@@ -42,6 +42,8 @@
   "tipsylib.generic.dodge_chance": "Dodge Chance",
   "tipsylib.generic.lifesteal_amount": "Lifesteal Amount",
   "tipsylib.generic.lifesteal_chance": "Lifesteal Chance",
+  "tipsylib.generic.rejuvenate_amount": "Rejuvenate Amount",
+  "tipsylib.generic.rejuvenate_chance": "Rejuvenate Chance",
   "tipsylib.generic.retaliation_amount": "Retaliation Amount",
   "tipsylib.generic.retaliation_chance": "Retaliation Chance",
   "tipsylib.generic.vulnerability_chance": "Vulnerability Chance",

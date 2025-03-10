@@ -31,6 +31,7 @@ public class TLLangGen extends FabricLanguageProvider {
         build.add(TLMobEffects.CONFUSION.get(), "Confusion");
         build.add(TLMobEffects.CREATIVE_SHOCK.get(), "Creative Shock");
         build.add(TLMobEffects.VENOM.get(), "Venom");
+        build.add(TLMobEffects.HEARTBREAK.get(), "Heartbreak");
         //build.add(TLMobEffects.FRACTURING.get(), "Fracturing");
 
         //ATTRIBUTES
@@ -45,6 +46,8 @@ public class TLLangGen extends FabricLanguageProvider {
         build.add("tipsylib.generic.burning_retaliation_length", "Burning Retaliation Length");
         build.add("tipsylib.generic.critical_strike_chance", "Critical Strike Chance");
         build.add("tipsylib.generic.critical_strike_multiplier", "Critical Strike Multiplier");
+        build.add("tipsylib.generic.rejuvenate_chance", "Rejuvenate Chance");
+        build.add("tipsylib.generic.rejuvenate_amount", "Rejuvenate Amount");
         //build.add("tipsylib.generic.additional_jumps", "Additional Jumps");
 
         //DEATH
@@ -79,5 +82,6 @@ public class TLLangGen extends FabricLanguageProvider {
         build.add("effect.tipsylib.confusion.description", "Disables advanced F3 and hides the user's health bar.");
         build.add("effect.tipsylib.creative_shock.description", "Damages the user when attempting to build.");
         build.add("effect.tipsylib.venom.description", "Deals lethal damage to the user over time.");
+        build.add("effect.tipsylib.heartbreak.description", "Reduces the user's max health, updates the health bar immediately.");
     }
 }
