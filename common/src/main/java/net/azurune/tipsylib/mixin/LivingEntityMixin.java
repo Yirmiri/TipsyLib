@@ -1,23 +1,82 @@
 package net.azurune.tipsylib.mixin;
 
+import net.azurune.tipsylib.register.TLAttributes;
 import net.azurune.tipsylib.register.TLMobEffects;
+import net.azurune.tipsylib.util.TLMobEffectInstance;
 import net.minecraft.core.BlockPos;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
+import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+import java.util.Map;
+
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin {
+    @Shadow @Final private Map<MobEffect, MobEffectInstance> activeEffects;
     LivingEntity living = (LivingEntity) (Object) this;
+
+    @Inject(at = @At("TAIL"), method = "createLivingAttributes")
+    private static void tipsylib$createLivingAttributes(CallbackInfoReturnable<AttributeSupplier.Builder> cir) {
+        cir.getReturnValue()
+                .add(TLAttributes.DODGE_CHANCE.get())
+                .add(TLAttributes.LIFESTEAL_CHANCE.get())
+                .add(TLAttributes.LIFESTEAL_HEAL_AMOUNT.get())
+                .add(TLAttributes.VULNERABILITY_CHANCE.get())
+                .add(TLAttributes.VULNERABILITY_MODIFIER.get())
+                .add(TLAttributes.RETALIATION_CHANCE.get())
+                .add(TLAttributes.RETALIATION_DAMAGE_AMOUNT.get())
+                .add(TLAttributes.BURNING_RETALIATION_LENGTH.get())
+                .add(TLAttributes.BURNING_RETALIATION_CHANCE.get())
+                .add(TLAttributes.CRITICAL_STRIKE_CHANCE.get())
+                .add(TLAttributes.CRITICAL_STRIKE_DAMAGE_MULTIPLIER.get())
+        ;
+    }
+
+    @Inject(at = @At("HEAD"), method = "tickEffects")
+    public void tipsylib_tickEffects(CallbackInfo ci) {
+        for (MobEffectInstance statusEffect : this.activeEffects.values()) {
+            if (!statusEffect.getEffect().isInstantenous()) {
+                if (statusEffect instanceof TLMobEffectInstance effect) {
+                    effect.setEntity((LivingEntity) (Object) this);
+                }
+            }
+
+            if (statusEffect.getEffect() == TLMobEffects.CHRONOS) {
+                if (this.activeEffects.values().size() > 2) {
+                    living.forceAddEffect(new MobEffectInstance(TLMobEffects.CHRONOS.get(), statusEffect.getDuration() - (this.activeEffects.values().size() - 2), 0), living);
+                }
+            }
+
+            if (living.hasEffect(TLMobEffects.TEMPUS.get())) {
+                int tempusAmplifier = this.activeEffects.get(TLMobEffects.TEMPUS.get()).getAmplifier();
+                if (!living.hasEffect(TLMobEffects.CHRONOS.get())) {
+                    if (statusEffect.getEffect() != TLMobEffects.TEMPUS.get()) {
+                        living.forceAddEffect(new MobEffectInstance(statusEffect.getEffect(), statusEffect.getDuration() - (tempusAmplifier + 1), 0), living);
+                    }
+                }
+
+                else if (living.hasEffect(TLMobEffects.CHRONOS.get())) {
+                    if (statusEffect.getEffect() == TLMobEffects.CHRONOS.get()) {
+                        living.forceAddEffect(new MobEffectInstance(statusEffect.getEffect(), statusEffect.getDuration() - (tempusAmplifier + 1), 0), living);
+                    }
+                }
+            }
+        }
+    }
 
     @Inject(at = @At("HEAD"), method = "canStandOnFluid", cancellable = true)
     public void tipsylib$canStandOnFluid(FluidState state, CallbackInfoReturnable<Boolean> cir) {

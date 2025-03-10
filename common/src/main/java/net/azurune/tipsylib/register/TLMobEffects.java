@@ -23,8 +23,8 @@ public class TLMobEffects {
     public static final Supplier<MobEffect> BRIMSTONE_VISION = register("brimstone_vision", () -> new PublicMobEffect(MobEffectCategory.BENEFICIAL, 0xec3920));
 
     //NEUTRAL
-    public static final Supplier<MobEffect> CHRONOS = register("chronos", () -> new PublicMobEffect(MobEffectCategory.NEUTRAL, 0x9ad8fa)); //TODO
-    public static final Supplier<MobEffect> TEMPUS = register("tempus", () -> new PublicMobEffect(MobEffectCategory.NEUTRAL, 0x9ad8fa)); //TODO
+    public static final Supplier<MobEffect> CHRONOS = register("chronos", () -> new PublicMobEffect(MobEffectCategory.NEUTRAL, 0x9ad8fa));
+    public static final Supplier<MobEffect> TEMPUS = register("tempus", () -> new PublicMobEffect(MobEffectCategory.NEUTRAL, 0x9ad8fa));
 
     //HARMFUL
     public static final Supplier<MobEffect> BLEEDING = register("bleeding", () -> new PublicMobEffect(MobEffectCategory.HARMFUL, 0x410909));

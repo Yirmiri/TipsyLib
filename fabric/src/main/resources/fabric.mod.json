@@ -17,6 +17,9 @@
     "entrypoints": {
         "main": [
             "net.azurune.tipsylib.FabricTipsyLib"
+        ],
+        "fabric-datagen": [
+            "net.azurune.tipsylib.FabricTipsyLibDatagen"
         ]
     },
     "mixins": [

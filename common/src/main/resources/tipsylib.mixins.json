@@ -6,9 +6,11 @@
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "FireBlockInvokerMixin",
-    "LivingEntityMixin"
+    "LivingEntityMixin",
+    "TLMobEffectInstanceMixin"
   ],
   "client": [
+    "AbstractClientPlayerMixin",
     "FogRendererMixin"
   ],
   "server": [

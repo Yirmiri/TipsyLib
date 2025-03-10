@@ -1,5 +1,6 @@
 package net.azurune.tipsylib;
 
+import net.azurune.tipsylib.register.TLAttributes;
 import net.azurune.tipsylib.register.TLMobEffects;
 import net.minecraft.resources.ResourceLocation;
 import org.slf4j.Logger;
@@ -11,10 +12,11 @@ public class TipsyLib {
 
     public static void init() {
         TLMobEffects.loadMobEffects();
+        TLAttributes.loadAttributes();
     }
 
-    //TODO: 1.21 TipsyLib Attributes (+ new attributes) || Publicize classes || Easier Flammability on Forge || TipsyLib Config System
-    //TODO: Easier 3D Armor || Improve RegistryHelper (open to any registry) || Bountiful Brews Effects
+    //TODO: 1.21 TipsyLib Attributes (+ new attributes) || Bountiful Brews Effects || Restore TipsyLib effects || Add tags to data folder || Effect Textures
+    //TODO (future update): TipsyLib Config System || Easier 3D Armor
 
     public static ResourceLocation modid(String id) {
         return new ResourceLocation(MOD_ID, id);

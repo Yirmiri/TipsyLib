@@ -2,6 +2,15 @@ plugins {
     id 'multiloader-loader'
     id 'fabric-loom'
 }
+
+fabricApi {
+    configureDataGeneration()
+}
+
+base {
+    archivesName = "${mod_name}-fabric-${minecraft_version}"
+}
+
 dependencies {
     minecraft "com.mojang:minecraft:${minecraft_version}"
     mappings loom.layered {
