@@ -1,0 +1,62 @@
+package net.azurune.tipsylib.mixin;
+
+import net.azurune.tipsylib.register.TLMobEffects;
+import net.minecraft.core.BlockPos;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.DamageTypeTags;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.material.Fluids;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+
+@Mixin(LivingEntity.class)
+public abstract class LivingEntityMixin {
+    LivingEntity living = (LivingEntity) (Object) this;
+
+    @Inject(at = @At("HEAD"), method = "canStandOnFluid", cancellable = true)
+    public void tipsylib_canStandOnFluid(FluidState state, CallbackInfoReturnable<Boolean> cir) {
+        if (!living.isCrouching()) { //TODO: Allow the ability to swim under liquids
+            if (state.getType() == Fluids.WATER || state.getType() == Fluids.FLOWING_WATER)
+                if (living != null && (this.living.hasEffect(TLMobEffects.WATER_WALKING.get()))) cir.setReturnValue(true);
+
+            if (state.getType() == Fluids.LAVA || state.getType() == Fluids.FLOWING_LAVA)
+                if (living != null && (this.living.hasEffect(TLMobEffects.LAVA_WALKING.get()))) cir.setReturnValue(true);
+        }
+    }
+
+    @Inject(at = @At("HEAD"), method = "heal", cancellable = true)
+    public void tipsylib$heal(float amount, CallbackInfo ci) {
+        if (living.hasEffect(TLMobEffects.BLEEDING.get())) {
+            ci.cancel();
+        }
+    }
+
+    @Inject(at = @At("HEAD"), method = "hurt", cancellable = true)
+    public void tipsylib$hurt(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) { //TODO: open up to grants_fire_immunity effect tag?
+        if (living.hasEffect(TLMobEffects.PYROMANIAC.get()) || living.hasEffect(TLMobEffects.TRAIL_BLAZING.get()) && source.is(DamageTypeTags.IS_FIRE)) {
+            cir.setReturnValue(false);
+        }
+    }
+
+    @Inject(at = @At("HEAD"), method = "tick")
+    public void tipsylib$tick(CallbackInfo ci) {
+        BlockPos pos = living.blockPosition();
+        if (living.hasEffect(TLMobEffects.TRAIL_BLAZING.get()) && living.level().getBlockState(pos).isAir() && !living.isCrouching()) {
+            living.level().setBlockAndUpdate(pos, Blocks.FIRE.defaultBlockState()); //TODO: custom fire that dissipates after time
+        }
+
+        if (living.getFeetBlockState().is(BlockTags.FIRE) && living.hasEffect(TLMobEffects.PYROMANIAC.get())) {
+            if (living.tickCount % 30 + (living.getEffect(TLMobEffects.PYROMANIAC.get()).getAmplifier()) == 0) { //Decreases heal cooldown per level
+                if (living.getHealth() != living.getMaxHealth()) {
+                    living.heal(1.0F);
+                }
+            }
+        }
+    }
+}

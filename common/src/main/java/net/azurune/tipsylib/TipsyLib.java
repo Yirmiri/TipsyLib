@@ -13,6 +13,9 @@ public class TipsyLib {
         TLMobEffects.loadMobEffects();
     }
 
+    //TODO: 1.21 TipsyLib Attributes (+ new attributes) || Publicize classes || Easier Flammability on Forge || TipsyLib Config System
+    //TODO: Easier 3D Armor || Improve RegistryHelper (open to any registry) || Bountiful Brews Effects
+
     public static ResourceLocation modid(String id) {
         return new ResourceLocation(MOD_ID, id);
     }
