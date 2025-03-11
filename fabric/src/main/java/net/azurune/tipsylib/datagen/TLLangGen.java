@@ -46,8 +46,6 @@ public class TLLangGen extends FabricLanguageProvider {
         build.add("tipsylib.generic.burning_retaliation_length", "Burning Retaliation Length");
         build.add("tipsylib.generic.critical_strike_chance", "Critical Strike Chance");
         build.add("tipsylib.generic.critical_strike_multiplier", "Critical Strike Multiplier");
-        build.add("tipsylib.generic.rejuvenate_chance", "Rejuvenate Chance");
-        build.add("tipsylib.generic.rejuvenate_amount", "Rejuvenate Amount");
         //build.add("tipsylib.generic.additional_jumps", "Additional Jumps");
 
         //DEATH

@@ -15,6 +15,8 @@ public class TipsyLib {
         TLAttributes.loadAttributes();
     }
 
+    //TODO (v4.0.1): Test Better Nether, Sinytra, & Apothesis (potential crash)? || Update registry methods in TLRegistryHelper
+
     //TODO (future update): TipsyLib Config System || Easier 3D Armor || Heart Textures
 
     //TODO (new textures): Blood Clot, Pyromaniac, Traversal, and Venom

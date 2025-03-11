@@ -6,6 +6,7 @@ import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
@@ -22,6 +23,9 @@ import java.util.Map;
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityEffectsMixin {
     @Shadow @Final private Map<MobEffect, MobEffectInstance> activeEffects;
+
+    @Shadow public abstract boolean hasEffect(MobEffect effect);
+
     LivingEntity living = (LivingEntity) (Object) this;
 
     @Inject(at = @At("HEAD"), method = "tickEffects")
@@ -76,7 +80,7 @@ public abstract class LivingEntityEffectsMixin {
 
     @Inject(at = @At("HEAD"), method = "hurt", cancellable = true)
     public void tipsylib$hurt(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) { //TODO: open up to grants_fire_immunity effect tag?
-        if (living.hasEffect(TLMobEffects.PYROMANIAC.get()) || living.hasEffect(TLMobEffects.TRAIL_BLAZING.get()) && source.is(DamageTypeTags.IS_FIRE)) {
+        if (source.is(DamageTypeTags.IS_FIRE) && (this.hasEffect(TLMobEffects.PYROMANIAC.get()) || living.hasEffect(TLMobEffects.TRAIL_BLAZING.get()))) {
             cir.setReturnValue(false);
         }
     }

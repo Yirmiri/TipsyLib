@@ -14,9 +14,9 @@ public class PyromaniacEffect extends PublicMobEffect {
     @Override
     public void applyEffectTick(LivingEntity living, int amplifier) {
         if (living.getFeetBlockState().is(BlockTags.FIRE) && living.hasEffect(TLMobEffects.PYROMANIAC.get())) {
-            if (living.tickCount % 30 + (living.getEffect(TLMobEffects.PYROMANIAC.get()).getAmplifier()) == 0) { //Decreases heal cooldown per level
+            if (living.tickCount % 30 == 0) {
                 if (living.getHealth() != living.getMaxHealth()) {
-                    living.heal(1.0F);
+                    living.heal(1.0F + living.getEffect(TLMobEffects.PYROMANIAC.get()).getAmplifier());
                 }
             }
         }

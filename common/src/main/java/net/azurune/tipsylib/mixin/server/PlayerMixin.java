@@ -46,10 +46,10 @@ public class PlayerMixin {
         }
     }
 
-    @Inject(at = @At("HEAD"), method = "isHurt")
-    public void tipsylib$isHurt(CallbackInfoReturnable<Float> cir) { //Disables only food healing
+    @Inject(at = @At("HEAD"), method = "isHurt", cancellable = true)
+    public void tipsylib$isHurt(CallbackInfoReturnable<Boolean> cir) {
         if (player.hasEffect(TLMobEffects.BLOOD_CLOT.get())) {
-            cir.cancel();
+            cir.setReturnValue(false);
         }
     }
 

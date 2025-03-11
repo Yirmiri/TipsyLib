@@ -35,8 +35,8 @@ public class TLMobEffects {
     public static final Supplier<MobEffect> HEARTBREAK = register("heartbreak", () -> new HeartBreakEffect(MobEffectCategory.HARMFUL, 0xff0606)); //Only exists because reducing the health attribute does not update immediately
     //public static final Supplier<MobEffect> FRACTURING = register("fracturing", () -> new FracturingEffect(MobEffectCategory.HARMFUL, 0xc93448)); //TODO 1.21
 
-    private static Supplier<MobEffect> register(String id, Supplier<MobEffect> effect) {
-        return Services.REGISTRY.registerEffect(TipsyLib.MOD_ID, id, effect);
+    private static Supplier<MobEffect> register(String id, Supplier<MobEffect> supplier) {
+        return Services.REGISTRY.registerEffect(TipsyLib.MOD_ID, id, supplier);
     }
 
     public static void loadMobEffects() {
