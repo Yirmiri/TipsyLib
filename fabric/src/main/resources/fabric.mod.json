@@ -1,6 +1,6 @@
 {
     "schemaVersion": 1,
-    "id": "tipsylib",
+    "id": "runiclib",
     "version": "${version}",
     "name": "${mod_name}",
     "description": "${description}",
@@ -8,23 +8,23 @@
         "${mod_author}"
     ],
     "contact": {
-        "homepage": "https://fabricmc.net/",
-        "sources": "https://github.com/FabricMC/fabric-example-mod"
+        "homepage": "",
+        "sources": ""
     },
     "license": "${license}",
     "icon": "icon.png",
     "environment": "*",
     "entrypoints": {
         "main": [
-            "net.azurune.tipsylib.FabricTipsyLib"
+            "net.azurune.runiclib.FabricRunicLib"
         ],
         "fabric-datagen": [
-            "net.azurune.tipsylib.FabricTipsyLibDatagen"
+            "net.azurune.runiclib.FabricRunicLibDatagen"
         ]
     },
     "mixins": [
-        "tipsylib.mixins.json",
-        "tipsylib.fabric.mixins.json"
+        "runiclib.mixins.json",
+        "runiclib.fabric.mixins.json"
     ],
     "depends": {
         "fabricloader": ">=0.14",
