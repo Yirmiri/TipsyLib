@@ -23,8 +23,6 @@ import java.util.Map;
 public abstract class LivingEntityEffectsMixin {
     @Shadow @Final private Map<MobEffect, MobEffectInstance> activeEffects;
 
-    @Shadow public abstract boolean hasEffect(MobEffect effect);
-
     LivingEntity living = (LivingEntity) (Object) this;
 
     @Inject(at = @At("HEAD"), method = "tickEffects")
@@ -79,7 +77,7 @@ public abstract class LivingEntityEffectsMixin {
 
     @Inject(at = @At("HEAD"), method = "hurt", cancellable = true)
     public void runiclib$hurt(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) { //TODO: open up to grants_fire_immunity effect tag?
-        if (source.is(DamageTypeTags.IS_FIRE) && (this.hasEffect(RLMobEffects.PYROMANIAC.get()) || living.hasEffect(RLMobEffects.TRAIL_BLAZING.get()))) {
+        if (source.is(DamageTypeTags.IS_FIRE) && (living.hasEffect(RLMobEffects.PYROMANIAC.get()) || living.hasEffect(RLMobEffects.TRAIL_BLAZING.get()))) {
             cir.setReturnValue(false);
         }
     }

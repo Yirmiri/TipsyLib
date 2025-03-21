@@ -1,6 +1,7 @@
 package net.azurune.runiclib.core.platform.services;
 
 import net.azurune.runiclib.core.mixin.server.FireBlockInvokerMixin;
+import net.minecraft.core.Registry;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.effect.MobEffect;
