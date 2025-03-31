@@ -14,6 +14,7 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 
 import java.util.function.Supplier;
@@ -42,12 +43,12 @@ public class FabricRLRegistryHelper implements RLRegistryHelper {
     }
 
     @Override
-    public Supplier<BlockEntityType<?>> registerBlockEntity(String modid, String id, Supplier<BlockEntityType<?>> supplier) {
+    public <T extends BlockEntity> Supplier<BlockEntityType<T>> registerBlockEntity(String modid, String id, Supplier<BlockEntityType<T>> supplier) {
         return () -> Registry.register(BuiltInRegistries.BLOCK_ENTITY_TYPE, RunicLib.customid(modid, id), supplier.get());
     }
 
     @Override
-    public Supplier<EntityType<?>> registerEntityType(String modid, String id, Supplier<EntityType<?>> supplier) {
+    public <T extends EntityType<?>> Supplier<T> registerEntityType(String modid, String id, Supplier<T> supplier) {
         return () -> Registry.register(BuiltInRegistries.ENTITY_TYPE, RunicLib.customid(modid, id), supplier.get());
     }
 

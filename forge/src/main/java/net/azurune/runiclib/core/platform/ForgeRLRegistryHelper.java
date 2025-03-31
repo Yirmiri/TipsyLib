@@ -13,6 +13,7 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -55,7 +56,7 @@ public class ForgeRLRegistryHelper implements RLRegistryHelper {
     }
 
     @Override
-    public Supplier<BlockEntityType<?>> registerBlockEntity(String modid, String id, Supplier<BlockEntityType<?>> supplier) {
+    public <T extends BlockEntity> Supplier<BlockEntityType<T>> registerBlockEntity(String modid, String id, Supplier<BlockEntityType<T>> supplier) {
         DeferredRegister<BlockEntityType<?>> blockEntityTypeDeferredRegister = DeferredRegister.create(Registries.BLOCK_ENTITY_TYPE, modid);
         blockEntityTypeDeferredRegister.register(modEventBus);
         
@@ -63,7 +64,7 @@ public class ForgeRLRegistryHelper implements RLRegistryHelper {
     }
 
     @Override
-    public Supplier<EntityType<?>> registerEntityType(String modid, String id, Supplier<EntityType<?>> supplier) {
+    public <T extends EntityType<?>> Supplier<T> registerEntityType(String modid, String id, Supplier<T> supplier) {
         DeferredRegister<EntityType<?>> entityTypeDeferredRegister = DeferredRegister.create(Registries.ENTITY_TYPE, modid);
         entityTypeDeferredRegister.register(modEventBus);
 

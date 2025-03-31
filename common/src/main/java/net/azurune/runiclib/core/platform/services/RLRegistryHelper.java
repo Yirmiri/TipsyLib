@@ -1,7 +1,6 @@
 package net.azurune.runiclib.core.platform.services;
 
 import net.azurune.runiclib.core.mixin.server.FireBlockInvokerMixin;
-import net.minecraft.core.Registry;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.effect.MobEffect;
@@ -12,6 +11,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 
 import java.util.function.Supplier;
@@ -44,9 +44,9 @@ public interface RLRegistryHelper {
 
     //Supplier<Item> registerConfigurableItem(String modid, boolean configValue, Optional<Boolean> optionalConfigValue, String id, Supplier<Item> supplier);
 
-    Supplier<BlockEntityType<?>> registerBlockEntity(String modid, String id, Supplier<BlockEntityType<?>> supplier);
+    <T extends BlockEntity> Supplier<BlockEntityType<T>> registerBlockEntity(String modid, String id, Supplier<BlockEntityType<T>> supplier);
 
-    Supplier<EntityType<?>> registerEntityType(String modid, String id, Supplier<EntityType<?>> supplier);
+    <T extends EntityType<?>> Supplier<T> registerEntityType(String modid, String id, Supplier<T> supplier);
 
     <T extends SoundEvent> Supplier<T> registerSoundEvent(String modid, String id, Supplier<T> supplier);
 
