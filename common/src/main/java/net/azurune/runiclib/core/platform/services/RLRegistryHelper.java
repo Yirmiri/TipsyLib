@@ -5,9 +5,11 @@ import net.minecraft.core.particles.ParticleType;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -39,6 +41,14 @@ public interface RLRegistryHelper {
     //Supplier<Block> registerConfigurableBlock(String modid, boolean configValue, Optional<Boolean> optionalConfigValue, String id, Supplier<Block> supplier, boolean hasItem);
 
     <T extends Item> Supplier<T> registerItem(String modid, String id, Supplier<T> supplier);
+
+    /**
+     * This method creates a ForgeSpawnEggItem on Forge and a SpawnEggItem on Fabric, this is due to SpawnEggItem not working on Forge
+     * @param entity - The entity that should be spawned from the spawn egg
+     * @param mainColor - The main color of the spawn egg
+     * @param highlightColor - The highlight color of the spawn egg
+     */
+    <T extends Mob> Supplier<SpawnEggItem> registerSpawnEgg(String modid, String id, Supplier<EntityType<T>> entity, int mainColor, int highlightColor);
 
     <T extends Potion> Supplier<T> registerPotion(String modid, String id, Supplier<T> supplier);
 

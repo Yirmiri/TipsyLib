@@ -8,10 +8,12 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -37,6 +39,11 @@ public class FabricRLRegistryHelper implements RLRegistryHelper {
     }
 
     @Override
+    public <T extends Mob> Supplier<SpawnEggItem> registerSpawnEgg(String modid, String id, Supplier<EntityType<T>> entity, int mainColor, int highlightColor) {
+        return () -> Registry.register(BuiltInRegistries.ITEM, RunicLib.customid(modid, id), new SpawnEggItem(entity.get(), mainColor, highlightColor, new Item.Properties()));
+    }
+
+    @Override
     public <T extends Potion> Supplier<T> registerPotion(String modid, String id, Supplier<T> supplier) {
         T register = Registry.register(BuiltInRegistries.POTION, RunicLib.customid(modid, id), supplier.get());
         return () -> register;
@@ -49,7 +56,8 @@ public class FabricRLRegistryHelper implements RLRegistryHelper {
 
     @Override
     public <T extends EntityType<?>> Supplier<T> registerEntityType(String modid, String id, Supplier<T> supplier) {
-        return () -> Registry.register(BuiltInRegistries.ENTITY_TYPE, RunicLib.customid(modid, id), supplier.get());
+        T register = Registry.register(BuiltInRegistries.ENTITY_TYPE, RunicLib.customid(modid, id), supplier.get());
+        return () -> register;
     }
 
     @Override
