@@ -22,7 +22,7 @@
   "effect.runiclib.creative_shock.description": "Damages the user when attempting to build.",
   "effect.runiclib.heartbreak": "Heartbreak",
   "effect.runiclib.heartbreak.description": "Reduces the user's max health, updates the health bar immediately.",
-  "effect.runiclib.lava_walking": "Water Walking",
+  "effect.runiclib.lava_walking": "Lava Walking",
   "effect.runiclib.lava_walking.description": "Allows the user to walk on lava.",
   "effect.runiclib.perception": "Perception",
   "effect.runiclib.perception.description": "Entities nearby the user will begin to glow.",
