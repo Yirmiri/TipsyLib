@@ -13,7 +13,7 @@ public class RLLangGen extends FabricLanguageProvider {
     public void generateTranslations(FabricLanguageProvider.TranslationBuilder build) {
         //BENEFICIAL EFFECTS
         build.add(RLMobEffects.WATER_WALKING.get(), "Water Walking");
-        build.add(RLMobEffects.LAVA_WALKING.get(), "Water Walking");
+        build.add(RLMobEffects.LAVA_WALKING.get(), "Lava Walking");
         build.add(RLMobEffects.TRAIL_BLAZING.get(), "Trail Blazing");
         build.add(RLMobEffects.PERCEPTION.get(), "Perception");
         build.add(RLMobEffects.PYROMANIAC.get(), "Pyromaniac");
