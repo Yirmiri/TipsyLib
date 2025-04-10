@@ -15,10 +15,9 @@ public class RunicLib {
         RLAttributes.loadAttributes();
     }
 
-    //TODO (v4.1.0): Test Better Nether, Sinytra, & Apothesis (potential crash)? || Update registry methods in RLRegistryHelper
-    //TODO (before release): Update links of all mods to use runiclib, create new mod page art
+    //TODO: Test Better Nether, Sinytra, & Apothesis (potential crash)?
 
-    //TODO (future update): RunicLib Config System || Easier 3D Armor || Heart Textures || Fix lang datagen (I'll do manual files for now...)
+    //TODO (future update): RunicLib Config System || Easier 3D Armor || Heart Textures
 
     //TODO (not important): Blood Clot, Pyromaniac, Traversal, and Venom
 

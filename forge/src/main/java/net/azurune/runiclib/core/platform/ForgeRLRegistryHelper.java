@@ -51,11 +51,8 @@ public class ForgeRLRegistryHelper implements RLRegistryHelper {
     }
 
     @Override
-    public <T extends Mob> Supplier<SpawnEggItem> registerSpawnEgg(String modid, String id, Supplier<EntityType<T>> entity, int mainColor, int highlightColor) {
-        DeferredRegister<Item> itemDeferredRegister = DeferredRegister.create(Registries.ITEM, modid);
-        itemDeferredRegister.register(modEventBus);
-
-        return itemDeferredRegister.register(id, () -> new ForgeSpawnEggItem(entity, mainColor, highlightColor, new Item.Properties()));
+    public <T extends Mob> SpawnEggItem registerSpawnEgg(Supplier<EntityType<T>> entity, int mainColor, int highlightColor) {
+        return new ForgeSpawnEggItem(entity, mainColor, highlightColor, new Item.Properties());
     }
 
     @Override
@@ -67,7 +64,7 @@ public class ForgeRLRegistryHelper implements RLRegistryHelper {
     }
 
     @Override
-    public <T extends BlockEntity> Supplier<BlockEntityType<T>> registerBlockEntity(String modid, String id, Supplier<BlockEntityType<T>> supplier) {
+    public <T extends BlockEntity> Supplier<BlockEntityType<T>> registerBlockEntityType(String modid, String id, Supplier<BlockEntityType<T>> supplier, BlockEntitySupplier<T> factory, Supplier<Block> ...blocks) {
         DeferredRegister<BlockEntityType<?>> blockEntityTypeDeferredRegister = DeferredRegister.create(Registries.BLOCK_ENTITY_TYPE, modid);
         blockEntityTypeDeferredRegister.register(modEventBus);
         

@@ -19,6 +19,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 
+import java.util.Arrays;
 import java.util.function.Supplier;
 
 public class FabricRLRegistryHelper implements RLRegistryHelper {
@@ -39,8 +40,8 @@ public class FabricRLRegistryHelper implements RLRegistryHelper {
     }
 
     @Override
-    public <T extends Mob> Supplier<SpawnEggItem> registerSpawnEgg(String modid, String id, Supplier<EntityType<T>> entity, int mainColor, int highlightColor) {
-        return () -> Registry.register(BuiltInRegistries.ITEM, RunicLib.customid(modid, id), new SpawnEggItem(entity.get(), mainColor, highlightColor, new Item.Properties()));
+    public <T extends Mob> SpawnEggItem registerSpawnEgg(Supplier<EntityType<T>> entity, int mainColor, int highlightColor) {
+        return new SpawnEggItem(entity.get(), mainColor, highlightColor, new Item.Properties());
     }
 
     @Override
@@ -50,7 +51,7 @@ public class FabricRLRegistryHelper implements RLRegistryHelper {
     }
 
     @Override
-    public <T extends BlockEntity> Supplier<BlockEntityType<T>> registerBlockEntity(String modid, String id, Supplier<BlockEntityType<T>> supplier) {
+    public <T extends BlockEntity> Supplier<BlockEntityType<T>> registerBlockEntityType(String modid, String id, Supplier<BlockEntityType<T>> supplier, BlockEntitySupplier<T> factory, Supplier<Block> ...blocks) {
         return () -> Registry.register(BuiltInRegistries.BLOCK_ENTITY_TYPE, RunicLib.customid(modid, id), supplier.get());
     }
 

@@ -1,6 +1,7 @@
 package net.azurune.runiclib.core.platform.services;
 
 import net.azurune.runiclib.core.mixin.server.FireBlockInvokerMixin;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.effect.MobEffect;
@@ -15,6 +16,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.function.Supplier;
 
@@ -38,8 +40,6 @@ public interface RLRegistryHelper {
      */
     <T extends Block> Supplier<T> registerBlock(String modid, String id, Supplier<T> supplier, boolean hasItem);
 
-    //Supplier<Block> registerConfigurableBlock(String modid, boolean configValue, Optional<Boolean> optionalConfigValue, String id, Supplier<Block> supplier, boolean hasItem);
-
     <T extends Item> Supplier<T> registerItem(String modid, String id, Supplier<T> supplier);
 
     /**
@@ -48,13 +48,11 @@ public interface RLRegistryHelper {
      * @param mainColor - The main color of the spawn egg
      * @param highlightColor - The highlight color of the spawn egg
      */
-    <T extends Mob> Supplier<SpawnEggItem> registerSpawnEgg(String modid, String id, Supplier<EntityType<T>> entity, int mainColor, int highlightColor);
+    <T extends Mob> SpawnEggItem registerSpawnEgg(Supplier<EntityType<T>> entity, int mainColor, int highlightColor);
 
     <T extends Potion> Supplier<T> registerPotion(String modid, String id, Supplier<T> supplier);
 
-    //Supplier<Item> registerConfigurableItem(String modid, boolean configValue, Optional<Boolean> optionalConfigValue, String id, Supplier<Item> supplier);
-
-    <T extends BlockEntity> Supplier<BlockEntityType<T>> registerBlockEntity(String modid, String id, Supplier<BlockEntityType<T>> supplier);
+    <T extends BlockEntity> Supplier<BlockEntityType<T>> registerBlockEntityType(String modid, String id, Supplier<BlockEntityType<T>> supplier, BlockEntitySupplier<T> factory, Supplier<Block> ...blocks);
 
     <T extends EntityType<?>> Supplier<T> registerEntityType(String modid, String id, Supplier<T> supplier);
 
@@ -67,4 +65,13 @@ public interface RLRegistryHelper {
     Supplier<ParticleType<?>> registerParticle(String modid, String id, Supplier<ParticleType<?>> supplier);
 
     <T extends Attribute> Supplier<T> registerAttribute(String modid, String id, Supplier<T> supplier);
+
+    //Supplier<Block> registerConfigurableBlock(String modid, boolean configValue, Optional<Boolean> optionalConfigValue, String id, Supplier<Block> supplier, boolean hasItem);
+
+    //Supplier<Item> registerConfigurableItem(String modid, boolean configValue, Optional<Boolean> optionalConfigValue, String id, Supplier<Item> supplier);
+
+    @FunctionalInterface
+    interface BlockEntitySupplier<T extends BlockEntity> {
+        T create(BlockPos pos, BlockState state);
+    }
 }
