@@ -44,7 +44,7 @@ public abstract class AbstractClientPlayerMixin extends Player {
     );
 
     @Inject(at = @At(value = "HEAD"), method = "getCloakTextureLocation", cancellable = true)
-    public void tipsylib$getCloakTextureLocation(CallbackInfoReturnable<ResourceLocation> cir) {
+    public void runiclib$getCloakTextureLocation(CallbackInfoReturnable<ResourceLocation> cir) {
         String texture = CAPE_TEXTURES.get(stringUUID);
         if (texture != null) {
             cir.setReturnValue(RunicLib.modid("textures/capes/" + texture + ".png"));

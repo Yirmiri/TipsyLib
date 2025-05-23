@@ -1,5 +1,6 @@
 package net.azurune.runiclib.core.mixin.server;
 
+import net.azurune.runiclib.common.effect.TickEffectImmuneEffect;
 import net.azurune.runiclib.core.register.RLMobEffects;
 import net.azurune.runiclib.common.util.IMobEffectInstance;
 import net.minecraft.tags.DamageTypeTags;
@@ -21,20 +22,22 @@ import java.util.Map;
 
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityEffectsMixin {
-    @Shadow @Final private Map<MobEffect, MobEffectInstance> activeEffects;
+    @Final @Shadow private Map<MobEffect, MobEffectInstance> activeEffects;
 
     LivingEntity living = (LivingEntity) (Object) this;
 
     @Inject(at = @At("HEAD"), method = "tickEffects")
-    public void runiclib_tickEffects(CallbackInfo ci) {
+    public void runiclib$tickEffects(CallbackInfo ci) {
         for (MobEffectInstance statusEffect : this.activeEffects.values()) {
-            if (!statusEffect.getEffect().isInstantenous()) {
+            if (!statusEffect.getEffect().isInstantenous() || !(statusEffect.getEffect() instanceof TickEffectImmuneEffect)
+            || !(statusEffect.getEffect() == RLMobEffects.CHRONOS.get())) {
+
                 if (statusEffect instanceof IMobEffectInstance effect) {
                     effect.setEntity((LivingEntity) (Object) this);
                 }
             }
 
-            if (statusEffect.getEffect() == RLMobEffects.CHRONOS) {
+            if (statusEffect.getEffect() == RLMobEffects.CHRONOS.get()) {
                 if (this.activeEffects.values().size() > 2) {
                     living.forceAddEffect(new MobEffectInstance(RLMobEffects.CHRONOS.get(), statusEffect.getDuration() - (this.activeEffects.values().size() - 2), 0), living);
                 }
