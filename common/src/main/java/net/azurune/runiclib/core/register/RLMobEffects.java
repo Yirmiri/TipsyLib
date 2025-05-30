@@ -4,6 +4,7 @@ import net.azurune.runiclib.RunicLib;
 import net.azurune.runiclib.common.effect.*;
 import net.azurune.runiclib.common.publicized.PublicMobEffect;
 import net.azurune.runiclib.core.platform.Services;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -36,7 +37,7 @@ public class RLMobEffects {
     //public static final Supplier<MobEffect> FRACTURING = register("fracturing", () -> new FracturingEffect(MobEffectCategory.HARMFUL, 0xc93448)); //TODO 1.21
 
     private static Supplier<MobEffect> register(String id, Supplier<MobEffect> supplier) {
-        return Services.REGISTRY.registerEffect(RunicLib.MOD_ID, id, supplier);
+        return Services.REGISTRY.register(BuiltInRegistries.MOB_EFFECT, RunicLib.MOD_ID, id, supplier);
     }
 
     public static void loadMobEffects() {

@@ -5,6 +5,8 @@ import net.azurune.runiclib.core.platform.services.RLRegistryHelper;
 import net.minecraft.core.Registry;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.EntityType;
@@ -23,6 +25,12 @@ import java.util.Arrays;
 import java.util.function.Supplier;
 
 public class FabricRLRegistryHelper implements RLRegistryHelper {
+
+    @Override
+    public <T> Supplier<T> register(Registry<T> registry, String modid, String id, Supplier<T> supplier) {
+        T register = Registry.register(registry, RunicLib.customid(modid, id), supplier.get());
+        return () -> register;
+    }
 
     @Override
     public <T extends Block> Supplier<T> registerBlock(String modid, String id, Supplier<T> supplier, boolean hasItem) {

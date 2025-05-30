@@ -1,6 +1,7 @@
 package net.azurune.runiclib.core.platform;
 
 import net.azurune.runiclib.core.platform.services.RLRegistryHelper;
+import net.minecraft.core.Registry;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.sounds.SoundEvent;
@@ -25,6 +26,14 @@ import java.util.function.Supplier;
 
 public class ForgeRLRegistryHelper implements RLRegistryHelper {
     IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
+    @Override
+    public <T> Supplier<T> register(Registry<T> registry, String modid, String id, Supplier<T> supplier) {
+        DeferredRegister<T> deferredRegister = DeferredRegister.create(registry.key(), modid);
+        deferredRegister.register(modEventBus);
+
+        return deferredRegister.register(id, supplier);
+    }
 
     @Override
     public <T extends Block> Supplier<T> registerBlock(String modid, String id, Supplier<T> supplier, boolean hasItem) {

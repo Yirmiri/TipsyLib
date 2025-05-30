@@ -2,7 +2,9 @@ package net.azurune.runiclib.core.platform.services;
 
 import net.azurune.runiclib.core.mixin.server.FireBlockInvokerMixin;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Registry;
 import net.minecraft.core.particles.ParticleType;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.EntityType;
@@ -30,6 +32,14 @@ public interface RLRegistryHelper {
     static void createFlammable(Block block, int encouragement, int flammability) {
         ((FireBlockInvokerMixin) Blocks.FIRE).runiclib$invokeSetFlammable(block, encouragement, flammability);
     }
+
+    /**
+     * This method allows you to create your own registry methods
+     * @param registry - The registry you are creating
+     * @param modid - The mod identifier that this should be registered under
+     * @param id - The string identifier
+     */
+    <T> Supplier<T> register(Registry<T> registry, String modid, String id, Supplier<T> supplier);
 
     /**
      * For all methods containing these parameters below this:
