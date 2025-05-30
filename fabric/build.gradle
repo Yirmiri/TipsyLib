@@ -1,7 +1,5 @@
 plugins {
-    id 'java'
-    id 'idea'
-    id 'maven-publish'
+    id 'multiloader-loader'
     id 'fabric-loom'
 }
 
@@ -22,9 +20,7 @@ dependencies {
     modImplementation "net.fabricmc:fabric-loader:${fabric_loader_version}"
     modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
     implementation group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.1'
-    compileOnly project(":common")
-
-    annotationProcessor("org.spongepowered:mixin:0.8.5-SNAPSHOT:processor")
+    implementation project(":common")
 }
 
 loom {
@@ -52,7 +48,7 @@ loom {
             name "Data Generation"
             vmArg "-Dfabric-api.datagen"
             vmArg "-Dfabric-api.datagen.output-dir=${file("../common/src/main/generated/")}"
-            vmArg "-Dfabric-api.datagen.modid=runiclib"
+            vmArg "-Dfabric-api.datagen.modid=tipsylib"
 
             runDir "build/datagen"
         }
