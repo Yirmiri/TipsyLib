@@ -15,7 +15,7 @@ public class AdrenalineEffect extends PublicMobEffect {
 
     @Override
     public void applyEffectTick(LivingEntity living, int amplifier) {
-        float speedModifier = 0.5F - living.getHealth() / living.getMaxHealth();
+        float speedModifier = 1.0F - living.getHealth() / living.getMaxHealth();
 
         if (living.getAttribute(Attributes.MOVEMENT_SPEED) == null) return;
         var originalModifier = living.getAttribute(Attributes.MOVEMENT_SPEED).getModifier(UUID.fromString("a3ceafaf-e3d8-484f-bd53-bdfe1ca4b588"));
@@ -24,7 +24,7 @@ public class AdrenalineEffect extends PublicMobEffect {
         var newAttributeModifier = new AttributeModifier(
                 originalModifier.getId(),
                 originalModifier.getName(),
-                speedModifier * (amplifier + 0.5F),
+                speedModifier * (amplifier + 1.0F),
                 originalModifier.getOperation());
 
         living.getAttribute(Attributes.MOVEMENT_SPEED).removeModifier(originalModifier.getId());

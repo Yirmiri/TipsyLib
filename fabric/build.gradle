@@ -48,7 +48,7 @@ loom {
             name "Data Generation"
             vmArg "-Dfabric-api.datagen"
             vmArg "-Dfabric-api.datagen.output-dir=${file("../common/src/main/generated/")}"
-            vmArg "-Dfabric-api.datagen.modid=tipsylib"
+            vmArg "-Dfabric-api.datagen.modid=runiclib"
 
             runDir "build/datagen"
         }
