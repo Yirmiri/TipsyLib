@@ -73,16 +73,11 @@ public class ForgeRLRegistryHelper implements RLRegistryHelper {
     }
 
     @Override
-    public <T extends BlockEntity> Supplier<BlockEntityType<T>> registerBlockEntityType(String modid, String id, Supplier<BlockEntityType<T>> supplier) {
+    public <T extends BlockEntity> Supplier<BlockEntityType<T>> registerBlockEntity(String modid, String id, RLRegistryHelper.BlockEntitySupplier<T> supplier, Block... blocks) {
         DeferredRegister<BlockEntityType<?>> blockEntityTypeDeferredRegister = DeferredRegister.create(Registries.BLOCK_ENTITY_TYPE, modid);
         blockEntityTypeDeferredRegister.register(modEventBus);
-        
-        return blockEntityTypeDeferredRegister.register(id, supplier);
-    }
 
-    @Override
-    public <T extends BlockEntity> BlockEntityType<T> createBlockEntity(RLRegistryHelper.BlockEntitySupplier<T> supplier, Block... blocks) {
-        return BlockEntityType.Builder.of(supplier::create, blocks).build(null);
+        return blockEntityTypeDeferredRegister.register(id, () -> BlockEntityType.Builder.of(supplier::create, blocks).build(null));
     }
 
     @Override
