@@ -21,6 +21,7 @@ import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
+import org.antlr.v4.runtime.misc.NotNull;
 
 import java.util.function.Supplier;
 
@@ -72,11 +73,16 @@ public class ForgeRLRegistryHelper implements RLRegistryHelper {
     }
 
     @Override
-    public <T extends BlockEntity> Supplier<BlockEntityType<T>> registerBlockEntityType(String modid, String id, Supplier<BlockEntityType<T>> supplier, BlockEntitySupplier<T> factory, Supplier<Block> ...blocks) {
+    public <T extends BlockEntity> Supplier<BlockEntityType<T>> registerBlockEntityType(String modid, String id, Supplier<BlockEntityType<T>> supplier) {
         DeferredRegister<BlockEntityType<?>> blockEntityTypeDeferredRegister = DeferredRegister.create(Registries.BLOCK_ENTITY_TYPE, modid);
         blockEntityTypeDeferredRegister.register(modEventBus);
         
         return blockEntityTypeDeferredRegister.register(id, supplier);
+    }
+
+    @Override
+    public <T extends BlockEntity> BlockEntityType<T> createBlockEntity(RLRegistryHelper.BlockEntitySupplier<T> supplier, Block... blocks) {
+        return BlockEntityType.Builder.of(supplier::create, blocks).build(null);
     }
 
     @Override

@@ -15,11 +15,7 @@ public class RunicLib {
         RLAttributes.loadAttributes();
     }
 
-    //TODO: Test Better Nether, Sinytra, & Apothesis (potential crash)?
-
-    //TODO (future update): RunicLib Config System || Easier 3D Armor || Heart Textures
-
-    //TODO (not important): Blood Clot, Pyromaniac, Traversal, and Venom
+    //TODO (future update): RunicLib Config System
 
     public static ResourceLocation modid(String id) {
         return new ResourceLocation(MOD_ID, id);
