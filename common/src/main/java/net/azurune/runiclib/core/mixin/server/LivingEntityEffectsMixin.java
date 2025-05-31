@@ -1,12 +1,15 @@
 package net.azurune.runiclib.core.mixin.server;
 
 import net.azurune.runiclib.common.effect.TickEffectImmuneEffect;
+import net.azurune.runiclib.core.init.RLDamageTypes;
 import net.azurune.runiclib.core.register.RLMobEffects;
 import net.azurune.runiclib.common.util.IMobEffectInstance;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
@@ -15,6 +18,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
@@ -23,6 +27,8 @@ import java.util.Map;
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityEffectsMixin {
     @Final @Shadow private Map<MobEffect, MobEffectInstance> activeEffects;
+
+    @Shadow public abstract MobEffectInstance getEffect(MobEffect effect);
 
     LivingEntity living = (LivingEntity) (Object) this;
 
@@ -80,8 +86,28 @@ public abstract class LivingEntityEffectsMixin {
 
     @Inject(at = @At("HEAD"), method = "hurt", cancellable = true)
     public void runiclib$hurt(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) { //TODO: open up to grants_fire_immunity effect tag?
+        Entity attacker = source.getEntity();
         if (source.is(DamageTypeTags.IS_FIRE) && (living.hasEffect(RLMobEffects.PYROMANIAC.get()) || living.hasEffect(RLMobEffects.TRAIL_BLAZING.get()))) {
             cir.setReturnValue(false);
         }
+
+        if (living.hasEffect(RLMobEffects.BURNING_THORNS.get())) {
+            if (attacker != null) attacker.setSecondsOnFire(5 + (getEffect(RLMobEffects.BURNING_THORNS.get()).getAmplifier()));
+        }
+
+        if (living.hasEffect(RLMobEffects.RETALIATION.get())) {
+            if (attacker != null) {
+                DamageSource damagesource = new DamageSource(attacker.level().registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(RLDamageTypes.RETALIATION));
+                attacker.hurt(damagesource, 1.0F + (getEffect(RLMobEffects.RETALIATION.get()).getAmplifier() + 1));
+            }
+        }
+    }
+
+    @ModifyVariable(at = @At("HEAD"), method = "hurt", argsOnly = true)
+    public float shatterSpleen(float amount) {
+        if (living.hasEffect(RLMobEffects.SHATTERSPLEEN.get())) {
+            return amount + amount * (0.5F * living.getEffect(RLMobEffects.SHATTERSPLEEN.get()).getAmplifier() + 0.5F);
+        }
+        return amount;
     }
 }

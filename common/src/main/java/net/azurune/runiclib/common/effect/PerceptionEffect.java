@@ -10,7 +10,6 @@ import net.minecraft.world.level.Level;
 
 import java.util.List;
 
-@Deprecated(forRemoval = true)
 public class PerceptionEffect extends PublicMobEffect {
     public PerceptionEffect(MobEffectCategory category, int color) {
         super(category, color);

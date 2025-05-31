@@ -11,7 +11,7 @@ public class HeartBreakEffect extends PublicMobEffect {
 
     @Override
     public void applyEffectTick(LivingEntity entity, int amplifier) {
-        entity.setHealth(entity.getHealth());
+        entity.setHealth(entity.getHealth()); //Updates health attribute since normally vanilla does not do this if it goes below your current health
     }
 
     @Override

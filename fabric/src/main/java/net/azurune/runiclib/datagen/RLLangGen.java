@@ -20,19 +20,22 @@ public class RLLangGen extends FabricLanguageProvider {
         build.add(RLMobEffects.BERSERK.get(), "Berserk");
         build.add(RLMobEffects.TRAVERSAL.get(), "Traversal");
         build.add(RLMobEffects.BRIMSTONE_VISION.get(), "Brimstone Vision");
-
-        //NEUTRAL EFFECTS
+        build.add(RLMobEffects.RETALIATION.get(), "Retaliation");
+        build.add(RLMobEffects.BURNING_THORNS.get(), "Burning Thorns");
+        build.add(RLMobEffects.ADRENALINE.get(), "Adrenaline");
+        build.add(RLMobEffects.SHATTERSPLEEN.get(), "Shatterspleen");
         build.add(RLMobEffects.CHRONOS.get(), "Chronos");
         build.add(RLMobEffects.TEMPUS.get(), "Tempus");
-
-        //HARMFUL EFFECTS
         build.add(RLMobEffects.BLEEDING.get(), "Bleeding");
         build.add(RLMobEffects.BLOOD_CLOT.get(), "Blood Clot");
         build.add(RLMobEffects.CONFUSION.get(), "Confusion");
         build.add(RLMobEffects.CREATIVE_SHOCK.get(), "Creative Shock");
         build.add(RLMobEffects.VENOM.get(), "Venom");
         build.add(RLMobEffects.HEARTBREAK.get(), "Heartbreak");
-        //build.add(TLMobEffects.FRACTURING.get(), "Fracturing");
+        build.add(RLMobEffects.LESSER_WEAKNESS.get(), "Lesser Weakness");
+        build.add(RLMobEffects.LESSER_STRENGTH.get(), "Lesser Strength");
+        build.add(RLMobEffects.CAFFEINATED.get(), "Caffeinated");
+        build.add(RLMobEffects.CAFFEINE_CRASH.get(), "Caffeine Crash");
 
         //ATTRIBUTES
         build.add("runiclib.generic.dodge_chance", "Dodge Chance");
@@ -60,7 +63,7 @@ public class RLLangGen extends FabricLanguageProvider {
 
         //============================================================================
 
-        //JEED/EMIFFECT COMPAT (BENEFICIAL EFFECTS)
+        //JEED/EMIFFECT COMPAT
         build.add("effect.runiclib.water_walking.description", "Allows the user to walk on water.");
         build.add("effect.runiclib.lava_walking.description", "Allows the user to walk on lava.");
         build.add("effect.runiclib.trail_blazing.description", "When not sneaking, a trail of fire will emit from the user's feet.");
@@ -69,17 +72,21 @@ public class RLLangGen extends FabricLanguageProvider {
         build.add("effect.runiclib.berserk.description", "Increases the user's attack damage the lower health out of max health they have.");
         build.add("effect.runiclib.traversal.description", "Teleports the user to their spawn location or world spawn if none is found.");
         build.add("effect.runiclib.brimstone_vision.description", "Allows the user to see clearly under lava.");
-
-        //JEED/EMIFFECT COMPAT (NEUTRAL EFFECTS)
         build.add("effect.runiclib.chronos.description", "Decreases the tick rate of the user's active effects.");
         build.add("effect.runiclib.tempus.description", "Increases the tick rate of the user's active effects.");
-
-        //JEED/EMIFFECT COMPAT (HARMFUL EFFECTS)
         build.add("effect.runiclib.bleeding.description", "Prevents the user to heal any health.");
         build.add("effect.runiclib.blood_clot.description", "Prevents the user to heal from natural regeneration.");
         build.add("effect.runiclib.confusion.description", "Disables advanced F3 and hides the user's health bar.");
         build.add("effect.runiclib.creative_shock.description", "Damages the user when attempting to build.");
         build.add("effect.runiclib.venom.description", "Deals lethal damage to the user over time.");
         build.add("effect.runiclib.heartbreak.description", "Reduces the user's max health, updates the health bar immediately.");
+        build.add("effect.runiclib.lesser_strength.description", "Increases +1.0 attack damage.");
+        build.add("effect.runiclib.lesser_weakness.description", "Decreases -1.0 attack damage.");
+        build.add("effect.runiclib.caffeinated.description", "Increases all major stats slightly.");
+        build.add("effect.runiclib.caffeine_crash.description", "Decreases all major stats slightly.");
+        build.add("effect.runiclib.retaliation.description", "Hurts attackers.");
+        build.add("effect.runiclib.burning_thorns.description", "Burns attackers.");
+        build.add("effect.runiclib.adrenaline.description", "Increases the user's movement speed the lower health out of max health they have.");
+        build.add("effect.runiclib.shatterspleen.description", "Multiplies the amount of damage taken.");
     }
 }
