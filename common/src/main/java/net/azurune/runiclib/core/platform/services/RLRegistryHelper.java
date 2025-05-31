@@ -62,7 +62,9 @@ public interface RLRegistryHelper {
 
     <T extends Potion> Supplier<T> registerPotion(String modid, String id, Supplier<T> supplier);
 
-    <T extends BlockEntity> Supplier<BlockEntityType<T>> registerBlockEntity(String modid, String id, RLRegistryHelper.BlockEntitySupplier<T> supplier, Block... blocks);
+    <T extends BlockEntity> Supplier<BlockEntityType<T>> registerBlockEntityType(String modid, String id, Supplier<BlockEntityType<T>> supplier);
+
+    <T extends BlockEntity> BlockEntityType<T> createBlockEntity(BlockEntitySupplier<T> supplier, Block... blocks);
 
     <T extends EntityType<?>> Supplier<T> registerEntityType(String modid, String id, Supplier<T> supplier);
 
