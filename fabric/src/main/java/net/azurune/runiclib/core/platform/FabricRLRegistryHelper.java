@@ -61,12 +61,13 @@ public class FabricRLRegistryHelper implements RLRegistryHelper {
 
     @Override
     public <T extends BlockEntity> Supplier<BlockEntityType<T>> registerBlockEntityType(String modid, String id, Supplier<BlockEntityType<T>> supplier) {
-        return () -> Registry.register(BuiltInRegistries.BLOCK_ENTITY_TYPE, RunicLib.customid(modid, id), supplier.get());
+        BlockEntityType<T> register = Registry.register(BuiltInRegistries.BLOCK_ENTITY_TYPE, RunicLib.customid(modid, id), supplier.get());
+        return () -> register;
     }
 
     @Override
     public <T extends BlockEntity> BlockEntityType<T> createBlockEntity(RLRegistryHelper.BlockEntitySupplier<T> supplier, Block... blocks) {
-        return FabricBlockEntityTypeBuilder.create(supplier::create, blocks).build();
+        return FabricBlockEntityTypeBuilder.create(supplier::create, Arrays.stream(blocks).toArray(Block[]::new)).build();
     }
 
     @Override
