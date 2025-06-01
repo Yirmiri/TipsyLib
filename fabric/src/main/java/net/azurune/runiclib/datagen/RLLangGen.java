@@ -3,39 +3,42 @@ package net.azurune.runiclib.datagen;
 import net.azurune.runiclib.core.register.RLMobEffects;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
+import net.minecraft.core.HolderLookup;
+
+import java.util.concurrent.CompletableFuture;
 
 public class RLLangGen extends FabricLanguageProvider {
-    public RLLangGen(FabricDataOutput dataOutput) {
-        super(dataOutput);
+    public RLLangGen(FabricDataOutput dataOutput, CompletableFuture<HolderLookup.Provider> registryLookup) {
+        super(dataOutput, registryLookup);
     }
 
     @Override
-    public void generateTranslations(FabricLanguageProvider.TranslationBuilder build) {
+    public void generateTranslations(HolderLookup.Provider provider, FabricLanguageProvider.TranslationBuilder build) {
         //BENEFICIAL EFFECTS
-        build.add(RLMobEffects.WATER_WALKING.get(), "Water Walking");
-        build.add(RLMobEffects.LAVA_WALKING.get(), "Lava Walking");
-        build.add(RLMobEffects.TRAIL_BLAZING.get(), "Trail Blazing");
-        build.add(RLMobEffects.PERCEPTION.get(), "Perception");
-        build.add(RLMobEffects.PYROMANIAC.get(), "Pyromaniac");
-        build.add(RLMobEffects.BERSERK.get(), "Berserk");
-        build.add(RLMobEffects.TRAVERSAL.get(), "Traversal");
-        build.add(RLMobEffects.BRIMSTONE_VISION.get(), "Brimstone Vision");
-        build.add(RLMobEffects.RETALIATION.get(), "Retaliation");
-        build.add(RLMobEffects.BURNING_THORNS.get(), "Burning Thorns");
-        build.add(RLMobEffects.ADRENALINE.get(), "Adrenaline");
-        build.add(RLMobEffects.SHATTERSPLEEN.get(), "Shatterspleen");
-        build.add(RLMobEffects.CHRONOS.get(), "Chronos");
-        build.add(RLMobEffects.TEMPUS.get(), "Tempus");
-        build.add(RLMobEffects.BLEEDING.get(), "Bleeding");
-        build.add(RLMobEffects.BLOOD_CLOT.get(), "Blood Clot");
-        build.add(RLMobEffects.CONFUSION.get(), "Confusion");
-        build.add(RLMobEffects.CREATIVE_SHOCK.get(), "Creative Shock");
-        build.add(RLMobEffects.VENOM.get(), "Venom");
-        build.add(RLMobEffects.HEARTBREAK.get(), "Heartbreak");
-        build.add(RLMobEffects.LESSER_WEAKNESS.get(), "Lesser Weakness");
-        build.add(RLMobEffects.LESSER_STRENGTH.get(), "Lesser Strength");
-        build.add(RLMobEffects.CAFFEINATED.get(), "Caffeinated");
-        build.add(RLMobEffects.CAFFEINE_CRASH.get(), "Caffeine Crash");
+        build.add(RLMobEffects.WATER_WALKING.value(), "Water Walking");
+        build.add(RLMobEffects.LAVA_WALKING.value(), "Lava Walking");
+        build.add(RLMobEffects.TRAIL_BLAZING.value(), "Trail Blazing");
+        build.add(RLMobEffects.PERCEPTION.value(), "Perception");
+        build.add(RLMobEffects.PYROMANIAC.value(), "Pyromaniac");
+        build.add(RLMobEffects.BERSERK.value(), "Berserk");
+        build.add(RLMobEffects.TRAVERSAL.value(), "Traversal");
+        build.add(RLMobEffects.BRIMSTONE_VISION.value(), "Brimstone Vision");
+        build.add(RLMobEffects.RETALIATION.value(), "Retaliation");
+        build.add(RLMobEffects.BURNING_THORNS.value(), "Burning Thorns");
+        build.add(RLMobEffects.ADRENALINE.value(), "Adrenaline");
+        build.add(RLMobEffects.SHATTERSPLEEN.value(), "Shatterspleen");
+        build.add(RLMobEffects.CHRONOS.value(), "Chronos");
+        build.add(RLMobEffects.TEMPUS.value(), "Tempus");
+        build.add(RLMobEffects.BLEEDING.value(), "Bleeding");
+        build.add(RLMobEffects.BLOOD_CLOT.value(), "Blood Clot");
+        build.add(RLMobEffects.CONFUSION.value(), "Confusion");
+        build.add(RLMobEffects.CREATIVE_SHOCK.value(), "Creative Shock");
+        build.add(RLMobEffects.VENOM.value(), "Venom");
+        build.add(RLMobEffects.HEARTBREAK.value(), "Heartbreak");
+        build.add(RLMobEffects.LESSER_WEAKNESS.value(), "Lesser Weakness");
+        build.add(RLMobEffects.LESSER_STRENGTH.value(), "Lesser Strength");
+        build.add(RLMobEffects.CAFFEINATED.value(), "Caffeinated");
+        build.add(RLMobEffects.CAFFEINE_CRASH.value(), "Caffeine Crash");
 
         //ATTRIBUTES
         build.add("runiclib.generic.dodge_chance", "Dodge Chance");

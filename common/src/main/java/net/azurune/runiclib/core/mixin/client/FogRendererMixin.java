@@ -15,7 +15,7 @@ public class FogRendererMixin {
     @Inject(at = @At(value = "HEAD"), method = "setupFog", cancellable = true)
     private static void tipsylib$setupFog(Camera camera, FogRenderer.FogMode fogMode, float farPlaneDistance, boolean b, float v, CallbackInfo ci) {
         if (camera.getEntity() instanceof Player player) {
-            if (camera.getFluidInCamera() == FogType.LAVA && player.hasEffect(RLMobEffects.BRIMSTONE_VISION.get())) {
+            if (camera.getFluidInCamera() == FogType.LAVA && player.hasEffect(RLMobEffects.BRIMSTONE_VISION)) {
                 ci.cancel();
             }
         }

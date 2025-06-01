@@ -2,6 +2,7 @@ package net.azurune.runiclib.core.platform.services;
 
 import net.azurune.runiclib.core.mixin.server.FireBlockInvokerMixin;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.resources.ResourceKey;
@@ -41,6 +42,8 @@ public interface RLRegistryHelper {
      */
     <T> Supplier<T> register(Registry<T> registry, String modid, String id, Supplier<T> supplier);
 
+    <T> Holder<T> registerForHolder(Registry<T> registry, String modid, String id, T holder);
+
     /**
      * For all methods containing these parameters below this:
      * @param modid - The mod identifier that this block should be registered under
@@ -68,15 +71,13 @@ public interface RLRegistryHelper {
 
     <T extends EntityType<?>> Supplier<T> registerEntityType(String modid, String id, Supplier<T> supplier);
 
-    <T extends SoundEvent> Supplier<T> registerSoundEvent(String modid, String id, Supplier<T> supplier);
-
-    <T extends MobEffect> Supplier<T> registerEffect(String modid, String id, Supplier<T> supplier);
+    Holder<MobEffect> registerEffect(String modid, String id, MobEffect effect);
 
     <T extends CreativeModeTab> Supplier<T> registerCreativeModeTab(String modid, String id, Supplier<T> supplier);
 
     Supplier<ParticleType<?>> registerParticle(String modid, String id, Supplier<ParticleType<?>> supplier);
 
-    <T extends Attribute> Supplier<T> registerAttribute(String modid, String id, Supplier<T> supplier);
+    Holder<Attribute> registerAttribute(String modid, String id, Attribute attribute);
 
     //Supplier<Block> registerConfigurableBlock(String modid, boolean configValue, Optional<Boolean> optionalConfigValue, String id, Supplier<Block> supplier, boolean hasItem);
 

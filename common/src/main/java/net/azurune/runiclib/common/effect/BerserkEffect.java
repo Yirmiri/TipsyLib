@@ -1,5 +1,6 @@
 package net.azurune.runiclib.common.effect;
 
+import net.azurune.runiclib.RunicLib;
 import net.azurune.runiclib.common.publicized.PublicMobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
@@ -14,25 +15,26 @@ public class BerserkEffect extends PublicMobEffect {
     }
 
     @Override
-    public void applyEffectTick(LivingEntity living, int amplifier) {
+    public boolean applyEffectTick(LivingEntity living, int amplifier) {
         float damageModifier = 1.0F - living.getHealth() / living.getMaxHealth();
 
-        if (living.getAttribute(Attributes.ATTACK_DAMAGE) == null) return;
-        var originalModifier = living.getAttribute(Attributes.ATTACK_DAMAGE).getModifier(UUID.fromString("15ab2f03-5cf6-4962-a43d-a5964727faa5"));
+        if (living.getAttribute(Attributes.ATTACK_DAMAGE) == null) return false;
+        var originalModifier = living.getAttribute(Attributes.MOVEMENT_SPEED).getModifier(RunicLib.modid("berserk.attack_damage"));
 
-        if (originalModifier == null) return;
+        if (originalModifier == null) return false;
         var newAttributeModifier = new AttributeModifier(
-                originalModifier.getId(),
-                originalModifier.getName(),
+                originalModifier.id(),
+                //originalModifier.getName(),
                 damageModifier * (amplifier + 1.0F),
-                originalModifier.getOperation());
+                originalModifier.operation());
 
-        living.getAttribute(Attributes.ATTACK_DAMAGE).removeModifier(originalModifier.getId());
+        living.getAttribute(Attributes.ATTACK_DAMAGE).removeModifier(originalModifier.id());
         living.getAttribute(Attributes.ATTACK_DAMAGE).addTransientModifier(newAttributeModifier);
+        return true;
     }
 
     @Override
-    public boolean isDurationEffectTick(int duration, int amplifier) {
+    public boolean shouldApplyEffectTickThisTick(int duration, int amplifier) {
         return true;
     }
 }

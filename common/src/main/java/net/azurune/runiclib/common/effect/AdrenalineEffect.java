@@ -1,12 +1,11 @@
 package net.azurune.runiclib.common.effect;
 
+import net.azurune.runiclib.RunicLib;
 import net.azurune.runiclib.common.publicized.PublicMobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-
-import java.util.UUID;
 
 public class AdrenalineEffect extends PublicMobEffect {
     public AdrenalineEffect(MobEffectCategory category, int color) {
@@ -14,25 +13,26 @@ public class AdrenalineEffect extends PublicMobEffect {
     }
 
     @Override
-    public void applyEffectTick(LivingEntity living, int amplifier) {
+    public boolean applyEffectTick(LivingEntity living, int amplifier) {
         float speedModifier = 1.0F - living.getHealth() / living.getMaxHealth();
 
-        if (living.getAttribute(Attributes.MOVEMENT_SPEED) == null) return;
-        var originalModifier = living.getAttribute(Attributes.MOVEMENT_SPEED).getModifier(UUID.fromString("a3ceafaf-e3d8-484f-bd53-bdfe1ca4b588"));
+        if (living.getAttribute(Attributes.MOVEMENT_SPEED) == null) return false;
+        var originalModifier = living.getAttribute(Attributes.MOVEMENT_SPEED).getModifier(RunicLib.modid("adrenaline.movement_speed"));
 
-        if (originalModifier == null) return;
+        if (originalModifier == null) return false;
         var newAttributeModifier = new AttributeModifier(
-                originalModifier.getId(),
-                originalModifier.getName(),
+                originalModifier.id(),
+                //originalModifier.getName(),
                 speedModifier * (amplifier + 1.0F),
-                originalModifier.getOperation());
+                originalModifier.operation());
 
-        living.getAttribute(Attributes.MOVEMENT_SPEED).removeModifier(originalModifier.getId());
+        living.getAttribute(Attributes.MOVEMENT_SPEED).removeModifier(originalModifier.id());
         living.getAttribute(Attributes.MOVEMENT_SPEED).addTransientModifier(newAttributeModifier);
+        return true;
     }
 
     @Override
-    public boolean isDurationEffectTick(int duration, int amplifier) {
+    public boolean shouldApplyEffectTickThisTick(int duration, int amplifier) {
         return true;
     }
 }

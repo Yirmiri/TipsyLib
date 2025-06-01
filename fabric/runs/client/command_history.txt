@@ -1,0 +1,5 @@
+/time set day
+/effect give Player707 runiclib:water_walking
+/effect clear
+/effect give Player707 runiclib:trail_blazing
+/effect clear

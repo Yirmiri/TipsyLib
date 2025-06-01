@@ -8,18 +8,18 @@ import net.minecraft.world.effect.MobEffect;
 
 public class RLTags {
     public static class EffectTags {
-        //public static final TagKey<MobEffect> CHRONOS_BLACKLISTED = tag("chronos_blacklisted");
-        //public static final TagKey<MobEffect> TEMPUS_BLACKLISTED = tag("tempus_blacklisted");
+        public static final TagKey<MobEffect> CHRONOS_BLACKLISTED = create("chronos_blacklisted");
+        public static final TagKey<MobEffect> TEMPUS_BLACKLISTED = create("tempus_blacklisted");
 
-        private static TagKey<MobEffect> tag(String id) {
+        private static TagKey<MobEffect> create(String id) {
             return TagKey.create(Registries.MOB_EFFECT, RunicLib.modid(id));
         }
     }
 
     public static class DamageTypeTags {
-        public static final TagKey<DamageType> BYPASSES_DODGE = tag("bypasses_dodge");
+        public static final TagKey<DamageType> BYPASSES_DODGE = create("bypasses_dodge");
 
-        private static TagKey<DamageType> tag(String id) {
+        private static TagKey<DamageType> create(String id) {
             return TagKey.create(Registries.DAMAGE_TYPE, RunicLib.modid(id));
         }
     }

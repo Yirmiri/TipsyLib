@@ -23,7 +23,7 @@ public class MobEffectInstanceMixin implements IMobEffectInstance {
     @Inject(at = @At("HEAD"), method = "tickDownDuration", cancellable = true)
     public void runiclib$tickDownDuration(CallbackInfoReturnable<Integer> cir) {
         if (living != null) {
-            if (this.effect != RLMobEffects.CHRONOS.get() && living.hasEffect(RLMobEffects.CHRONOS.get())) {
+            if (this.effect != RLMobEffects.CHRONOS && living.hasEffect(RLMobEffects.CHRONOS)) {
                 cir.setReturnValue(this.duration);
             }
         }

@@ -21,7 +21,7 @@ public abstract class AbstractClientPlayerMixin extends Player {
         super(level, pos, yRot, gameProfile);
     }
 
-    @Unique
+    @Unique //Usernames in comments (last updated 6/1/25), could be out of date in the future however UUIDs will mean they are on the correct users
     private static final Map<String, String> CAPE_TEXTURES = Map.ofEntries(
             Map.entry("1cedf927-5c8f-4650-95e9-808fc8f94d00", "azurune"), //Yirmiri
             Map.entry("bd35c402-fa9c-4d00-afe6-b4ed9ebe90c4", "azurune"), //amirasana
@@ -40,10 +40,11 @@ public abstract class AbstractClientPlayerMixin extends Player {
             Map.entry("27a729ac-0a2a-42fc-8e65-a37fcba6a6c7", "lightning"), //ZeusIGN
             Map.entry("4bc0a7a9-497a-4aa1-a5af-cee312f94b01", "rebellious"), //CreekWanderer
             Map.entry("7a6a8c68-8b73-47f6-b08f-0dde5f1848dd", "fudge_sundae"), //SmillyScarfs
-            Map.entry("8429992e-eba7-4dc9-a0b9-f941a55a5fb4", "shiny_pearl") //Pearlision3st
+            Map.entry("8429992e-eba7-4dc9-a0b9-f941a55a5fb4", "shiny_pearl"), //Pearlision3st
+            Map.entry("7ca4cbfd-bb7e-419c-a97c-26a54031d28d", "rotten") //Betwixer
     );
 
-    @Inject(at = @At(value = "HEAD"), method = "getCloakTextureLocation", cancellable = true)
+    @Inject(at = @At(value = "HEAD"), method = "getSkin", cancellable = true)
     public void runiclib$getCloakTextureLocation(CallbackInfoReturnable<ResourceLocation> cir) {
         String texture = CAPE_TEXTURES.get(stringUUID);
         if (texture != null) {

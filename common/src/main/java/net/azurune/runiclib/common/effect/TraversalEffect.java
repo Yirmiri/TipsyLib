@@ -18,7 +18,7 @@ public class TraversalEffect extends InstantenousMobEffect {
     }
 
     @Override
-    public void applyEffectTick(LivingEntity living, int amplifier) {
+    public boolean applyEffectTick(LivingEntity living, int amplifier) {
         if (living instanceof ServerPlayer serverPlayer) {
             ServerLevel level = Optional.ofNullable(serverPlayer.getServer().getLevel(serverPlayer.getRespawnDimension())).orElse(serverPlayer.getServer().overworld());
             Vec3 pos = Vec3.atCenterOf(level.getSharedSpawnPos());
@@ -29,6 +29,7 @@ public class TraversalEffect extends InstantenousMobEffect {
             serverPlayer.teleportTo(pos.x, pos.y, pos.z);
             serverPlayer.playSound(SoundEvents.CHORUS_FRUIT_TELEPORT);
         }
+        return true;
     }
 
     public boolean isPositionValid(ServerPlayer serverPlayer) {
@@ -37,7 +38,7 @@ public class TraversalEffect extends InstantenousMobEffect {
     }
 
     @Override
-    public boolean isDurationEffectTick(int duration, int amplifier) {
+    public boolean shouldApplyEffectTickThisTick(int duration, int amplifier) {
         return true;
     }
 

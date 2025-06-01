@@ -18,10 +18,10 @@ public class RunicLib {
     //TODO (future update): RunicLib Config System
 
     public static ResourceLocation modid(String id) {
-        return new ResourceLocation(MOD_ID, id);
+        return ResourceLocation.fromNamespaceAndPath(MOD_ID, id);
     }
 
     public static ResourceLocation customid(String modid, String id) {
-        return new ResourceLocation(modid, id);
+        return ResourceLocation.fromNamespaceAndPath(modid, id);
     }
 }

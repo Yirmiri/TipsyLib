@@ -5,6 +5,7 @@ import net.azurune.runiclib.core.register.RLMobEffects;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.block.Blocks;
 
 public class TrailBlazingEffect extends PublicMobEffect {
@@ -13,15 +14,18 @@ public class TrailBlazingEffect extends PublicMobEffect {
     }
 
     @Override
-    public void applyEffectTick(LivingEntity living, int amplifier) {
+    public boolean applyEffectTick(LivingEntity living, int amplifier) {
         BlockPos pos = living.blockPosition();
-        if (living.hasEffect(RLMobEffects.TRAIL_BLAZING.get()) && living.level().getBlockState(pos).isAir() && !living.isCrouching()) {
-            living.level().setBlockAndUpdate(pos, Blocks.FIRE.defaultBlockState()); //TODO: custom fire that dissipates after time
+        if (living.hasEffect(RLMobEffects.TRAIL_BLAZING) && living.level().getBlockState(pos).isAir() && !living.isCrouching()) {
+            if (living instanceof Player player && player.isSprinting()) {
+                living.level().setBlockAndUpdate(pos, Blocks.FIRE.defaultBlockState()); //TODO: custom fire that dissipates after time
+            } else living.level().setBlockAndUpdate(pos, Blocks.FIRE.defaultBlockState());
         }
+        return true;
     }
 
     @Override
-    public boolean isDurationEffectTick(int duration, int amplifier) {
+    public boolean shouldApplyEffectTickThisTick(int duration, int amplifier) {
         return true;
     }
 }

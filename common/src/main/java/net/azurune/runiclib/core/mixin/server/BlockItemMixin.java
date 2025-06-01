@@ -20,9 +20,9 @@ public class BlockItemMixin {
     public void runiclib$placeBlock(BlockPlaceContext ctx, BlockState state, CallbackInfoReturnable<Boolean> cir) {
         Player player = ctx.getPlayer();
         if (player != null) {
-            if (player.hasEffect(RLMobEffects.CREATIVE_SHOCK.get()) && !player.getAbilities().instabuild) {
+            if (player.hasEffect(RLMobEffects.CREATIVE_SHOCK) && !player.getAbilities().instabuild) {
                 DamageSource damagesource = new DamageSource(player.level().registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(RLDamageTypes.CREATIVE_SHOCK));
-                player.hurt(damagesource, 1.0F + player.getEffect(RLMobEffects.CREATIVE_SHOCK.get()).getAmplifier() + 1.0F);
+                player.hurt(damagesource, 1.0F + player.getEffect(RLMobEffects.CREATIVE_SHOCK).getAmplifier() + 1.0F);
             }
         }
     }

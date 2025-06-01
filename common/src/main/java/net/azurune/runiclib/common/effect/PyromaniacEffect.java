@@ -12,18 +12,19 @@ public class PyromaniacEffect extends PublicMobEffect {
     }
 
     @Override
-    public void applyEffectTick(LivingEntity living, int amplifier) {
-        if (living.getFeetBlockState().is(BlockTags.FIRE) && living.hasEffect(RLMobEffects.PYROMANIAC.get())) {
+    public boolean applyEffectTick(LivingEntity living, int amplifier) {
+        if (living.getBlockStateOn().is(BlockTags.FIRE) && living.hasEffect(RLMobEffects.PYROMANIAC)) {
             if (living.tickCount % 30 == 0) {
                 if (living.getHealth() != living.getMaxHealth()) {
-                    living.heal(1.0F + living.getEffect(RLMobEffects.PYROMANIAC.get()).getAmplifier());
+                    living.heal(1.0F + living.getEffect(RLMobEffects.PYROMANIAC).getAmplifier());
                 }
             }
         }
+        return true;
     }
 
     @Override
-    public boolean isDurationEffectTick(int duration, int amplifier) {
+    public boolean shouldApplyEffectTickThisTick(int duration, int amplifier) {
         return true;
     }
 }

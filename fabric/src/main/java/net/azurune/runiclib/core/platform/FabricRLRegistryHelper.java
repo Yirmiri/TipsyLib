@@ -3,6 +3,7 @@ package net.azurune.runiclib.core.platform;
 import net.azurune.runiclib.RunicLib;
 import net.azurune.runiclib.core.platform.services.RLRegistryHelper;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
+import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -31,6 +32,11 @@ public class FabricRLRegistryHelper implements RLRegistryHelper {
     public <T> Supplier<T> register(Registry<T> registry, String modid, String id, Supplier<T> supplier) {
         T register = Registry.register(registry, RunicLib.customid(modid, id), supplier.get());
         return () -> register;
+    }
+
+    @Override
+    public <T> Holder<T> registerForHolder(Registry<T> registry, String modid, String id, T holder) {
+        return Registry.registerForHolder(registry, RunicLib.customid(modid, id), holder);
     }
 
     @Override
@@ -77,15 +83,8 @@ public class FabricRLRegistryHelper implements RLRegistryHelper {
     }
 
     @Override
-    public <T extends SoundEvent> Supplier<T> registerSoundEvent(String modid, String id, Supplier<T> supplier) {
-        T register = Registry.register(BuiltInRegistries.SOUND_EVENT, RunicLib.customid(modid, id), supplier.get());
-        return () -> register;
-    }
-
-    @Override
-    public <T extends MobEffect> Supplier<T> registerEffect(String modid, String id, Supplier<T> supplier) {
-        T register = Registry.register(BuiltInRegistries.MOB_EFFECT, RunicLib.customid(modid, id), supplier.get());
-        return () -> register;
+    public Holder<MobEffect> registerEffect(String modid, String id, MobEffect effect) {
+        return Registry.registerForHolder(BuiltInRegistries.MOB_EFFECT, RunicLib.customid(modid, id), effect);
     }
 
     @Override
@@ -100,8 +99,7 @@ public class FabricRLRegistryHelper implements RLRegistryHelper {
     }
 
     @Override
-    public <T extends Attribute> Supplier<T> registerAttribute(String modid, String id, Supplier<T> supplier) {
-        T register = Registry.register(BuiltInRegistries.ATTRIBUTE, RunicLib.customid(modid, id), supplier.get());
-        return () -> register;
+    public Holder<Attribute> registerAttribute(String modid, String id, Attribute attribute) {
+        return Registry.registerForHolder(BuiltInRegistries.ATTRIBUTE, RunicLib.customid(modid, id), attribute);
     }
 }

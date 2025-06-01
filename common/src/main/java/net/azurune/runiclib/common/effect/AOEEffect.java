@@ -1,6 +1,7 @@
 package net.azurune.runiclib.common.effect;
 
 import net.azurune.runiclib.common.publicized.PublicMobEffect;
+import net.minecraft.core.Holder;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -11,7 +12,7 @@ import net.minecraft.world.level.Level;
 import java.util.List;
 
 public class AOEEffect extends PublicMobEffect {
-    private final MobEffect effect;
+    private final Holder<MobEffect> effect;
     private final int effectTicks;
     private final int effectAmp;
     private final int cooldown;
@@ -27,7 +28,7 @@ public class AOEEffect extends PublicMobEffect {
      * @param radius - How far in blocks should the AOE effect be granted from the user of this effect
      * @param grantSelf - Should the AOE effect be granted to the user of this effect
      */
-    public AOEEffect(MobEffect effect, int effectTicks, int effectAmp, int cooldown, double radius, boolean grantSelf, MobEffectCategory category, int color) {
+    public AOEEffect(Holder<MobEffect> effect, int effectTicks, int effectAmp, int cooldown, double radius, boolean grantSelf, MobEffectCategory category, int color) {
         super(category, color);
         this.effect = effect;
         this.effectTicks = effectTicks;
@@ -38,7 +39,7 @@ public class AOEEffect extends PublicMobEffect {
     }
 
     @Override
-    public void applyEffectTick(LivingEntity living, int amplifier) {
+    public boolean applyEffectTick(LivingEntity living, int amplifier) {
         Level level = living.level();
         List<LivingEntity> list = level.getEntitiesOfClass(LivingEntity.class, living.getBoundingBox().inflate(radius + amplifier), Entity::isAlive);
         for (LivingEntity livingEntity : list) {
@@ -48,10 +49,11 @@ public class AOEEffect extends PublicMobEffect {
                 livingEntity.addEffect(new MobEffectInstance(effect, effectTicks, effectAmp));
             }
         }
+        return true;
     }
 
     @Override
-    public boolean isDurationEffectTick(int duration, int amplifier) {
+    public boolean shouldApplyEffectTickThisTick(int duration, int amplifier) {
         return duration % cooldown == 0;
     }
 }
