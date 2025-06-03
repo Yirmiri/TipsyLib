@@ -27,8 +27,8 @@ public class RLMobEffects {
     public static final Supplier<MobEffect> ADRENALINE = register("adrenaline", () -> new AdrenalineEffect(MobEffectCategory.BENEFICIAL, 0x55e75a).addAttributeModifier(Attributes.MOVEMENT_SPEED, "a3ceafaf-e3d8-484f-bd53-bdfe1ca4b588", 0.0, AttributeModifier.Operation.MULTIPLY_TOTAL));
 
     //NEUTRAL
-    public static final Supplier<MobEffect> CHRONOS = register("chronos", () -> new PublicMobEffect(MobEffectCategory.NEUTRAL, 0x9ad8fa));
-    public static final Supplier<MobEffect> TEMPUS = register("tempus", () -> new PublicMobEffect(MobEffectCategory.NEUTRAL, 0x9ad8fa));
+    public static final Supplier<MobEffect> CHRONOS = register("chronos", () -> new TickEffectImmuneEffect(MobEffectCategory.NEUTRAL, 0x9ad8fa));
+    public static final Supplier<MobEffect> TEMPUS = register("tempus", () -> new TickEffectImmuneEffect(MobEffectCategory.NEUTRAL, 0x9ad8fa));
 
     //HARMFUL
     public static final Supplier<MobEffect> BLEEDING = register("bleeding", () -> new PublicMobEffect(MobEffectCategory.HARMFUL, 0x410909));
