@@ -2,6 +2,7 @@ package net.azurune.runiclib;
 
 import net.azurune.runiclib.core.register.RLAttributes;
 import net.azurune.runiclib.core.register.RLMobEffects;
+import net.azurune.runiclib.core.register.RLRecipeSerializers;
 import net.minecraft.resources.ResourceLocation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,6 +14,7 @@ public class RunicLib {
     public static void init() {
         RLMobEffects.loadMobEffects();
         RLAttributes.loadAttributes();
+        RLRecipeSerializers.loadRecipeSerializers();
     }
 
     //TODO (future update): RunicLib Config System
