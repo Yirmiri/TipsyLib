@@ -2,6 +2,7 @@ package net.azurune.runiclib.common.integration.recipe;
 
 import com.google.gson.JsonObject;
 import net.azurune.runiclib.core.platform.Services;
+import net.azurune.runiclib.core.register.RLRecipeSerializers;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
@@ -12,17 +13,11 @@ import net.minecraft.world.item.crafting.RecipeType;
 import java.util.Map;
 
 public class ModLoadedConditionRecipeSerializer<T extends Recipe<?>> implements RecipeSerializer<T> {
-    private static final Map<ResourceLocation, RecipeType<?>> SERIALIZER_TO_TYPE = Map.of(new ResourceLocation("minecraft", "crafting_shaped"), RecipeType.CRAFTING, new ResourceLocation("minecraft", "crafting_shapeless"), RecipeType.CRAFTING, new ResourceLocation("minecraft", "smelting"), RecipeType.SMELTING, new ResourceLocation("minecraft", "campfire_cooking"), RecipeType.CAMPFIRE_COOKING, new ResourceLocation("minecraft", "blasting"), RecipeType.BLASTING, new ResourceLocation("minecraft", "smoking"), RecipeType.SMOKING, new ResourceLocation("minecraft", "smithing"), RecipeType.SMITHING);
-
     @Override
     public T fromJson(ResourceLocation id, JsonObject json) {
         if (json.has("modid")) {
             if (!Services.PLATFORM.isModLoaded(json.get("modid").getAsString())) {
-                RecipeType<?> fallback = RecipeType.CRAFTING;
-                if (json.has("wrapped_type")) {
-                    fallback = SERIALIZER_TO_TYPE.getOrDefault(new ResourceLocation(json.get("wrapped_type").getAsString()), RecipeType.CRAFTING);
-                }
-                return (T) new EmptyRecipe(id, this, fallback);
+                return (T) new EmptyRecipe(id);
             }
         }
 
