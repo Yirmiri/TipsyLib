@@ -25,9 +25,11 @@ public class ModLoadedConditionRecipeSerializer<T extends Recipe<?>> implements 
             throw new IllegalArgumentException("Conditional recipe JSON is missing required 'wrapped_type' property");
         }
 
-        RecipeSerializer<?> wrappedSerializer = BuiltInRegistries.RECIPE_SERIALIZER.get(new ResourceLocation(json.get("wrapped_type").getAsString()));
+        ResourceLocation wrappedTypeId = new ResourceLocation(json.get("wrapped_type").getAsString());
+        RecipeSerializer<?> wrappedSerializer = BuiltInRegistries.RECIPE_SERIALIZER.get(wrappedTypeId);
+
         if (wrappedSerializer == null) {
-            throw new IllegalArgumentException("Unknown wrapped_type serializer: " + json.get("wrapped_type").getAsString());
+            throw new IllegalArgumentException("Unknown wrapped_type serializer: " + wrappedTypeId);
         }
 
         JsonObject copy = json.deepCopy();

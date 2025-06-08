@@ -1,7 +1,7 @@
 package net.azurune.runiclib.core.register;
 
 import net.azurune.runiclib.RunicLib;
-import net.azurune.runiclib.common.integration.recipe.EmptyRecipe;
+import net.azurune.runiclib.common.integration.recipe.EmptyRecipeSerializer;
 import net.azurune.runiclib.common.integration.recipe.ModLoadedConditionRecipeSerializer;
 import net.azurune.runiclib.core.platform.Services;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -11,12 +11,17 @@ import net.minecraft.world.item.crafting.RecipeType;
 import java.util.function.Supplier;
 
 public class RLRecipeSerializers {
-    public static final Supplier<RecipeSerializer<?>> MOD_LOADED_CONDITION_SERIALIZER = register("mod_loaded_condition", ModLoadedConditionRecipeSerializer::new);
+    public static final Supplier<RecipeSerializer<?>> MOD_LOADED_CONDITION_SERIALIZER = registerSerializer("mod_loaded_condition", ModLoadedConditionRecipeSerializer::new);
+    public static final Supplier<RecipeSerializer<?>> EMPTY_RECIPE_SERIALIZER = registerSerializer("empty_recipe", () -> EmptyRecipeSerializer.INSTANCE);
 
-    public static final RecipeType<EmptyRecipe> EMPTY_RECIPE_TYPE = new RecipeType<>() {};
+    //public static final Supplier<RecipeType<?>> EMPTY_RECIPE_TYPE = registerType("", aaaaa);
 
-    private static Supplier<RecipeSerializer<?>> register(String id, Supplier<RecipeSerializer<?>> supplier) {
+    private static Supplier<RecipeSerializer<?>> registerSerializer(String id, Supplier<RecipeSerializer<?>> supplier) {
         return Services.REGISTRY.register(BuiltInRegistries.RECIPE_SERIALIZER, RunicLib.MOD_ID, id, supplier);
+    }
+
+    private static Supplier<RecipeType<?>> registerType(String id, Supplier<RecipeType<?>> supplier) {
+        return Services.REGISTRY.register(BuiltInRegistries.RECIPE_TYPE, RunicLib.MOD_ID, id, supplier);
     }
 
     public static void loadRecipeSerializers() {

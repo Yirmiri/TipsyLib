@@ -8,14 +8,17 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 public class EmptyRecipeSerializer implements RecipeSerializer<EmptyRecipe> {
     public static final EmptyRecipeSerializer INSTANCE = new EmptyRecipeSerializer();
 
-    @Override
-    public EmptyRecipe fromJson(ResourceLocation id, JsonObject json) {
-        return null;
+    private EmptyRecipeSerializer() {
     }
 
     @Override
-    public EmptyRecipe fromNetwork(ResourceLocation id, FriendlyByteBuf buf) {
-        return null;
+    public EmptyRecipe fromJson(ResourceLocation id, JsonObject json) {
+        return new EmptyRecipe(id);
+    }
+
+    @Override
+    public EmptyRecipe fromNetwork(ResourceLocation id, FriendlyByteBuf buffer) {
+        return new EmptyRecipe(id);
     }
 
     @Override
