@@ -5,11 +5,11 @@ license = "MIT License Modified (Custom)" # Review your options at https://choos
 
 [[mods]] #mandatory
 modId = "runiclib" #mandatory
-version = "4.2.2" #mandatory
+version = "4.2.3" #mandatory
 displayName = "RunicLib" #mandatory
 #updateJSONURL="https://change.me.example.invalid/updates.json" #optional (see https://docs.neoforged.net/docs/misc/updatechecker/)
 #displayURL="https://change.me.to.your.mods.homepage.example.invalid/" #optional (displayed in the mod UI)
-# logoFile = "icon.png" #optional
+logoFile = "icon.png" #optional
 credits="" #optional
 authors = "Yirmiri" #optional
 description = '''A library mod that adds MultiLoader utils, attributes, and effects for modders to utilize. This mod is primarily used for Azurune mods.''' #mandatory (Supports multiline text)

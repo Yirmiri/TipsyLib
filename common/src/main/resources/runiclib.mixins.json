@@ -13,9 +13,9 @@
     "server.PlayerMixin"
   ],
   "client": [
-    "client.AbstractClientPlayerMixin",
     "client.FogRendererMixin",
-    "client.GuiMixin"
+    "client.GuiMixin",
+    "client.PlayerInfoMixin"
   ],
   "server": [
   ],

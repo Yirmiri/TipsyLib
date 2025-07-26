@@ -13,6 +13,7 @@ public class RunicLib {
     public static void init() {
         RLMobEffects.loadMobEffects();
         RLAttributes.loadAttributes();
+        //RLRecipeSerializers.loadRecipeSerializers();
     }
 
     //TODO (future update): RunicLib Config System
