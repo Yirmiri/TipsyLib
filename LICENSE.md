@@ -1,14 +1,14 @@
+## For Non "dependant" cases
 All Rights Reserved
 
-This license applies to any file in the following directories:
+This license additionally always applies to any file in the following directories:
 - ./src/main/resources/assets/
+- any file in a `model` package.
 
-This license also applies to any file in a `model` package.
-
-All other files are under the following license
+## Exclusively for a "dependent" 
+*See below for more details...*
 
 MIT License
-
 Copyright (c) 2025 Azurune
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -28,3 +28,9 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+## Definition of a "dependant"
+For the purposes of this license, a "dependant" is a separate piece of software or mod for Minecraft that depends on this software to function, 
+cannot function as an individual mod, and makes explicit use of this mod's features and concepts. 
+This does not include ports of this mod, or similar software that intends to replicate the features of this mod, 
+to other Minecraft mod loaders, game versions, or platforms.
