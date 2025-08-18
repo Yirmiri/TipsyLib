@@ -15,7 +15,7 @@
     "server.WoodTypeInvokerMixin"
   ],
   "client": [
-    "client.AbstractClientPlayerMixin",
+    "client.AbstractClientPlayerMixinOld",
     "client.FogRendererMixin",
     "client.GuiMixin"
   ],

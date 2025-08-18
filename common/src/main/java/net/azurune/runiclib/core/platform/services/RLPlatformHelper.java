@@ -16,6 +16,18 @@ public interface RLPlatformHelper {
     boolean isModLoaded(String modId);
 
     /**
+     * Check if the current environment is client-side.
+     * @return True if running on the client, false if on the server.
+     */
+    boolean isClient();
+
+    /**
+     * Check if the current environment is running data generation.
+     * @return True if running data generation, false otherwise.
+     */
+    boolean isDatagen();
+
+    /**
      * Check if the game is currently in a development environment.
      * @return True if in a development environment, false otherwise.
      */
