@@ -10,7 +10,6 @@ import java.util.ServiceLoader;
 public class Services {
     public static final RLPlatformHelper PLATFORM = load(RLPlatformHelper.class);
     public static final RLRegistryHelper REGISTRY = load(RLRegistryHelper.class);
-    public static final RLClientHelper CLIENT = loadClient(RLClientHelper.class);
 
     public static <T> T load(Class<T> clazz) {
         final T loadedService = ServiceLoader.load(clazz)
@@ -20,10 +19,10 @@ public class Services {
         return loadedService;
     }
 
-    public static <T> T loadClient(Class<T> clazz) {
-        if (PLATFORM.isClient()) {
-            return load(clazz);
+    public static RLClientHelper loadClient() {
+        if (!PLATFORM.isClient()) {
+            throw new IllegalStateException("Client helper requested on server!");
         }
-        else throw new IllegalStateException("Attempted to load client service for " + clazz.getName() + " on server");
+        return load(RLClientHelper.class);
     }
 }
