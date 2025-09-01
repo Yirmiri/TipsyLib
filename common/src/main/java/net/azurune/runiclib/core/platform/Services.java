@@ -1,6 +1,7 @@
 package net.azurune.runiclib.core.platform;
 
 import net.azurune.runiclib.RunicLib;
+import net.azurune.runiclib.core.platform.services.RLClientHelper;
 import net.azurune.runiclib.core.platform.services.RLPlatformHelper;
 import net.azurune.runiclib.core.platform.services.RLRegistryHelper;
 
@@ -16,5 +17,12 @@ public class Services {
                 .orElseThrow(() -> new NullPointerException("Failed to load service for " + clazz.getName()));
         RunicLib.LOGGER.debug("Loaded {} for service {}", loadedService, clazz);
         return loadedService;
+    }
+
+    public static RLClientHelper loadClient() {
+        if (!PLATFORM.isClient()) {
+            throw new IllegalStateException("Client helper requested on server!");
+        }
+        return load(RLClientHelper.class);
     }
 }

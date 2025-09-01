@@ -1,6 +1,7 @@
 package net.azurune.runiclib.core.platform.services;
 
 import net.azurune.runiclib.core.mixin.server.FireBlockInvokerMixin;
+import net.azurune.runiclib.core.mixin.server.WoodTypeInvokerMixin;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
@@ -20,6 +21,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.WoodType;
 
 import java.util.function.Supplier;
 
@@ -32,6 +34,14 @@ public interface RLRegistryHelper {
      */
     static void createFlammable(Block block, int encouragement, int flammability) {
         ((FireBlockInvokerMixin) Blocks.FIRE).runiclib$invokeSetFlammable(block, encouragement, flammability);
+    }
+
+    /**
+     * This allows creating wood type registries within the common package
+     * @param woodType - The id of the wood type you are registering
+     */
+    static WoodType registerWoodType(WoodType woodType) {
+        return WoodTypeInvokerMixin.runiclib$invokeRegister(woodType);
     }
 
     /**

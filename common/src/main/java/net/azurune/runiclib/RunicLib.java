@@ -16,8 +16,6 @@ public class RunicLib {
         //RLRecipeSerializers.loadRecipeSerializers();
     }
 
-    //TODO (future update): RunicLib Config System
-
     public static ResourceLocation modid(String id) {
         return ResourceLocation.fromNamespaceAndPath(MOD_ID, id);
     }
