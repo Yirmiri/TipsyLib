@@ -6,12 +6,15 @@
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "server.AbstractFurnaceBlockEntityMixin",
+    "server.AxeItemMixin",
     "server.BlockItemMixin",
     "server.FireBlockInvokerMixin",
+    "server.HoeItemMixin",
     "server.LivingEntityAttributesMixin",
     "server.LivingEntityEffectsMixin",
     "server.MobEffectInstanceMixin",
     "server.PlayerMixin",
+    "server.ShovelItemMixin",
     "server.WoodTypeInvokerMixin"
   ],
   "client": [
