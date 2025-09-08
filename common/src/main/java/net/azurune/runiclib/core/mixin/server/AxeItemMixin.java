@@ -5,6 +5,8 @@
 package net.azurune.runiclib.core.mixin.server;
 
 import net.azurune.runiclib.common.util.RLToolActions;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.context.UseOnContext;
@@ -22,8 +24,8 @@ import java.util.Map;
 public class AxeItemMixin {
     // thanks neoforge for having events for literally everything but good content - artyrian
     @Inject(method = "useOn", at = @At("HEAD"), cancellable = true)
-    private void runiclib$useOn(UseOnContext context, CallbackInfoReturnable<InteractionResult> cir) {
-        BlockState state = context.getLevel().getBlockState(context.getClickedPos());
+    private void runiclib$useOn(UseOnContext ctx, CallbackInfoReturnable<InteractionResult> cir) {
+        BlockState state = ctx.getLevel().getBlockState(ctx.getClickedPos());
         Map<Block, Block> strippables = RLToolActions.getStrippables();
 
         if (strippables.containsKey(state.getBlock())) {
@@ -31,10 +33,12 @@ public class AxeItemMixin {
             if (stripped != null) {
                 BlockState strippedState = stripped.defaultBlockState()
                         .setValue(RotatedPillarBlock.AXIS, state.getValue(RotatedPillarBlock.AXIS));
-                context.getLevel().setBlock(context.getClickedPos(), strippedState, 11);
+                ctx.getLevel().setBlock(ctx.getClickedPos(), strippedState, 11);
 
-                context.getItemInHand().hurtAndBreak(1, context.getPlayer(), (p) -> p.broadcastBreakEvent(context.getHand()));
-                cir.setReturnValue(InteractionResult.sidedSuccess(context.getLevel().isClientSide));
+                ctx.getLevel().playSound(ctx.getPlayer(), ctx.getClickedPos(), SoundEvents.AXE_STRIP, SoundSource.BLOCKS, 1.0F, 1.0F);
+
+                ctx.getItemInHand().hurtAndBreak(1, ctx.getPlayer(), (p) -> p.broadcastBreakEvent(ctx.getHand()));
+                cir.setReturnValue(InteractionResult.sidedSuccess(ctx.getLevel().isClientSide));
             }
         }
     }
