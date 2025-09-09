@@ -11,7 +11,7 @@ mixin {
 }
 
 base {
-    archivesName = "${mod_name}-forge-${minecraft_version}"
+    archivesName = "forge-${mod_id}-${minecraft_version}"
 }
 
 legacyForge {

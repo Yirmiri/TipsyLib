@@ -3,6 +3,7 @@ package net.azurune.runiclib.core.platform;
 import net.azurune.runiclib.core.platform.services.RLRegistryHelper;
 import net.minecraft.core.Registry;
 import net.minecraft.core.particles.ParticleType;
+import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.effect.MobEffect;
@@ -118,7 +119,7 @@ public class ForgeRLRegistryHelper implements RLRegistryHelper {
     }
 
     @Override
-    public Supplier<ParticleType<?>> registerParticle(String modid, String id, Supplier<ParticleType<?>> supplier) {
+    public Supplier<SimpleParticleType> registerParticle(String modid, String id, Supplier<SimpleParticleType> supplier) {
         DeferredRegister<ParticleType<?>> particleTypeDeferredRegister = DeferredRegister.create(Registries.PARTICLE_TYPE, modid);
         particleTypeDeferredRegister.register(modEventBus);
 

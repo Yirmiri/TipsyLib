@@ -8,7 +8,12 @@ fabricApi {
 }
 
 base {
-    archivesName = "${mod_name}-fabric-${minecraft_version}"
+    archivesName = "fabric-${mod_id}-${minecraft_version}"
+}
+
+
+repositories {
+    maven { url = "https://cursemaven.com" }
 }
 
 dependencies {
@@ -21,6 +26,9 @@ dependencies {
     modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
     implementation group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.1'
     implementation project(":common")
+
+    modImplementation "curse.maven:supplementaries-412082:6974861"
+    modImplementation "curse.maven:selene-499980:6978610"
 }
 
 loom {
