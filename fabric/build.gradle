@@ -27,8 +27,9 @@ dependencies {
     implementation group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.1'
     implementation project(":common")
 
-    modImplementation "curse.maven:supplementaries-412082:6974861"
-    modImplementation "curse.maven:selene-499980:6978610"
+    //TESTING
+    //modImplementation "curse.maven:supplementaries-412082:6974861"
+    //modImplementation "curse.maven:selene-499980:6978610"
 }
 
 loom {
