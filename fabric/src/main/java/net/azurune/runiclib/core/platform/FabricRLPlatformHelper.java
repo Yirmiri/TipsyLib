@@ -9,6 +9,8 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 
+import java.nio.file.Path;
+
 public class FabricRLPlatformHelper implements RLPlatformHelper {
 
     @Override
@@ -29,6 +31,11 @@ public class FabricRLPlatformHelper implements RLPlatformHelper {
     @Override
     public boolean isDatagen() {
         return "true".equals(System.getProperty("fabric-api.datagen"));
+    }
+
+    @Override
+    public Path configDir() {
+        return FabricLoader.getInstance().getConfigDir();
     }
 
     @Override

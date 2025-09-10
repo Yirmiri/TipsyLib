@@ -5,6 +5,7 @@ import net.azurune.runiclib.core.mixin.server.WoodTypeInvokerMixin;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
+import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvent;
@@ -12,10 +13,16 @@ import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.Attribute;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.item.alchemy.Potion;
+import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -24,6 +31,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.WoodType;
 
 import java.util.function.Supplier;
+import java.util.function.UnaryOperator;
 
 public interface RLRegistryHelper {
     /**
@@ -89,6 +97,14 @@ public interface RLRegistryHelper {
 
     Holder<Attribute> registerAttribute(String modid, String id, Attribute attribute);
 
+    <T> Supplier<DataComponentType<T>> registerComponentType(String modid, String id, UnaryOperator<DataComponentType.Builder<T>> builder);
+
+    <T extends AbstractContainerMenu> Supplier<MenuType<T>> registerMenu(String modid, String id, MenuSupplier<T> factory);
+
+    <T extends Recipe<?>> Supplier<RecipeType<T>> registerRecipeType(String modid, String id);
+
+    <T extends Recipe<?>> Supplier<RecipeSerializer<T>> registerRecipeSerializer(String modid, String id, RecipeSerializer<T> serializer);
+
     //Supplier<Block> registerConfigurableBlock(String modid, boolean configValue, Optional<Boolean> optionalConfigValue, String id, Supplier<Block> supplier, boolean hasItem);
 
     //Supplier<Item> registerConfigurableItem(String modid, boolean configValue, Optional<Boolean> optionalConfigValue, String id, Supplier<Item> supplier);
@@ -96,5 +112,10 @@ public interface RLRegistryHelper {
     @FunctionalInterface
     interface BlockEntitySupplier<T extends BlockEntity> {
         T create(BlockPos pos, BlockState state);
+    }
+
+    @FunctionalInterface
+    interface MenuSupplier<T extends AbstractContainerMenu> {
+        T create(int i, Inventory inventory);
     }
 }

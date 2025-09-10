@@ -15,8 +15,8 @@ import java.util.Map;
 @Mixin(AbstractFurnaceBlockEntity.class)
 public abstract class AbstractFurnaceBlockEntityMixin {
 
-    @Inject(method = "getFuel", at = @At("RETURN"), locals = LocalCapture.CAPTURE_FAILHARD)
-    private static void runiclib$getFuel(CallbackInfoReturnable<Map<Item, Integer>> cir, Map<Item, Integer> map) {
+    @Inject(method = "getFuel", at = @At("RETURN"), cancellable = true)
+    private static void runiclib$getFuel(CallbackInfoReturnable<Map<Item, Integer>> cir) {
         Map<Item, Integer> newMap = new HashMap<>();
         if (cir.getReturnValue() != null) {
             newMap.putAll(cir.getReturnValue());

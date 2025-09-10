@@ -4,6 +4,9 @@ import net.azurune.runiclib.core.platform.services.RLPlatformHelper;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.loading.FMLEnvironment;
 import net.neoforged.fml.loading.FMLLoader;
+import net.neoforged.fml.loading.FMLPaths;
+
+import java.nio.file.Path;
 
 public class NeoForgeRLPlatformHelper implements RLPlatformHelper {
 
@@ -24,7 +27,12 @@ public class NeoForgeRLPlatformHelper implements RLPlatformHelper {
 
     @Override
     public boolean isDatagen() {
-        return Boolean.getBoolean("forge.data_gen");
+        return Boolean.getBoolean("neoforge.data_gen");
+    }
+
+    @Override
+    public Path configDir() {
+        return FMLPaths.CONFIGDIR.get();
     }
 
     @Override
