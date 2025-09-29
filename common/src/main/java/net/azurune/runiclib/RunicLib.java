@@ -10,10 +10,20 @@ public class RunicLib {
     public static final String MOD_ID = "runiclib";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
+    //TODO RunicLib v5.0
+    //Conditionally loaded recipes (rewrite)
+    //RunicConfig
+    //Reflection integration thing
+    //Integration creator
+    //Boat creator
+    //Sign creator
+    //RunicEvents
+    //Shader registry thing
+    //Finish cool cape switcher thing + contributor capes
+
     public static void init() {
         RLMobEffects.loadMobEffects();
         RLAttributes.loadAttributes();
-        //RLRecipeSerializers.loadRecipeSerializers();
     }
 
     public static ResourceLocation modid(String id) {

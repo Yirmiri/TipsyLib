@@ -23,7 +23,7 @@ public class LivingEntityAttributesMixin {
     LivingEntity living = (LivingEntity) (Object) this;
     private static Random random = new Random();
 
-    @Inject(at = @At("TAIL"), method = "createLivingAttributes")
+    @Inject(at = @At("RETURN"), method = "createLivingAttributes")
     private static void runiclib$createLivingAttributes(CallbackInfoReturnable<AttributeSupplier.Builder> cir) {
         cir.getReturnValue()
                 .add(RLAttributes.DODGE_CHANCE)
@@ -37,7 +37,6 @@ public class LivingEntityAttributesMixin {
                 .add(RLAttributes.BURNING_RETALIATION_CHANCE)
                 .add(RLAttributes.CRITICAL_STRIKE_CHANCE)
                 .add(RLAttributes.CRITICAL_STRIKE_MULTIPLIER)
-                //.add(TLAttributes.ADDITIONAL_JUMPS)
         ;
     }
 
