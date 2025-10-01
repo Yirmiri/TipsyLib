@@ -23,23 +23,6 @@ public class LivingEntityAttributesMixin {
     LivingEntity living = (LivingEntity) (Object) this;
     private static Random random = new Random();
 
-    @Inject(at = @At("RETURN"), method = "createLivingAttributes")
-    private static void runiclib$createLivingAttributes(CallbackInfoReturnable<AttributeSupplier.Builder> cir) {
-        cir.getReturnValue()
-                .add(RLAttributes.DODGE_CHANCE)
-                .add(RLAttributes.LIFESTEAL_CHANCE)
-                .add(RLAttributes.LIFESTEAL_HEAL_AMOUNT)
-                .add(RLAttributes.VULNERABILITY_CHANCE)
-                .add(RLAttributes.VULNERABILITY_MULTIPLIER)
-                .add(RLAttributes.RETALIATION_CHANCE)
-                .add(RLAttributes.RETALIATION_AMOUNT)
-                .add(RLAttributes.BURNING_RETALIATION_LENGTH)
-                .add(RLAttributes.BURNING_RETALIATION_CHANCE)
-                .add(RLAttributes.CRITICAL_STRIKE_CHANCE)
-                .add(RLAttributes.CRITICAL_STRIKE_MULTIPLIER)
-        ;
-    }
-
     @Inject(at = @At("HEAD"), method = "hurt")
     public void runiclib$hurt(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
         if (living.getAttributes().hasAttribute(RLAttributes.DODGE_CHANCE)) {
