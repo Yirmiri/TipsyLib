@@ -14,11 +14,6 @@ public class RunicLib {
     //Conditionally loaded recipes (rewrite)
     //RunicConfig
     //Reflection integration thing
-    //Integration creator
-    //Boat creator
-    //Sign creator
-    //RunicEvents
-    //Shader registry thing
     //Finish cool cape switcher thing + contributor capes
 
     public static void init() {
