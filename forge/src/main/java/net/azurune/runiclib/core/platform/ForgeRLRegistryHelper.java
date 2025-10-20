@@ -119,11 +119,11 @@ public class ForgeRLRegistryHelper implements RLRegistryHelper {
     }
 
     @Override
-    public Supplier<SimpleParticleType> registerParticle(String modid, String id, Supplier<SimpleParticleType> supplier) {
+    public Supplier<SimpleParticleType> registerParticle(String modid, String id) {
         DeferredRegister<ParticleType<?>> particleTypeDeferredRegister = DeferredRegister.create(Registries.PARTICLE_TYPE, modid);
         particleTypeDeferredRegister.register(modEventBus);
 
-        return particleTypeDeferredRegister.register(id, supplier);
+        return particleTypeDeferredRegister.register(id, ()-> new SimpleParticleType(false));
     }
 
     @Override

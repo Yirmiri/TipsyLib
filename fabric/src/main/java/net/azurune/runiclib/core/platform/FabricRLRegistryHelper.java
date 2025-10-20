@@ -3,6 +3,7 @@ package net.azurune.runiclib.core.platform;
 import net.azurune.runiclib.RunicLib;
 import net.azurune.runiclib.core.platform.services.RLRegistryHelper;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
+import net.fabricmc.fabric.api.particle.v1.FabricParticleTypes;
 import net.minecraft.core.Registry;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.SimpleParticleType;
@@ -96,8 +97,8 @@ public class FabricRLRegistryHelper implements RLRegistryHelper {
     }
 
     @Override
-    public Supplier<SimpleParticleType> registerParticle(String modid, String id, Supplier<SimpleParticleType> supplier) {
-        return () -> Registry.register(BuiltInRegistries.PARTICLE_TYPE, RunicLib.customid(modid, id), supplier.get());
+    public Supplier<SimpleParticleType> registerParticle(String modid, String id) {
+        return () -> Registry.register(BuiltInRegistries.PARTICLE_TYPE, RunicLib.customid(modid, id), FabricParticleTypes.simple());
     }
 
     @Override

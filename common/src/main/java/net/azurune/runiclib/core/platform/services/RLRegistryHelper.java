@@ -85,7 +85,7 @@ public interface RLRegistryHelper {
 
     <T extends CreativeModeTab> Supplier<T> registerCreativeModeTab(String modid, String id, Supplier<T> supplier);
 
-    Supplier<SimpleParticleType> registerParticle(String modid, String id, Supplier<SimpleParticleType> supplier);
+    Supplier<SimpleParticleType> registerParticle(String modid, String id);
 
     <T extends Attribute> Supplier<T> registerAttribute(String modid, String id, Supplier<T> supplier);
 
