@@ -1,0 +1,27 @@
+{
+  "minecraft:recipes/decorations/crafting_table": {
+    "criteria": {
+      "unlock_right_away": "2026-01-02 17:46:31 -0500"
+    },
+    "done": true
+  },
+  "minecraft:adventure/adventuring_time": {
+    "criteria": {
+      "minecraft:plains": "2026-01-02 17:46:59 -0500"
+    },
+    "done": false
+  },
+  "minecraft:husbandry/balanced_diet": {
+    "criteria": {
+      "cooked_beef": "2026-01-02 17:47:11 -0500"
+    },
+    "done": false
+  },
+  "minecraft:husbandry/root": {
+    "criteria": {
+      "consumed_item": "2026-01-02 17:47:11 -0500"
+    },
+    "done": true
+  },
+  "DataVersion": 3955
+}

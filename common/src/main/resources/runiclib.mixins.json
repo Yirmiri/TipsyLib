@@ -8,7 +8,6 @@
     "server.AbstractFurnaceBlockEntityMixin",
     "server.AxeItemMixin",
     "server.BlockItemMixin",
-    "server.BoatTypeMixin",
     "server.FireBlockInvokerMixin",
     "server.HoeItemMixin",
     "server.LivingEntityAttributesMixin",

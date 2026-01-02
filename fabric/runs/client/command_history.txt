@@ -3,3 +3,7 @@
 /effect clear
 /effect give Player707 runiclib:trail_blazing
 /effect clear
+/hunger -20
+/damage Player62 5
+/hunger 50
+/damage Player62 0

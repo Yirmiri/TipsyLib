@@ -15,6 +15,7 @@ public class RunicLib {
     //RunicConfig
     //Reflection integration thing
     //Finish cool cape switcher thing + contributor capes
+    //Hunger command, heal command, debugmode command, give dyed command
 
     public static void init() {
         RLMobEffects.loadMobEffects();

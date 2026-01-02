@@ -40,6 +40,10 @@ public class RLLangGen extends FabricLanguageProvider {
         build.add(RLMobEffects.CAFFEINATED.value(), "Caffeinated");
         build.add(RLMobEffects.CAFFEINE_CRASH.value(), "Caffeine Crash");
 
+        //COMMANDS
+        build.add("runiclib.commands.hunger.fail", "Target's hunger could not be changed");
+        build.add("runiclib.commands.hunger.success", "Applied %s hunger to %s");
+
         //ATTRIBUTES
         build.add("runiclib.generic.dodge_chance", "Dodge Chance");
         build.add("runiclib.generic.lifesteal_chance", "Lifesteal Chance");

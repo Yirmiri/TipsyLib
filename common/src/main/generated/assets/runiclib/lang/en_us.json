@@ -53,6 +53,8 @@
   "effect.runiclib.venom.description": "Deals lethal damage to the user over time.",
   "effect.runiclib.water_walking": "Water Walking",
   "effect.runiclib.water_walking.description": "Allows the user to walk on water.",
+  "runiclib.commands.hunger.fail": "Target's hunger could not be changed",
+  "runiclib.commands.hunger.success": "Applied %s hunger to %s",
   "runiclib.generic.burning_retaliation_chance": "Burning Retaliation Chance",
   "runiclib.generic.burning_retaliation_length": "Burning Retaliation Length",
   "runiclib.generic.critical_strike_chance": "Critical Strike Chance",
