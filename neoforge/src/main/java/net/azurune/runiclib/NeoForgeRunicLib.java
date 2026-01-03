@@ -22,13 +22,15 @@ public class NeoForgeRunicLib {
 
     @SubscribeEvent
     public void registerCommands(RegisterCommandsEvent event) {
-        HungerCommand.register(event.getDispatcher());
-        SaturationCommand.register(event.getDispatcher());
-        SetNameCommand.register(event.getDispatcher());
-        HealCommand.register(event.getDispatcher());
-        DyeGiveCommand.register(event.getDispatcher());
-        KingmeCommand.register(event.getDispatcher());
-        PurifyCommand.register(event.getDispatcher());
+        if (RunicLib.CONFIG.getRLCommandsEnabled()) {
+            HungerCommand.register(event.getDispatcher());
+            SaturationCommand.register(event.getDispatcher());
+            SetNameCommand.register(event.getDispatcher());
+            HealCommand.register(event.getDispatcher());
+            DyeGiveCommand.register(event.getDispatcher());
+            KingmeCommand.register(event.getDispatcher());
+            PurifyCommand.register(event.getDispatcher());
+        }
     }
 
     @SubscribeEvent

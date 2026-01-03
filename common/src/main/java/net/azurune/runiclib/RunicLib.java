@@ -1,5 +1,6 @@
 package net.azurune.runiclib;
 
+import net.azurune.runiclib.core.library.runiconfig.Runiconfig;
 import net.azurune.runiclib.core.register.RLAttributes;
 import net.azurune.runiclib.core.register.RLMobEffects;
 import net.minecraft.resources.ResourceLocation;
@@ -9,11 +10,11 @@ import org.slf4j.LoggerFactory;
 public class RunicLib {
     public static final String MOD_ID = "runiclib";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
+    public static RunicLibConfig CONFIG;
 
     //TODO RunicLib v5.0
     //Block Family Gen
     //Conditionally loaded recipes (rewrite)
-    //RunicConfig
     //Reflection integration thing
     //Finish cool cape switcher thing + contributor capes
     //Resistance attributes
@@ -30,6 +31,9 @@ public class RunicLib {
     public static void init() {
         RLMobEffects.loadMobEffects();
         RLAttributes.loadAttributes();
+
+        Runiconfig.registerConfig(MOD_ID, RunicLibConfig.class, RunicLibConfig::new);
+        CONFIG = Runiconfig.getConfig(MOD_ID);
     }
 
     public static ResourceLocation modid(String id) {

@@ -11,13 +11,15 @@ public class FabricRunicLib implements ModInitializer {
         RunicLib.init();
 
         CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {
-            HungerCommand.register(dispatcher);
-            SaturationCommand.register(dispatcher);
-            SetNameCommand.register(dispatcher);
-            HealCommand.register(dispatcher);
-            DyeGiveCommand.register(dispatcher);
-            KingmeCommand.register(dispatcher);
-            PurifyCommand.register(dispatcher);
+            if (RunicLib.CONFIG.getRLCommandsEnabled()) {
+                HungerCommand.register(dispatcher);
+                SaturationCommand.register(dispatcher);
+                SetNameCommand.register(dispatcher);
+                HealCommand.register(dispatcher);
+                DyeGiveCommand.register(dispatcher);
+                KingmeCommand.register(dispatcher);
+                PurifyCommand.register(dispatcher);
+            }
         });
     }
 }
