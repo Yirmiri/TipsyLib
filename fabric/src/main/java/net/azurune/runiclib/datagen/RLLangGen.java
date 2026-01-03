@@ -43,15 +43,21 @@ public class RLLangGen extends FabricLanguageProvider {
         //COMMANDS
         build.add("runiclib.commands.hunger.fail", "Target's hunger could not be changed");
         build.add("runiclib.commands.hunger.success", "Applied %s hunger to %s");
+        build.add("runiclib.commands.not_player", "Target is not a player");
         build.add("runiclib.commands.saturation.fail", "Target's saturation could not be changed");
         build.add("runiclib.commands.saturation.success", "Applied %s saturation to %s");
         build.add("runiclib.commands.setname.no_target", "No target entity found");
         build.add("runiclib.commands.setname.success", "Set %s display name to %s");
         build.add("runiclib.commands.heal.fail", "Target's health could not be healed");
         build.add("runiclib.commands.heal.success", "Healed %s health of %s");
+        build.add("runiclib.commands.not_living", "Target is not a living entity");
         build.add("runiclib.commands.dyegive.success", "Gave %s items to %s");
-        build.add("runiclib.commands.dyegive.success.players", "players");
+        build.add("runiclib.commands.players", "players");
+        build.add("runiclib.commands.entities", "entities");
         build.add("runiclib.commands.dyegive.no_suffix", "No items found with that suffix");
+        build.add("runiclib.commands.kingme.success", "%s has had their Health and Hunger refilled");
+        build.add("runiclib.commands.cool.success", "%s has been extinguished and cooled down");
+        build.add("runiclib.commands.purify.success", "%s has been cleansed of all statuses");
 
         //ATTRIBUTES
         build.add("runiclib.generic.dodge_chance", "Dodge Chance");
@@ -65,6 +71,10 @@ public class RLLangGen extends FabricLanguageProvider {
         build.add("runiclib.generic.burning_retaliation_length", "Burning Retaliation Length");
         build.add("runiclib.generic.critical_strike_chance", "Critical Strike Chance");
         build.add("runiclib.generic.critical_strike_multiplier", "Critical Strike Multiplier");
+        build.add("runiclib.generic.physical_resistance", "Physical Resistance");
+        build.add("runiclib.generic.magic_resistance", "Magic Resistance");
+        build.add("runiclib.generic.elemental_resistance", "Elemental Resistance");
+        build.add("runiclib.generic.blast_resistance", "Blast Resistance");
         //build.add("runiclib.generic.additional_jumps", "Additional Jumps");
 
         //DEATH

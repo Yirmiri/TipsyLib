@@ -13,13 +13,12 @@ import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.Block;
 
 import java.util.Collection;
 
-public class RLDyeGiveCommand {
+public class DyeGiveCommand {
     public static void register(CommandDispatcher<CommandSourceStack> dispatcher) {
-        dispatcher.register(Commands.literal("rl_dyegive")
+        dispatcher.register(Commands.literal("dyegive_rl")
                 .requires(source -> source.hasPermission(2))
                 .then(Commands.argument("targets", EntityArgument.players())
                         .then(Commands.argument("suffix", StringArgumentType.string())
@@ -56,7 +55,7 @@ public class RLDyeGiveCommand {
         } else if (targets.size() == 1) {
             ctx.sendSuccess(() -> Component.translatable("runiclib.commands.dyegive.success", finalTotalGiven, targets.iterator().next().getDisplayName().getString()), true);
         } else {
-            ctx.sendSuccess(() -> Component.translatable("runiclib.commands.dyegive.success", finalTotalGiven, targets.size() + " " + "runiclib.commands.dyegive.success.players"), true);
+            ctx.sendSuccess(() -> Component.translatable("runiclib.commands.dyegive.success", finalTotalGiven, targets.size() + " " + "runiclib.commands.players"), true);
         }
         return targets.size();
     }

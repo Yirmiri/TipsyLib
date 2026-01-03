@@ -11,12 +11,12 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.Mob;
 
-public class RLSetNameCommand {
+public class SetNameCommand {
     public static void register(CommandDispatcher<CommandSourceStack> dispatcher) {
-        dispatcher.register(Commands.literal("rl_setname").requires(source -> source.hasPermission(4))
+        dispatcher.register(Commands.literal("setname_rl").requires(source -> source.hasPermission(4))
                 .then(Commands.argument("target", EntityArgument.entity())
                         .then(Commands.argument("name", StringArgumentType.greedyString())
-                                .executes(RLSetNameCommand::execute))));
+                                .executes(SetNameCommand::execute))));
     }
 
     private static int execute(CommandContext<CommandSourceStack> ctx) throws CommandSyntaxException {

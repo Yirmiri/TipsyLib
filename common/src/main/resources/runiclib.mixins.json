@@ -8,6 +8,7 @@
     "server.AbstractFurnaceBlockEntityMixin",
     "server.AxeItemMixin",
     "server.BlockItemMixin",
+    "server.CombatRulesMixin",
     "server.FireBlockInvokerMixin",
     "server.HoeItemMixin",
     "server.LivingEntityAttributesMixin",

@@ -11,7 +11,6 @@ public class RunicLib {
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
     //TODO RunicLib v5.0
-    //Runic Datagen
     //Block Family Gen
     //Conditionally loaded recipes (rewrite)
     //RunicConfig
@@ -19,26 +18,14 @@ public class RunicLib {
     //Finish cool cape switcher thing + contributor capes
     //Resistance attributes
 
-    //rl_debug (enables hidden mc debugs)
-    //rl_cape (sets contributor cape, this is based on what capes the user has)
-    //rl_quicktp (tps to nearest biome u insert)
-    //rl_dimension (tps to dimension at coords, ~ ~ ~ if none inserted)
-    //rl_brightness (sets brightness to any value even beyond normal values like 1000)
-    //rl_ssmode (sets fov to 90 (saves previous), when inserted again it resets to previous fov)
-    //rl_dummy (summons a husk with 100 hp and no ai, it has a custom nametag that displays its current hp)
-    //rl_rename (renames held item)
-    //rl_removecds (resets all cooldowns)
-    //rl_durability (adds value of durability to item)
-    //rl_look (sets rotation of targeted entity)
-    //rl_noai (removes all behaviours of target entity)
-    //rl_placenear (sets nearby blocks in a square to a specified block)
-    //rl_cool (removes fire and freezing on user)
-    //rl_purify (basically rl_cool but removes effects)
-    //rl_platform (sets a platform of specified block and distance)
-    //rl_god (makes mob immune to all damage)
-    //rl_kingme (restores all hunger, health, and saturation)
-    //rl_yirmirilazyworld (no mob spawn, no day cycle, no weather cycle, sets time noon, turns weather clear, and boolean to kill living entities)
-    //rl_durabilityall (randomly damages whole inventory between two values)
+    //debug_rl (enables hidden mc debugs)
+    //cape_rl (sets contributor cape, this is based on what capes the user has)
+    //quicktp_rl (tps to nearest biome u insert)
+    //dimension_rl (tps to dimension at coords, ~ ~ ~ if none inserted)
+    //brightness_rl (sets brightness to any value even beyond normal values like 1000)
+    //rename_rl (renames held item)
+    //durability_rl (adds value of durability to item between two numbers (second is optional), literal value for hand, equipped, full inv)
+    //noai_rl (removes all behaviours of target entity)
 
     public static void init() {
         RLMobEffects.loadMobEffects();

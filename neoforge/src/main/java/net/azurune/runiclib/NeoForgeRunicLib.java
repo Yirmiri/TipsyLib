@@ -22,11 +22,13 @@ public class NeoForgeRunicLib {
 
     @SubscribeEvent
     public void registerCommands(RegisterCommandsEvent event) {
-        RLHungerCommand.register(event.getDispatcher());
-        RLSaturationCommand.register(event.getDispatcher());
-        RLSetNameCommand.register(event.getDispatcher());
-        RLHealCommand.register(event.getDispatcher());
-        RLDyeGiveCommand.register(event.getDispatcher());
+        HungerCommand.register(event.getDispatcher());
+        SaturationCommand.register(event.getDispatcher());
+        SetNameCommand.register(event.getDispatcher());
+        HealCommand.register(event.getDispatcher());
+        DyeGiveCommand.register(event.getDispatcher());
+        KingmeCommand.register(event.getDispatcher());
+        PurifyCommand.register(event.getDispatcher());
     }
 
     @SubscribeEvent
@@ -43,6 +45,10 @@ public class NeoForgeRunicLib {
             event.add(type, RLAttributes.VULNERABILITY_MULTIPLIER, 0);
             event.add(type, RLAttributes.CRITICAL_STRIKE_CHANCE, 0);
             event.add(type, RLAttributes.CRITICAL_STRIKE_MULTIPLIER, 0);
+            event.add(type, RLAttributes.BLAST_RESISTANCE, 0);
+            event.add(type, RLAttributes.ELEMENTAL_RESISTANCE, 0);
+            event.add(type, RLAttributes.MAGIC_RESISTANCE, 0);
+            event.add(type, RLAttributes.PHYSICAL_RESISTANCE, 0);
         });
     }
 }
