@@ -15,9 +15,7 @@ public class RunicLib {
     //TODO RunicLib v5.0
     //Block Family Gen
     //Conditionally loaded recipes (rewrite)
-    //Reflection integration thing
     //Finish cool cape switcher thing + contributor capes
-    //Resistance attributes
 
     //debug_rl (enables hidden mc debugs)
     //cape_rl (sets contributor cape, this is based on what capes the user has)
