@@ -3,6 +3,7 @@ package net.azurune.runiclib.core.platform;
 import net.azurune.runiclib.RunicLib;
 import net.azurune.runiclib.core.platform.services.RLRegistryHelper;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
+import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.component.DataComponentType;
@@ -15,6 +16,7 @@ import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.Attribute;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
@@ -131,5 +133,10 @@ public class FabricRLRegistryHelper implements RLRegistryHelper {
     @Override
     public <T extends Recipe<?>> Supplier<RecipeSerializer<T>> registerRecipeSerializer(String modid, String id, RecipeSerializer<T> serializer) {
         return () -> Registry.register(BuiltInRegistries.RECIPE_SERIALIZER, RunicLib.customid(modid, id), serializer);
+    }
+
+    @Override
+    public <T extends Mob> void registerEntityAttributes(EntityType<T> entityType, AttributeSupplier.Builder builder) {
+        FabricDefaultAttributeRegistry.register(entityType, builder);
     }
 }

@@ -13,6 +13,7 @@ import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.Attribute;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
@@ -30,6 +31,7 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.neoforge.common.DeferredSpawnEggItem;
+import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.function.Supplier;
@@ -173,5 +175,10 @@ public class NeoForgeRLRegistryHelper implements RLRegistryHelper {
         deferredRegister.register(modEventBus);
 
         return deferredRegister.register(id, () -> serializer);
+    }
+
+    @Override
+    public <T extends Mob> void registerEntityAttributes(EntityType<T> entityType, AttributeSupplier.Builder builder) {
+        modEventBus.addListener((EntityAttributeCreationEvent event) -> event.put(entityType, builder.build()));
     }
 }

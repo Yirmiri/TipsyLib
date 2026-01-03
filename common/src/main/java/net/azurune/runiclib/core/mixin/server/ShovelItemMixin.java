@@ -5,7 +5,7 @@
 package net.azurune.runiclib.core.mixin.server;
 
 import com.llamalad7.mixinextras.sugar.Local;
-import net.azurune.runiclib.common.util.RLToolActions;
+import net.azurune.runiclib.core.library.misc.RLToolActions;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.ShovelItem;
 import net.minecraft.world.item.context.UseOnContext;

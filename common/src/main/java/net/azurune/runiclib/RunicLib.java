@@ -11,10 +11,14 @@ public class RunicLib {
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
     //TODO RunicLib v5.0
+    //Runic Datagen
+    //Block Family Gen
     //Conditionally loaded recipes (rewrite)
     //RunicConfig
     //Reflection integration thing
     //Finish cool cape switcher thing + contributor capes
+    //Resistance attributes
+
     //rl_debug (enables hidden mc debugs)
     //rl_cape (sets contributor cape, this is based on what capes the user has)
     //rl_quicktp (tps to nearest biome u insert)
@@ -28,7 +32,8 @@ public class RunicLib {
     //rl_look (sets rotation of targeted entity)
     //rl_noai (removes all behaviours of target entity)
     //rl_placenear (sets nearby blocks in a square to a specified block)
-    //rl_extinguish (removes fire on user)
+    //rl_cool (removes fire and freezing on user)
+    //rl_purify (basically rl_cool but removes effects)
     //rl_platform (sets a platform of specified block and distance)
     //rl_god (makes mob immune to all damage)
     //rl_kingme (restores all hunger, health, and saturation)

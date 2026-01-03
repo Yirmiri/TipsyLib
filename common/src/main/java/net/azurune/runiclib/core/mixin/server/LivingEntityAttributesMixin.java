@@ -30,7 +30,7 @@ public class LivingEntityAttributesMixin {
 
             if (!source.is(RLTags.DamageTypeTags.BYPASSES_DODGE) && dodgeChance != 0 && living.isAlive() && random.nextDouble(100.0) < dodgeChance) {
                 living.level().playSound(null, living.getX(), living.getY(), living.getZ(), SoundEvents.ARMOR_EQUIP_GENERIC, SoundSource.PLAYERS, 1.0F, 1.0F);
-                cir.cancel();
+                cir.setReturnValue(false);
             }
         }
     }

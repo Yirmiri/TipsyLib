@@ -13,6 +13,7 @@ import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.Attribute;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
@@ -51,6 +52,13 @@ public interface RLRegistryHelper {
     static WoodType registerWoodType(WoodType woodType) {
         return WoodTypeInvokerMixin.runiclib$invokeRegister(woodType);
     }
+
+    /**
+     * Registers default attributes for an entity type
+     * @param type - The entity type you are adding attributes to
+     * @param builder - The attribute builder (usually in entity class)
+     */
+    <T extends Mob> void registerEntityAttributes(EntityType<T> type, AttributeSupplier.Builder builder);
 
     /**
      * This method allows you to create your own registry methods

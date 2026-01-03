@@ -1,10 +1,17 @@
 package net.azurune.runiclib.core.platform.services;
 
+import net.minecraft.client.model.geom.ModelLayerLocation;
+import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.particle.ParticleProvider;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleType;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.block.Block;
+
+import java.util.function.Supplier;
 
 public interface RLClientHelper {
     /**
@@ -20,4 +27,18 @@ public interface RLClientHelper {
      * @param provider - The provider the particle should use
      */
     <T extends ParticleOptions> void registerParticleProviderType(ParticleType<T> type, ParticleProvider<T> provider);
+
+    /**
+     * This allows creating EntityRenderers in the common package
+     * @param type - The entity type
+     * @param renderer - The renderer it should use
+     */
+    <T extends Entity> void registerEntityRenderer(EntityType<T> type, EntityRendererProvider<T> renderer);
+
+    /**
+     * This allows creating LayerDefinitions in the common package
+     * @param layer - The model layer that should be used
+     * @param definition - The layer definition
+     */
+    void registerLayerDefinition(ModelLayerLocation layer, Supplier<LayerDefinition> definition);
 }

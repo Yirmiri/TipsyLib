@@ -2,7 +2,7 @@
 //Created and used with permission of Artyrian
 //
 
-package net.azurune.runiclib.common.util;
+package net.azurune.runiclib.core.library.misc;
 
 import com.mojang.datafixers.util.Pair;
 import net.azurune.runiclib.RunicLib;
@@ -18,7 +18,7 @@ import java.util.Map;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
-
+//thank mr artyrian
 public class RLToolActions  {
     ////////////////////////////////AXE////////////////////////////////
     /** A list of registered axe strippables. */

@@ -5,8 +5,8 @@ import java.nio.file.Path;
 public interface RLPlatformHelper {
 
     /**
-     * Gets the name of the current platform
-     * @return The name of the current platform.
+     * Gets the name of the current platformHelper
+     * @return The name of the current platformHelper.
      */
     String getPlatformName();
 

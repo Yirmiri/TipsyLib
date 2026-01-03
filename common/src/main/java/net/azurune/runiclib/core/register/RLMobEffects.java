@@ -3,7 +3,7 @@ package net.azurune.runiclib.core.register;
 import net.azurune.runiclib.RunicLib;
 import net.azurune.runiclib.common.effect.*;
 import net.azurune.runiclib.common.publicized.PublicMobEffect;
-import net.azurune.runiclib.core.platform.Services;
+import net.azurune.runiclib.core.platform.RLServices;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.effect.MobEffect;
@@ -45,7 +45,7 @@ public class RLMobEffects {
     public static final Holder<MobEffect> CAFFEINE_CRASH = register("caffeine_crash", new PublicMobEffect(MobEffectCategory.HARMFUL, 0x410909).addAttributeModifier(Attributes.ATTACK_DAMAGE, RunicLib.modid("caffeine_crash.attack_damage"), -1.0, AttributeModifier.Operation.ADD_VALUE).addAttributeModifier(Attributes.MOVEMENT_SPEED, RunicLib.modid("caffeine_crash.movement_speed"), -0.02, AttributeModifier.Operation.ADD_VALUE).addAttributeModifier(Attributes.ARMOR, RunicLib.modid("caffeine_crash.armor"), -2.0, AttributeModifier.Operation.ADD_VALUE).addAttributeModifier(Attributes.MAX_HEALTH, RunicLib.modid("caffeine_crash.max_health"), -2.0, AttributeModifier.Operation.ADD_VALUE).addAttributeModifier(Attributes.JUMP_STRENGTH, RunicLib.modid("caffeine_crash.jump_strength"), -1.0, AttributeModifier.Operation.ADD_VALUE).addAttributeModifier(Attributes.LUCK, RunicLib.modid("caffeine_crash.luck"), -1.0, AttributeModifier.Operation.ADD_VALUE));
 
     private static Holder<MobEffect> register(String id, MobEffect effect) {
-        return Services.REGISTRY.registerForHolder(BuiltInRegistries.MOB_EFFECT, RunicLib.MOD_ID, id, effect);
+        return RLServices.REGISTRY.registerForHolder(BuiltInRegistries.MOB_EFFECT, RunicLib.MOD_ID, id, effect);
     }
 
     public static void loadMobEffects() {

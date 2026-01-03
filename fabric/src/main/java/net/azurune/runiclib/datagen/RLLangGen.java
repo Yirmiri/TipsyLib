@@ -41,17 +41,17 @@ public class RLLangGen extends FabricLanguageProvider {
         build.add(RLMobEffects.CAFFEINE_CRASH.value(), "Caffeine Crash");
 
         //COMMANDS
-        build.add("runiclib.commands.hunger.fail", "Target's hunger could not be changed.");
-        build.add("runiclib.commands.hunger.success", "Applied %s hunger to %s.");
-        build.add("runiclib.commands.saturation.fail", "Target's saturation could not be changed.");
-        build.add("runiclib.commands.saturation.success", "Applied %s saturation to %s.");
-        build.add("runiclib.commands.setname.no_target", "No target entity found.");
-        build.add("runiclib.commands.setname.success", "Set %s display name to %s.");
-        build.add("runiclib.commands.heal.fail", "Target's health could not be healed.");
-        build.add("runiclib.commands.heal.success", "Healed %s health of %s.");
+        build.add("runiclib.commands.hunger.fail", "Target's hunger could not be changed");
+        build.add("runiclib.commands.hunger.success", "Applied %s hunger to %s");
+        build.add("runiclib.commands.saturation.fail", "Target's saturation could not be changed");
+        build.add("runiclib.commands.saturation.success", "Applied %s saturation to %s");
+        build.add("runiclib.commands.setname.no_target", "No target entity found");
+        build.add("runiclib.commands.setname.success", "Set %s display name to %s");
+        build.add("runiclib.commands.heal.fail", "Target's health could not be healed");
+        build.add("runiclib.commands.heal.success", "Healed %s health of %s");
         build.add("runiclib.commands.dyegive.success", "Gave %s items to %s");
-        build.add("runiclib.commands.dyegive.success.players", "players.");
-        build.add("runiclib.commands.dyegive.no_suffix", "No items found with that suffix.");
+        build.add("runiclib.commands.dyegive.success.players", "players");
+        build.add("runiclib.commands.dyegive.no_suffix", "No items found with that suffix");
 
         //ATTRIBUTES
         build.add("runiclib.generic.dodge_chance", "Dodge Chance");
