@@ -10,13 +10,11 @@ import net.minecraft.commands.Commands;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 
-public class HungerCommand {
+public class RLHungerCommand {
     public static void register(CommandDispatcher<CommandSourceStack> dispatcher) {
-        dispatcher.register(
-                Commands.literal("rl_hunger")
-                        .requires(source -> source.hasPermission(4))
-                        .then(Commands.argument("amount", IntegerArgumentType.integer())
-                                .executes(ctx -> execute(ctx))));
+        dispatcher.register(Commands.literal("rl_hunger").requires(source -> source.hasPermission(4))
+                .then(Commands.argument("amount", IntegerArgumentType.integer())
+                        .executes(RLHungerCommand::execute)));
         }
 
     private static int execute(CommandContext<CommandSourceStack> ctx) throws CommandSyntaxException {

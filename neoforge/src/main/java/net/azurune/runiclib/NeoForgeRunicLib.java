@@ -1,9 +1,7 @@
 package net.azurune.runiclib;
 
-import com.mojang.brigadier.CommandDispatcher;
-import net.azurune.runiclib.common.command.HungerCommand;
+import net.azurune.runiclib.common.command.*;
 import net.azurune.runiclib.core.register.RLAttributes;
-import net.minecraft.commands.CommandSourceStack;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
@@ -24,7 +22,11 @@ public class NeoForgeRunicLib {
 
     @SubscribeEvent
     public void registerCommands(RegisterCommandsEvent event) {
-        HungerCommand.register(event.getDispatcher());
+        RLHungerCommand.register(event.getDispatcher());
+        RLSaturationCommand.register(event.getDispatcher());
+        RLSetNameCommand.register(event.getDispatcher());
+        RLHealCommand.register(event.getDispatcher());
+        RLDyeGiveCommand.register(event.getDispatcher());
     }
 
     @SubscribeEvent
