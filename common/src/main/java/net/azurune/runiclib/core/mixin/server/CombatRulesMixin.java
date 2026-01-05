@@ -3,7 +3,6 @@ package net.azurune.runiclib.core.mixin.server;
 import net.azurune.runiclib.core.init.RLDamageTypes;
 import net.azurune.runiclib.core.register.RLAttributes;
 import net.minecraft.tags.DamageTypeTags;
-import net.minecraft.util.Mth;
 import net.minecraft.world.damagesource.CombatRules;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
@@ -16,7 +15,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(CombatRules.class)
 public class CombatRulesMixin {
 
-    @Inject(method = "getDamageAfterAbsorb", at = @At("HEAD"), cancellable = true)
+    @Inject(method = "getDamageAfterAbsorb", at = @At("RETURN"), cancellable = true)
     private static void runiclib$customDamage(LivingEntity entity, float damage, DamageSource damageSource, float armorValue, float armorToughness, CallbackInfoReturnable<Float> cir) {
         float finalDamage = damage;
         if (!damageSource.is(DamageTypeTags.BYPASSES_RESISTANCE)) {
@@ -51,18 +50,7 @@ public class CombatRulesMixin {
             }
         }
 
-        float f = 2.0F + armorToughness / 4.0F;
-        float f1 = Mth.clamp(armorValue - finalDamage / f, armorValue * 0.2F, 20.0F);
-        float f2 = f1 / 25.0F;
-        finalDamage *= 1.0F - f2;
-
         if (finalDamage < 0) finalDamage = 0;
-
-        cir.setReturnValue(finalDamage);
-    }
-
-    @Inject(method = "getDamageAfterMagicAbsorb", at = @At("HEAD"), cancellable = true)
-    private static void runiclib$customMagicAbsorb(float finalDamage, float enchantModifiers, CallbackInfoReturnable<Float> cir) {
         cir.setReturnValue(finalDamage);
     }
 }

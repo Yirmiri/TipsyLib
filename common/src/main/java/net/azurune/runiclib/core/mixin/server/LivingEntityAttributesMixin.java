@@ -48,7 +48,7 @@ public abstract class LivingEntityAttributesMixin {
         return amount;
     }
 
-    @Inject(at = @At("TAIL"), method = "getDamageAfterMagicAbsorb")
+    @Inject(at = @At("RETURN"), method = "getDamageAfterMagicAbsorb")
     public void runiclib$getDamageAfterMagicAbsorb(DamageSource source, float amount, CallbackInfoReturnable<Float> cir) {
         Entity entity = source.getEntity();
         if (living.getAttributes().hasAttribute(RLAttributes.BURNING_RETALIATION_CHANCE) && living.getAttributes().hasAttribute(RLAttributes.BURNING_RETALIATION_LENGTH)
