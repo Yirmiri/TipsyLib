@@ -18,7 +18,10 @@ public class CombatRulesMixin {
     @Inject(method = "getDamageAfterAbsorb", at = @At("RETURN"), cancellable = true)
     private static void runiclib$customDamage(LivingEntity entity, float damage, DamageSource damageSource, float armorValue, float armorToughness, CallbackInfoReturnable<Float> cir) {
         float finalDamage = damage;
-        if (!damageSource.is(DamageTypeTags.BYPASSES_RESISTANCE)) {
+        if (!damageSource.is(DamageTypeTags.BYPASSES_RESISTANCE) &&
+                entity.getAttributes().hasAttribute(RLAttributes.MAGIC_RESISTANCE) && entity.getAttributes().hasAttribute(RLAttributes.BLAST_RESISTANCE) &&
+                entity.getAttributes().hasAttribute(RLAttributes.PHYSICAL_RESISTANCE) && entity.getAttributes().hasAttribute(RLAttributes.ELEMENTAL_RESISTANCE)
+        ) {
             if (damageSource.is(DamageTypeTags.WITCH_RESISTANT_TO)
                     || damageSource.is(DamageTypes.UNATTRIBUTED_FIREBALL)
                     || damageSource.is(DamageTypes.FIREBALL)
