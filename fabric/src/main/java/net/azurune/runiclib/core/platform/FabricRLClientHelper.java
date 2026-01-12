@@ -26,11 +26,6 @@ public class FabricRLClientHelper implements RLClientHelper {
     }
 
     @Override
-    public <T extends ParticleOptions> void registerParticleProviderType(ParticleType<T> type, ParticleProvider<T> provider) {
-        ParticleFactoryRegistry.getInstance().register(type, provider);
-    }
-
-    @Override
     public <T extends Entity> void registerEntityRenderer(EntityType<T> type, EntityRendererProvider<T> renderer) {
         EntityRendererRegistry.register(type, renderer);
     }

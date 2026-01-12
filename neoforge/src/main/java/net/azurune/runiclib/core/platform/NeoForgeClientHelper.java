@@ -28,11 +28,6 @@ public class NeoForgeClientHelper implements RLClientHelper {
     }
 
     @Override
-    public <T extends ParticleOptions> void registerParticleProviderType(ParticleType<T> type, ParticleProvider<T> provider) {
-        modEventBus.addListener((RegisterParticleProvidersEvent event) -> event.registerSpecial(type, provider));
-    }
-
-    @Override
     public <T extends Entity> void registerEntityRenderer(EntityType<T> type, EntityRendererProvider<T> renderer) {
         modEventBus.addListener((EntityRenderersEvent.RegisterRenderers event) -> event.registerEntityRenderer(type, renderer));
     }

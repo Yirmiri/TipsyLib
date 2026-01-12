@@ -7,6 +7,7 @@ import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.particles.ParticleType;
+import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.effect.MobEffect;
@@ -101,7 +102,9 @@ public interface RLRegistryHelper {
 
     <T extends CreativeModeTab> Supplier<T> registerCreativeModeTab(String modid, String id, Supplier<T> supplier);
 
-    Supplier<ParticleType<?>> registerParticle(String modid, String id, Supplier<ParticleType<?>> supplier);
+    Supplier<SimpleParticleType> registerParticle(String modid, String id);
+
+    Holder<SoundEvent> registerSoundReference(String modid, String id);
 
     Holder<Attribute> registerAttribute(String modid, String id, Attribute attribute);
 

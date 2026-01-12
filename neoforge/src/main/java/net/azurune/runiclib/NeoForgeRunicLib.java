@@ -47,10 +47,10 @@ public class NeoForgeRunicLib {
             event.add(type, RLAttributes.VULNERABILITY_MULTIPLIER, 0);
             event.add(type, RLAttributes.CRITICAL_STRIKE_CHANCE, 0);
             event.add(type, RLAttributes.CRITICAL_STRIKE_MULTIPLIER, 0);
-            event.add(type, RLAttributes.BLAST_RESISTANCE, 0);
-            event.add(type, RLAttributes.ELEMENTAL_RESISTANCE, 0);
-            event.add(type, RLAttributes.MAGIC_RESISTANCE, 0);
-            event.add(type, RLAttributes.PHYSICAL_RESISTANCE, 0);
+//            event.add(type, RLAttributes.BLAST_RESISTANCE, 0);
+//            event.add(type, RLAttributes.ELEMENTAL_RESISTANCE, 0);
+//            event.add(type, RLAttributes.MAGIC_RESISTANCE, 0);
+//            event.add(type, RLAttributes.PHYSICAL_RESISTANCE, 0);
         });
     }
 }

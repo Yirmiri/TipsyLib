@@ -22,13 +22,6 @@ public interface RLClientHelper {
     void registerBlockRenderType(Block block, RenderType type);
 
     /**
-     * This allows creating particle type providers within the common package
-     * @param type - The particle type you are adding a provider for
-     * @param provider - The provider the particle should use
-     */
-    <T extends ParticleOptions> void registerParticleProviderType(ParticleType<T> type, ParticleProvider<T> provider);
-
-    /**
      * This allows creating EntityRenderers in the common package
      * @param type - The entity type
      * @param renderer - The renderer it should use

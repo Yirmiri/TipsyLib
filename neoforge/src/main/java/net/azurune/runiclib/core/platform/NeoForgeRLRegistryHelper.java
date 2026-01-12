@@ -6,7 +6,9 @@ import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.particles.ParticleType;
+import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
@@ -128,11 +130,19 @@ public class NeoForgeRLRegistryHelper implements RLRegistryHelper {
     }
 
     @Override
-    public Supplier<ParticleType<?>> registerParticle(String modid, String id, Supplier<ParticleType<?>> supplier) {
+    public Supplier<SimpleParticleType> registerParticle(String modid, String id) {
         DeferredRegister<ParticleType<?>> particleTypeDeferredRegister = DeferredRegister.create(Registries.PARTICLE_TYPE, modid);
         particleTypeDeferredRegister.register(modEventBus);
 
-        return particleTypeDeferredRegister.register(id, supplier);
+        return particleTypeDeferredRegister.register(id, () -> new SimpleParticleType(false));
+    }
+
+    @Override
+    public Holder<SoundEvent> registerSoundReference(String modid, String id) {
+        DeferredRegister<SoundEvent> soundReferenceDeferredRegister = DeferredRegister.create(Registries.SOUND_EVENT, modid);
+        soundReferenceDeferredRegister.register(modEventBus);
+
+        return soundReferenceDeferredRegister.register(id, () -> SoundEvent.createVariableRangeEvent(RunicLib.customid(modid, id)));
     }
 
     @Override

@@ -4,10 +4,12 @@ import net.azurune.runiclib.RunicLib;
 import net.azurune.runiclib.core.platform.services.RLRegistryHelper;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
+import net.fabricmc.fabric.api.particle.v1.FabricParticleTypes;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.particles.ParticleType;
+import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -104,8 +106,13 @@ public class FabricRLRegistryHelper implements RLRegistryHelper {
     }
 
     @Override
-    public Supplier<ParticleType<?>> registerParticle(String modid, String id, Supplier<ParticleType<?>> supplier) {
-        return () -> Registry.register(BuiltInRegistries.PARTICLE_TYPE, RunicLib.customid(modid, id), supplier.get());
+    public Supplier<SimpleParticleType> registerParticle(String modid, String id) {
+        return () -> Registry.register(BuiltInRegistries.PARTICLE_TYPE, RunicLib.customid(modid, id), FabricParticleTypes.simple());
+    }
+
+    @Override
+    public Holder<SoundEvent> registerSoundReference(String modid, String id) {
+        return Registry.registerForHolder(BuiltInRegistries.SOUND_EVENT, RunicLib.customid(modid, id), SoundEvent.createVariableRangeEvent(RunicLib.customid(modid, id)));
     }
 
     @Override

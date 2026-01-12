@@ -25,10 +25,10 @@ public class FabricLivingEntityMixin {
                 .add(RLAttributes.BURNING_RETALIATION_CHANCE)
                 .add(RLAttributes.CRITICAL_STRIKE_CHANCE)
                 .add(RLAttributes.CRITICAL_STRIKE_MULTIPLIER)
-                .add(RLAttributes.BLAST_RESISTANCE)
-                .add(RLAttributes.MAGIC_RESISTANCE)
-                .add(RLAttributes.ELEMENTAL_RESISTANCE)
-                .add(RLAttributes.PHYSICAL_RESISTANCE)
+//                .add(RLAttributes.BLAST_RESISTANCE)
+//                .add(RLAttributes.MAGIC_RESISTANCE)
+//                .add(RLAttributes.ELEMENTAL_RESISTANCE)
+//                .add(RLAttributes.PHYSICAL_RESISTANCE)
         ;
     }
 }
