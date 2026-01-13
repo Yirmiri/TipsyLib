@@ -20,8 +20,10 @@
   ],
   "client": [
     "client.FogRendererMixin",
+    "client.GameRendererMixin",
     "client.GuiMixin",
     "client.HeartTypeMixin",
+    "client.KeyboardHandlerMixin",
     "client.PlayerInfoMixin"
   ],
   "server": [
