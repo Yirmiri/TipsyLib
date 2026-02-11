@@ -48,6 +48,7 @@ public class RLLangGen extends FabricLanguageProvider {
         build.add("runiclib.commands.saturation.success", "Applied %s saturation to %s");
         build.add("runiclib.commands.setname.no_target", "No target entity found");
         build.add("runiclib.commands.setname.success", "Set %s display name to %s");
+        build.add("runiclib.commands.setname.player", "Cannot change the display name of a player");
         build.add("runiclib.commands.heal.fail", "Target's health could not be healed");
         build.add("runiclib.commands.heal.success", "Healed %s health of %s");
         build.add("runiclib.commands.not_living", "Target is not a living entity");

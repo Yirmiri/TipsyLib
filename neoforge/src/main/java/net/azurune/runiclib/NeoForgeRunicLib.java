@@ -27,7 +27,6 @@ public class NeoForgeRunicLib {
             SaturationCommand.register(event.getDispatcher());
             SetNameCommand.register(event.getDispatcher());
             HealCommand.register(event.getDispatcher());
-            DyeGiveCommand.register(event.getDispatcher());
             KingmeCommand.register(event.getDispatcher());
             PurifyCommand.register(event.getDispatcher());
         }

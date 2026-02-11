@@ -16,6 +16,7 @@ public class RunicLib {
     //Block Family Gen
     //Conditionally loaded recipes (rewrite)
     //Finish cool cape switcher thing + contributor capes
+    //Random death message thing
 
     //debug_rl (enables hidden mc debugs)
     //cape_rl (sets contributor cape, this is based on what capes the user has)

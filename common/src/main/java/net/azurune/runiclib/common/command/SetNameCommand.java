@@ -10,6 +10,7 @@ import net.minecraft.commands.arguments.EntityArgument;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.player.Player;
 
 public class SetNameCommand {
     public static void register(CommandDispatcher<CommandSourceStack> dispatcher) {
@@ -23,7 +24,11 @@ public class SetNameCommand {
         Entity targetEntity = EntityArgument.getEntity(ctx, "target");
         String newName = StringArgumentType.getString(ctx, "name");
 
-        targetEntity.setCustomName(Component.literal(newName));
+        if (!(targetEntity instanceof Player)) {
+            targetEntity.setCustomName(Component.literal(newName));
+        } else {
+            Component.translatable("runiclib.commands.setname.player");
+        }
         if (targetEntity instanceof Mob targetMob) {
             targetMob.setPersistenceRequired();
         }

@@ -16,7 +16,6 @@ public class FabricRunicLib implements ModInitializer {
                 SaturationCommand.register(dispatcher);
                 SetNameCommand.register(dispatcher);
                 HealCommand.register(dispatcher);
-                DyeGiveCommand.register(dispatcher);
                 KingmeCommand.register(dispatcher);
                 PurifyCommand.register(dispatcher);
             }
