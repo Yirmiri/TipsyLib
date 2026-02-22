@@ -7,6 +7,7 @@ import net.minecraft.world.entity.player.Player;
 import java.util.*;
 import java.util.function.Function;
 
+//thank mr hecco he gave permission to use his nexuslib version
 public class RLPostProcessShaderRegistry {
     private static final Map<Function<Entity, Boolean>, ResourceLocation> SHADERS = new HashMap<>();
     private static final Map<String, Function<Entity, Boolean>> SHADER_TO_CONDITION = new HashMap<>();

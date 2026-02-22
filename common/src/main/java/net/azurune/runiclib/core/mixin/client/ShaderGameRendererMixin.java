@@ -16,8 +16,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.util.Map;
 import java.util.function.Function;
 
+//thank mr hecco he gave permission to use his nexuslib version
 @Mixin(GameRenderer.class)
-public abstract class GameRendererMixin {
+public abstract class ShaderGameRendererMixin {
     @Shadow
     private void loadEffect(ResourceLocation resourceLocation) {}
 
