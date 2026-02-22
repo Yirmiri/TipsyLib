@@ -57,6 +57,14 @@ public class NeoForgeRLRegistryHelper implements RLRegistryHelper {
     }
 
     @Override
+    public <T> Holder<T> registerForHolder(Registry<T> registry, String modid, String id, Supplier<T> supplier) {
+        DeferredRegister<T> deferredRegister = DeferredRegister.create(registry.key(), modid);
+        deferredRegister.register(modEventBus);
+
+        return deferredRegister.register(id, supplier);
+    }
+
+    @Override
     public <T extends Block> Supplier<T> registerBlock(String modid, String id, Supplier<T> supplier, boolean hasItem) {
         DeferredRegister<Block> blockDeferredRegister = DeferredRegister.create(Registries.BLOCK, modid);
         DeferredRegister<Item> itemDeferredRegister = DeferredRegister.create(Registries.ITEM, modid);

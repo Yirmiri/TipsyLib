@@ -71,6 +71,8 @@ public interface RLRegistryHelper {
 
     <T> Holder<T> registerForHolder(Registry<T> registry, String modid, String id, T holder);
 
+    <T> Holder<T> registerForHolder(Registry<T> registry, String modid, String id, Supplier<T> holder);
+
     /**
      * For all methods containing these parameters below this:
      * @param modid - The mod identifier that this block should be registered under

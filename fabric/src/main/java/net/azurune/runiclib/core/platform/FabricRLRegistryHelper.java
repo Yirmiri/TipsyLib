@@ -42,13 +42,17 @@ public class FabricRLRegistryHelper implements RLRegistryHelper {
 
     @Override
     public <T> Supplier<T> register(Registry<T> registry, String modid, String id, Supplier<T> supplier) {
-        T register = Registry.register(registry, RunicLib.customid(modid, id), supplier.get());
-        return () -> register;
+        return () -> Registry.register(registry, RunicLib.customid(modid, id), supplier.get());
     }
 
     @Override
     public <T> Holder<T> registerForHolder(Registry<T> registry, String modid, String id, T holder) {
         return Registry.registerForHolder(registry, RunicLib.customid(modid, id), holder);
+    }
+
+    @Override
+    public <T> Holder<T> registerForHolder(Registry<T> registry, String modid, String id, Supplier<T> supplier) {
+        return Registry.registerForHolder(registry, RunicLib.customid(modid, id), supplier.get());
     }
 
     @Override
@@ -107,7 +111,8 @@ public class FabricRLRegistryHelper implements RLRegistryHelper {
 
     @Override
     public Supplier<SimpleParticleType> registerParticle(String modid, String id) {
-        return () -> Registry.register(BuiltInRegistries.PARTICLE_TYPE, RunicLib.customid(modid, id), FabricParticleTypes.simple());
+        var register = Registry.register(BuiltInRegistries.PARTICLE_TYPE, RunicLib.customid(modid, id), FabricParticleTypes.simple());;
+        return () -> register;
     }
 
     @Override

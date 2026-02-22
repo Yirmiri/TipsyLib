@@ -24,6 +24,7 @@
     "client.GuiMixin",
     "client.HeartTypeMixin",
     "client.KeyboardHandlerMixin",
+    "client.ScreenEffectRendererMixin",
     "client.PlayerInfoMixin"
   ],
   "server": [
