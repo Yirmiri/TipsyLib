@@ -40,9 +40,15 @@ import java.util.function.UnaryOperator;
 
 public class FabricRLRegistryHelper implements RLRegistryHelper {
 
+//    @Override
+//    public <T> Supplier<T> register(Registry<T> registry, String modid, String id, Supplier<T> supplier) {
+//        return () -> Registry.register(registry, RunicLib.customid(modid, id), supplier.get());
+//    }
+
     @Override
     public <T> Supplier<T> register(Registry<T> registry, String modid, String id, Supplier<T> supplier) {
-        return () -> Registry.register(registry, RunicLib.customid(modid, id), supplier.get());
+        T register = Registry.register(registry, RunicLib.customid(modid, id), supplier.get());
+        return () -> register;
     }
 
     @Override
