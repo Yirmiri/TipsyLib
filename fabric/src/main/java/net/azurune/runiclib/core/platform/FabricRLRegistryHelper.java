@@ -134,7 +134,7 @@ public class FabricRLRegistryHelper implements RLRegistryHelper {
     @Override
     public <T> Supplier<DataComponentType<T>> registerComponentType(String modid, String id, UnaryOperator<DataComponentType.Builder<T>> builder) {
         DataComponentType<T> build = builder.apply(DataComponentType.builder()).build();
-        Registry.register(BuiltInRegistries.DATA_COMPONENT_TYPE, RunicLib.customid(modid, id), builder.apply(DataComponentType.builder()).build());
+        Registry.register(BuiltInRegistries.DATA_COMPONENT_TYPE, RunicLib.customid(modid, id), build);
         return () -> build;
     }
 
