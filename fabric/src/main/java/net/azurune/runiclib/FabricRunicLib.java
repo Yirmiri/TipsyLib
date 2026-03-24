@@ -12,8 +12,6 @@ public class FabricRunicLib implements ModInitializer {
     public void onInitialize() {
         RunicLib.init();
 
-        unpackRLTrades();
-
         CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {
             if (RunicLib.CONFIG.getRLCommandsEnabled()) {
                 HungerCommand.register(dispatcher);
@@ -24,12 +22,5 @@ public class FabricRunicLib implements ModInitializer {
                 PurifyCommand.register(dispatcher);
             }
         });
-    }
-
-    private static void unpackRLTrades() {
-        for (RLTrade trade : RLTrade.getTrades()) {
-            if (trade.isWandering()) TradeOfferHelper.registerWanderingTraderOffers(trade.isRareWandering() ? 2 : 1, factories -> factories.add(trade.getTrade()));
-            else TradeOfferHelper.registerVillagerOffers(trade.getJob(), trade.getLvl(), factories -> factories.add(trade.getTrade()));
-        }
     }
 }

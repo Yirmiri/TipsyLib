@@ -1,9 +1,11 @@
 package net.azurune.runiclib.core.platform;
 
 import net.azurune.runiclib.RunicLib;
+import net.azurune.runiclib.core.library.misc.RLTrade;
 import net.azurune.runiclib.core.platform.services.RLRegistryHelper;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
+import net.fabricmc.fabric.api.object.builder.v1.trade.TradeOfferHelper;
 import net.fabricmc.fabric.api.particle.v1.FabricParticleTypes;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
@@ -151,6 +153,18 @@ public class FabricRLRegistryHelper implements RLRegistryHelper {
     @Override
     public <T extends Recipe<?>> Supplier<RecipeSerializer<T>> registerRecipeSerializer(String modid, String id, RecipeSerializer<T> serializer) {
         return () -> Registry.register(BuiltInRegistries.RECIPE_SERIALIZER, RunicLib.customid(modid, id), serializer);
+    }
+
+    @Override
+    public void registerVillagerTrade(Supplier<RLTrade.Profession> trade) {
+        RLTrade.Profession unpacked = trade.get();
+        TradeOfferHelper.registerVillagerOffers(unpacked.getJob(), unpacked.getLvl(), factories -> factories.add(unpacked.getTrade()));
+    }
+
+    @Override
+    public void registerWanderingTrade(Supplier<RLTrade.Wandering> trade) {
+        RLTrade.Wandering unpacked = trade.get();
+        TradeOfferHelper.registerWanderingTraderOffers(unpacked.isRare() ? 2 : 1, factories -> factories.add(unpacked.getTrade()));
     }
 
     @Override

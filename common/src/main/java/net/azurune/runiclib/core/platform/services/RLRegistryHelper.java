@@ -1,5 +1,6 @@
 package net.azurune.runiclib.core.platform.services;
 
+import net.azurune.runiclib.core.library.misc.RLTrade;
 import net.azurune.runiclib.core.mixin.server.FireBlockInvokerMixin;
 import net.azurune.runiclib.core.mixin.server.WoodTypeInvokerMixin;
 import net.minecraft.core.BlockPos;
@@ -117,6 +118,10 @@ public interface RLRegistryHelper {
     <T extends Recipe<?>> Supplier<RecipeType<T>> registerRecipeType(String modid, String id);
 
     <T extends Recipe<?>> Supplier<RecipeSerializer<T>> registerRecipeSerializer(String modid, String id, RecipeSerializer<T> serializer);
+
+    void registerVillagerTrade(Supplier<RLTrade.Profession> trade);
+
+    void registerWanderingTrade(Supplier<RLTrade.Wandering> trade);
 
     //Supplier<Block> registerConfigurableBlock(String modid, boolean configValue, Optional<Boolean> optionalConfigValue, String id, Supplier<Block> supplier, boolean hasItem);
 

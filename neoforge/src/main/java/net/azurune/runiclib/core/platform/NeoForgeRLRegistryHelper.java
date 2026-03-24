@@ -1,6 +1,7 @@
 package net.azurune.runiclib.core.platform;
 
 import net.azurune.runiclib.RunicLib;
+import net.azurune.runiclib.core.library.misc.RLTrade;
 import net.azurune.runiclib.core.platform.services.RLRegistryHelper;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
@@ -34,10 +35,15 @@ import net.neoforged.neoforge.common.DeferredSpawnEggItem;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
 
 public class NeoForgeRLRegistryHelper implements RLRegistryHelper {
+    public static final List<Supplier<RLTrade.Profession>> NF_TRADES_PROF = new ArrayList<>();
+    public static final List<Supplier<RLTrade.Wandering>> NF_TRADES_WAND = new ArrayList<>();
+
     IEventBus modEventBus = ModLoadingContext.get().getActiveContainer().getEventBus();
 
     @Override
@@ -191,6 +197,18 @@ public class NeoForgeRLRegistryHelper implements RLRegistryHelper {
         deferredRegister.register(modEventBus);
 
         return deferredRegister.register(id, () -> serializer);
+    }
+
+    @Override
+    public void registerVillagerTrade(Supplier<RLTrade.Profession> trade) {
+        if (!NF_TRADES_PROF.contains(trade)) NF_TRADES_PROF.add(trade);
+        else throw new IllegalArgumentException("The professions trade list already contains this exact same trade");
+    }
+
+    @Override
+    public void registerWanderingTrade(Supplier<RLTrade.Wandering> trade) {
+        if (!NF_TRADES_WAND.contains(trade)) NF_TRADES_WAND.add(trade);
+        else throw new IllegalArgumentException("The wandering trade list already contains this exact same trade");
     }
 
     @Override
