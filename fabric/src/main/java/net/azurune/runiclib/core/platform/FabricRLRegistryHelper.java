@@ -142,7 +142,8 @@ public class FabricRLRegistryHelper implements RLRegistryHelper {
 
     @Override
     public <T extends AbstractContainerMenu> Supplier<MenuType<T>> registerMenu(String modid, String id, MenuSupplier<T> factory) {
-        return () -> Registry.register(BuiltInRegistries.MENU, RunicLib.customid(modid, id), new MenuType<>(factory::create, FeatureFlags.DEFAULT_FLAGS));
+        MenuType<T> registered = Registry.register(BuiltInRegistries.MENU, RunicLib.customid(modid, id), new MenuType<>(factory::create, FeatureFlags.DEFAULT_FLAGS));
+        return () -> registered;
     }
 
     @Override
