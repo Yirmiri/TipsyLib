@@ -1,22 +1,18 @@
 package net.azurune.runiclib.common.integration.recipe;
 
 import com.google.gson.JsonObject;
-import net.azurune.runiclib.core.platform.Services;
-import net.azurune.runiclib.core.register.RLRecipeSerializers;
+import net.azurune.runiclib.core.platform.RLServices;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
-import net.minecraft.world.item.crafting.RecipeType;
-
-import java.util.Map;
 
 public class ModLoadedConditionRecipeSerializer<T extends Recipe<?>> implements RecipeSerializer<T> {
     @Override
     public T fromJson(ResourceLocation id, JsonObject json) {
         if (json.has("modid")) {
-            if (!Services.PLATFORM.isModLoaded(json.get("modid").getAsString())) {
+            if (!RLServices.PLATFORM.isModLoaded(json.get("modid").getAsString())) {
                 return (T) new EmptyRecipe(id);
             }
         }

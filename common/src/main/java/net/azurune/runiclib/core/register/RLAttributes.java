@@ -1,7 +1,7 @@
 package net.azurune.runiclib.core.register;
 
 import net.azurune.runiclib.RunicLib;
-import net.azurune.runiclib.core.platform.Services;
+import net.azurune.runiclib.core.platform.RLServices;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.RangedAttribute;
@@ -23,7 +23,7 @@ public class RLAttributes {
     //public static final Supplier<Attribute> ADDITIONAL_JUMPS = register("additional_jumps", 0.0, 0, 100.0);
 
     private static Supplier<Attribute> register(String id, double base, double min, double max) {
-        return Services.REGISTRY.register(BuiltInRegistries.ATTRIBUTE, RunicLib.MOD_ID, "generic." + id,
+        return RLServices.REGISTRY.register(BuiltInRegistries.ATTRIBUTE, RunicLib.MOD_ID, "generic." + id,
                 () -> new RangedAttribute("runiclib.generic." + id, base, min, max).setSyncable(true));
     }
 

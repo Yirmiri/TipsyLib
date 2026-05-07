@@ -20,6 +20,7 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.item.alchemy.Potion;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -87,6 +88,13 @@ public class FabricRLRegistryHelper implements RLRegistryHelper {
     @Override
     public <T extends MobEffect> Supplier<T> registerEffect(String modid, String id, Supplier<T> supplier) {
         T register = Registry.register(BuiltInRegistries.MOB_EFFECT, RunicLib.customid(modid, id), supplier.get());
+        return () -> register;
+    }
+
+    @Override
+    public <T extends Enchantment> Supplier<T> registerEnchantment(String modid, String id, Supplier<T> supplier)
+    {
+        T register = Registry.register(BuiltInRegistries.ENCHANTMENT, RunicLib.customid(modid, id), supplier.get());
         return () -> register;
     }
 

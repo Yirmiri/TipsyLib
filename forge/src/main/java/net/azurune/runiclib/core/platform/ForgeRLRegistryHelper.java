@@ -1,10 +1,12 @@
 package net.azurune.runiclib.core.platform;
 
+import net.azurune.runiclib.RunicLib;
 import net.azurune.runiclib.core.platform.services.RLRegistryHelper;
 import net.minecraft.core.Registry;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.EntityType;
@@ -15,6 +17,7 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.item.alchemy.Potion;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -33,8 +36,8 @@ public class ForgeRLRegistryHelper implements RLRegistryHelper {
     public <T> Supplier<T> register(Registry<T> registry, String modid, String id, Supplier<T> supplier) {
         DeferredRegister<T> deferredRegister = DeferredRegister.create(registry.key(), modid);
         deferredRegister.register(modEventBus);
-
-        return deferredRegister.register(id, supplier);
+        deferredRegister.register(id, supplier);
+        return () -> registry.get(RunicLib.customid(modid, id));
     }
 
     @Override
@@ -108,6 +111,15 @@ public class ForgeRLRegistryHelper implements RLRegistryHelper {
         mobEffectDeferredRegister.register(modEventBus);
 
         return mobEffectDeferredRegister.register(id, supplier);
+    }
+
+    @Override
+    public <T extends Enchantment> Supplier<T> registerEnchantment(String modid, String id, Supplier<T> supplier)
+    {
+        DeferredRegister<Enchantment> enchantmentDeferredRegister = DeferredRegister.create(Registries.ENCHANTMENT, modid);
+        enchantmentDeferredRegister.register(modEventBus);
+
+        return enchantmentDeferredRegister.register(id, supplier);
     }
 
     @Override

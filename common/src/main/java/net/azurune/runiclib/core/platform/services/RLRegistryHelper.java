@@ -16,6 +16,7 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.item.alchemy.Potion;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -82,6 +83,8 @@ public interface RLRegistryHelper {
     <T extends SoundEvent> Supplier<T> registerSoundEvent(String modid, String id, Supplier<T> supplier);
 
     <T extends MobEffect> Supplier<T> registerEffect(String modid, String id, Supplier<T> supplier);
+
+    <T extends Enchantment> Supplier<T> registerEnchantment(String modid, String id, Supplier<T> supplier);
 
     <T extends CreativeModeTab> Supplier<T> registerCreativeModeTab(String modid, String id, Supplier<T> supplier);
 
