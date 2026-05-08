@@ -12,9 +12,9 @@ public class RunicLib {
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
     public static void init() {
-        RLMobEffects.loadMobEffects();
-        RLAttributes.loadAttributes();
-        RLRecipeSerializers.loadRecipeSerializers();
+        RLMobEffects.load();
+        RLAttributes.load();
+        RLRecipeSerializers.load();
     }
 
     public static ResourceLocation modid(String id) {

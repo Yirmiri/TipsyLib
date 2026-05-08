@@ -24,6 +24,6 @@ public class RLRecipeSerializers {
         return RLServices.REGISTRY.register(BuiltInRegistries.RECIPE_TYPE, RunicLib.MOD_ID, id, supplier);
     }
 
-    public static void loadRecipeSerializers() {
+    public static void load() {
     }
 }
