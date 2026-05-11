@@ -36,11 +36,17 @@ public abstract class AbstractClientPlayerMixinOld extends Player {
             Map.entry("2ab2e589-b328-441d-bebb-1f129e330ec2", "sad_cloud"), //aCryingCloud
             Map.entry("f73f8d0e-5c82-48d2-bad0-b7f1796aa2fc", "wrathful"), //tortulss
             Map.entry("eff789b6-ed9d-4787-8640-ab37e7daf81f", "bug"), //Slicraw
-            Map.entry("bc56b2c8-9ef8-4532-b045-00f44804bca4", "axolotl"), //Hecco__
+            Map.entry("bc56b2c8-9ef8-4532-b045-00f44804bca4", "axolotl"), //TheHecco
             Map.entry("27a729ac-0a2a-42fc-8e65-a37fcba6a6c7", "lightning"), //ZeusIGN
             Map.entry("4bc0a7a9-497a-4aa1-a5af-cee312f94b01", "rebellious"), //CreekWanderer
             Map.entry("7a6a8c68-8b73-47f6-b08f-0dde5f1848dd", "fudge_sundae"), //SmillyScarfs
-            Map.entry("8429992e-eba7-4dc9-a0b9-f941a55a5fb4", "shiny_pearl") //Pearlision3st
+            Map.entry("8429992e-eba7-4dc9-a0b9-f941a55a5fb4", "shiny_pearl"), //Pearlision3st
+            Map.entry("774e37fc-1ca4-4156-827e-661afa24cb56", "hyper"), //_Artyrian
+            Map.entry("4d5b5fa4-684c-4c3a-8154-a8ad8f13fcd4", "rat"), //SirPancakes
+            Map.entry("abb421d6-af98-4f57-a746-d082cb5cda37", "snom"), //DRiSFiSH
+            Map.entry("32290fa8-77ed-4794-9cba-25c09e7f4e1d", "unicolor"), //Diemond_Player
+            Map.entry("7ca4cbfd-bb7e-419c-a97c-26a54031d28d", "rotten"), //Betwixer
+            Map.entry("a0437891-2b2a-4d0e-9792-463cad28dd38", "fudge_sundae") //Smillyblade
     );
 
     @Inject(at = @At(value = "HEAD"), method = "getCloakTextureLocation", cancellable = true)
