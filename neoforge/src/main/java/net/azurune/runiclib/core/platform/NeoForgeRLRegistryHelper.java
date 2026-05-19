@@ -50,8 +50,8 @@ public class NeoForgeRLRegistryHelper implements RLRegistryHelper {
     public <T> Supplier<T> register(Registry<T> registry, String modid, String id, Supplier<T> supplier) {
         DeferredRegister<T> deferredRegister = DeferredRegister.create(registry.key(), modid);
         deferredRegister.register(modEventBus);
-
-        return deferredRegister.register(id, supplier);
+        deferredRegister.register(id, supplier);
+        return () -> registry.get(RunicLib.customid(modid, id));
     }
 
     @Override
