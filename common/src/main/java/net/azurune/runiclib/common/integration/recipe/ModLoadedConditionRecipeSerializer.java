@@ -1,7 +1,7 @@
 package net.azurune.runiclib.common.integration.recipe;
 
 import com.google.gson.JsonObject;
-import net.azurune.runiclib.core.platform.RLServices;
+import net.azurune.runiclib.core.platform.Services;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
@@ -12,7 +12,7 @@ public class ModLoadedConditionRecipeSerializer<T extends Recipe<?>> implements 
     @Override
     public T fromJson(ResourceLocation id, JsonObject json) {
         if (json.has("modid")) {
-            if (!RLServices.PLATFORM.isModLoaded(json.get("modid").getAsString())) {
+            if (!Services.PLATFORM.isModLoaded(json.get("modid").getAsString())) {
                 return (T) new EmptyRecipe(id);
             }
         }
