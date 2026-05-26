@@ -10,7 +10,7 @@ import net.minecraftforge.fml.common.Mod;
 @Mod(RunicLib.MOD_ID)
 public class ForgeRunicLib {
     
-    public ForgeRunicLib(IEventBus eventBus) {
+    public ForgeRunicLib() {
         RunicLib.init();
 
         MinecraftForge.EVENT_BUS.register(this);
