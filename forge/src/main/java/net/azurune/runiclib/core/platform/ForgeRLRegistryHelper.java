@@ -12,11 +12,17 @@ import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.Attribute;
+import net.minecraft.world.flag.FeatureFlags;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.item.alchemy.Potion;
+import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -144,5 +150,29 @@ public class ForgeRLRegistryHelper implements RLRegistryHelper {
         attributeDeferredRegister.register(modEventBus);
 
         return attributeDeferredRegister.register(id, supplier);
+    }
+
+    @Override
+    public <T extends AbstractContainerMenu> Supplier<MenuType<T>> registerMenu(String modid, String id, MenuSupplier<T> factory) {
+        DeferredRegister<MenuType<?>> deferredRegister = DeferredRegister.create(Registries.MENU, modid);
+        deferredRegister.register(modEventBus);
+
+        return deferredRegister.register(id, () -> new MenuType<>(factory::create, FeatureFlags.DEFAULT_FLAGS));
+    }
+
+    @Override
+    public <T extends Recipe<?>> Supplier<RecipeType<T>> registerRecipeType(String modid, String id) {
+        DeferredRegister<RecipeType<?>> deferredRegister = DeferredRegister.create(Registries.RECIPE_TYPE, modid);
+        deferredRegister.register(modEventBus);
+
+        return deferredRegister.register(id, () -> RecipeType.simple(RunicLib.customid(modid, id)));
+    }
+
+    @Override
+    public <T extends Recipe<?>> Supplier<RecipeSerializer<T>> registerRecipeSerializer(String modid, String id, RecipeSerializer<T> serializer) {
+        DeferredRegister<RecipeSerializer<?>> deferredRegister = DeferredRegister.create(Registries.RECIPE_SERIALIZER, modid);
+        deferredRegister.register(modEventBus);
+
+        return deferredRegister.register(id, () -> serializer);
     }
 }
