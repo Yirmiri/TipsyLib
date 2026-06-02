@@ -120,8 +120,15 @@ public class ForgeRLRegistryHelper implements RLRegistryHelper {
     }
 
     @Override
-    public <T extends Enchantment> Supplier<T> registerEnchantment(String modid, String id, Supplier<T> supplier)
-    {
+    public Supplier<MobEffect> registerEffect(String modid, String id, MobEffect supplier) {
+        DeferredRegister<MobEffect> mobEffectDeferredRegister = DeferredRegister.create(Registries.MOB_EFFECT, modid);
+        mobEffectDeferredRegister.register(modEventBus);
+
+        return mobEffectDeferredRegister.register(id, () -> supplier);
+    }
+
+    @Override
+    public <T extends Enchantment> Supplier<T> registerEnchantment(String modid, String id, Supplier<T> supplier) {
         DeferredRegister<Enchantment> enchantmentDeferredRegister = DeferredRegister.create(Registries.ENCHANTMENT, modid);
         enchantmentDeferredRegister.register(modEventBus);
 

@@ -98,8 +98,12 @@ public class FabricRLRegistryHelper implements RLRegistryHelper {
     }
 
     @Override
-    public <T extends Enchantment> Supplier<T> registerEnchantment(String modid, String id, Supplier<T> supplier)
-    {
+    public Supplier<MobEffect> registerEffect(String modid, String id, MobEffect supplier) {
+        return () -> Registry.register(BuiltInRegistries.MOB_EFFECT, RunicLib.customid(modid, id), supplier);
+    }
+
+    @Override
+    public <T extends Enchantment> Supplier<T> registerEnchantment(String modid, String id, Supplier<T> supplier) {
         T register = Registry.register(BuiltInRegistries.ENCHANTMENT, RunicLib.customid(modid, id), supplier.get());
         return () -> register;
     }

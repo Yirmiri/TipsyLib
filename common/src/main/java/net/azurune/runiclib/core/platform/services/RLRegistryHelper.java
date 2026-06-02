@@ -90,6 +90,8 @@ public interface RLRegistryHelper {
 
     <T extends MobEffect> Supplier<T> registerEffect(String modid, String id, Supplier<T> supplier);
 
+    Supplier<MobEffect> registerEffect(String modid, String id, MobEffect supplier);
+
     <T extends Enchantment> Supplier<T> registerEnchantment(String modid, String id, Supplier<T> supplier);
 
     <T extends CreativeModeTab> Supplier<T> registerCreativeModeTab(String modid, String id, Supplier<T> supplier);
