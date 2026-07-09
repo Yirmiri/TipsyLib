@@ -16,4 +16,6 @@ public interface RLNetworkHelper {
      * @param packetPayload - The payload
      */
     void sendToServer(CustomPacketPayload packetPayload);
+
+    void sendSelectedCape(int index);
 }

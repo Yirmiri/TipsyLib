@@ -34,6 +34,11 @@ public class FabricRLPlatformHelper implements RLPlatformHelper {
     }
 
     @Override
+    public Path gameDir() {
+        return FabricLoader.getInstance().getGameDir();
+    }
+
+    @Override
     public Path configDir() {
         return FabricLoader.getInstance().getConfigDir();
     }

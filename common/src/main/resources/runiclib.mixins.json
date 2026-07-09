@@ -22,8 +22,9 @@
     "client.FogRendererMixin",
     "client.GuiMixin",
     "client.HeartTypeMixin",
+    "client.PlayerInfoMixin",
     "client.ScreenEffectRendererMixin",
-    "client.PlayerInfoMixin"
+    "client.SkinCustomizationScreenMixin"
   ],
   "server": [
   ],

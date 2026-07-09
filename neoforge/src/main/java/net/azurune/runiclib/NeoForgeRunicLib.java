@@ -2,12 +2,14 @@ package net.azurune.runiclib;
 
 import net.azurune.runiclib.common.command.*;
 import net.azurune.runiclib.core.register.RLAttributes;
+import net.azurune.runiclib.library.cape.CapePayloadHandler;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import net.neoforged.neoforge.event.entity.EntityAttributeModificationEvent;
+import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 
 @Mod(RunicLib.MOD_ID)
 public class NeoForgeRunicLib {
@@ -16,6 +18,7 @@ public class NeoForgeRunicLib {
         RunicLib.init();
 
         eventBus.addListener(this::registerDefaultAttributes);
+        eventBus.addListener(this::registerPayloads);
 
         NeoForge.EVENT_BUS.addListener(this::registerCommands);
     }
@@ -30,6 +33,11 @@ public class NeoForgeRunicLib {
             KingmeCommand.register(event.getDispatcher());
             PurifyCommand.register(event.getDispatcher());
         }
+    }
+
+    @SubscribeEvent
+    public void registerPayloads(RegisterPayloadHandlersEvent event) {
+        CapePayloadHandler.register(event);
     }
 
     @SubscribeEvent

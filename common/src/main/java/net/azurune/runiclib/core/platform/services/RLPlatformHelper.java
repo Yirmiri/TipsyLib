@@ -36,6 +36,11 @@ public interface RLPlatformHelper {
     boolean isDevelopmentEnvironment();
 
     /**
+     * Gets the game directory for the current loader.
+     */
+    Path gameDir();
+
+    /**
      * Gets the config directory for the current loader.
      */
     Path configDir();

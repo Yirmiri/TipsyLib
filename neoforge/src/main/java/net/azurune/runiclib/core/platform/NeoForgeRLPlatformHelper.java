@@ -31,6 +31,11 @@ public class NeoForgeRLPlatformHelper implements RLPlatformHelper {
     }
 
     @Override
+    public Path gameDir() {
+        return FMLPaths.GAMEDIR.get();
+    }
+
+    @Override
     public Path configDir() {
         return FMLPaths.CONFIGDIR.get();
     }

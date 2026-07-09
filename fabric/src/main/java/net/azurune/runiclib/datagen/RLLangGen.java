@@ -14,6 +14,31 @@ public class RLLangGen extends FabricLanguageProvider {
 
     @Override
     public void generateTranslations(HolderLookup.Provider provider, FabricLanguageProvider.TranslationBuilder build) {
+        //MISC
+        build.add("runiclib.tooltip.cape_button", "RunicLib Cape: %s");
+        build.add("runiclib.cape.vanilla", "Vanilla Cape");
+        build.add("runiclib.cape.azurune", "AZURUNE");
+        build.add("runiclib.cape.evil_eye", "Evil Eye");
+        build.add("runiclib.cape.pumpkin_queen", "Pumpkin Queen");
+        build.add("runiclib.cape.sad_cloud", "Sad Cloud");
+        build.add("runiclib.cape.wrathful", "Wrathful");
+        build.add("runiclib.cape.bug", "Bug");
+        build.add("runiclib.cape.axolotl", "Axolotl");
+        build.add("runiclib.cape.robor", "Robor");
+        build.add("runiclib.cape.hyper", "Hyper");
+        build.add("runiclib.cape.rat", "Rat");
+        build.add("runiclib.cape.snom", "Snom");
+        build.add("runiclib.cape.unicolor", "Unicolor");
+        build.add("runiclib.cape.putrid", "Putrid");
+        build.add("runiclib.cape.jinxed", "Jinxed");
+        build.add("runiclib.cape.beetroot", "Beetroot");
+        build.add("runiclib.cape.hex", "Hex");
+        build.add("runiclib.cape.accursed", "Accursed");
+        build.add("runiclib.cape.fudge_sundae", "Fudge Sundae");
+        build.add("runiclib.cape.lightning", "Lightning");
+        build.add("runiclib.cape.rebellious", "Rebellious");
+        build.add("runiclib.cape.shiny_pearl", "Shiny Pearl");
+
         //BENEFICIAL EFFECTS
         build.add(RLMobEffects.WATER_WALKING.value(), "Water Walking");
         build.add(RLMobEffects.LAVA_WALKING.value(), "Lava Walking");

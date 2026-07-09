@@ -1,6 +1,7 @@
 package net.azurune.runiclib.core.platform;
 
 import net.azurune.runiclib.core.platform.services.RLNetworkHelper;
+import net.azurune.runiclib.library.cape.SetCapePacket;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
@@ -15,5 +16,10 @@ public class FabricRLNetworkHelper implements RLNetworkHelper {
     @Override
     public void sendToServer(CustomPacketPayload packetPayload) {
         ClientPlayNetworking.send(packetPayload);
+    }
+
+    @Override
+    public void sendSelectedCape(int index) {
+        ClientPlayNetworking.send(new SetCapePacket(index));
     }
 }
