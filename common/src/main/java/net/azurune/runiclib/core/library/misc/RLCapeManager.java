@@ -170,11 +170,9 @@ public final class RLCapeManager {
         return Component.translatable(NAMES.get(texture));
     }
 
-    private static void load() {
+    public static void load() {
         if (!Files.exists(FILE)) return;
-
         Minecraft minecraft = Minecraft.getInstance();
-        if (minecraft.player == null) return;
 
         try (Reader reader = Files.newBufferedReader(FILE)) {
             Integer selected = GSON.fromJson(reader, Integer.class);
@@ -182,7 +180,7 @@ public final class RLCapeManager {
             if (selected == null) return;
 
             SELECTED.clear();
-            SELECTED.put(minecraft.player.getUUID(), selected);
+            SELECTED.put(minecraft.getUser().getProfileId(), selected);
         } catch (IOException ignored) {
         }
     }
