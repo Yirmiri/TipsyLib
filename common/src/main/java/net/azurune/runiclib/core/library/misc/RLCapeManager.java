@@ -1,6 +1,5 @@
 package net.azurune.runiclib.core.library.misc;
 
-import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import net.azurune.runiclib.RunicLib;
@@ -12,7 +11,6 @@ import net.minecraft.resources.ResourceLocation;
 import java.io.IOException;
 import java.io.Reader;
 import java.io.Writer;
-import java.lang.reflect.Type;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
@@ -53,7 +51,7 @@ public final class RLCapeManager {
                 cape("azurune")
         );
         add(UUID.fromString("2913d971-a58d-4566-8706-b4fb5eacb954"), //redeyevain
-                cape("redeyevain")
+                cape("evil_eye")
         );
         add(UUID.fromString("c1e0e811-8b55-4ff2-be32-443596a12ade"), //QueenSilverBlue
                 cape("pumpkin_queen")
@@ -80,7 +78,7 @@ public final class RLCapeManager {
                 cape("rat")
         );
         add(UUID.fromString("7ca4cbfd-bb7e-419c-a97c-26a54031d28d"), //Betwixer
-                cape("rotten")
+                cape("putrid")
         );
         add(UUID.fromString("abb421d6-af98-4f57-a746-d082cb5cda37"), //DRiSFiSH
                 cape("snom")
@@ -95,7 +93,7 @@ public final class RLCapeManager {
                 cape("unicolor")
         );
         add(UUID.fromString("3fd1d511-62d6-4e18-a28d-3e3d4fd93620"), //KekeCreations
-                cape("dice")
+                cape("jinxed")
         );
         add(UUID.fromString("9778ff53-d83d-4233-8fa6-8aab7b89c4c0"), //Stellari_
                 cape("beetroot"))

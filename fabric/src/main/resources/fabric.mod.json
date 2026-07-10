@@ -19,6 +19,9 @@
         "main": [
             "net.azurune.runiclib.FabricRunicLib"
         ],
+        "client": [
+          "net.azurune.runiclib.FabricRunicLibClient"
+        ],
         "fabric-datagen": [
             "net.azurune.runiclib.FabricRunicLibDatagen"
         ]

@@ -26,7 +26,7 @@ public abstract class SkinCustomizationScreenMixin extends OptionsSubScreen {
     }
 
     @WrapOperation(method = "addOptions", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/components/OptionsList;addSmall(Ljava/util/List;)V"))
-    private void runiclib$addOptions(OptionsList instance, List<AbstractWidget> buttons, Operation<Void> original) {
+    private void runiclib$addOptions(OptionsList instance, List<AbstractWidget> options, Operation<Void> original) {
         Minecraft minecraft = Minecraft.getInstance();
         if (minecraft.player != null) {
             UUID uuid = minecraft.player.getUUID();
@@ -39,9 +39,9 @@ public abstract class SkinCustomizationScreenMixin extends OptionsSubScreen {
                             button1.setMessage(Component.translatable("runiclib.tooltip.cape_button", RLCapeManager.getSelectedName(uuid)));
                         }
                 ).build();
-                buttons.add(button);
+                options.add(button);
             }
         }
-        original.call(instance, buttons);
+        original.call(instance, options);
     }
 }

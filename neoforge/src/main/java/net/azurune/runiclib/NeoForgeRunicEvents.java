@@ -19,22 +19,16 @@ import java.util.function.Supplier;
 @EventBusSubscriber(modid = RunicLib.MOD_ID)
 public class NeoForgeRunicEvents {
     @SubscribeEvent
-    public static void onJoin(PlayerEvent.PlayerLoggedInEvent event) {
+    public static void onJoinEvent(PlayerEvent.PlayerLoggedInEvent event) {
         if (!(event.getEntity() instanceof ServerPlayer player)) return;
 
         for (ServerPlayer other : player.serverLevel().players()) {
-            SyncCapePacket packet = new SyncCapePacket(other.getUUID(), RLCapeManager.getSelected(other.getUUID()));
-            PacketDistributor.sendToPlayer(player, packet);
+            PacketDistributor.sendToPlayer(player, new SyncCapePacket(other.getUUID(), RLCapeManager.getSelected(other.getUUID())));
+
+            if (other != player) {
+                PacketDistributor.sendToPlayer(other, new SyncCapePacket(player.getUUID(), RLCapeManager.getSelected(player.getUUID())));
+            }
         }
-    }
-
-    @SubscribeEvent
-    public static void onStartTracking(PlayerEvent.StartTracking event) {
-        if (!(event.getEntity() instanceof ServerPlayer tracker)) return;
-        if (!(event.getTarget() instanceof ServerPlayer target)) return;
-
-        SyncCapePacket packet = new SyncCapePacket(target.getUUID(), RLCapeManager.getSelected(target.getUUID()));
-        PacketDistributor.sendToPlayer(tracker, packet);
     }
 
     @SubscribeEvent
