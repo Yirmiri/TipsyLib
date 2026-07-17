@@ -3,6 +3,7 @@ package net.azurune.runiclib;
 import net.azurune.runiclib.common.command.*;
 import net.azurune.runiclib.core.library.misc.RLCapeManager;
 import net.azurune.runiclib.core.library.misc.RLTrade;
+import net.azurune.runiclib.core.platform.RLServices;
 import net.azurune.runiclib.library.cape.CapePayloadHandler;
 import net.azurune.runiclib.library.cape.SetCapePacket;
 import net.azurune.runiclib.library.cape.SyncCapePacket;
@@ -24,7 +25,9 @@ public class FabricRunicLib implements ModInitializer {
         RunicLib.init();
 
         CapePayloadHandler.register();
-        ClientPlayNetworking.registerGlobalReceiver(SyncCapePacket.TYPE, SyncCapePacket::handle);
+        if (RLServices.PLATFORM.isClient()) {
+            ClientPlayNetworking.registerGlobalReceiver(SyncCapePacket.TYPE, SyncCapePacket::handle);
+        }
         ServerPlayNetworking.registerGlobalReceiver(SetCapePacket.TYPE, SetCapePacket::handle);
 
         ServerPlayConnectionEvents.JOIN.register((handler, sender, client) -> {
