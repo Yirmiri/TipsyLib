@@ -12,27 +12,12 @@ public class RunicLib {
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
     public static RunicLibConfig CONFIG;
 
-    //TODO RunicLib v5.0
-    //Block Family Gen
-    //Conditionally loaded recipes (rewrite)
-    //Finish cool cape switcher thing + contributor capes
-    //Random death message thing
-
-    //debug_rl (enables hidden mc debugs)
-    //cape_rl (sets contributor cape, this is based on what capes the user has)
-    //quicktp_rl (tps to nearest biome u insert)
-    //dimension_rl (tps to dimension at coords, ~ ~ ~ if none inserted)
-    //brightness_rl (sets brightness to any value even beyond normal values like 1000)
-    //rename_rl (renames held item)
-    //durability_rl (adds value of durability to item between two numbers (second is optional), literal value for hand, equipped, full inv)
-    //noai_rl (removes all behaviours of target entity)
-
     public static void init() {
+        Runiconfig.registerConfig(MOD_ID, RunicLibConfig.class, RunicLibConfig::new);
+        CONFIG = new RunicLibConfig();
+
         RLMobEffects.loadMobEffects();
         RLAttributes.loadAttributes();
-
-        Runiconfig.registerConfig(MOD_ID, RunicLibConfig.class, RunicLibConfig::new);
-        CONFIG = Runiconfig.getConfig(MOD_ID);
     }
 
     public static ResourceLocation modid(String id) {
@@ -42,4 +27,9 @@ public class RunicLib {
     public static ResourceLocation customid(String modid, String id) {
         return ResourceLocation.fromNamespaceAndPath(modid, id);
     }
+
+    //todo Block Family Gen
+    //todo Conditionally loaded recipes (rewrite)
+    //todo Random death message thing
+    //todo rewrite config to include screen, fix load crash, and introduce comments
 }
